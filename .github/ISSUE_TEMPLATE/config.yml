@@ -3,3 +3,8 @@ contact_links:
   - name: Support / Help / Questions
     url: https://github.com/gatsby-uc/plugins/discussions/new?category=q-a
     about: Having trouble configuring/using a plugin or just have a question? Open a discussion!
+  - name: Community
+    url: https://discord.gg/vRgdZ6yD
+    about: Join our Discord!
+
+
