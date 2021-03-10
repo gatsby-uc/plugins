@@ -18,6 +18,6 @@ The details of this community is still being flushed out. As problems arrive we 
 
 - **Free labor**: We exist to allow more people to do the work of maintaining Open Source software. We hope to enable you to solve your own problems and in doing so, help others. If you are unable to do the work we still welcome bug reports and feature requests. What we will not tolerate is entitlement expecting others to do that work on your timeline. If you'd like to sponsor (read: pay someone) to solve a specific problem we very much are open to that and please let the community know.
 
-![Show us the money](https://media.giphy.com/media/Tex4wVhhs4iwKoV7YT/giphy.gif)
+![](https://i.giphy.com/media/Tex4wVhhs4iwKoV7YT/source.gif)
 
 - **Support**: Support is an aspect of maintaining open source. The point of this Collective is to take the burden of maintenance off any one person. The hope is that results in better maintenance (incl. support), but it's not a guarantee. Folks around here will help as they can; if it's urgent to you, try breaking out your wallet. 😊
