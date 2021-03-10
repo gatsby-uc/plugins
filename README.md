@@ -21,17 +21,3 @@ The details of this community is still being flushed out. As problems arrive we 
 ![Show us the money](https://media.giphy.com/media/Tex4wVhhs4iwKoV7YT/giphy.gif)
 
 - **Support**: Support is an aspect of maintaining open source. The point of this Collective is to take the burden of maintenance off any one person. The hope is that results in better maintenance (incl. support), but it's not a guarantee. Folks around here will help as they can; if it's urgent to you, try breaking out your wallet. 😊
-
-## Methodologies
-
-- If something is not in the docs...put it there.
-- If there's a bug fix it..
-- Don't open an issue, open a PR.
-
-## Thoughts
-
-- **Releases**: This may be one of the harder things we need to solve. We can't open this up too broadly for stability and security purposes. But we also want to allow as many people as possible to quickly fix and publish packages. Input welcome.
-
-- **Permissions**: Who can commit, release, etc. For this community to attain it's goals, this should probably lean towards openness as much as possible. Automation (testing, release, updates, etc) could be really valuable in this aspect.
-
-- **Community**: As the community grows there will be problems to solve, we need to be open with our failings and always look to learn and improve. No one here gets paid, if you want to see process added to change made, start a discussion.
