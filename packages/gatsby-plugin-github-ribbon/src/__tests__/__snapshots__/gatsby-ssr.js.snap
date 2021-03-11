@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds github ribbon to html create html for injecting if config is set - left 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        <header>
+          <a
+            href="https://github.com/gatsbyjs/gatsby"
+            rel="noopener"
+            target="_blank"
+          >
+            <img
+              alt="Fork me on GitHub"
+              src="/github_ribbon.png"
+              style={
+                Object {
+                  "border": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                }
+              }
+            />
+          </a>
+        </header>,
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`adds github ribbon to html create html for injecting if config is set - right 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        <header>
+          <a
+            href="https://github.com/gatsbyjs/gatsby"
+            rel="noopener"
+            target="_blank"
+          >
+            <img
+              alt="Fork me on GitHub"
+              src="/github_ribbon.png"
+              style={
+                Object {
+                  "border": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+          </a>
+        </header>,
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
