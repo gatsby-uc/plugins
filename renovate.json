@@ -1,0 +1,19 @@
+{
+  "extends": ["config:base", "schedule:earlyMondays", ":disablePeerDependencies"],
+  "major": {
+    "masterIssueApproval": true
+  },
+  "masterIssue": true,
+  "rangeStrategy": "bump",
+  "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "groupName": "minor updates",
+      "updateTypes": ["minor"]
+    },
+    {
+      "groupName": "patch updates",
+      "updateTypes": ["patch"]
+    }
+  ]
+}

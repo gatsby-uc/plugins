@@ -2,8 +2,15 @@
   "description": "Monorepo for plugins in the Gatsby User Collective",
   "repository": "git@github.com:gatsby-uc/plugins.git",
   "license": "MIT",
-  "private": true, 
+  "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "format": "npm run lint -- --write",
+    "lint": "prettier **/*"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
