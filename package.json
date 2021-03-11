@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "format": "npm run lint -- --write",
-    "lint": "prettier **/*"
+    "lint": "prettier **/* --check"
   },
   "devDependencies": {
     "prettier": "^2.2.1"
