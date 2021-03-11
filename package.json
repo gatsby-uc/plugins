@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "format": "npm run lint -- --write",
-    "lint": "prettier **/* --check"
+    "lint": "prettier **/* --check",
+    "ci": "yarn install --frozen-lockfile"
   },
   "devDependencies": {
     "prettier": "^2.2.1"

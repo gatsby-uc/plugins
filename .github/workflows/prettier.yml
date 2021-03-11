@@ -1,0 +1,31 @@
+name: Prettier Format
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  run:
+    name: Format with Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn ci
+
+      - name: Format source code
+        run: yarn format
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: "Formatting with Prettier"
+          add: "*.*"
