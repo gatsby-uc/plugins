@@ -7,7 +7,13 @@ Add the [Fork Me on Github](https://blog.github.com/2008-12-19-github-ribbons/) 
 
 ## Install
 
-`npm install --save gatsby-plugin-github-ribbon`
+```sh
+$ npm install --save gatsby-plugin-github-ribbon
+
+# or
+
+$ yarn add gatsby-plugin-github-ribbon
+```
 
 ## How to Use
 
