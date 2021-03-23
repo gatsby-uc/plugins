@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Package Build artifacts
-packages/**/gatsby-*.js
+# packages/**/gatsby-*.js
