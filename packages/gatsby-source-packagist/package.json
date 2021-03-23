@@ -1,0 +1,41 @@
+{
+  "name": "gatsby-source-packagist",
+  "version": "1.0.1",
+  "description": "Search the Packagist(PHP package repository) with gatsby GraphQL data schema.",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "packagist",
+    "php"
+  ],
+  "main": "index.js",
+  "repository": "git@github.com:moonmeister/gatsby-source-packagist.git",
+  "author": "Alex Moon <alex.jared.moon@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^17.5.1",
+    "mime-types": "^2.1.26",
+    "packagist-api-client": "^2.0.0"
+  },
+  "scripts": {
+    "build": "babel src --out-dir . --ignore \"**/__tests__\"",
+    "format": "prettier --write .",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir . --ignore \"**/__tests__\""
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "babel-preset-gatsby-package": "^0.3.1",
+    "cross-env": "^7.0.2",
+    "gatsby-source-filesystem": "^2.2.4",
+    "prettier": "^2.0.4"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.4.0",
+    "gatsby-source-filesystem": "^2.2.4"
+  }
+}
