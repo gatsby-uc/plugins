@@ -17,7 +17,9 @@
     "semantic-release": "^17.4.1",
     "semantic-release-monorepo": "^7.0.4"
   },
-    "release": {
-      "branches": ["main"]
-    }
+  "release": {
+    "branches": [
+      "main"
+    ]
+  }
 }
