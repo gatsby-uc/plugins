@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-packagist",
-  "version": "v0.0.0.-development",
+  "version": "0.0.0-development",
   "description": "Search the Packagist(PHP package repository) with gatsby GraphQL data schema.",
   "keywords": [
     "gatsby",
