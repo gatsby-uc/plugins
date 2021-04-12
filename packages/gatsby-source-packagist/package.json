@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-packagist",
-  "version": "1.0.1",
+  "version": "v0.0.0.-development",
   "description": "Search the Packagist(PHP package repository) with gatsby GraphQL data schema.",
   "keywords": [
     "gatsby",
@@ -9,7 +9,15 @@
     "php"
   ],
   "main": "index.js",
-  "repository": "git@github.com:moonmeister/gatsby-source-packagist.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-source-packagist"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsby-uc/plugins/issues"
+  },
+  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-source-packagist#readme",
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
