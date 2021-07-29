@@ -195,6 +195,7 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Fastify 3.x support
 - [x] Compression support
 - [ ] Propper file caching
+- [ ] Export types
 - [ ] If the site isn't built when server is launched, build it automatically
 - [ ] Security headers/control
 
