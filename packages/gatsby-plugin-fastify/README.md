@@ -1,18 +1,4 @@
-<style>
-  #logo-grid {
-    display: grid;
-    grid-template-columns: .75fr .25fr 2fr;
-    grid-template-rows: 1fr;
-    gap: 1em;
-  }
-
-  .icon {
-    min-width: max-content;
-    align-self: center;
-  }
-</style>
-
-<div id="logo-grid">
+<div id="logo-grid" style="display: grid;grid-template-columns: .75fr .25fr 2fr;grid-template-rows: 1fr;gap: 1em; align-items: center;">
   <div id="gatsby-icon" class="icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" focusable="false">
       <title>
