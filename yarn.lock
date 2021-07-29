@@ -9,23 +9,6 @@
   dependencies:
     tslib "~2.0.1"
 
-"@babel/cli@^7.13.14":
-  version "7.13.14"
-  resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.13.14.tgz#c395bc89ec4760c91f2027fa8b26f8b2bf42238f"
-  integrity sha512-zmEFV8WBRsW+mPQumO1/4b34QNALBVReaiHJOkxhUsdo/AvYM62c+SKSuLi2aZ42t3ocK6OI0uwUXRvrIbREZw==
-  dependencies:
-    commander "^4.0.1"
-    convert-source-map "^1.1.0"
-    fs-readdir-recursive "^1.1.0"
-    glob "^7.0.0"
-    lodash "^4.17.19"
-    make-dir "^2.1.0"
-    slash "^2.0.0"
-    source-map "^0.5.0"
-  optionalDependencies:
-    "@nicolo-ribaudo/chokidar-2" "2.1.8-no-fsevents"
-    chokidar "^3.4.0"
-
 "@babel/cli@^7.14.8":
   version "7.14.8"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.14.8.tgz#fac73c0e2328a8af9fd3560c06b096bfa3730933"
@@ -88,7 +71,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.13.15", "@babel/core@^7.7.5":
+"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.7.5":
   version "7.13.15"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.13.15.tgz#a6d40917df027487b54312202a06812c4f7792d0"
   integrity sha512-6GXmNYeNjS2Uz+uls5jalOemgIhnTMeaXo+yBUA72kC2uX/8VW6XyhVIo2L8/q0goKQA3EVKx0KOQpVKSeWadQ==
@@ -883,13 +866,6 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
 
-"@babel/plugin-syntax-flow@^7.12.13":
-  version "7.12.13"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.12.13.tgz#5df9962503c0a9c918381c929d51d4d6949e7e86"
-  integrity sha512-J/RYxnlSLXZLVR7wTRsozxKT8qbsx1mNKJzXEEjQ0Kjx1ZACcyHgbanNWNCFtc36IzuWhYWPpvJFFoexoOWFmA==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.12.13"
-
 "@babel/plugin-syntax-flow@^7.14.5":
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.14.5.tgz#2ff654999497d7d7d142493260005263731da180"
@@ -1168,14 +1144,6 @@
   dependencies:
     "@babel/helper-builder-binary-assignment-operator-visitor" "^7.14.5"
     "@babel/helper-plugin-utils" "^7.14.5"
-
-"@babel/plugin-transform-flow-strip-types@^7.13.0":
-  version "7.13.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-flow-strip-types/-/plugin-transform-flow-strip-types-7.13.0.tgz#58177a48c209971e8234e99906cb6bd1122addd3"
-  integrity sha512-EXAGFMJgSX8gxWD7PZtW/P6M+z74jpx3wm/+9pn+c2dOawPpBkUX7BrfyPvo6ZpXbgRIEuwgwDb/MGlKvu2pOg==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.13.0"
-    "@babel/plugin-syntax-flow" "^7.12.13"
 
 "@babel/plugin-transform-flow-strip-types@^7.14.5":
   version "7.14.5"
@@ -1581,7 +1549,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/plugin-transform-typescript@^7.12.1", "@babel/plugin-transform-typescript@^7.13.0":
+"@babel/plugin-transform-typescript@^7.13.0":
   version "7.13.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.13.0.tgz#4a498e1f3600342d2a9e61f60131018f55774853"
   integrity sha512-elQEwluzaU8R8dbVuW2Q2Y8Nznf7hnjM7+DSCd14Lo5fF63C9qNLbwZYbmZrtV9/ySpSUpkRpQXvJb6xyu4hCQ==
@@ -1783,15 +1751,6 @@
     core-js-compat "^3.15.0"
     semver "^6.3.0"
 
-"@babel/preset-flow@^7.12.1":
-  version "7.13.13"
-  resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.13.13.tgz#a61a1c149b3f77589d795287744393444d5cdd9e"
-  integrity sha512-MDtwtamMifqq3R2mC7l3A3uFalUb3NH5TIBQWjN/epEPlZktcLq4se3J+ivckKrLMGsR7H9LW8+pYuIUN9tsKg==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.13.0"
-    "@babel/helper-validator-option" "^7.12.17"
-    "@babel/plugin-transform-flow-strip-types" "^7.13.0"
-
 "@babel/preset-flow@^7.14.0":
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.14.5.tgz#a1810b0780c8b48ab0bece8e7ab8d0d37712751c"
@@ -1857,6 +1816,13 @@
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.14.6":
+  version "7.14.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
+  integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1934,13 +1900,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bundle-stats/utils@^2.1.1":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@bundle-stats/utils/-/utils-2.8.0.tgz#6038c0bc2cabbabfc85f7a54fb7393d150a6a2e0"
-  integrity sha512-pIZYeY4HcBwvWCnRoaYRxE/PV3oa2fpv6MlKgQ2DoTh1gnwAjCdmQlC3hiKYYBiLd1Q9uKMkp3bBmm1Vcl8FIA==
+"@bundle-stats/utils@^2.8.1":
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/@bundle-stats/utils/-/utils-2.8.2.tgz#0282fad2c00209e6f5429d2f3c1c9547d27a5756"
+  integrity sha512-SNnjxz7gSfMGMTzRaQCwP6PSIfLKJc+LKv6po7EYzQAK6vFfCvQYfPpYdzV/pqtnojNa3Su3Mysj+S5/YnA6rA==
   dependencies:
     convert-units "^2.3.4"
-    core-js "^3.1.4"
     query-string "^6.14.1"
     serialize-query-params "^1.3.1"
     superstruct "^0.8.3"
@@ -2338,23 +2303,6 @@
   resolved "https://registry.yarnpkg.com/@mikaelkristiansson/domready/-/domready-1.0.11.tgz#6a4b5891dccb6402ff4e944de843036ee1ffd4f5"
   integrity sha512-nEBLOa0JgtqahmPrnJZ18epLiFBzxhdKgo4uhN3TaBFRmM30pEVrS9FAEV4tg92d8PTdU+dYQx2lnpPyFMgMcg==
 
-"@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents":
-  version "2.1.8-no-fsevents"
-  resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.tgz#da7c3996b8e6e19ebd14d82eaced2313e7769f9b"
-  integrity sha512-+nb9vWloHNNMFHjGofEam3wopE3m1yuambrrd/fnPc+lFOMB9ROTqQlche9ByFWNkdNqfSgR/kkQtQ8DzEWt2w==
-  dependencies:
-    anymatch "^2.0.0"
-    async-each "^1.0.1"
-    braces "^2.3.2"
-    glob-parent "^3.1.0"
-    inherits "^2.0.3"
-    is-binary-path "^1.0.0"
-    is-glob "^4.0.0"
-    normalize-path "^3.0.0"
-    path-is-absolute "^1.0.0"
-    readdirp "^2.2.1"
-    upath "^1.1.1"
-
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.2":
   version "2.1.8-no-fsevents.2"
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.2.tgz#e324c0a247a5567192dd7180647709d7e2faf94b"
@@ -2539,13 +2487,13 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@relative-ci/agent@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@relative-ci/agent/-/agent-1.5.0.tgz#6cbd74c1d070eaf57b633a829da78ad903970d72"
-  integrity sha512-lYq5MJLTgEvSb9QrkSg1WTheNctqrt+cwzBHpiXwtw91ViwaxbgCnWJPJCsCznty3kDDFX9YaACznI6PvnSMdQ==
+"@relative-ci/agent@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@relative-ci/agent/-/agent-1.6.1.tgz#113264f7a6967823cf0821cc3e916dba44ea3304"
+  integrity sha512-ywITTSIsyDbVj0uRRoHAGwn1o8s0UXQNdzPPRKzsuG9U41El3hmFOezn8G1LIgaeZ8xHMRlRDGei+fkO8myAQQ==
   dependencies:
-    "@bundle-stats/utils" "^2.1.1"
-    "@relative-ci/env-ci" "^5.1.0"
+    "@bundle-stats/utils" "^2.8.1"
+    "@relative-ci/env-ci" "^5.3.1"
     core-js "^3.6.4"
     cosmiconfig "^7.0.0"
     debug "^4.1.1"
@@ -2554,10 +2502,10 @@
     isomorphic-fetch "^3.0.0"
     lodash "^4.17.15"
 
-"@relative-ci/env-ci@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@relative-ci/env-ci/-/env-ci-5.1.0.tgz#efc21a015b4a7112ffca92900239cdeddba114c1"
-  integrity sha512-7KI6izFxbx0Hyzk1kgpL/DaAmP9wEArSGJWaCo/B4cgy/D5Q2lOH1P/LkItTq2rnPl96bo1aCOB6z0/RmEBA2w==
+"@relative-ci/env-ci@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@relative-ci/env-ci/-/env-ci-5.3.1.tgz#ab88f0c414fe04f602d3087b76068cd00ea756cb"
+  integrity sha512-FychihgwUb2n28hACPROIb7LDrIQPGrIPXOZ7OsIFZw8o2rJzI1Xz0l6EJd79ePB+30rgmMJBFCnTmsH+t5ZvQ==
   dependencies:
     execa "^4.0.0"
     java-properties "^1.0.0"
@@ -3758,22 +3706,6 @@ babel-preset-gatsby-package@^1.10.0:
     babel-plugin-dynamic-import-node "^2.3.3"
     core-js "^3.10.0"
 
-babel-preset-gatsby-package@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-gatsby-package/-/babel-preset-gatsby-package-1.2.0.tgz#b0aa2e30de7d3d5cca85d105dc40d5f997fc12e7"
-  integrity sha512-idWMKtaaUq2QtvsDOqTUcCXUhdMKJEGBVW68X0FYxbGghnSMtHCR+arf/RoUbYHXb5b9HwGWHGx+/QZqqMYG0g==
-  dependencies:
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.12.1"
-    "@babel/plugin-proposal-optional-chaining" "^7.12.1"
-    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
-    "@babel/plugin-transform-runtime" "^7.12.1"
-    "@babel/plugin-transform-typescript" "^7.12.1"
-    "@babel/preset-env" "^7.12.1"
-    "@babel/preset-flow" "^7.12.1"
-    "@babel/preset-react" "^7.12.5"
-    babel-plugin-dynamic-import-node "^2.3.3"
-    core-js "^3.7.0"
-
 babel-preset-gatsby@^0.12.3:
   version "0.12.3"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.12.3.tgz#5ea06da5157f4537e7bbca028c1b8db0937a6ee9"
@@ -4886,15 +4818,15 @@ core-js-pure@^3.0.0:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.10.1.tgz#28642697dfcf02e0fd9f4d9891bd03a22df28ecf"
   integrity sha512-PeyJH2SE0KuxY5eCGNWA+W+CeDpB6M1PN3S7Am7jSv/Ttuxz2SnWbIiVQOn/TDaGaGtxo8CRWHkXwJscbUHtVw==
 
-core-js@^3.1.4, core-js@^3.6.4, core-js@^3.6.5, core-js@^3.7.0:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.10.1.tgz#e683963978b6806dcc6c0a4a8bd4ab0bdaf3f21a"
-  integrity sha512-pwCxEXnj27XG47mu7SXAwhLP3L5CrlvCB91ANUkIz40P27kUcvNfSdvyZJ9CLHiVoKSp+TTChMQMSKQEH/IQxA==
-
 core-js@^3.10.0:
   version "3.15.2"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.15.2.tgz#740660d2ff55ef34ce664d7e2455119c5bdd3d61"
   integrity sha512-tKs41J7NJVuaya8DxIOCnl8QuPHx5/ZVbFo1oKgVl1qHFBBrDctzQGtuLjPpRdNTWmKPH6oEvgN/MUID+l485Q==
+
+core-js@^3.6.4, core-js@^3.6.5:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.10.1.tgz#e683963978b6806dcc6c0a4a8bd4ab0bdaf3f21a"
+  integrity sha512-pwCxEXnj27XG47mu7SXAwhLP3L5CrlvCB91ANUkIz40P27kUcvNfSdvyZJ9CLHiVoKSp+TTChMQMSKQEH/IQxA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -6891,10 +6823,10 @@ gatsby-core-utils@^1.10.1:
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
-gatsby-core-utils@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-2.2.0.tgz#def804d0fc2acde605c5d4da3c1ffbfc9aaf4e2a"
-  integrity sha512-7T6aVJAj0u/VUg+zKOLuxyZLS/8KDQcDeEFCkKY0d7Pd4wV/QqKRLljr0TRVkivRZHXyWQI9fM3ox5DzfkHdCQ==
+gatsby-core-utils@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-2.10.0.tgz#bc37ea9eb6bb5f327aa4bdc0345a37d9390d4a7a"
+  integrity sha512-xvVebKSrjHkZQQkeEjuAekCAg17KT2l44d/yn7w2dzBGay244m8hoY8LRtLRdsrSp30ix89QklefuP9frEfhbA==
   dependencies:
     ci-info "2.0.0"
     configstore "^5.0.1"
@@ -7047,17 +6979,17 @@ gatsby-recipes@^0.9.3:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
-gatsby-source-filesystem@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-3.2.0.tgz#1ceec22a068b235a084b15fb426898ef213fe995"
-  integrity sha512-5CAMdSiasWCciJEneIU1RgS9IcHrTwl8i7xqPxhE9ihBa+Y1RSEX3FdtNGnK3Z5dYQVHMwR0NNOPJ3WZW0rJQQ==
+gatsby-source-filesystem@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-3.10.0.tgz#57f1e3d7d778177316651a42c9fb62e457e4997b"
+  integrity sha512-u5gNZ/p6ZX0RQ2em2Y6e7VYNolavadHagizSsdbgxXKGMtJJq+q2OElGDfAvmAs6htIZ1jx7sF+dpS5ZHuCixw==
   dependencies:
-    "@babel/runtime" "^7.12.5"
+    "@babel/runtime" "^7.14.6"
     better-queue "^3.8.10"
     chokidar "^3.4.3"
     file-type "^16.0.0"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^2.2.0"
+    gatsby-core-utils "^2.10.0"
     got "^9.6.0"
     md5-file "^5.0.0"
     mime "^2.4.6"
@@ -11567,10 +11499,15 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^2.0.4, prettier@^2.0.5, prettier@^2.2.1:
+prettier@^2.0.4, prettier@^2.0.5:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+
+prettier@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
+  integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
 
 pretty-bytes@^5.4.1:
   version "5.6.0"
