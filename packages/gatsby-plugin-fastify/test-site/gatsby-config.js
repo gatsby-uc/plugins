@@ -1,10 +1,8 @@
-
-
 module.exports = {
   pathPrefix: "stuff",
   siteMetadata: {
     title: "Test Gatsby",
-    siteUrl: "http://localhost:8080/"
+    siteUrl: "http://localhost:8080/",
   },
   plugins: [
     "gatsby-plugin-postcss",
@@ -27,6 +25,6 @@ module.exports = {
       },
       __key: "images",
     },
-    `gatsby-plugin-fastify`
+    `gatsby-plugin-fastify`,
   ],
 };

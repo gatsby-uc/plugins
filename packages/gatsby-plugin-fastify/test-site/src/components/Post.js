@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image";
 
-export default function PostPage({title, content}) {
+export default function PostPage({ title, content }) {
   return (
     <article>
       <Link to="/">Return to Home</Link>
