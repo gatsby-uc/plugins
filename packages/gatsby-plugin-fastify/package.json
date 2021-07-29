@@ -1,0 +1,55 @@
+{
+  "name": "gatsby-plugin-fastify",
+  "description": "Gatsby plugin for integration serving gatsby on Node.js using Fastify.",
+  "version": "0.2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-plugin-fastify"
+  },
+  "contributors": [
+    "Alex Moon <alex.jared.moon@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-plugin-fastify",
+    "nodejs",
+    "server",
+    "fastify"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir . --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "yarn build --watch"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.8",
+    "picomatch": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@types/node": "^14.17.6",
+    "babel-preset-gatsby-package": "^1.10.0",
+    "cross-env": "^7.0.3",
+    "fastify": "^3.19.0",
+    "fastify-caching": "^6.1.0",
+    "fastify-compress": "^3.6.0",
+    "fastify-plugin": "^3.0.0",
+    "fastify-static": "^4.2.0",
+    "gatsby": "^3.10.2"
+  },
+  "peerDependencies": {
+    "fastify": "^3.19.0",
+    "fastify-compress": "^3.6.0",
+    "fastify-plugin": "^3.0.0",
+    "fastify-static": "^4.2.0",
+    "gatsby": "^3.7.0"
+  },
+  "engines": {
+    "node": ">=12.13.0"
+  }
+}
