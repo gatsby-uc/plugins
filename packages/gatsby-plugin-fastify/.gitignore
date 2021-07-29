@@ -123,3 +123,4 @@ dist
 /serve.js
 /plugins
 /gatsby-*.js
+/*.d.ts

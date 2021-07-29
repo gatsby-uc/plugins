@@ -24,9 +24,9 @@
     "fastify"
   ],
   "scripts": {
-    "build": "babel src --out-dir . --ignore \"**/__tests__,*.d*\" --extensions \".ts,.js\"",
+    "build": "babel src --out-dir . --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
     "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir . --ignore \"**/__tests__\" --extensions \".ts,.js\""
+    "watch": "yarn build --watch"
   },
   "dependencies": {
     "@babel/runtime": "^7.14.8",
