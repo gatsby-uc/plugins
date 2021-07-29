@@ -31,10 +31,10 @@
     "gatsby": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.15",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
     "babel-jest": "^25.5.1",
-    "babel-preset-gatsby-package": "^1.2.0",
+    "babel-preset-gatsby-package": "^1.10.0",
     "cross-env": "^7.0.3",
     "gatsby": "^2.32.13",
     "jest": "^25.5.4",
