@@ -50,7 +50,7 @@
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.0",
-    "gatsby": "^3.0.0"
+    "gatsby": "^3.7.0"
   },
   "engines": {
     "node": ">=12.13.0"

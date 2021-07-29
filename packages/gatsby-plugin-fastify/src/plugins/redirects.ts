@@ -12,9 +12,7 @@ export const handleRedirects: FastifyPluginAsync<{
   redirects: IRedirect[];
 }> = async (fastify, { redirects }) => {
   for (const redirect of redirects) {
-    console.log("outside", redirect.statusCode);
     const responseCode = getResponseCode(redirect);
-    console.log("final code", responseCode);
     fastify.get(redirect.fromPath, (_req, reply) => {
       reply.code(responseCode).redirect(redirect.toPath);
     });

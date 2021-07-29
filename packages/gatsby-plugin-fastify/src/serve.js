@@ -7,7 +7,7 @@ const address = process.env.POADDRESSRT || "127.0.0.1";
 
 const { paths, redirects, prefix = "" } = getConfig();
 
-const fastify = Fastify({ logger: true, http2: false, ignoreTrailingSlash: true });
+const fastify = Fastify({ ignoreTrailingSlash: true });
 
 console.log("Registering Gatsby @ ", prefix || "/");
 
