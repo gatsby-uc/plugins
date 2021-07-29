@@ -9,17 +9,10 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "ci": "yarn install --frozen-lockfile",
-    "format": "npm run lint -- --write",
+    "format": "yarn run lint -- --write",
     "lint": "prettier **/* --check"
   },
   "devDependencies": {
-    "prettier": "^2.2.1",
-    "semantic-release": "^17.4.2",
-    "semantic-release-monorepo": "^7.0.4"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ]
+    "prettier": "^2.3.2"
   }
 }
