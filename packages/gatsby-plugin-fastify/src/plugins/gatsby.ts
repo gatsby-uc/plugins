@@ -12,15 +12,16 @@ export const serveGatsby: FastifyPluginAsync<{
   paths: PathConfig[];
   redirects: IRedirect[];
   compression?: boolean;
-}> = async (fastify, { paths, redirects, compression = true}) => {
-
+}> = async (fastify, { paths, redirects, compression = true }) => {
   // Optimizations
-  if (compression){
-    await fastify.register(require('fastify-compress'));
+  if (compression) {
+    await fastify.register(require("fastify-compress"));
   }
 
   // Gatsby Functions
-  await fastify.register(handleFunctions, {});
+  await fastify.register(handleFunctions, {
+    prefix: "/api/",
+  });
   // Gatsby Static
 
   await fastify.register(handleStatic, {});

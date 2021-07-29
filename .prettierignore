@@ -1,7 +1,8 @@
 #Yarn
 node_modules
 .yarn
-
+.cache
+public
 
 
 # Tests

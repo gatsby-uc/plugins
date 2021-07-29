@@ -5,10 +5,6 @@ import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
 
 const PATH_TO_FUNCTIONS = "./.cache/functions/";
 
-function getRoute({ functionRoute }: IGatsbyFunction) {
-  return path.posix.join("/api", functionRoute);
-}
-
 export type GatsbyFunctionHandler = (
   req: FastifyRequest,
   res: FastifyReply,
@@ -34,18 +30,7 @@ async function getFunctionHandler(routeConfig: IGatsbyFunction) {
   if (!execFunction) {
     return null;
   }
-  return logFunctionExec(execFunction, getRoute(routeConfig));
-}
-
-function logFunctionExec(func: GatsbyFunctionHandler, path: string): GatsbyFunctionHandler {
-  return async (req, res) => {
-    const start = Date.now();
-
-    await func(req, res);
-
-    const end = Date.now();
-    console.info(`Executed function "${path}" in ${end - start}ms`);
-  };
+  return execFunction;
 }
 
 function getFunctionManifest(): IGatsbyFunction[] {
@@ -68,17 +53,19 @@ function getFunctionManifest(): IGatsbyFunction[] {
   return functions;
 }
 
-export const handleFunctions: FastifyPluginAsync<{}> = async (fastify, _opts) => {
+export const handleFunctions: FastifyPluginAsync<{ prefix: string }> = async (
+  fastify,
+  { prefix },
+) => {
   const functions = getFunctionManifest();
 
   if (functions?.length > 0) {
     for (const funcConfig of functions) {
-      const route = getRoute(funcConfig);
       const fnToExecute = await getFunctionHandler(funcConfig);
 
       if (fnToExecute) {
-        console.info("Registering Gatsby Function: ", route);
-        fastify.all(route, {
+        console.info("Registering function: ", prefix + funcConfig.functionRoute);
+        fastify.all(funcConfig.functionRoute, {
           handler: async function (req, reply) {
             try {
               await Promise.resolve(fnToExecute(req, reply));

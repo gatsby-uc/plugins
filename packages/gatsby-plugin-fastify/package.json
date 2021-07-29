@@ -2,10 +2,7 @@
   "name": "gatsby-plugin-fastify",
   "description": "Gatsby plugin for integration serving gatsby on Node.js using Fastify.",
   "version": "0.1.0",
-  "main": "serve.js",
-  "bin": {
-    "gfs": "./serve.js"
-  },
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsby-uc/plugins.git",
@@ -30,8 +27,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.8",
-    "chalk": "^4.1.0",
-    "nodemon": "^2.0.4"
+    "picomatch": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
@@ -40,6 +36,7 @@
     "babel-preset-gatsby-package": "^1.10.0",
     "cross-env": "^7.0.3",
     "fastify": "^3.19.0",
+    "fastify-caching": "^6.1.0",
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.0",

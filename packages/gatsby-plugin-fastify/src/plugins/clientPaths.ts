@@ -5,7 +5,7 @@ import type { FastifyPluginAsync } from "fastify";
 export type PathConfig = {
   matchPath: string | undefined;
   path: string;
-}
+};
 
 export const handleClientOnlyPaths: FastifyPluginAsync<{
   paths: PathConfig[];

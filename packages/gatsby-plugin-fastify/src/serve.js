@@ -12,10 +12,10 @@ const fastify = Fastify({ ignoreTrailingSlash: true });
 console.log("Registering Gatsby @ ", prefix || "/");
 
 fastify.register(serveGatsby, {
-    paths,
-    redirects,
-    prefix,
-  })
+  paths,
+  redirects,
+  prefix,
+});
 
 fastify.listen(port, address, (err, listeningOn) => {
   if (err) {
