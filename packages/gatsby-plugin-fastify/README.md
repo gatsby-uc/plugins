@@ -10,10 +10,12 @@
   </i>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/github/license/adamsiekierski/gatsby-plugin-nodejs?style=flat-square">
-  <img src="https://img.shields.io/david/adamsiekierski/gatsby-plugin-nodejs?style=flat-square">
-  <img src="https://img.shields.io/github/package-json/v/moonmeister/gatsby-plugin-nodejs?style=flat-square">
+  <img alt="MIT License" src="https://img.shields.io/github/license/gatsby-uc/plugins?style=flat-square">
+  <img alt="NPM version" src="https://img.shields.io/npm/v/gatsby-plugin-fastify?style=flat-square">
+  <img alt="npm peer dependency version" src="https://img.shields.io/npm/dependency-version/gatsby-plugin-fastify/peer/fastify?style=flat-square">
+  <img alt="npm peer dependency version" src="https://img.shields.io/npm/dependency-version/gatsby-plugin-fastify/peer/gatsby?style=flat-square">
 </p>
+
 
 ## About
 
