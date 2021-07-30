@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/gatsby-uc/plugins/raw/HEAD/logo.png" alt="Gatsby + Fastify"/>
+  <img src="https://github.com/gatsby-uc/plugins/raw/HEAD/packages/gatsby-plugin-fastify/logo.png" alt="Gatsby + Fastify"/>
 </p>
 <p align="center">
   <h2 align="center">gatsby-plugin-fastify</h2>
