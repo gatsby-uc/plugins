@@ -63,7 +63,7 @@ This plugin implements a server that's ready to go. To use this you can configur
 }
 ```
 
-## Gatsby Fastify Plugin
+### Gatsby Fastify Plugin
 
 This plugin also implements a plugin for Gatsby. This may be imported via:
 
@@ -73,7 +73,7 @@ import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
 
 For an example on how to use this you can copy the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
 
-## Gatsby Feature Fastify Plugins
+### Gatsby Feature Fastify Plugins
 
 Finally, Each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin Those may be imported as well for use in a custom server implementation.
 
@@ -90,13 +90,15 @@ For an example on how to use these you can copy the `serveGatsby` implementation
 
 ## Gatsby Functions
 
-Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be **Express like** and provide the types from the Gatsby core for these.
+Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be *Express like* and provide the types from the Gatsby core for these.
 
-> THIS IS NOT RUE FO RTHIS PLUGIN
+> THIS IS NOT TRUE FOR THIS PLUGIN
 
-Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API.
+Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API. 
 
-### TypeScript
+If you'd like to use Fastify with an *Express like* API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
+
+## TypeScript
 
 ```ts
 import type { FastifyRequest, FastifyReply } from "fastify";
@@ -112,6 +114,14 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Fastify 3.x support
 - [x] Compression support
 - [x] Propper file caching
+- [ ] Propper CLI w/
+  - [ ] flags to set port/address
+  - [ ] export command to copy out server implementation
+- [ ] Plugin config
+  - [ ]  enable/disable certain features
+  - [ ]  control security headers
+  - [ ]  control caching headers
 - [ ] Export types
 - [ ] If the site isn't built when server is launched, build it automatically
 - [ ] Security headers/control
+- [ ] Propper testing 
