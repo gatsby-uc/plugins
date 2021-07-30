@@ -71,7 +71,7 @@ This plugin also implements a plugin for Gatsby. This may be imported via:
 import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
 ```
 
-For an example on how to use this you can copy the server implementation file from (`src/serve.ts`)[https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts].
+For an example on how to use this you can copy the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
 
 ## Gatsby Feature Fastify Plugins
 
@@ -86,7 +86,7 @@ import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
 import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
 ```
 
-For an example on how to use these you can copy the `serveGatsby` implementation file from (`src/plugins/gatsby.ts`)[https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts].
+For an example on how to use these you can copy the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
 
 ## Gatsby Functions
 
@@ -111,7 +111,7 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Support for creating pathPrefix
 - [x] Fastify 3.x support
 - [x] Compression support
-- [ ] Propper file caching
+- [x] Propper file caching
 - [ ] Export types
 - [ ] If the site isn't built when server is launched, build it automatically
 - [ ] Security headers/control
