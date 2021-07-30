@@ -1,14 +1,6 @@
-<div id="logo-grid" style="display: grid;grid-template-columns: .75fr .25fr 2fr;grid-template-rows: 1fr;gap: 1em; align-items: center;">
-  <div id="gatsby-icon" class="icon">
-    <img src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" alt="gatsby logo"/>
-  </div>
-  <div id="plus-icon" class="icon">
-    <img src="https://github.com/tailwindlabs/heroicons/raw/HEAD/src/outline/plus.svg" alt="plus icon" />
-  </div>
-  <div id="fastify-icon" class="icon">
-    <img src="https://github.com/fastify/graphics/raw/HEAD/fastify-landscape-outlined.svg" alt="fastify logo" />
-  </div>
-</div>
+<p align="center">
+  <img src="https://github.com/gatsby-uc/plugins/raw/HEAD/logo.png" alt="Gatsby + Fastify"/>
+</p>
 <p align="center">
   <h2 align="center">gatsby-plugin-fastify</h2>
 </p>
