@@ -8,7 +8,6 @@ Get reading time estimates for any content from any source in your Gatsby projec
 
 `npm i gatsby-plugin-readingtime`
 
-
 `yarn add gatsby-plugin-readingtime`
 
 ## config
@@ -19,7 +18,7 @@ Get reading time estimates for any content from any source in your Gatsby projec
     {
       resolve: `gatsby-plugin-readingtime`,
       options: {
-        config: { 
+        config: {
           // configuration for reading-time package https://github.com/ngryman/reading-time
         },
         types: {
@@ -27,7 +26,7 @@ Get reading time estimates for any content from any source in your Gatsby projec
           WpPost: source => {
             const { blocks } = source;
             return blocks.map(block => block.saveContent).join('');
-          }, 
+          },
         },
       },
     },
