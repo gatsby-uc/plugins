@@ -1,0 +1,19 @@
+{
+  "name": "gatsby-plugin-readingtime",
+  "description": "Get a reading estimate for any content in your Gatsby GraphQL schema.",
+  "author": "Alex Moon",
+  "version": "2.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "reading-time"
+  ],
+  "dependencies": {
+    "reading-time": "^1.3.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^3.0.0"
+  }
+}
