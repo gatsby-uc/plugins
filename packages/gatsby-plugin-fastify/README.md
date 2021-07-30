@@ -16,7 +16,6 @@
   <img alt="npm peer dependency version" src="https://img.shields.io/npm/dependency-version/gatsby-plugin-fastify/peer/gatsby?style=flat-square">
 </p>
 
-
 ## About
 
 `gatsby-plugin-fastify` gives you a way to integrate your Gatsby site with a Node.js server using Fastify. Use to serve a standard Gatsby.js site normally - the plugin will take care of everything:
@@ -90,13 +89,13 @@ For an example on how to use these you can copy the `serveGatsby` implementation
 
 ## Gatsby Functions
 
-Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be *Express like* and provide the types from the Gatsby core for these.
+Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
 
 > THIS IS NOT TRUE FOR THIS PLUGIN
 
-Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API. 
+Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API.
 
-If you'd like to use Fastify with an *Express like* API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
+If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
 
 ## TypeScript
 
@@ -118,10 +117,10 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
   - [ ] flags to set port/address
   - [ ] export command to copy out server implementation
 - [ ] Plugin config
-  - [ ]  enable/disable certain features
-  - [ ]  control security headers
-  - [ ]  control caching headers
+  - [ ] enable/disable certain features
+  - [ ] control security headers
+  - [ ] control caching headers
 - [ ] Export types
 - [ ] If the site isn't built when server is launched, build it automatically
 - [ ] Security headers/control
-- [ ] Propper testing 
+- [ ] Propper testing
