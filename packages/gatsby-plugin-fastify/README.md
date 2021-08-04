@@ -113,7 +113,7 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Fastify 3.x support
 - [x] Compression support
 - [x] Propper file caching
-- [ ] Propper CLI w/
+- [ ] Proper CLI w/
   - [ ] flags to set port/address
   - [ ] export command to copy out server implementation
 - [ ] Plugin config
