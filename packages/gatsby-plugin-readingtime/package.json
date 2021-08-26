@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-readingtime#readme",
   "dependencies": {
-    "reading-time": "^1.3.0"
+    "reading-time": "^1.4.0"
   },
   "peerDependencies": {
     "gatsby": "^3.0.0"
