@@ -3,6 +3,7 @@ import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
+import fastifyCompress from "fastify-compress";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { IRedirect } from "gatsby/dist/redux/types";
@@ -15,7 +16,7 @@ export const serveGatsby: FastifyPluginAsync<{
 }> = async (fastify, { paths, redirects, compression = true }) => {
   // Optimizations
   if (compression) {
-    await fastify.register(require("fastify-compress"));
+    await fastify.register(fastifyCompress, {});
   }
 
   // Gatsby Functions
