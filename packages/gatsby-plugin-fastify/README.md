@@ -62,10 +62,10 @@ This plugin implements a server that's ready to go. To use this you can configur
 }
 ```
 
-This default's to listening on `localhost:8080`. This can be overridden by setting the `ADDRESS:PORT` environment variables respectively. 
+This default's to listening on `localhost:8080`. This can be overridden by setting the `ADDRESS:PORT` environment variables respectively.
 
 ```sh
-# For example: 
+# For example:
 export PORT=3000
 export ADDRESS=0.0.0.0
 ```
