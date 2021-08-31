@@ -64,7 +64,7 @@ This plugin implements a server that's ready to go. To use this you can configur
 
 ### Gatsby Fastify Plugin
 
-This plugin also implements a plugin for Gatsby. This may be imported via:
+This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
 
 ```js
 import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
@@ -74,7 +74,7 @@ For an example on how to use this you can copy the server implementation file fr
 
 ### Gatsby Feature Fastify Plugins
 
-Finally, Each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin Those may be imported as well for use in a custom server implementation.
+Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
 
 ```js
 import { handle } from "gatsby-plugin-fastify/plugins/gatsby";
