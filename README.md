@@ -4,7 +4,7 @@ The Gatsby UC was born out of a desire to create higher quality plugins in the G
 
 ## What aspire to be
 
-Most Gatsby plugin projects aren't massive. Sometimes they need regular maintenance, a lot of the time they do not. Either way, original authors become unable or willing to maintain a plugin at any given moment or maybe indefinately. This is not a comdemnation, it's a fact of life that sometimes maintainers need to move on. No matter the cause, this results in plugins going un-maintained by their authors. Others are willing and able to help; but the bottle neck that cannot be bypassed. At times this means fixing bugs in less ideal ways, creating duplicate implementations of plugins, etc. The Gatsby User collective's goal is to democratize the maintenance of these plugins to allow more folks to assist in their maintenance.
+Most Gatsby plugin projects aren't massive. Sometimes they need regular maintenance, a lot of the time they do not. Either way, original authors become unable or willing to maintain a plugin at any given moment or maybe indefinately. This is not a condemnation, it's a fact of life that sometimes maintainers need to move on. No matter the cause, this results in plugins going un-maintained by their authors. Others are willing and able to help; but with no active maintainer means they're unable to. At times this means fixing bugs in less ideal ways, creating duplicate implementations of plugins, etc. The Gatsby User collective's goal is to democratize the maintenance of these plugins to allow more folks to assist in their maintenance.
 
 ## Where we are at
 

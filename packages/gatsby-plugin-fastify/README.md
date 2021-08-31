@@ -120,8 +120,8 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Support for creating pathPrefix
 - [x] Fastify 3.x support
 - [x] Compression support
-- [x] Propper file caching
-- [ ] Propper CLI w/
+- [x] Proper file caching
+- [ ] Proper CLI w/
   - [ ] flags to set port/address
   - [ ] export command to copy out server implementation
 - [ ] Plugin config
@@ -131,4 +131,4 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [ ] Export types
 - [ ] If the site isn't built when server is launched, build it automatically
 - [ ] Security headers/control
-- [ ] Propper testing
+- [ ] Proper testing
