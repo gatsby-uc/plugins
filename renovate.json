@@ -3,17 +3,21 @@
   "major": {
     "masterIssueApproval": true
   },
+  "additionalBranchPrefix": "{{parentDir}}-",
   "masterIssue": true,
   "rangeStrategy": "bump",
   "prHourlyLimit": 0,
   "packageRules": [
     {
       "groupName": "minor updates",
-      "updateTypes": ["minor"]
+      "updateTypes": ["minor"]      
     },
     {
       "groupName": "patch updates",
       "updateTypes": ["patch"]
     }
-  ]
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "{{parentDir}}"
 }
