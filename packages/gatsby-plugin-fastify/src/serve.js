@@ -3,7 +3,7 @@ import { getConfig } from "./utils";
 import Fastify from "fastify";
 
 const port = process.env.PORT || 8080;
-const address = process.env.POADDRESSRT || "127.0.0.1";
+const address = process.env.ADDRESS || "127.0.0.1";
 
 const { paths, redirects, prefix = "" } = getConfig();
 
