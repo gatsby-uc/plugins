@@ -62,6 +62,14 @@ This plugin implements a server that's ready to go. To use this you can configur
 }
 ```
 
+This default's to listening on `localhost:8080`. This can be overridden by setting the `ADDRESS:PORT` environment variables respectively.
+
+```sh
+# For example:
+export PORT=3000
+export ADDRESS=0.0.0.0
+```
+
 ### Gatsby Fastify Plugin
 
 This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
