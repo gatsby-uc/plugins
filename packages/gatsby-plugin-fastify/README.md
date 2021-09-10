@@ -16,7 +16,7 @@
   <img alt="npm peer dependency version" src="https://img.shields.io/npm/dependency-version/gatsby-plugin-fastify/peer/gatsby?style=flat-square">
 </p>
 
-## About
+# About
 
 `gatsby-plugin-fastify` gives you a way to integrate your Gatsby site with a Node.js server using Fastify. Use to serve a standard Gatsby.js site normally - the plugin will take care of everything:
 
@@ -28,7 +28,7 @@
 - Serving the site with pathPrefix - set it up inside `gatsby-config.js`, the plugin will take care of it
 - File compression, Etags, and more.
 
-## Installation
+# Installation
 
 Install the plugin using npm or yarn
 
@@ -43,34 +43,51 @@ module.exports = {
   /* Site config */
   plugins: [
     /* Rest of the plugins */
-    `gatsby-plugin-fastify`,
+    {
+      resolve: `gatsby-plugin-fastify`,
+      /* Default option value shown */
+      options: {
+        compresion: true; //When set to false gzip/bz compression assets is disabled.
+      }
+    }
   ],
 };
 ```
+# Serving your site
 
-## Serving your site
-
-### Server
+## Server CLI (expected)
 
 This plugin implements a server that's ready to go. To use this you can configure a `start`(or whatever you prefer) command in your `package.json`:
 
 ```json
 {
   "scrips": {
-    "start": "node ./node_modules/gatsby-plugin-fastify/serve.js"
+    "start": "gserve"
   }
 }
 ```
+### CLI Config
 
-This default's to listening on `localhost:8080`. This can be overridden by setting the `ADDRESS:PORT` environment variables respectively.
+```
+  -p, --port  Port to run the server on               [number] [default: "8080"]
+  -h, --host  Host to run the server on          [string] [default: "127.0.0.1"]
+  -o, --open  Open the browser                        [boolean] [default: false]
+
+Options:
+      --help     Show help                                             [boolean]
+      --version  Show version number                                   [boolean]
+  -v, --verbose  Show verbose output                  [boolean] [default: false]
+```
+
+All settings may be change via environment variables prefixed with `GATSBY_SERVER_` and the flag name. 
 
 ```sh
 # For example:
-export PORT=3000
-export ADDRESS=0.0.0.0
+export GATSBY_SERVER_PORT=3000
+export GATSBY_SERVER_ADDRESS=0.0.0.0
 ```
 
-### Gatsby Fastify Plugin
+### Gatsby Fastify Plugin (advanced)
 
 This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
 
@@ -78,9 +95,9 @@ This plugin also implements a Fastify plugin for serving Gatsby. This may be imp
 import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
 ```
 
-For an example on how to use this you can copy the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
+For an example on how to use thi reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
 
-### Gatsby Feature Fastify Plugins
+### Gatsby Feature Fastify Plugins (expert)
 
 Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
 
@@ -93,7 +110,7 @@ import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
 import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
 ```
 
-For an example on how to use these you can copy the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
+For an example on how to use these you see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
 
 ## Gatsby Functions
 
@@ -121,11 +138,10 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Fastify 3.x support
 - [x] Compression support
 - [x] Proper file caching
-- [ ] Proper CLI w/
-  - [ ] flags to set port/address
-  - [ ] export command to copy out server implementation
-- [ ] Plugin config
-  - [ ] enable/disable certain features
+- [X] Proper CLI w/
+  - [X] flags to set port/address
+- [x] Plugin config
+  - [x] enable/disable certain features
   - [ ] control security headers
   - [ ] control caching headers
 - [ ] Export types
