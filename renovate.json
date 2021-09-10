@@ -15,5 +15,7 @@
   ],
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
-  "semanticCommitScope": "{{parentDir}}"
+  "semanticCommitScope": "{{parentDir}}",
+  "ignoreDeps": ["node"]
+
 }
