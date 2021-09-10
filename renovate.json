@@ -9,12 +9,8 @@
   "prHourlyLimit": 0,
   "packageRules": [
     {
-      "groupName": "minor updates",
-      "updateTypes": ["minor"]      
-    },
-    {
-      "groupName": "patch updates",
-      "updateTypes": ["patch"]
+      "groupName": "non-major updates",
+      "updateTypes": ["minor", "patch"]
     }
   ],
   "semanticCommits": "enabled",
