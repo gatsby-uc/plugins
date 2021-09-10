@@ -3,6 +3,7 @@
 import { setConfig, ConfigKeyEnum, getServerConfg } from "./utils";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import { gatsbyServer } from "./serve";
 
 yargs(hideBin(process.argv))
   .options({
@@ -44,6 +45,6 @@ yargs(hideBin(process.argv))
       setConfig(ConfigKeyEnum.CLI, argv as any);
       setConfig(ConfigKeyEnum.SERVER, getServerConfg());
 
-      require("./serve");
+      gatsbyServer()
     },
   ).argv;
