@@ -1,11 +1,16 @@
 import fs from "fs";
 import type { GatsbyReduxStore } from "gatsby/dist/redux";
 import type { PathConfig } from "./plugins/clientPaths";
+import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 import type { GatsbyNodeServerConfig } from "./utils";
+import type { PluginOptionsSchemaJoi } from "gatsby-plugin-utils";
 
 export type GatsbyApiInput = { pathPrefix: string; store: GatsbyReduxStore };
 
-function generateConfig({ pathPrefix, store }: GatsbyApiInput) {
+export function onPostBuild(
+  { store, pathPrefix }: GatsbyApiInput,
+  pluginOptions: GatsbyServerFeatureOptions,
+) {
   const { pages, redirects } = store.getState();
 
   const p: PathConfig[] = [];
@@ -16,10 +21,14 @@ function generateConfig({ pathPrefix, store }: GatsbyApiInput) {
     });
   }
 
+  // @ts-ignore
+  delete pluginOptions.plugins;
+
   const config: GatsbyNodeServerConfig = {
+    ...pluginOptions,
     paths: p,
     redirects,
-    pathPrefix,
+    prefix: pathPrefix,
   };
 
   if (!fs.existsSync("public/")) {
@@ -29,6 +38,8 @@ function generateConfig({ pathPrefix, store }: GatsbyApiInput) {
   fs.writeFileSync("public/gatsby-plugin-node.json", JSON.stringify(config, null, 2));
 }
 
-exports.onPostBuild = function ({ store, pathPrefix }) {
-  generateConfig({ pathPrefix, store });
-};
+export function pluginOptionsSchema({ Joi }: { Joi: PluginOptionsSchemaJoi }) {
+  return Joi.object({
+    compression: Joi.boolean().default(true),
+  });
+}

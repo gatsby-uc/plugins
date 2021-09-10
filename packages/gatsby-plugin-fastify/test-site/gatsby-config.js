@@ -8,7 +8,6 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -25,6 +24,10 @@ module.exports = {
       },
       __key: "images",
     },
-    `gatsby-plugin-fastify`,
+    {
+      resolve: `gatsby-plugin-fastify`,
+      options: {},
+    },
+    "gatsby-plugin-sitemap",
   ],
 };
