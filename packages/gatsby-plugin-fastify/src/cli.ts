@@ -4,7 +4,7 @@ import { setConfig, ConfigKeyEnum, getServerConfg } from "./utils";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
- yargs(hideBin(process.argv))
+yargs(hideBin(process.argv))
   .options({
     v: {
       alias: "verbose",
@@ -46,5 +46,4 @@ import { hideBin } from "yargs/helpers";
 
       require("./serve");
     },
-  )
-  .argv;
+  ).argv;
