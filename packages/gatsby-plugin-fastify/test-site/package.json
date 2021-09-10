@@ -1,15 +1,15 @@
 {
-  "name": "wpe-gatsby",
+  "name": "fastify-gatsby",
   "version": "1.0.0",
   "private": true,
-  "description": "WPE Gatsby",
+  "description": "Gatsby test site for gatsby-plugin-fastify",
   "author": "Alex Moon",
   "keywords": [
     "gatsby"
   ],
   "scripts": {
     "develop": "gatsby develop",
-    "start": "node ../serve.js",
+    "start": "gserve",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
@@ -19,7 +19,7 @@
     "fastify-compress": "^3.6.0",
     "fastify-static": "^4.2.0",
     "gatsby": "^3.6.1",
-    "gatsby-plugin-fastify": "link:../",
+    "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^1.10.1",
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-postcss": "^4.6.0",

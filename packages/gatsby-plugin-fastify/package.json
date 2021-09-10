@@ -20,6 +20,9 @@
     "server",
     "fastify"
   ],
+  "bin": {
+    "gserve": "./cli.js"
+  },
   "scripts": {
     "build": "babel src --out-dir . --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
     "prepare": "cross-env NODE_ENV=production npm run build",
@@ -27,7 +30,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.8",
-    "picomatch": "^2.3.0"
+    "open": "^8.2.1",
+    "picomatch": "^2.3.0",
+    "yargs": "^17.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",

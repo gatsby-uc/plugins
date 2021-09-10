@@ -124,3 +124,4 @@ dist
 /plugins
 /gatsby-*.js
 /*.d.ts
+/cli.js

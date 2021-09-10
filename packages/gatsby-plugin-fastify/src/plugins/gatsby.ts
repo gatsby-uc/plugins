@@ -3,19 +3,31 @@ import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
+import { getConfig } from "../utils";
+
 import fastifyCompress from "fastify-compress";
-
 import type { FastifyPluginAsync } from "fastify";
-import type { IRedirect } from "gatsby/dist/redux/types";
-import type { PathConfig } from "./clientPaths";
 
-export const serveGatsby: FastifyPluginAsync<{
-  paths: PathConfig[];
-  redirects: IRedirect[];
-  compression?: boolean;
-}> = async (fastify, { paths, redirects, compression = true }) => {
+export type GatsbyServerFeatureOptions = {
+  compression: boolean;
+};
+
+export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
+  //@ts-ignore
+  const {
+    cli: { verbose },
+    server: serverConfig,
+  } = getConfig();
+
+  if (verbose) {
+    console.info("Starting server with config: ", serverConfig);
+  }
+
+  const { paths, redirects, compression } = serverConfig;
+
   // Optimizations
   if (compression) {
+    console.info(`Compression enabled.`);
     await fastify.register(fastifyCompress, {});
   }
 
