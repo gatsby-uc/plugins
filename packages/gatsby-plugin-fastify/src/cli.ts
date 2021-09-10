@@ -45,6 +45,6 @@ yargs(hideBin(process.argv))
       setConfig(ConfigKeyEnum.CLI, argv as any);
       setConfig(ConfigKeyEnum.SERVER, getServerConfg());
 
-      gatsbyServer()
+      gatsbyServer();
     },
   ).argv;

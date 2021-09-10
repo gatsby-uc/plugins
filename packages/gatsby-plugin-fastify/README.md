@@ -53,6 +53,7 @@ module.exports = {
   ],
 };
 ```
+
 # Serving your site
 
 ## Server CLI (expected)
@@ -66,6 +67,7 @@ This plugin implements a server that's ready to go. To use this you can configur
   }
 }
 ```
+
 ### CLI Config
 
 ```
@@ -79,7 +81,7 @@ Options:
   -v, --verbose  Show verbose output                  [boolean] [default: false]
 ```
 
-All settings may be change via environment variables prefixed with `GATSBY_SERVER_` and the flag name. 
+All settings may be change via environment variables prefixed with `GATSBY_SERVER_` and the flag name.
 
 ```sh
 # For example:
@@ -138,8 +140,8 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 - [x] Fastify 3.x support
 - [x] Compression support
 - [x] Proper file caching
-- [X] Proper CLI w/
-  - [X] flags to set port/address
+- [x] Proper CLI w/
+  - [x] flags to set port/address
 - [x] Plugin config
   - [x] enable/disable certain features
   - [ ] control security headers
