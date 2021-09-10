@@ -9,7 +9,7 @@
   dependencies:
     tslib "~2.0.1"
 
-"@babel/cli@^7.14.8":
+"@babel/cli@^7.14.8", "@babel/cli@^7.15.4":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.15.4.tgz#00e21e192b738dec7900c8bb36270e377217c0a4"
   integrity sha512-9RhhQ7tgKRcSO/jI3rNLxalLSk30cHqeM8bb+nGOJTyYBDpkoXw/A9QHZ2SYjlslAt4tr90pZQGIEobwWHSIDw==
@@ -73,7 +73,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.14.8", "@babel/core@^7.7.5":
+"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.14.8", "@babel/core@^7.15.5", "@babel/core@^7.7.5":
   version "7.15.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.15.5.tgz#f8ed9ace730722544609f90c9bb49162dc3bf5b9"
   integrity sha512-pYgXxiwAgQpgM1bNkZsDEq85f0ggXMA5L7c+o3tskGMh2BunCI9QUwB9Z4jpvXUOuMdyGKiGKQiRe11VS6Jzvg==
@@ -1053,7 +1053,7 @@
     core-js-pure "^3.16.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.8", "@babel/runtime@^7.15.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.8", "@babel/runtime@^7.15.3", "@babel/runtime@^7.15.4", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -2404,7 +2404,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.1.tgz#0611b37db4246c937feef529ddcc018cf8e35708"
   integrity sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==
 
-"@types/node@^14.14.10", "@types/node@^14.17.6":
+"@types/node@^14.14.10", "@types/node@^14.17.15":
   version "14.17.15"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.15.tgz#d5ebfb62a69074ebb85cbe0529ad917bb8f2bae8"
   integrity sha512-D1sdW0EcSCmNdLKBGMYb38YsHUS6JcM7yQ6sLQ9KuZ35ck7LYCKE7kYFHOO59ayFOY3zobWVZxf4KXhYHcHYFA==
@@ -3639,7 +3639,7 @@ babel-preset-current-node-syntax@^0.1.2:
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
 
-babel-preset-gatsby-package@^1.10.0:
+babel-preset-gatsby-package@^1.10.0, babel-preset-gatsby-package@^1.13.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby-package/-/babel-preset-gatsby-package-1.13.0.tgz#a701346450ffb745c84debfed5b94c545de97b8b"
   integrity sha512-1cRH8E6L6tKbnHZc9OLF5wvyFhg4wRykIBzyvSOdmHJ7GNEa0khgDcMRPeLhhsMBF4qWEmjWUhWZ59VdUO5oKA==
@@ -6893,7 +6893,7 @@ fastify-plugin@^3.0.0:
   resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-3.0.0.tgz#cf1b8c8098e3b5a7c8c30e6aeb06903370c054ca"
   integrity sha512-ZdCvKEEd92DNLps5n0v231Bha8bkz1DjnPP/aEz37rz/q42Z5JVLmgnqR4DYuNn3NXAO3IDCPyRvgvxtJ4Ym4w==
 
-fastify-static@^4.2.0:
+fastify-static@^4.2.0, fastify-static@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-4.2.3.tgz#dc1876f3f876bbc78afd68ef8edae08752ed3e28"
   integrity sha512-uFRgwYXZwLKyaMrByf10efO+HTjAPqyQOlUthoGljQKGCfbwUeTeE7EHadsDWeN7NMeqBE617RamVh9uqatuUw==
@@ -6910,7 +6910,7 @@ fastify-warning@^0.2.0:
   resolved "https://registry.yarnpkg.com/fastify-warning/-/fastify-warning-0.2.0.tgz#e717776026a4493dc9a2befa44db6d17f618008f"
   integrity sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==
 
-fastify@^3.19.0:
+fastify@^3.19.0, fastify@^3.21.0:
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/fastify/-/fastify-3.21.0.tgz#c732b58ffec74f885d1dc6b7b1a993288dfea9d6"
   integrity sha512-hc9p0meCV8PXIQzg8BwXekhCmJm5LHfeJi7U3mKQTMu7pQT24CL756jUxM9sOLEbBpQoD82PejVPW2lfLiXJsw==
@@ -8108,7 +8108,7 @@ gatsby@^2.32.13:
     xstate "^4.11.0"
     yaml-loader "^0.6.0"
 
-gatsby@^3.10.2, gatsby@^3.6.1:
+gatsby@^3.13.0, gatsby@^3.6.1:
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-3.13.0.tgz#3314b191fa9cb02470a59d54c0dda58e087e1a9a"
   integrity sha512-nZOQkV6CF8ixtkbr+VNeiD2ISwuSkRLafeK+x/1btPB/l+b/w8ar0XrJGIWNX4DHr2Pohf3wy166IPfEkNqNTA==
