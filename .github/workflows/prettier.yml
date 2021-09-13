@@ -21,7 +21,7 @@ jobs:
           node-version: 14.x
           cache: 'yarn'
       - name: Install dependencies
-        run: yarn ci
+        run: yarn install --immutable
 
       - name: Format source code
         run: yarn format
