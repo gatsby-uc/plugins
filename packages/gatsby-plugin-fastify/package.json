@@ -45,7 +45,8 @@
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.3",
-    "gatsby": "^3.13.0"
+    "gatsby": "^3.13.0",
+    "gatsby-plugin-utils": "^1.13.0"
   },
   "peerDependencies": {
     "fastify": "^3.19.0",

@@ -9,8 +9,8 @@
     "packages/**/test-site"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
-    "ci": "yarn install --frozen-lockfile",
+    "build": "yarn workspaces foreach -vpi run build",
+    "ci": "yarn install --immutable",
     "format": "yarn run lint -- --write",
     "lint": "prettier **/* --check",
     "publish-ci": "lerna publish from-package -y --no-verify-access"
