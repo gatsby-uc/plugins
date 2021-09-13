@@ -44,17 +44,17 @@ body:
   - type: markdown
     attributes:
       value: |
-      "## Tasks 
+        ## Tasks 
 
-      Contributor Tasks: 
-      - [ ] [transfer the repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-user-account) to the `gatsby-uc` organization.
-      - [ ] [Add `moonmeister` as a maintainer](https://docs.npmjs.com/transferring-a-package-from-a-user-account-to-another-user-account) on your npm package. 
+        Contributor Tasks: 
+        - [ ] [transfer the repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-user-account) to the `gatsby-uc` organization.
+        - [ ] [Add `moonmeister` as a maintainer](https://docs.npmjs.com/transferring-a-package-from-a-user-account-to-another-user-account) on your npm package. 
 
-      Admin Tasks:
-      - [ ] Move code into `gatsby-uc/plugins` repo
-        - [ ] Update Readme in old repo to redirect folks to new location
-        - [ ] Archive old Repo
-        - [ ] Close any irrelevant PRs/issues 
-        - [ ] Move/Comment on still applicable PRs/issues
-      - [ ] Update Plugin with best practices
-      - [ ] Publish new version"
+        Admin Tasks:
+        - [ ] Move code into `gatsby-uc/plugins` repo
+          - [ ] Update Readme in old repo to redirect folks to new location
+          - [ ] Archive old Repo
+          - [ ] Close any irrelevant PRs/issues 
+          - [ ] Move/Comment on still applicable PRs/issues
+        - [ ] Update Plugin with best practices
+        - [ ] Publish new version
