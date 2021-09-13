@@ -11,11 +11,13 @@
     "build": "yarn workspaces run build",
     "ci": "yarn install --frozen-lockfile",
     "format": "yarn run lint -- --write",
-    "lint": "prettier **/* --check"
+    "lint": "prettier **/* --check",
+    "publish-ci": "lerna publish from-package -y --no-verify-access"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.1",
     "@changesets/cli": "^2.17.0",
+    "lerna": "^4.0.0",
     "prettier": "^2.4.0"
   }
 }
