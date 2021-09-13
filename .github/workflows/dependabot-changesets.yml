@@ -4,10 +4,12 @@ on:
     branches: [main]
 jobs:
   changes:
-    if: "github.actor == 'renovatebot'"
+    if: "github.actor !== 'renovatebot'"
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Log name
+        run: echo name ${{github.actor}}
       - name: Checkout
         uses: actions/checkout@v2
         with:
