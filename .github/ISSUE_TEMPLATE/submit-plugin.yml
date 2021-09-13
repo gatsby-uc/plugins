@@ -16,7 +16,7 @@ body:
     attributes:
       label: Plugin Repository
       description: Current repo for the plugin.
-      placeholder: ex. https://github.com/username/gatsbty-plugin-example
+      placeholder: ex. https://github.com/username/gatsby-plugin-example
     validations:
       required: true
   - type: input
@@ -24,7 +24,7 @@ body:
     attributes:
       label: Plugin Package
       description: Current npm package URL for the plugin.
-      placeholder: ex. https://npmjs.org/package/gatsbty-plugin-example
+      placeholder: ex. https://npmjs.org/package/gatsby-plugin-example
     validations:
       required: true
   - type: textarea
