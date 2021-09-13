@@ -52,9 +52,9 @@ body:
 
         Admin Tasks:
         - [ ] Move code into `gatsby-uc/plugins` repo
-          - [ ] Update Readme in old repo to redirect folks to new location
+          - [ ] Update Readme in old repo to redirect folks to new location using [template](https://github.com/gatsby-uc/plugins/blob/main/templates/old_repo_readme.md).
           - [ ] Archive old Repo
           - [ ] Close any irrelevant PRs/issues 
           - [ ] Move/Comment on still applicable PRs/issues
-        - [ ] Update Plugin with best practices
+        - [ ] Update Plugin with [best practices](https://github.com/gatsby-uc/plugins/blob/main/CONTRIBUTING.md#plugin-best-practices)
         - [ ] Publish new version
