@@ -5,6 +5,7 @@ on:
 
 jobs:
   run:
+    if: ${{ !contains(github.actor, '[bot]') }}
     name: Format with Prettier
     runs-on: ubuntu-latest
     steps:
