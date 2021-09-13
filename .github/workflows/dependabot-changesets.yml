@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Log name
-        run: echo name ${{github.actor}}
       - name: Checkout
         uses: actions/checkout@v2
         with:
