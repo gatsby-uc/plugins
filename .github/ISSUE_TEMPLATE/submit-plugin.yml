@@ -4,14 +4,13 @@ title: 'add[plugin-name]'
 labels: new-plugin
 assignees: 
   - moonmeister
-
 body:
   - type: markdown
       attributes:
         value: |
-          This form is only for maintainers who would like to move their plugins to the Gatsby User Collective repository. If you have questions around the process, feel free to still fill out this form and we can start the conversation, form submission is by no means a final decision by either party. 
+          "This form is only for maintainers who would like to move their plugins to the Gatsby User Collective repository. If you have questions around the process, feel free to still fill out this form and we can start the conversation, form submission is by no means a final decision by either party. 
   
-          If you are looking to suggest a plugin should be included here, please [start a discussion](https://github.com/gatsby-uc/plugins/discussions/new).
+          If you are looking to suggest a plugin should be included here, please [start a discussion](https://github.com/gatsby-uc/plugins/discussions/new)."
   - type: input
       id: plugin-repo
       attributes:
