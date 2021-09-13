@@ -4,7 +4,7 @@ on:
     branches: [main]
 jobs:
   changes:
-    if: "github.actor == 'dependabot'"
+    if: "github.actor == 'renovatebot'"
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
