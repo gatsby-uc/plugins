@@ -9,6 +9,8 @@ jobs:
     name: Format with Prettier
     runs-on: ubuntu-latest
     steps:
+      - name: Format source code
+        run: echo ${{ github.actor }}
       - name: Checkout repo
         uses: actions/checkout@v2
 
