@@ -1,5 +1,5 @@
 name: Submit Plugin
-about: Submit a plugin for inclusion in the Gatsby User Collective
+description: Submit a plugin for inclusion in the Gatsby User Collective
 title: 'add[plugin-name]'
 labels: new-plugin
 assignees: 
