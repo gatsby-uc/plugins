@@ -21,11 +21,11 @@
     "watch": "babel -w src --out-dir . --ignore \"**/__tests__\""
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.14.8",
-    "babel-preset-gatsby-package": "^1.10.0",
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "babel-preset-gatsby-package": "^1.13.0",
     "cross-env": "^7.0.3",
-    "prettier": "^2.3.2"
+    "prettier": "^2.4.0"
   },
   "peerDependencies": {
     "gatsby": "^3.0.0"
