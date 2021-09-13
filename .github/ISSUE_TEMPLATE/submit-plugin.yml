@@ -1,0 +1,62 @@
+name: Submit Plugin
+about: Submit a plugin for inclusion in the Gatsby User Collective
+title: 'add[plugin-name]'
+labels: new-plugin
+assignees: 
+  - moonmeister
+
+body:
+  - type: markdown
+      attributes:
+        value: |
+          This form is only for maintainers who would like to move their plugins to the Gatsby User Collective repository. If you have questions around the process, feel free to still fill out this form and we can start the conversation, form submission is by no means a final decision by either party. 
+  
+          If you are looking to suggest a plugin should be included here, please [start a discussion](https://github.com/gatsby-uc/plugins/discussions/new).
+  - type: input
+      id: plugin-repo
+      attributes:
+        label: Plugin Repository
+        description: Current repo for the plugin.
+        placeholder: ex. https://github.com/username/gatsbty-plugin-example
+      validations:
+        required: true
+    - type: input
+      id: plugin-package
+      attributes:
+        label: Plugin Package
+        description: Current npm package URL for the plugin.
+        placeholder: ex. https://npmjs.org/package/gatsbty-plugin-example
+      validations:
+        required: true
+    - type: textarea
+      id: plugin-description
+      attributes: 
+        label: Plugin Description
+        description: Please provide a brief description of what the plugin implements or accomplishes.
+      validations:
+        required: true
+    - type: textarea
+      id: other-info
+      attributes: 
+        label: Further Details
+        description: Please let us know why you are submitting the plugin and if you have any questions/concerns/etc.
+      validations:
+        required: false        
+  - type: markdown
+      attributes:
+        value: |
+        "## Tasks 
+
+        Contributor Tasks: 
+        - [ ] [transfer the repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-user-account) to the `gatsby-uc` organization.
+        - [ ] [Add `moonmeister` as a maintainer](https://docs.npmjs.com/transferring-a-package-from-a-user-account-to-another-user-account) on your npm package. 
+
+        Admin Tasks:
+        - [ ] Move code into `gatsby-uc/plugins` repo
+          - [ ] Update Readme in old repo to redirect folks to new location
+          - [ ] Archive old Repo
+          - [ ] Close any irrelevant PRs/issues 
+          - [ ] Move/Comment on still applicable PRs/issues
+        - [ ] Update Plugin with best practices
+        - [ ] Publish new version"
+  
