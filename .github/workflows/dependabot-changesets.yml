@@ -1,4 +1,4 @@
-name: Dependabot Ch-ch-changes
+name: Renovate Ch-ch-changes
 on:
   pull_request:
     branches: [main]
