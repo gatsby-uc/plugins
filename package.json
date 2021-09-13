@@ -1,4 +1,5 @@
 {
+  "name": "plugins",
   "description": "Monorepo for plugins in the Gatsby User Collective",
   "repository": "git@github.com:gatsby-uc/plugins.git",
   "license": "MIT",
