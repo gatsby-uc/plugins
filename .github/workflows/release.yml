@@ -20,10 +20,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-          cache: 'yarn'
-          
+          cache: "yarn"
+
       - name: Install Dependencies
-        run: yarn ci
+        run: yarn install --immutable
 
       - name: Create Release Pull Request
         uses: changesets/action@master
@@ -37,10 +37,10 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Install Dependencies
-        run: yarn ci
+        run: yarn install --immutable
 
       - run: yarn publish-ci
         env:

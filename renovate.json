@@ -1,5 +1,9 @@
 {
-  "extends": ["config:base", "schedule:earlyMondays", ":disablePeerDependencies"],
+  "extends": [
+    "config:base",
+    "schedule:earlyMondays",
+    ":disablePeerDependencies"
+  ],
   "major": {
     "masterIssueApproval": true
   },
@@ -17,5 +21,4 @@
   "semanticCommitType": "chore",
   "semanticCommitScope": "{{parentDir}}",
   "ignoreDeps": ["node"]
-
 }

@@ -9,10 +9,9 @@
     "packages/**/test-site"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
-    "ci": "yarn install --frozen-lockfile",
+    "build": "yarn workspaces foreach -vpi --no-private run build",
     "format": "yarn run lint --write",
-    "lint": "prettier **/* --check",
+    "lint": "yarn prettier \"**/*.{js,ts,md,json,yml}\" --check",
     "publish-ci": "lerna publish from-package -y --no-verify-access",
     "ac": "all-contributors"
   },
@@ -22,5 +21,6 @@
     "all-contributors-cli": "^6.20.0",
     "lerna": "^4.0.0",
     "prettier": "^2.4.0"
-  }
+  },
+  "packageManager": "yarn@3.1.0-rc.4"
 }
