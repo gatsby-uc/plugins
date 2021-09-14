@@ -1,4 +1,7 @@
 # Welcome to the Gatsby User Collective!
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Gatsby UC was born out of a desire to create higher quality plugins in the Gatsby ecosystem by reducing maintainer work loads.
 
@@ -21,3 +24,23 @@ The details of this community is still being flushed out. As problems arrive we 
 ![](https://i.giphy.com/media/Tex4wVhhs4iwKoV7YT/source.gif)
 
 - **Support**: Support is an aspect of maintaining open source. The point of this Collective is to take the burden of maintenance off any one person. The hope is that results in better maintenance (incl. support), but it's not a guarantee. Folks around here will help as they can; if it's urgent to you, try breaking out your wallet. 😊
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/moonmeister"><img src="https://avatars.githubusercontent.com/u/2730871?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Moon</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
