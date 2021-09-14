@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach -vpi --no-private run build",
-    "format": "yarn run lint -- --write",
+    "format": "yarn run lint --write",
     "lint": "prettier **/* --check",
     "publish-ci": "lerna publish from-package -y --no-verify-access"
   },
