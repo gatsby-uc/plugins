@@ -11,7 +11,7 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "ci": "yarn install --frozen-lockfile",
-    "format": "yarn run lint -- --write",
+    "format": "yarn run lint --write",
     "lint": "prettier **/* --check",
     "publish-ci": "lerna publish from-package -y --no-verify-access"
   },
