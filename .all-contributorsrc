@@ -32,6 +32,15 @@
         "plugin",
         "code"
       ]
+    },
+    {
+      "login": "KyleAMathews",
+      "name": "Kyle Mathews",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71047?v=4",
+      "profile": "https://www.bricolage.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
