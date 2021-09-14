@@ -11,7 +11,7 @@
   "scripts": {
     "build": "yarn workspaces foreach -vpi --no-private run build",
     "format": "yarn run lint --write",
-    "lint": "prettier **/* --check",
+    "lint": "yarn prettier **/*.{js,ts,md,json,yml} --check",
     "publish-ci": "lerna publish from-package -y --no-verify-access"
   },
   "devDependencies": {
