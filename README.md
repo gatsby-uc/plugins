@@ -1,4 +1,7 @@
 # Welcome to the Gatsby User Collective!
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Gatsby UC was born out of a desire to create higher quality plugins in the Gatsby ecosystem by reducing maintainer work loads.
 
@@ -21,3 +24,26 @@ The details of this community is still being flushed out. As problems arrive we 
 ![](https://i.giphy.com/media/Tex4wVhhs4iwKoV7YT/source.gif)
 
 - **Support**: Support is an aspect of maintaining open source. The point of this Collective is to take the burden of maintenance off any one person. The hope is that results in better maintenance (incl. support), but it's not a guarantee. Folks around here will help as they can; if it's urgent to you, try breaking out your wallet. 😊
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/moonmeister"><img src="https://avatars.githubusercontent.com/u/2730871?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Moon</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Documentation">📖</a> <a href="#ideas-moonmeister" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-moonmeister" title="Maintenance">🚧</a> <a href="#plugin-moonmeister" title="Plugin/utility libraries">🔌</a> <a href="#projectManagement-moonmeister" title="Project Management">📆</a></td>
+    <td align="center"><a href="http://everfund.co.uk/"><img src="https://avatars.githubusercontent.com/u/15834048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Burns</b></sub></a><br /><a href="#plugin-Burnsy" title="Plugin/utility libraries">🔌</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=Burnsy" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.bricolage.io/"><img src="https://avatars.githubusercontent.com/u/71047?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Mathews</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=KyleAMathews" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.davejudd.com/"><img src="https://avatars.githubusercontent.com/u/12941979?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dave Judd</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=SirDaev" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

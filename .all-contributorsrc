@@ -1,0 +1,57 @@
+{
+  "projectName": "plugins",
+  "projectOwner": "gatsby-uc",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "moonmeister",
+      "name": "Alex Moon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2730871?v=4",
+      "profile": "https://github.com/moonmeister",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "plugin",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "Burnsy",
+      "name": "Christopher Burns",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15834048?v=4",
+      "profile": "http://everfund.co.uk/",
+      "contributions": [
+        "plugin",
+        "code"
+      ]
+    },
+    {
+      "login": "KyleAMathews",
+      "name": "Kyle Mathews",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71047?v=4",
+      "profile": "https://www.bricolage.io/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "SirDaev",
+      "name": "Dave Judd",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12941979?v=4",
+      "profile": "http://www.davejudd.com/",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

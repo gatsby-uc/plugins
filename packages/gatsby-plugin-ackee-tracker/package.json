@@ -1,0 +1,48 @@
+{
+  "name": "gatsby-plugin-ackee-tracker",
+  "version": "3.0.1",
+  "description": "Gatsby plugin to add Ackee Tracker to a site.",
+  "keywords": [
+    "ackee",
+    "ackee-tracker",
+    "analytics",
+    "gatsby",
+    "gatsby-plugin",
+    "statistics",
+    "tracker",
+    "tracking"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-plugin-ackee-tracker"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsby-uc/plugins/issues"
+  },
+  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-plugin-ackee-tracker#readme",
+  "license": "MIT",
+  "contributors": [
+    "Christopher Burns <christopher@tapstudio.co.uk>",
+    "Alex Moon <alex.jared.moon@gmail.com>"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "prepack": "cross-env NODE_ENV=production npm run build",
+    "lint": "eslint . --ext .js --cache"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "ackee-tracker": "^5",
+    "babel-preset-gatsby-package": "^1.13.0",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "eslint": "7.21.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^3.0.0"
+  }
+}
