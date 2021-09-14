@@ -35,7 +35,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/moonmeister"><img src="https://avatars.githubusercontent.com/u/2730871?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Moon</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Documentation">📖</a> <a href="#ideas-moonmeister" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-moonmeister" title="Maintenance">🚧</a> <a href="#plugin-moonmeister" title="Plugin/utility libraries">🔌</a></td>
-    <td align="center"><a href="http://everfund.co.uk/"><img src="https://avatars.githubusercontent.com/u/15834048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Burns</b></sub></a><br /><a href="#plugin-Burnsy" title="Plugin/utility libraries">🔌</a></td>
+    <td align="center"><a href="http://everfund.co.uk/"><img src="https://avatars.githubusercontent.com/u/15834048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Burns</b></sub></a><br /><a href="#plugin-Burnsy" title="Plugin/utility libraries">🔌</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=Burnsy" title="Code">💻</a></td>
   </tr>
 </table>
 
