@@ -1,8 +1,8 @@
 name: Submit Plugin
 description: Submit a plugin for inclusion in the Gatsby User Collective
-title: 'add[plugin-name]'
+title: "add[plugin-name]"
 labels: [new-plugin]
-assignees: 
+assignees:
   - moonmeister
 body:
   - type: markdown
@@ -29,18 +29,18 @@ body:
       required: true
   - type: textarea
     id: plugin-description
-    attributes: 
+    attributes:
       label: Plugin Description
       description: Please provide a brief description of what the plugin implements or accomplishes.
     validations:
       required: true
   - type: textarea
     id: other-info
-    attributes: 
+    attributes:
       label: Further Details
       description: Please let us know why you are submitting the plugin and if you have any questions/concerns/etc.
     validations:
-      required: false        
+      required: false
   - type: markdown
     attributes:
       value: |
