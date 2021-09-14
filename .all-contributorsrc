@@ -16,7 +16,20 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/2730871?v=4",
       "profile": "https://github.com/moonmeister",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "plugin"
+      ]
+    },
+    {
+      "login": "Burnsy",
+      "name": "Christopher Burns",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15834048?v=4",
+      "profile": "http://everfund.co.uk/",
+      "contributions": [
+        "plugin"
       ]
     }
   ],
