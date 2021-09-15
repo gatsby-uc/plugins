@@ -133,20 +133,3 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
   res.send(`I am TYPESCRIPT`);
 }
 ```
-
-## Features you could help with
-
-- [x] Support for creating pathPrefix
-- [x] Fastify 3.x support
-- [x] Compression support
-- [x] Proper file caching
-- [x] Proper CLI w/
-  - [x] flags to set port/address
-- [x] Plugin config
-  - [x] enable/disable certain features
-  - [ ] control security headers
-  - [ ] control caching headers
-- [ ] Export types
-- [ ] If the site isn't built when server is launched, build it automatically
-- [ ] Security headers/control
-- [ ] Proper testing

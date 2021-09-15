@@ -10,14 +10,14 @@ The Gatsby UC was born out of a desire to create higher quality plugins in the G
 
 ## What we aspire to be
 
-Most Gatsby plugin projects aren't massive. Sometimes they need regular maintenance, a lot of the time they do not. Either way, original authors become unable or willing to maintain a plugin at any given moment or even indefinately. This is not a condemnation, it's a fact of life that sometimes maintainers need to move on. No matter the cause, this results in plugins going un-maintained by their authors. Others are willing and able to help; but with no active maintainer means they're unable to. At times this means fixing bugs in less ideal ways, creating duplicate implementations of plugins, etc. The Gatsby User collective's goal is to democratize the maintenance of these plugins to allow more folks to assist in their maintenance.
+Most Gatsby plugin projects aren't massive. Sometimes they need regular maintenance, a lot of the time they do not. Either way, original authors become unable or willing to maintain a plugin at any given moment or even indefinitely. This is not a condemnation, it's a fact of life that sometimes maintainers need to move on. No matter the cause, this results in plugins going un-maintained by their authors. Others are willing and able to help; but with no active maintainer means they're unable to. At times this means fixing bugs in less ideal ways, creating duplicate implementations of plugins, etc. The Gatsby User collective's goal is to democratize the maintenance of these plugins to allow more folks to assist in their maintenance.
 
 ## Where we are at
 
 The details of this community is still being flushed out. As problems arrive we will solve them together and in an open fashion. For now check out
 
 - [Code of conduct](CODE_OF_CONDUCT.md)
-- Contribute in some way! See the [contributing guidlines](CONTRIBUTING.md) for ideas.
+- Contribute in some way! See the [contributing guidelines](CONTRIBUTING.md) for ideas.
 - Contributing an existing plugin - please [open an issue](https://github.com/gatsby-uc/plugins/issues/new/choose)
 - ...
 
