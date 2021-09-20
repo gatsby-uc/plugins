@@ -7,10 +7,10 @@ export function gatsbyServer() {
   const {
     cli: { port, host, open: openBrowser },
     server: { prefix },
-    program
+    program,
   } = getConfig();
 
-  const fastify = Fastify({ ignoreTrailingSlash: true,  });
+  const fastify = Fastify({ ignoreTrailingSlash: true });
 
   console.info("Registered Gatsby @ ", prefix || "/");
 
