@@ -41,19 +41,21 @@
     "babel-preset-gatsby-package": "^1.13.0",
     "cross-env": "^7.0.3",
     "fastify": "^3.21.0",
+    "fastify-accepts": "^2.0.1",
     "fastify-caching": "^6.1.0",
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.3",
-    "gatsby": "^3.13.0",
-    "gatsby-plugin-utils": "^1.13.0"
+    "gatsby": "next",
+    "gatsby-plugin-utils": "next"
   },
   "peerDependencies": {
     "fastify": "^3.19.0",
+    "fastify-accepts": "*",
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.0",
-    "gatsby": "^3.7.0"
+    "gatsby": "^4.0.0-zz-next.1"
   },
   "engines": {
     "node": ">=12.13.0"

@@ -27,20 +27,28 @@ export type GfCliOptions = {
   v: boolean;
 };
 
+export type ProgramConfig = {
+  directory: string;
+};
+
 export enum ConfigKeyEnum {
   CLI = "cli",
   SERVER = "server",
+  PROGRAM = "program",
 }
 
 export type GfConfig = {
   [ConfigKeyEnum.CLI]: GfCliOptions;
   [ConfigKeyEnum.SERVER]: GatsbyNodeServerConfig;
+  [ConfigKeyEnum.PROGRAM]: ProgramConfig;
 };
 
 type GetConfigOptions<T> = T extends ConfigKeyEnum.SERVER
   ? GatsbyNodeServerConfig
   : T extends ConfigKeyEnum.CLI
   ? GfCliOptions
+  : T extends ConfigKeyEnum.PROGRAM
+  ? ProgramConfig
   : never;
 
 export function getConfig(): GfConfig {
@@ -56,7 +64,7 @@ export function setConfig(key: ConfigKeyEnum, incomingConfig: GetConfigOptions<C
   config[key] = incomingConfig;
 }
 
-export function getServerConfg(): GatsbyNodeServerConfig {
+export function getServerConfig(): GatsbyNodeServerConfig {
   const configPath = path.join(CONFIG_FILE_PATH, CONFIG_FILE_NAME);
   if (!fs.existsSync(configPath)) {
     console.error("Unable to find config @ ", configPath);

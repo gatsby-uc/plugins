@@ -1,7 +1,20 @@
 exports.createPages = async (gatsbyUtilities) => {
+
   const {
-    actions: { createRedirect },
+    actions: { createRedirect, createPage },
   } = gatsbyUtilities;
+
+  for(let i = 1; i <= 10; i++){
+    createPage({
+      path: `/generated/page-${i}`,
+      component: require.resolve(`./src/templates/example.js`),
+      defer: i <= 5 ? false : true,
+      context: {
+        pageNumber: i,
+      }
+    })
+  }
+
   createRedirect({
     fromPath: "/perm-redirect",
     toPath: "/posts/page-1",
@@ -18,3 +31,5 @@ exports.createPages = async (gatsbyUtilities) => {
     statusCode: 307,
   });
 };
+
+
