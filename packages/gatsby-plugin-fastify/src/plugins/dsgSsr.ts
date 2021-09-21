@@ -29,10 +29,11 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
     const requestedPagePath = req.params.pagePath;
     // This check mimics Gatsby implementation, not sure why it exists.
     // if (!requestedPagePath) {
-    //   return;
+    //   console.log("No page path provided", requestedPagePath);
+    //    return;
     // }
 
-    console.log("DSG/SSR for `page-data.json` @ ", requestedPagePath);
+    console.log("DSG/SSR for `page-data.json` @ ", req.url);
 
     const potentialPagePath = reverseFixedPagePath(requestedPagePath);
     const page = graphqlEngine.findPageByPath(potentialPagePath);
@@ -55,9 +56,8 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
     }
   });
 
-  fastify.setNotFoundHandler(async (req, reply) => {
+  fastify.get("*", async (req, reply) => {
     const accept = req.accepts();
-    console.log("types accept", accept.types(["text/html"]));
     if (accept.types(["text/html"])) {
       console.log("DSG/SSR for `text/html` @ ", req.url);
       const potentialPagePath = reverseFixedPagePath(req.url);
@@ -78,8 +78,6 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
 
         reply.type("text/html").send(results);
       }
-    } else {
-      reply.code(404).sendFile("404.html");
     }
   });
 };

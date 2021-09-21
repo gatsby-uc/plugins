@@ -3,12 +3,13 @@ import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
-import { handleDsgSsr } from "./dsgSsr";
+import { handleDsgSsr } from "./dsgSsr"
+import { handle404 } from "./404";
 import { getConfig } from "../utils";
 
 import fastifyCompress from "fastify-compress";
-import type { FastifyPluginAsync } from "fastify";
 import fastifyAccepts from "fastify-accepts";
+import type { FastifyPluginAsync } from "fastify";
 
 export type GatsbyServerFeatureOptions = {
   compression: boolean;
@@ -27,6 +28,7 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
 
   const { paths, redirects, compression } = serverConfig;
 
+  // Utils
   fastify.register(fastifyAccepts);
 
   // Optimizations
@@ -41,12 +43,7 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   });
 
   // Gatsby Static
-  await fastify.register(handleStatic, {
-    wildcard: true,
-  });
-
-  // Gatsby DSG & SSR
-  await fastify.register(handleDsgSsr);
+  await fastify.register(handleStatic, {});
 
   // Gatsby Client Only Routes
   await fastify.register(handleClientOnlyPaths, {
@@ -56,6 +53,11 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   // Gatsby Redirects
   await fastify.register(handleRedirects, { redirects });
 
+
+  // Gatsby DSG & SSR
+  await fastify.register(handleDsgSsr);
+
+
   // Gatsby 404
-  // await fastify.register(handle404, {});
+  await fastify.register(handle404, {});
 };
