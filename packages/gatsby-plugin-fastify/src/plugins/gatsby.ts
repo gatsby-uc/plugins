@@ -19,7 +19,6 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   const {
     cli: { verbose },
     server: serverConfig,
-    program,
   } = getConfig();
 
   if (verbose) {
@@ -48,9 +47,7 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   });
 
   // Gatsby DSG & SSR
-  await fastify.register(handleDsgSsr, {
-    program,
-  });
+  await fastify.register(handleDsgSsr);
 
   // Gatsby Client Only Routes
   await fastify.register(handleClientOnlyPaths, {

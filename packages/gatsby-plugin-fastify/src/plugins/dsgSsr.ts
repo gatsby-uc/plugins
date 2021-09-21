@@ -1,25 +1,23 @@
 import type { FastifyPluginAsync } from "fastify";
-import type { ProgramConfig } from "../utils";
 import path from "path";
-import fastifyAccepts from "fastify-accepts";
-import fp from "fastify-plugin";
+
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 
-export const handleDsgSsr: FastifyPluginAsync<{
-  program: ProgramConfig;
-}> = async (fastify, { program }) => {
+export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
   console.info("Listening for DSG and SSR requests");
 
+  const cachePath = path.resolve("./.cache")
+
   const { GraphQLEngine } = (await import(
-    path.join(program.directory, ".cache", "query-engine")
+    path.join(cachePath, "query-engine")
   )) as typeof import("gatsby/dist/schema/graphql-engine/entry");
 
   const { getData, renderPageData, renderHTML } = (await import(
-    path.join(program.directory, ".cache", "page-ssr")
+    path.join(cachePath, "page-ssr")
   )) as typeof import("gatsby/dist/utils/page-ssr-module/entry");
 
   const graphqlEngine = new GraphQLEngine({
-    dbPath: path.join(program.directory, ".cache", "data", "datastore"),
+    dbPath: path.join(cachePath, "data", "datastore"),
   });
 
   // Handle page data for SSR/DSG routes

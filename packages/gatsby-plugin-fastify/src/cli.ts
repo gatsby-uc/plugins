@@ -44,8 +44,6 @@ yargs(hideBin(process.argv))
     (argv) => {
       setConfig(ConfigKeyEnum.CLI, argv as any);
       setConfig(ConfigKeyEnum.SERVER, getServerConfig());
-      setConfig(ConfigKeyEnum.PROGRAM, { directory: process.cwd() });
-
 
       gatsbyServer();
     },

@@ -27,28 +27,20 @@ export type GfCliOptions = {
   v: boolean;
 };
 
-export type ProgramConfig = {
-  directory: string;
-};
-
 export enum ConfigKeyEnum {
   CLI = "cli",
   SERVER = "server",
-  PROGRAM = "program",
 }
 
 export type GfConfig = {
   [ConfigKeyEnum.CLI]: GfCliOptions;
   [ConfigKeyEnum.SERVER]: GatsbyNodeServerConfig;
-  [ConfigKeyEnum.PROGRAM]: ProgramConfig;
 };
 
 type GetConfigOptions<T> = T extends ConfigKeyEnum.SERVER
   ? GatsbyNodeServerConfig
   : T extends ConfigKeyEnum.CLI
   ? GfCliOptions
-  : T extends ConfigKeyEnum.PROGRAM
-  ? ProgramConfig
   : never;
 
 export function getConfig(): GfConfig {

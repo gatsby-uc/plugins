@@ -5,12 +5,11 @@ import open from "open";
 
 export function gatsbyServer() {
   const {
-    cli: { port, host, open: openBrowser },
+    cli: { port, host, open: openBrowser, verbose },
     server: { prefix },
-    program
   } = getConfig();
 
-  const fastify = Fastify({ ignoreTrailingSlash: true,  });
+  const fastify = Fastify({ ignoreTrailingSlash: true, logger: verbose });
 
   console.info("Registered Gatsby @ ", prefix || "/");
 
