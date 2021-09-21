@@ -6,7 +6,7 @@ import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
   console.info("Listening for DSG and SSR requests");
 
-  const cachePath = path.resolve("./.cache")
+  const cachePath = path.resolve("./.cache");
 
   const { GraphQLEngine } = (await import(
     path.join(cachePath, "query-engine")

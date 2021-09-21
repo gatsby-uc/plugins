@@ -3,7 +3,7 @@ import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
-import { handleDsgSsr } from "./dsgSsr"
+import { handleDsgSsr } from "./dsgSsr";
 import { handle404 } from "./404";
 import { getConfig } from "../utils";
 
@@ -53,10 +53,8 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   // Gatsby Redirects
   await fastify.register(handleRedirects, { redirects });
 
-
   // Gatsby DSG & SSR
   await fastify.register(handleDsgSsr);
-
 
   // Gatsby 404
   await fastify.register(handle404, {});

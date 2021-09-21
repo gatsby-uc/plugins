@@ -21,12 +21,10 @@ export const handleClientOnlyPaths: FastifyPluginAsync<{
         fastifyMatchPath,
         {
           exposeHeadRoute: true,
-          prefixTrailingSlash: 'slash',
+          prefixTrailingSlash: "slash",
         },
         (_req, reply) => {
-
           reply.sendFile("index.html", path.resolve("./public", p.path.replace("/", "")));
-
         },
       );
     }
