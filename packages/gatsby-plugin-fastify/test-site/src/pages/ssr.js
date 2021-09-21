@@ -1,12 +1,13 @@
-import * as React from "react"
+import * as React from "react";
 
 export default function SsrExample({ serverData }) {
   return (
-  <main>
-    <h1>SSR Page with Dogs</h1>
-    <img alt="Happy dog" src={serverData.message} />
-  </main>
-)}
+    <main>
+      <h1>SSR Page with Dogs</h1>
+      <img alt="Happy dog" src={serverData.message} />
+    </main>
+  );
+}
 
 export async function getServerData() {
   try {

@@ -3,7 +3,7 @@ import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
-import { handleDsgSsr } from "./dsgSsr"
+import { handleDsgSsr } from "./dsgSsr";
 import { getConfig } from "../utils";
 
 import fastifyCompress from "fastify-compress";
@@ -28,7 +28,6 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   const { paths, redirects, compression } = serverConfig;
 
   fastify.register(fastifyAccepts);
-
 
   // Optimizations
   if (compression) {
