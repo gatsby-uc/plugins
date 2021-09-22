@@ -12,7 +12,7 @@ export function gatsbyServer() {
   const fastify = Fastify({ ignoreTrailingSlash: true, logger: verbose });
 
   console.info("Registered Gatsby @ ", prefix || "/");
-  
+
   fastify.register(serveGatsby);
 
   fastify.listen(port, host, (err, listeningOn) => {

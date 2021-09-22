@@ -46,7 +46,7 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
           reply.header(name, value);
         }
       }
-      reply.header("x-gatsby-fastify", `served-by: ${page.mode}`)
+      reply.header("x-gatsby-fastify", `served-by: ${page.mode}`);
 
       reply.send(pageData);
     } else {
@@ -73,12 +73,11 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
             reply.header(name, value);
           }
         }
-        
-        reply.header("x-gatsby-fastify", `served-by: ${page.mode}`)
+
+        reply.header("x-gatsby-fastify", `served-by: ${page.mode}`);
         reply.type("text/html").send(results);
       }
-    } 
-    else if (req.url === "/favicon.ico") {
+    } else if (req.url === "/favicon.ico") {
       reply.code(404).send("Not found");
     } else {
       reply.callNotFound();

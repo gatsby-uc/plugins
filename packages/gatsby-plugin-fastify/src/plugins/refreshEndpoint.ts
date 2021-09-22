@@ -14,8 +14,8 @@ async function refresh(req: FastifyRequest, pluginName?: string): Promise<void> 
 }
 
 const ENDPOINT_ERRORS = {
-  "NOT_AUTHORIZED": `Authorization failed. Make sure you add authorization header to your refresh requests`,
-  "NOT_ENABLED": `Refresh endpoint is not enabled. Run gatsby with "ENABLE_GATSBY_REFRESH_ENDPOINT=true" environment variable set.`,
+  NOT_AUTHORIZED: `Authorization failed. Make sure you add authorization header to your refresh requests`,
+  NOT_ENABLED: `Refresh endpoint is not enabled. Run gatsby with "ENABLE_GATSBY_REFRESH_ENDPOINT=true" environment variable set.`,
 };
 
 export const handleRefreshEndpoint: FastifyPluginAsync = async (fastify, {}) => {
@@ -63,9 +63,7 @@ export const handleRefreshEndpoint: FastifyPluginAsync = async (fastify, {}) => 
     } else {
       reply.code(authorizedRefresh ? 404 : 403);
       reply.send({
-        error: enableRefresh
-          ? ENDPOINT_ERRORS["NOT_AUTHORIZED"]
-          : ENDPOINT_ERRORS["NOT_ENABLED"],
+        error: enableRefresh ? ENDPOINT_ERRORS["NOT_AUTHORIZED"] : ENDPOINT_ERRORS["NOT_ENABLED"],
         isEnabled: !!enableRefresh,
       });
     }

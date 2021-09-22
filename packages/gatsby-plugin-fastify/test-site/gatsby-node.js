@@ -33,10 +33,10 @@ exports.createPages = async (gatsbyUtilities) => {
     defer: true,
     context: {
       posts: result.data.allNameData.nodes,
-    }
-  })
+    },
+  });
 
-  result.data.allNameData.nodes.forEach(node => {
+  result.data.allNameData.nodes.forEach((node) => {
     createPage({
       path: `/faker/${node.lorem.slug}`,
       component: fakerPostTemplate,
@@ -44,9 +44,8 @@ exports.createPages = async (gatsbyUtilities) => {
       context: {
         slug: node.lorem.slug,
       },
-    })
+    });
   });
-
 
   for (let i = 1; i <= 10; i++) {
     createPage({
