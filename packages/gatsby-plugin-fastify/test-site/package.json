@@ -27,6 +27,7 @@
     "gatsby-plugin-react-helmet": "next",
     "gatsby-plugin-sharp": "next",
     "gatsby-plugin-sitemap": "next",
+    "gatsby-source-faker": "^3.14.0",
     "gatsby-source-filesystem": "next",
     "gatsby-transformer-sharp": "next",
     "postcss": "^8.3.6",

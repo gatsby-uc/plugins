@@ -1,8 +1,10 @@
 import fs from "fs";
+import path from "path";
+import { GatsbyNodeServerConfig, CONFIG_FILE_PATH, CONFIG_FILE_NAME } from "./utils";
+
 import type { GatsbyReduxStore } from "gatsby/dist/redux";
 import type { PathConfig } from "./plugins/clientPaths";
 import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
-import type { GatsbyNodeServerConfig } from "./utils";
 import type { PluginOptionsSchemaJoi } from "gatsby-plugin-utils";
 
 export type GatsbyApiInput = { pathPrefix: string; store: GatsbyReduxStore };
@@ -35,11 +37,12 @@ export function onPostBuild(
     fs.mkdirSync("public/");
   }
 
-  fs.writeFileSync("public/gatsby-plugin-node.json", JSON.stringify(config, null, 2));
+  fs.writeFileSync(path.join(CONFIG_FILE_PATH, CONFIG_FILE_NAME), JSON.stringify(config, null, 2));
 }
 
 export function pluginOptionsSchema({ Joi }: { Joi: PluginOptionsSchemaJoi }) {
   return Joi.object({
     compression: Joi.boolean().default(true),
+    refreshEndpoint: Joi.boolean().default(true),
   });
 }

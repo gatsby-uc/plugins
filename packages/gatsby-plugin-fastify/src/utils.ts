@@ -6,7 +6,7 @@ import { PathConfig } from "./plugins/clientPaths";
 import { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 
 export const CONFIG_FILE_NAME = "gatsby-plugin-node.json";
-export const CONFIG_FILE_PATH = "./public";
+export const CONFIG_FILE_PATH = "./.cache";
 
 let config: Partial<GfConfig> = {};
 

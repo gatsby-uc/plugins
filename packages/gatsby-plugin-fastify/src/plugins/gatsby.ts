@@ -1,9 +1,9 @@
-// import { handle404 } from "./404";
+import { handleRefreshEndpoint } from "./refreshEndpoint";
 import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
-import { handleDsgSsr } from "./dsgSsr"
+import { handleDsgSsr } from "./dsgSsr";
 import { handle404 } from "./404";
 import { getConfig } from "../utils";
 
@@ -13,10 +13,10 @@ import type { FastifyPluginAsync } from "fastify";
 
 export type GatsbyServerFeatureOptions = {
   compression: boolean;
+  refreshEndpoint: boolean;
 };
 
 export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
-  //@ts-ignore
   const {
     cli: { verbose },
     server: serverConfig,
@@ -53,10 +53,11 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   // Gatsby Redirects
   await fastify.register(handleRedirects, { redirects });
 
+  // Gatsby Refresh Endpoint
+  await fastify.register(handleRefreshEndpoint);
 
   // Gatsby DSG & SSR
   await fastify.register(handleDsgSsr);
-
 
   // Gatsby 404
   await fastify.register(handle404, {});

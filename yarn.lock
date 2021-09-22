@@ -9496,6 +9496,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"faker@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "faker@npm:4.1.0"
+  checksum: 01cf5adb155eac95cdb01ee8351213fd0dc354dd3b00cc8e54aa00eb8c9c267649560ec7b1c7caa4de1ae727cea69f2df903badd5339a824c147695d8cd969d6
+  languageName: node
+  linkType: hard
+
 "fast-copy@npm:^2.1.0":
   version: 2.1.1
   resolution: "fast-copy@npm:2.1.1"
@@ -10895,6 +10902,18 @@ __metadata:
     xstate: ^4.9.1
     yoga-layout-prebuilt: ^1.9.6
   checksum: b1a39e969addcc02060bfca1291e1267e9d41be70e3e6ab9fcbe42a931f3e457e8c87019dac1b11c397d727fa3065626ded582512893a11dd7c8bd5cb43de092
+  languageName: node
+  linkType: hard
+
+"gatsby-source-faker@npm:^3.14.0":
+  version: 3.14.0
+  resolution: "gatsby-source-faker@npm:3.14.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    faker: ^4.1.0
+  peerDependencies:
+    gatsby: ^3.0.0-next.0
+  checksum: 26c49cbc39fb770844b33cda6eb868ae28b1ea8596bacdbeae23f423ba089561cf539157c22f0f495743bc00bcc31de229fb56825a26c6800a77c31ea6d0eba4
   languageName: node
   linkType: hard
 
@@ -20571,6 +20590,7 @@ resolve@^2.0.0-next.3:
     gatsby-plugin-react-helmet: next
     gatsby-plugin-sharp: next
     gatsby-plugin-sitemap: next
+    gatsby-source-faker: ^3.14.0
     gatsby-source-filesystem: next
     gatsby-transformer-sharp: next
     postcss: ^8.3.6

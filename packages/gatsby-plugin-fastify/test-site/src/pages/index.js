@@ -42,13 +42,13 @@ const linkStyle = {
   verticalAlign: "5%",
 };
 
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-};
+// const descriptionStyle = {
+//   color: "#232129",
+//   fontSize: 14,
+//   marginTop: 10,
+//   marginBottom: 0,
+//   lineHeight: 1.25,
+// };
 
 // markup
 const IndexPage = () => {
@@ -102,6 +102,9 @@ const IndexPage = () => {
           <Link to="/app">Client side App</Link>
         </li>
         <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/faker/")}>Faker Page</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/api/test")}>API</a>
         </li>
         <li style={{ ...listItemStyles }}>
@@ -121,6 +124,9 @@ const IndexPage = () => {
         </li>
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/ssr")}>SSR Page</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/__refresh/gatsby-source-wordpress")}>Refresh Endpoint</a>
         </li>
       </ul>
     </main>

@@ -18,6 +18,7 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
         } else {
           reply.setHeader("cache-control", "public, max-age=0, must-revalidate");
         }
+        reply.setHeader("x-gatsby-fastify", "served-by: static")
       },
       ...opts,
     });

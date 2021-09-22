@@ -29,5 +29,21 @@ module.exports = {
       options: {},
     },
     "gatsby-plugin-sitemap",
+    {
+      resolve: `gatsby-source-faker`,
+      // derive schema from faker's options
+      options: {
+        schema: {
+          lorem: [
+            "words",
+            "paragraphs",
+            "slug"
+        ],
+          name: ["firstName", "lastName"],
+        },
+        count: 3, // how many fake objects you need
+        type: "NameData", // Name of the graphql query node
+      },
+    },
   ],
 };
