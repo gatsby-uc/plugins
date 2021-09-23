@@ -41,6 +41,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/cli@npm:^7.15.7":
+  version: 7.15.7
+  resolution: "@babel/cli@npm:7.15.7"
+  dependencies:
+    "@nicolo-ribaudo/chokidar-2": 2.1.8-no-fsevents.3
+    chokidar: ^3.4.0
+    commander: ^4.0.1
+    convert-source-map: ^1.1.0
+    fs-readdir-recursive: ^1.1.0
+    glob: ^7.0.0
+    make-dir: ^2.1.0
+    slash: ^2.0.0
+    source-map: ^0.5.0
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  dependenciesMeta:
+    "@nicolo-ribaudo/chokidar-2":
+      optional: true
+    chokidar:
+      optional: true
+  bin:
+    babel: ./bin/babel.js
+    babel-external-helpers: ./bin/babel-external-helpers.js
+  checksum: 128c8251c1f8c3d719fe8a0c6ce45db0ac086c7f877bc9dd34a3cf0a3e8caa4664ca17c24ca4c644b4d277b6e3ce4a73cb950f69003fb278a90bbf7d4645f903
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:7.10.4":
   version: 7.10.4
   resolution: "@babel/code-frame@npm:7.10.4"
@@ -1306,7 +1333,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-typescript@npm:^7.14.6, @babel/plugin-transform-typescript@npm:^7.15.0":
+"@babel/plugin-transform-typescript@npm:^7.14.6, @babel/plugin-transform-typescript@npm:^7.15.0, @babel/plugin-transform-typescript@npm:^7.15.4":
   version: 7.15.4
   resolution: "@babel/plugin-transform-typescript@npm:7.15.4"
   dependencies:
@@ -3701,6 +3728,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3":
+  version: 2.1.8-no-fsevents.3
+  resolution: "@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3"
+  checksum: ee55cc9241aeea7eb94b8a8551bfa4246c56c53bc71ecda0a2104018fcc328ba5723b33686bdf9cc65d4df4ae65e8016b89e0bbdeb94e0309fe91bb9ced42344
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -4484,10 +4518,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.14.10, @types/node@npm:^14.17.15":
+"@types/node@npm:^14.14.10":
   version: 14.17.15
   resolution: "@types/node@npm:14.17.15"
   checksum: e0840304db236027e822ef1e149de433afd20d2553699cdc2ce651d107a77646c6eaaeaec8c348eabdc05169440dbc2cf069791bef65ca4b6e5ee4412e69c898
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^14.17.18":
+  version: 14.17.18
+  resolution: "@types/node@npm:14.17.18"
+  checksum: 386f1ce851f5efb9c51ab7b4f6c7110a7c85f7a06ea5456ddf262bae0f0132a9b8b7d9e7b78228989bb50c44f1c55b7b5afc56915f0bdce25925d10fa18d2d90
   languageName: node
   linkType: hard
 
@@ -5894,6 +5935,27 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.11.6
   checksum: 029d30dde76df8ee1548516850296690f23c130934bcf59ee8214b687c50c7c3ffe3a1720a47a2e3ec4712afa62d10f02f56e2a3479b03fb2d1a87ce28f03af8
+  languageName: node
+  linkType: hard
+
+"babel-preset-gatsby-package@npm:^1.14.0":
+  version: 1.14.0
+  resolution: "babel-preset-gatsby-package@npm:1.14.0"
+  dependencies:
+    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.5
+    "@babel/plugin-proposal-optional-chaining": ^7.14.5
+    "@babel/plugin-syntax-dynamic-import": ^7.8.3
+    "@babel/plugin-transform-runtime": ^7.15.0
+    "@babel/plugin-transform-typescript": ^7.15.4
+    "@babel/preset-env": ^7.15.4
+    "@babel/preset-flow": ^7.14.0
+    "@babel/preset-react": ^7.14.0
+    "@babel/runtime": ^7.15.4
+    babel-plugin-dynamic-import-node: ^2.3.3
+    core-js: ^3.17.2
+  peerDependencies:
+    "@babel/core": ^7.11.6
+  checksum: 3187b8abac407786a4514d83a351d19a817b536299921bb47827f7f6c4470d290b07b5131e7e5aa691c55b94a5e23207cbdb51fa81ccbbcca2cefa5077adcc60
   languageName: node
   linkType: hard
 
@@ -9703,30 +9765,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify@npm:^3.21.0":
-  version: 3.21.1
-  resolution: "fastify@npm:3.21.1"
-  dependencies:
-    "@fastify/ajv-compiler": ^1.0.0
-    abstract-logging: ^2.0.0
-    avvio: ^7.1.2
-    fast-json-stringify: ^2.5.2
-    fastify-error: ^0.3.0
-    fastify-warning: ^0.2.0
-    find-my-way: ^4.1.0
-    flatstr: ^1.0.12
-    light-my-request: ^4.2.0
-    pino: ^6.13.0
-    proxy-addr: ^2.0.7
-    readable-stream: ^3.4.0
-    rfdc: ^1.1.4
-    secure-json-parse: ^2.0.0
-    semver: ^7.3.2
-    tiny-lru: ^7.0.0
-  checksum: 464271c9931f6239400df6f2c14d1949914b8889e359e298a05eed52a6ea3ffa6558e4155f6fcf4a3586161a494e83643064209bd92bac68e7f6b4d63e843779
-  languageName: node
-  linkType: hard
-
 "fastify@npm:^3.21.6":
   version: 3.21.6
   resolution: "fastify@npm:3.21.6"
@@ -10499,22 +10537,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-fastify@workspace:packages/gatsby-plugin-fastify"
   dependencies:
-    "@babel/cli": ^7.15.4
+    "@babel/cli": ^7.15.7
     "@babel/core": ^7.15.5
     "@babel/runtime": ^7.15.4
-    "@types/node": ^14.17.15
-    babel-preset-gatsby-package: ^1.13.0
+    "@types/node": ^14.17.18
+    babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
-    fastify: ^3.21.0
+    fastify: ^3.21.6
     fastify-caching: ^6.1.0
     fastify-compress: ^3.6.0
     fastify-plugin: ^3.0.0
     fastify-static: ^4.2.3
-    gatsby: ^3.13.0
-    gatsby-plugin-utils: ^1.13.0
+    gatsby: ^3.14.0
+    gatsby-plugin-utils: ^1.14.0
     open: ^8.2.1
     picomatch: ^2.3.0
-    yargs: ^17.1.1
+    yargs: ^17.2.0
   peerDependencies:
     fastify: ^3.19.0
     fastify-compress: ^3.6.0
@@ -22492,9 +22530,9 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.1.1":
-  version: 17.1.1
-  resolution: "yargs@npm:17.1.1"
+"yargs@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "yargs@npm:17.2.0"
   dependencies:
     cliui: ^7.0.2
     escalade: ^3.1.1
@@ -22503,7 +22541,7 @@ typescript@^3.8.3:
     string-width: ^4.2.0
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
-  checksum: b05a9467937172e01a4af7a7ad4361a22ee510cd12d1d5a3ad3b4c2e57eb8c35ca94ee22e4bdfbb40fe693fbf8000771e41824f77f6b224f1496c57f20f192b6
+  checksum: 7904ae4cb54c956ed4e2e0920417958e339c0e5305b6f7385a66afd5101a79dc83b38af856064a7dd1fd8458dc442936ee19e53b621349d410f7abebf2769772
   languageName: node
   linkType: hard
 
