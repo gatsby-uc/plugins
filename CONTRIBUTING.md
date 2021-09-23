@@ -4,30 +4,29 @@ Welcome! Submit a PR, answer questions, join the [Discord](discord.gg/wr9xhj9v).
 
 ## Contributing a plugin
 
-
-Thanks for considering doing so. We're always looking to expand the community and improve the Gatsby ecosystem. Your first question might very well be, "Why should I trust you and give you maintainer permissions on my NPM package?". Please know we're glad this is your first concern. We don't ever want to take security lightly. 
+Thanks for considering doing so. We're always looking to expand the community and improve the Gatsby ecosystem. Your first question might very well be, "Why should I trust you and give you maintainer permissions on my NPM package?". Please know we're glad this is your first concern. We don't ever want to take security lightly.
 
 ### Security
 
-Always feel free to open an issue or discussion and start a conversation around any concerns you have that this document may not answer. Second, my goal with this project has been to simplify deployments via automation. This means we'll always have a clear record of who wrote code, who approved code, and what code was deployed. 
+Always feel free to open an issue or discussion and start a conversation around any concerns you have that this document may not answer. Second, my goal with this project has been to simplify deployments via automation. This means we'll always have a clear record of who wrote code, who approved code, and what code was deployed.
 
 It is possible code can make it to NPM outside of the PR process. At this time, we're asking you to add `moonmeister`(Alex) to your NPM package. We won't ever ask you to relinquish your maintainer permissions, though you are welcome to do so, if you choose. Alex will in turn give the `@gatsby-uc/publishers` group on NPM maintainer permissions. `@gatsby-uc/publishers` is a small group of trusted folks. While maybe not ideal (open to suggestions here), allowing a number of trusted people to publish means no one person can bottle neck the process. This is the foundation on which the Gatsby User Collective was built.
 
 ### Repos
 
-At this time we're assuming all contributed plugins will be rolled into the `gatsby-uc/plugins` repository. After transfering ownership a maintainer will help copy the code into the monorepo. This helps keep configs and tooling together all in one area. 
+At this time we're assuming all contributed plugins will be rolled into the `gatsby-uc/plugins` repository. After transfering ownership a maintainer will help copy the code into the monorepo. This helps keep configs and tooling together all in one area.
 
-The hard part of this is issues and PRs. For most of the plugins we've accepted so far these have been rare. The thought is when repos are submitted part of the process for merging will be working through PRs to close outdate/stale/bot ones and merge valuable ones. Issues will be combed through as well valid issues will at least get a comment pointing to the new repo, or we might attempt to move the issue. 
+The hard part of this is issues and PRs. For most of the plugins we've accepted so far these have been rare. The thought is when repos are submitted part of the process for merging will be working through PRs to close outdate/stale/bot ones and merge valuable ones. Issues will be combed through as well valid issues will at least get a comment pointing to the new repo, or we might attempt to move the issue.
 
 The reality is we'll solve these problems as they come up. This is a community, ideas and suggestions are encouraged and welcomed.
 
 ### Your Access
 
-When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit your on plugin. 
+When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit your on plugin.
 
 ### Licence
 
-The `plugins` has an MIT license on it. This matches what many Gatsby plugins also use. If your plugin is not MIT we can re-license it to MIT. BUT, no one here is a lawyer, and if you have significant contributions from other folks this could be something to think about. So, If you have chosen to license your repo differently we can add that to the plugin folder so it continues to live under that license. Again, we're not lawyers, but this should be ok. 
+The `plugins` has an MIT license on it. This matches what many Gatsby plugins also use. If your plugin is not MIT we can re-license it to MIT. BUT, no one here is a lawyer, and if you have significant contributions from other folks this could be something to think about. So, If you have chosen to license your repo differently we can add that to the plugin folder so it continues to live under that license. Again, we're not lawyers, but this should be ok.
 
 ## Give yourself some credit!!
 
@@ -41,7 +40,8 @@ For info on the types of things you may get or give credit for please see the [C
 
 ## Plugin Best Practices
 
-Some of these are needed, some of these are nice to have, some of these don't really matter. Do your best and speak up if you want to challenge the status quo or have questions. 
+Some of these are needed, some of these are nice to have, some of these don't really matter. Do your best and speak up if you want to challenge the status quo or have questions.
+
 ### `package.json`: author vs. maintainer
 
 We want to honor those who contribute to plugins, not just their original maintainers. Convert the normal
