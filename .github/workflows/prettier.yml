@@ -25,12 +25,4 @@ jobs:
         run: yarn install --immutable
 
       - name: Format source code
-        run: yarn format
-
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          author_name: GitHub Actions
-          author_email: actions@github.com
-          message: "Formatting with Prettier"
-          add: "*.*"
+        run: yarn lint
