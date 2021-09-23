@@ -22,10 +22,12 @@
 
 - Serving Gatsby Functions
 - Serving static files
+- Serving DSG/SSR Routes
 - 404 page middleware
 - Gatsby redirects
 - Client-side paths
 - Serving the site with pathPrefix - set it up inside `gatsby-config.js`, the plugin will take care of it
+- A Webhook to trigger updates in the Gatsby datalayer.
 - File compression, Etags, and more.
 
 # Installation
@@ -33,7 +35,7 @@
 Install the plugin using npm or yarn
 
 ```sh
-npm install gatsby-plugin-fastify fastify fastify-static fastify-compress fastify-plugin fastfy-caching
+npm install gatsby-plugin-fastify fastify fastify-static fastify-compress fastify-plugin fastify-accepts
 ```
 
 and add it to your `gatsby-config.js`
@@ -55,6 +57,8 @@ module.exports = {
 ```
 
 # Serving your site
+
+Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to node. This allows the Edge web server to handle security, TLS/SSL, load balencing, etc. Then the node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability. 
 
 ## Server CLI (expected)
 
