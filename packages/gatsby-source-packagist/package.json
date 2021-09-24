@@ -28,8 +28,7 @@
   "scripts": {
     "build": "babel src --out-dir . --ignore \"**/__tests__\"",
     "format": "prettier --write .",
-    "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir . --ignore \"**/__tests__\""
+    "watch": "yarn build --watch"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",

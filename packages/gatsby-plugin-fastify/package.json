@@ -25,7 +25,6 @@
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
-    "prepare": "cross-env NODE_ENV=production npm run build",
     "watch": "yarn build --watch"
   },
   "dependencies": {
