@@ -33,7 +33,7 @@
 Install the plugin using npm or yarn
 
 ```sh
-npm install gatsby-plugin-fastify fastify fastify-static fastify-compress fastify-plugin fastfy-caching
+npm install gatsby-plugin-fastify fastify fastify-static fastify-compress fastify-plugin
 ```
 
 and add it to your `gatsby-config.js`
