@@ -12,7 +12,7 @@
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@relative-ci/agent": "^1.6.1"
+    "@relative-ci/agent": "^2.1.0"
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore \"**/__tests__\"",
