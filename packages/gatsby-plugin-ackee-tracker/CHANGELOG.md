@@ -1,8 +1,13 @@
 # gatsby-plugin-ackee-tracker
 
-## 3.0.1
+## 3.0.2
+
 ### Patch Changes
 
+- [#66](https://github.com/gatsby-uc/plugins/pull/66) [`6ce0c22`](https://github.com/gatsby-uc/plugins/commit/6ce0c221517f096601be477375dd5f5999456126) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-ackee-tracker): update non-major package updates
 
+## 3.0.1
+
+### Patch Changes
 
 - [#55](https://github.com/gatsby-uc/plugins/pull/55) [`10aabf9`](https://github.com/gatsby-uc/plugins/commit/10aabf92fe3169236fe5836b825182220490459a) Thanks [@moonmeister](https://github.com/moonmeister)! - add: gatsby-plugin-ackee-tracker - Plugin added to the repo. Minor code changes(import/export styles) and build step added.
