@@ -24,7 +24,6 @@ jobs:
       - name: Format source code
         run: yarn lint
   test:
-    if: ${{ !contains(github.actor, 'bot') }}
     name: Run package tests
     runs-on: ubuntu-latest
     steps:
