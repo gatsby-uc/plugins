@@ -1,0 +1,46 @@
+name: Run Checks on PRs
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check_format:
+    if: ${{ !contains(github.actor, 'bot') }}
+    name: Validate formating with Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Format source code
+        run: yarn lint
+  test:
+    name: Run package tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Execute tests
+        run: yarn test
