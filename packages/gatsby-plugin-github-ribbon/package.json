@@ -29,12 +29,12 @@
     "gatsby": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "babel-jest": "^25.5.1",
-    "babel-preset-gatsby-package": "^1.13.0",
+    "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3",
-    "gatsby": "^3.13.0",
+    "gatsby": "^3.14.0",
     "jest": "^25.5.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
