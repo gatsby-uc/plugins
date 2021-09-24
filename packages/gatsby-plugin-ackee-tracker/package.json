@@ -33,14 +33,14 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "ackee-tracker": "^5",
-    "babel-preset-gatsby-package": "^1.13.0",
+    "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3"
   },
   "devDependencies": {
-    "eslint": "7.21.0"
+    "eslint": "7.32.0"
   },
   "peerDependencies": {
     "gatsby": "^3.0.0"
