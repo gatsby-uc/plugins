@@ -1505,7 +1505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.15.4
   resolution: "@babel/runtime@npm:7.15.4"
   dependencies:
@@ -6660,7 +6660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.4.0, chokidar@npm:^3.4.3, chokidar@npm:^3.5.2":
+"chokidar@npm:^3.4.0, chokidar@npm:^3.5.2":
   version: 3.5.2
   resolution: "chokidar@npm:3.5.2"
   dependencies:
@@ -9738,7 +9738,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-type@npm:^16.0.0, file-type@npm:^16.5.3":
+"file-type@npm:^16.5.3":
   version: 16.5.3
   resolution: "file-type@npm:16.5.3"
   dependencies:
@@ -10231,22 +10231,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-core-utils@npm:^2.13.0":
-  version: 2.13.0
-  resolution: "gatsby-core-utils@npm:2.13.0"
-  dependencies:
-    ci-info: 2.0.0
-    configstore: ^5.0.1
-    file-type: ^16.5.3
-    fs-extra: ^8.1.0
-    node-object-hash: ^2.3.8
-    proper-lockfile: ^4.1.2
-    tmp: ^0.2.1
-    xdg-basedir: ^4.0.0
-  checksum: d2dc8c5a89f030316a716ea0076114dd9b9c2eed1f69839764e8bc949acf2d6598ccd7ec50f704c01a795eab2308bf166280d322ed0296e276afe201ec19cd64
-  languageName: node
-  linkType: hard
-
 "gatsby-core-utils@npm:^2.14.0":
   version: 2.14.0
   resolution: "gatsby-core-utils@npm:2.14.0"
@@ -10647,29 +10631,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-source-filesystem@npm:^3.13.0":
-  version: 3.13.0
-  resolution: "gatsby-source-filesystem@npm:3.13.0"
-  dependencies:
-    "@babel/runtime": ^7.14.8
-    better-queue: ^3.8.10
-    chokidar: ^3.4.3
-    file-type: ^16.0.0
-    fs-extra: ^8.1.0
-    gatsby-core-utils: ^2.13.0
-    got: ^9.6.0
-    md5-file: ^5.0.0
-    mime: ^2.5.2
-    pretty-bytes: ^5.4.1
-    progress: ^2.0.3
-    valid-url: ^1.0.9
-    xstate: ^4.14.0
-  peerDependencies:
-    gatsby: ^3.0.0-next.0
-  checksum: 1e5d92b017b99433931eb91c5e053c2f3d62a236c0d4d56b264dd9df11653216435f27b525f2cd12288bf545da69a51b11cb36fa2f8c239a1e6481bcf4610d30
-  languageName: node
-  linkType: hard
-
 "gatsby-source-filesystem@npm:^3.14.0":
   version: 3.14.0
   resolution: "gatsby-source-filesystem@npm:3.14.0"
@@ -10697,15 +10658,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
-    "@babel/cli": ^7.15.4
+    "@babel/cli": ^7.15.7
     "@babel/core": ^7.15.5
     "@octokit/rest": ^17.11.2
-    babel-preset-gatsby-package: ^1.13.0
+    babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
-    gatsby-source-filesystem: ^3.13.0
+    gatsby-source-filesystem: ^3.14.0
     mime-types: ^2.1.32
     packagist-api-client: ^2.0.0
-    prettier: ^2.4.0
+    prettier: ^2.4.1
   peerDependencies:
     gatsby: ^2.4.0 || ^3.0.0
     gatsby-source-filesystem: ^2.2.4
@@ -15543,7 +15504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-object-hash@npm:^2.3.8, node-object-hash@npm:^2.3.9":
+"node-object-hash@npm:^2.3.9":
   version: 2.3.10
   resolution: "node-object-hash@npm:2.3.10"
   checksum: 5d2a80f67810294d352205bfc4823aa6097b06cd5dee6e0fec7e2bc40b55bfe5251e90313046230abe2fd230b8b7c5dcda967243e4136b94971e2630e6c7d0cd
