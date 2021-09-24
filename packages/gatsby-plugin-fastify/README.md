@@ -58,7 +58,7 @@ module.exports = {
 
 # Serving your site
 
-Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to node. This allows the Edge web server to handle security, TLS/SSL, load balencing, etc. Then the node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability. 
+Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to node. This allows the Edge web server to handle security, TLS/SSL, load balencing, etc. Then the node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability.
 
 ## Server CLI (expected)
 

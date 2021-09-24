@@ -41,7 +41,6 @@
     "cross-env": "^7.0.3",
     "fastify": "^3.21.6",
     "fastify-accepts": "^2.0.1",
-    "fastify-caching": "^6.1.0",
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.3",
