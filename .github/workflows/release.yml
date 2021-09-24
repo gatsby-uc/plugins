@@ -6,6 +6,27 @@ on:
       - main
 
 jobs:
+  test:
+    name: Run package tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Execute tests
+        run: yarn test
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -30,6 +51,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   publish-npm:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -41,6 +63,9 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --immutable
+
+      - name: Build packages
+        run: yarn build
 
       - run: yarn publish-ci
         env:

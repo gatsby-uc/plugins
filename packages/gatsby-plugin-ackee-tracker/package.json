@@ -28,9 +28,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir . --ignore \"**/__tests__/**\"",
-    "prepack": "cross-env NODE_ENV=production npm run build",
-    "lint": "eslint . --ext .js --cache"
+    "build": "babel src --out-dir . --ignore \"**/__tests__\"",
+    "lint": "eslint . --ext .js --cache",
+    "watch": "yarn build --watch"
   },
   "dependencies": {
     "@babel/cli": "^7.15.4",
