@@ -4492,10 +4492,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.17.18":
-  version: 14.17.18
-  resolution: "@types/node@npm:14.17.18"
-  checksum: 386f1ce851f5efb9c51ab7b4f6c7110a7c85f7a06ea5456ddf262bae0f0132a9b8b7d9e7b78228989bb50c44f1c55b7b5afc56915f0bdce25925d10fa18d2d90
+"@types/node@npm:^14.17.20":
+  version: 14.17.20
+  resolution: "@types/node@npm:14.17.20"
+  checksum: c704d95c4e4377b0b4c72206068e99bbc635e27b42100a51f56e46ec0917a73f64069bcb50c07b30d34e22694735f607a1da61314acdf717a55a3ca020e12bb9
   languageName: node
   linkType: hard
 
@@ -9540,34 +9540,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fastify-static@npm:^4.2.4":
+  version: 4.2.4
+  resolution: "fastify-static@npm:4.2.4"
+  dependencies:
+    content-disposition: ^0.5.3
+    encoding-negotiator: ^2.0.1
+    fastify-plugin: ^3.0.0
+    glob: ^7.1.4
+    readable-stream: ^3.4.0
+    send: ^0.17.1
+  checksum: 6a843e23eb4b8fd7198abc782f26ebe9ee5258a9acd4f0dac32bb9eb984f0149ca6103fa580cb2300dbf6432cf622c7878bf3ccb12fccb3e0b566808b5dabae5
+  languageName: node
+  linkType: hard
+
 "fastify-warning@npm:^0.2.0":
   version: 0.2.0
   resolution: "fastify-warning@npm:0.2.0"
   checksum: c19ebccf54a3122877d2248400772ca98bacbabdf97826211ede29246c640d47431a2eebed1f52f9421139ed5e52e42d3bd4aefc46e27b6f34add3507529fd97
-  languageName: node
-  linkType: hard
-
-"fastify@npm:^3.21.6":
-  version: 3.21.6
-  resolution: "fastify@npm:3.21.6"
-  dependencies:
-    "@fastify/ajv-compiler": ^1.0.0
-    abstract-logging: ^2.0.0
-    avvio: ^7.1.2
-    fast-json-stringify: ^2.5.2
-    fastify-error: ^0.3.0
-    fastify-warning: ^0.2.0
-    find-my-way: ^4.1.0
-    flatstr: ^1.0.12
-    light-my-request: ^4.2.0
-    pino: ^6.13.0
-    proxy-addr: ^2.0.7
-    readable-stream: ^3.4.0
-    rfdc: ^1.1.4
-    secure-json-parse: ^2.0.0
-    semver: ^7.3.2
-    tiny-lru: ^7.0.0
-  checksum: 5ce7a60d2f1ab3c96ffe24b1a47bf79828e712e0d290962d02560bde8f3e11ff927f846a177d17e3890bc906251aba9d6aeab08f1fbd8e7efcfce466f24af154
   languageName: node
   linkType: hard
 
@@ -10233,19 +10223,19 @@ __metadata:
     "@babel/cli": ^7.15.7
     "@babel/core": ^7.15.5
     "@babel/runtime": ^7.15.4
-    "@types/node": ^14.17.18
+    "@types/node": ^14.17.20
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
-    fastify: ^3.21.6
+    fastify: ^3.22.0
     fastify-caching: ^6.1.0
     fastify-compress: ^3.6.0
     fastify-plugin: ^3.0.0
-    fastify-static: ^4.2.3
-    gatsby: ^3.14.0
+    fastify-static: ^4.2.4
+    gatsby: ^3.14.1
     gatsby-plugin-utils: ^1.14.0
     open: ^8.2.1
     picomatch: ^2.3.0
-    yargs: ^17.2.0
+    yargs: ^17.2.1
   peerDependencies:
     fastify: ^3.19.0
     fastify-compress: ^3.6.0
@@ -21732,9 +21722,9 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.2.0":
-  version: 17.2.0
-  resolution: "yargs@npm:17.2.0"
+"yargs@npm:^17.2.1":
+  version: 17.2.1
+  resolution: "yargs@npm:17.2.1"
   dependencies:
     cliui: ^7.0.2
     escalade: ^3.1.1
@@ -21743,7 +21733,7 @@ typescript@^3.8.3:
     string-width: ^4.2.0
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
-  checksum: 7904ae4cb54c956ed4e2e0920417958e339c0e5305b6f7385a66afd5101a79dc83b38af856064a7dd1fd8458dc442936ee19e53b621349d410f7abebf2769772
+  checksum: 451aac46f82da776f436018feed0244bc0e7b4355f7e397bcb53d34c691b177c0d71db3dda9653760e1bc240254d8b763a252ff918ef9e235a8d202e2909c4eb
   languageName: node
   linkType: hard
 
