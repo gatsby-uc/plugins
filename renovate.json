@@ -7,18 +7,18 @@
   "major": {
     "masterIssueApproval": true
   },
-  "additionalBranchPrefix": "{{parentDir}}-",
+  "additionalBranchPrefix": "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
   "masterIssue": true,
   "rangeStrategy": "bump",
   "prHourlyLimit": 0,
   "packageRules": [
     {
-      "groupName": "non-major updates",
+      "groupName": "non-major dependency versions",
       "updateTypes": ["minor", "patch"]
     }
   ],
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
-  "semanticCommitScope": "{{parentDir}}",
+  "semanticCommitScope": "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}",
   "ignoreDeps": ["node"]
 }
