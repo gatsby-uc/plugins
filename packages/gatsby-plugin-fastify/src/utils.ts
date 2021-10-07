@@ -5,11 +5,9 @@ import { IRedirect } from "gatsby/dist/redux/types";
 import { PathConfig } from "./plugins/clientPaths";
 import { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 
-export const CONFIG_FILE_NAME = "gatsby-plugin-node.json";
-export const CONFIG_FILE_PATH = "./public";
-
 let config: Partial<GfConfig> = {};
 
+//TODO: rename file to config and move to utils folder
 export interface GatsbyNodeServerConfig extends GatsbyServerFeatureOptions {
   paths: PathConfig[];
   redirects: IRedirect[];

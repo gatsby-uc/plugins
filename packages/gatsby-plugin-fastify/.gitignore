@@ -125,3 +125,4 @@ dist
 /gatsby-*.js
 /*.d.ts
 /cli.js
+utils/*
