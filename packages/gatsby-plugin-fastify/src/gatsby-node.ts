@@ -1,17 +1,13 @@
 import { existsSync, mkdir, writeJSON } from "fs-extra";
 
-import type { GatsbyReduxStore } from "gatsby/dist/redux";
 import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 import type { GatsbyNodeServerConfig } from "./utils/config";
-import type { PluginOptionsSchemaJoi } from "gatsby-plugin-utils";
 import type { GatsbyNode } from "gatsby";
 
 import { makePluginData } from "./utils/plugin-data";
 import { getFunctionManifest } from "./gatsby/functionsManifest";
 import { CONFIG_FILE_NAME, PATH_TO_CACHE } from "./utils/constants";
 import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
-
-export type GatsbyApiInput = { pathPrefix: string; store: GatsbyReduxStore };
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
@@ -46,8 +42,8 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   }
 };
 
-export function pluginOptionsSchema({ Joi }: { Joi: PluginOptionsSchemaJoi }) {
+export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
   return Joi.object({
     compression: Joi.boolean().default(true),
   });
-}
+};
