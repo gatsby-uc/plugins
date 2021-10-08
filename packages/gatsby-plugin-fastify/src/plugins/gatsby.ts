@@ -5,16 +5,17 @@ import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
 import { handleDsgSsr } from "./dsgSsr";
 import { handle404 } from "./404";
-import { getConfig } from "../utils";
+import { getConfig } from "../utils/config";
 
 import fastifyCompress from "fastify-compress";
 import fastifyAccepts from "fastify-accepts";
 import type { FastifyPluginAsync } from "fastify";
+import type { PluginOptions } from "gatsby";
 
-export type GatsbyServerFeatureOptions = {
+export interface GatsbyServerFeatureOptions extends PluginOptions {
   compression: boolean;
   refreshEndpoint: boolean;
-};
+}
 
 export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
   const {
@@ -26,7 +27,7 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
     console.info("Starting server with config: ", serverConfig);
   }
 
-  const { paths, redirects, compression } = serverConfig;
+  const { clientSideRoutes, redirects, compression, functions } = serverConfig;
 
   // Utils
   fastify.register(fastifyAccepts);
@@ -40,6 +41,7 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
   // Gatsby Functions
   await fastify.register(handleFunctions, {
     prefix: "/api/",
+    functions,
   });
 
   // Gatsby Static
@@ -47,7 +49,7 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
 
   // Gatsby Client Only Routes
   await fastify.register(handleClientOnlyPaths, {
-    paths,
+    paths: clientSideRoutes,
   });
 
   // Gatsby Redirects

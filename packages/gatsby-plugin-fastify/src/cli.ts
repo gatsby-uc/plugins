@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { setConfig, ConfigKeyEnum, getServerConfig } from "./utils";
+import { setConfig, ConfigKeyEnum, getServerConfig } from "./utils/config";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { gatsbyServer } from "./serve";

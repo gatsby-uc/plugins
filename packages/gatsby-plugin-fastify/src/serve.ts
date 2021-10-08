@@ -1,6 +1,6 @@
 import { serveGatsby } from "./plugins/gatsby";
 import Fastify from "fastify";
-import { getConfig } from "./utils";
+import { getConfig } from "./utils/config";
 import open from "open";
 
 export function gatsbyServer() {

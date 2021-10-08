@@ -1,5 +1,6 @@
 import path from "path";
 import type { FastifyPluginAsync } from "fastify";
+import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
 
 export type PathConfig = {
   matchPath: string | undefined;
@@ -7,27 +8,25 @@ export type PathConfig = {
 };
 
 export const handleClientOnlyPaths: FastifyPluginAsync<{
-  paths: PathConfig[];
+  paths: NoUndefinedField<PathConfig>[];
 }> = async (fastify, { paths }) => {
   for (const p of paths) {
-    if (p?.matchPath) {
-      console.info("Registering client-only route: ", p.path);
+    console.info("Registering client-only route: ", p.path);
 
-      //TODO: This code only works because I've editted the fastify-static implementation to not encodeURI on file names. https://github.com/fastify/fastify-static/issues/234
-      //TODO: Work around for https://github.com/fastify/fastify/issues/3331
-      const fastifyMatchPath = p.matchPath.replace(/\/\*$/, "*");
+    //TODO: This code only works because I've editted the fastify-static implementation to not encodeURI on file names. https://github.com/fastify/fastify-static/issues/234
+    //TODO: Work around for https://github.com/fastify/fastify/issues/3331
+    const fastifyMatchPath = p.matchPath.replace(/\/\*$/, "*");
 
-      fastify.get(
-        fastifyMatchPath,
-        {
-          exposeHeadRoute: true,
-          prefixTrailingSlash: "slash",
-        },
-        (_req, reply) => {
-          reply.header("x-gatsby-fastify", `served-by: client-only-routes`);
-          reply.sendFile("index.html", path.resolve("./public", p.path.replace("/", "")));
-        },
-      );
-    }
+    fastify.get(
+      fastifyMatchPath,
+      {
+        exposeHeadRoute: true,
+        prefixTrailingSlash: "slash",
+      },
+      (_req, reply) => {
+        reply.header("x-gatsby-fastify", `served-by: client-only-routes`);
+        reply.sendFile("index.html", path.resolve("./public", p.path.replace("/", "")));
+      },
+    );
   }
 };
