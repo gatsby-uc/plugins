@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { setConfig, ConfigKeyEnum, getServerConfg } from "./utils";
+import { setConfig, ConfigKeyEnum, getServerConfig } from "./utils/config";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { gatsbyServer } from "./serve";
@@ -43,7 +43,7 @@ yargs(hideBin(process.argv))
     (_yargs) => {},
     (argv) => {
       setConfig(ConfigKeyEnum.CLI, argv as any);
-      setConfig(ConfigKeyEnum.SERVER, getServerConfg());
+      setConfig(ConfigKeyEnum.SERVER, getServerConfig());
 
       gatsbyServer();
     },

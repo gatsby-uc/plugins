@@ -118,11 +118,9 @@ dist
 .DS_Store
 
 #build files
-/index.js
-/utils.js
 /serve.js
-/plugins
-/gatsby-*.js
-/*.d.ts
 /cli.js
-utils/*
+/gatsby-*.js
+/plugins
+/utils
+/gatsby

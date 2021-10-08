@@ -5,10 +5,10 @@ import { parse, posix } from "path";
 import kebabHash from "kebab-hash";
 import { fixedPagePath } from "gatsby-core-utils";
 
-import { GatsbyServerFeatureOptions } from "./plugins/gatsby";
-import { COMMON_BUNDLES, PAGE_DATA_DIR } from "./constants";
+import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
+import { COMMON_BUNDLES, PAGE_DATA_DIR } from "../utils/constants";
 
-export async function preloadLinks(pluginData, pluginOptions: GatsbyServerFeatureOptions) {
+export async function getPreloadLinks(pluginData, pluginOptions: GatsbyServerFeatureOptions) {
   const { preloadLinkHeaders } = pluginOptions;
   if (!preloadLinkHeaders) {
     return {};

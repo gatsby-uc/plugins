@@ -1,19 +1,22 @@
-import { writeFile, existsSync, mkdir } from "fs-extra";
+import { existsSync, mkdir, writeJSON } from "fs-extra";
 
-import type { GatsbyReduxStore } from "gatsby/dist/redux";
 import WebpackAssetsManifest from "webpack-assets-manifest";
 import { GatsbyNode } from "gatsby";
 
-import makePluginData from "./utils/plugin-data";
-import type { PathConfig } from "./plugins/clientPaths";
 import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
-import type { GatsbyNodeServerConfig } from "./utils";
-import { BUILD_CSS_STAGE, BUILD_HTML_STAGE } from "./utils/constants";
-import { preloadLinks } from "./utils/preloadLinks";
+import type { GatsbyNodeServerConfig } from "./utils/config";
+import makePluginData from "./utils/plugin-data";
+import {
+  BUILD_CSS_STAGE,
+  BUILD_HTML_STAGE,
+  CONFIG_FILE_NAME,
+  PATH_TO_CACHE,
+} from "./utils/constants";
+import { getPreloadLinks } from "./gatsby/preloadLinks";
+import getFunctionManifest from "./gatsby/functionsManifest";
+import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
 
-export type GatsbyApiInput = { pathPrefix: string; store: GatsbyReduxStore };
-
-const assetsManifest = {};
+const assetsManifest: WebpackAssetsManifest.Assets = {};
 
 // Inject a webpack plugin to get the file manifests so we can translate all link headers
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions, stage }) => {
@@ -33,45 +36,39 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ act
 };
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
-  { store, pathPrefix },
+  { store, pathPrefix, reporter },
   pluginOptions: GatsbyServerFeatureOptions,
 ) => {
-  const { pages, redirects } = store.getState();
   const pluginData = makePluginData(store, assetsManifest, pathPrefix);
 
-  // list all paths for client-only redirects later
-  //TODO: This could use some cleanup
-  const p: PathConfig[] = [];
-  for (const page of pages.values()) {
-    p.push({
-      matchPath: page.matchPath,
-      path: page.path,
-    });
-  }
-
-  // Handle Data needed for preload hints
-  const preloadLinkList = await preloadLinks(pluginData, pluginOptions);
+  // Get all data for server
+  const { redirects } = store.getState();
+  const preloadLinkList = await getPreloadLinks(pluginData, pluginOptions);
+  const functions = await getFunctionManifest(pluginData);
+  const clientSideRoutes = await getClientSideRoutes(pluginData);
 
   // @ts-ignore
   delete pluginOptions.plugins;
 
   const config: GatsbyNodeServerConfig = {
     ...pluginOptions,
-    paths: p,
+    clientSideRoutes,
     redirects,
     prefix: pathPrefix,
     preloadLinks: preloadLinkList,
+    functions,
   };
 
   // create cache if it doesn't exist for some reason.
-  if (!existsSync(".cache/")) {
-    await mkdir("./.cache");
+  if (!existsSync(PATH_TO_CACHE)) {
+    await mkdir(PATH_TO_CACHE);
   }
 
-  await writeFile(
-    pluginData.cacheFolder("gatsby-plugin-fastify.json"),
-    JSON.stringify(config, null, 2),
-  );
+  try {
+    await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
+  } catch (e) {
+    reporter.error("Error writing config file.", e, "gatsby-plugin-fastify");
+  }
 };
 
 export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {

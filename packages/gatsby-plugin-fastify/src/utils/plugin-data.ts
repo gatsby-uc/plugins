@@ -2,6 +2,9 @@
 
 import path from "path";
 import fs from "fs-extra";
+import { PATH_TO_CACHE, PATH_TO_FUNCTIONS, PATH_TO_PUBLIC } from "./constants";
+import type { Store } from "gatsby";
+import type WebpackAssetsManifest from "webpack-assets-manifest";
 
 export function buildPrefixer(prefix, ...paths) {
   return (...subpaths) => path.join(prefix, ...paths, ...subpaths);
@@ -10,11 +13,15 @@ export function buildPrefixer(prefix, ...paths) {
 // This function assembles data across the manifests and store to match a similar
 // shape of `static-entry.js`. With it, we can build headers that point to the correct
 // hashed filenames and ensure we pull in the componentChunkName.
-export default function makePluginData(store, assetsManifest, pathPrefix) {
+export default function makePluginData(
+  store: Store,
+  assetsManifest: WebpackAssetsManifest.Assets,
+  pathPrefix: string,
+) {
   const { program, pages, components } = store.getState();
-  const publicFolder = buildPrefixer(program.directory, `public`);
-  const functionsFolder = buildPrefixer(program.directory, `.cache`, `functions`);
-  const cacheFolder = buildPrefixer(program.directory, `.cache`);
+  const publicFolder = buildPrefixer(program.directory, PATH_TO_PUBLIC);
+  const functionsFolder = buildPrefixer(program.directory, PATH_TO_FUNCTIONS);
+  const configFolder = buildPrefixer(program.directory, PATH_TO_CACHE);
 
   const stats = fs.readJSONSync(publicFolder(`webpack.stats.json`));
   // Get all the files, not just the first
@@ -31,6 +38,6 @@ export default function makePluginData(store, assetsManifest, pathPrefix) {
     pathPrefix,
     publicFolder,
     functionsFolder,
-    cacheFolder,
+    configFolder,
   };
 }
