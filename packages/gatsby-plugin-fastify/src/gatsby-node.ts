@@ -5,7 +5,7 @@ import { GatsbyNode } from "gatsby";
 
 import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 import type { GatsbyNodeServerConfig } from "./utils/config";
-import makePluginData from "./utils/plugin-data";
+import { makePluginData } from "./utils/plugin-data";
 import {
   BUILD_CSS_STAGE,
   BUILD_HTML_STAGE,
@@ -39,7 +39,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
   pluginOptions: GatsbyServerFeatureOptions,
 ) => {
-  const pluginData = makePluginData(store, assetsManifest, pathPrefix);
+  const pluginData = await makePluginData(store, assetsManifest, pathPrefix);
 
   // Get all data for server
   const { redirects } = store.getState();

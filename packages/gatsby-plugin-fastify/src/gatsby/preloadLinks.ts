@@ -5,10 +5,15 @@ import { parse, posix } from "path";
 import kebabHash from "kebab-hash";
 import { fixedPagePath } from "gatsby-core-utils";
 
+import type { IGatsbyState } from "gatsby/dist/redux/types";
 import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
+import type { AssetManifest, PluginData } from "../utils/plugin-data";
 import { COMMON_BUNDLES, PAGE_DATA_DIR } from "../utils/constants";
 
-export async function getPreloadLinks(pluginData, pluginOptions: GatsbyServerFeatureOptions) {
+export async function getPreloadLinks(
+  pluginData: PluginData,
+  pluginOptions: GatsbyServerFeatureOptions,
+) {
   const { preloadLinkHeaders } = pluginOptions;
   if (!preloadLinkHeaders) {
     return {};
@@ -24,7 +29,17 @@ export async function getPreloadLinks(pluginData, pluginOptions: GatsbyServerFea
   });
 }
 
-function preloadHeadersByPage({ pages, manifest, pathPrefix, publicFolder }) {
+function preloadHeadersByPage({
+  pages,
+  manifest,
+  pathPrefix,
+  publicFolder,
+}: {
+  pages: IGatsbyState["pages"];
+  manifest: { [key: string]: string };
+  pathPrefix: string;
+  publicFolder: (...paths: string[]) => string;
+}) {
   const linksByPage = {};
 
   const appDataPath = publicFolder(PAGE_DATA_DIR, `app-data.json`);
@@ -59,7 +74,7 @@ function preloadHeadersByPage({ pages, manifest, pathPrefix, publicFolder }) {
   return linksByPage;
 }
 
-function getScriptPath(file, manifest) {
+function getScriptPath(file: string, manifest: AssetManifest) {
   const chunk = manifest[file];
 
   if (!chunk) {
@@ -67,7 +82,7 @@ function getScriptPath(file, manifest) {
   }
 
   // convert to array if it's not already
-  const chunks = Array.isArray(chunk) ? chunk : [chunk];
+  const chunks: string[] = Array.isArray(chunk) ? chunk : [chunk];
 
   return chunks.filter((script) => {
     const parsed = parse(script);
@@ -77,20 +92,20 @@ function getScriptPath(file, manifest) {
   });
 }
 
-function pathChunkName(path) {
+function pathChunkName(path: string) {
   const name = path === `/` ? `index` : kebabHash(path);
   return `path---${name}`;
 }
 
-function getPageDataPath(path) {
+function getPageDataPath(path: string) {
   return posix.join(`page-data`, fixedPagePath(path), `page-data.json`);
 }
 
-function headersPath(pathPrefix, path) {
+function headersPath(pathPrefix: string, path: string) {
   return `${pathPrefix}${path}`;
 }
 
-function linkHeaders(files, pathPrefix) {
+function linkHeaders(files: { fetch: string[]; script: string[] }, pathPrefix: string) {
   const linkHeaders: string[] = [];
   for (const resourceType in files) {
     files[resourceType].forEach((file) => {
@@ -101,7 +116,7 @@ function linkHeaders(files, pathPrefix) {
   return linkHeaders;
 }
 
-function linkTemplate(assetPath, type = `script`) {
+function linkTemplate(assetPath: string, type = `script`) {
   return `Link: <${assetPath}>; rel=preload; as=${type}${
     type === `fetch` ? `; crossorigin` : ``
   }; nopush`;
