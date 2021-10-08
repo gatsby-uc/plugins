@@ -1,19 +1,22 @@
-import path from "path";
-import fs from "fs";
+import { readJSONSync, existsSync } from "fs-extra";
 
-import { IRedirect } from "gatsby/dist/redux/types";
-import { PathConfig } from "./plugins/clientPaths";
-import { GatsbyServerFeatureOptions } from "./plugins/gatsby";
+import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
+import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
+import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
 
-export const CONFIG_FILE_NAME = "gatsby-plugin-node.json";
-export const CONFIG_FILE_PATH = "./public";
+import { PathConfig } from "../plugins/clientPaths";
+import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
+import { buildPrefixer } from "./plugin-data";
 
 let config: Partial<GfConfig> = {};
 
+const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
+
 export interface GatsbyNodeServerConfig extends GatsbyServerFeatureOptions {
-  paths: PathConfig[];
+  clientSideRoutes: NoUndefinedField<PathConfig>[];
   redirects: IRedirect[];
   prefix: string | undefined;
+  functions: IGatsbyFunction[];
 }
 
 export type GfCliOptions = {
@@ -56,11 +59,11 @@ export function setConfig(key: ConfigKeyEnum, incomingConfig: GetConfigOptions<C
   config[key] = incomingConfig;
 }
 
-export function getServerConfg(): GatsbyNodeServerConfig {
-  const configPath = path.join(CONFIG_FILE_PATH, CONFIG_FILE_NAME);
-  if (!fs.existsSync(configPath)) {
+export function getServerConfig(): GatsbyNodeServerConfig {
+  const configPath = configPrefixer(CONFIG_FILE_NAME);
+  if (!existsSync(configPath)) {
     console.error("Unable to find config @ ", configPath);
     throw Error("No Server config found, did you do a production Gatsby Build?");
   }
-  return JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" }));
+  return readJSONSync(configPath, { encoding: "utf8" });
 }

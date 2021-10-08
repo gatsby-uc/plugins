@@ -4314,6 +4314,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/fs-extra@npm:^9.0.13":
+  version: 9.0.13
+  resolution: "@types/fs-extra@npm:9.0.13"
+  dependencies:
+    "@types/node": "*"
+  checksum: add79e212acd5ac76b97b9045834e03a7996aef60a814185e0459088fd290519a3c1620865d588fa36c4498bf614210d2a703af5cf80aa1dbc125db78f6edac3
+  languageName: node
+  linkType: hard
+
 "@types/get-port@npm:^3.2.0":
   version: 3.2.0
   resolution: "@types/get-port@npm:3.2.0"
@@ -4975,17 +4984,6 @@ __metadata:
   dependencies:
     event-target-shim: ^5.0.0
   checksum: 170bdba9b47b7e65906a28c8ce4f38a7a369d78e2271706f020849c1bfe0ee2067d4261df8bbb66eb84f79208fd5b710df759d64191db58cfba7ce8ef9c54b75
-  languageName: node
-  linkType: hard
-
-"abstract-cache@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "abstract-cache@npm:1.0.1"
-  dependencies:
-    clone: ^2.1.1
-    lru_map: ^0.3.3
-    merge-options: ^1.0.0
-  checksum: 55c749f4b02dca39aae8aefb1a2907801cd4530c6888e6e64ccd8f491e3e5ae524f634aad02cb3642aebc73a97199cb3511bf2b221a9bdd18ed1082627eeab9f
   languageName: node
   linkType: hard
 
@@ -6772,13 +6770,6 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: d06418b7335897209e77bdd430d04f882189582e67bd1f75a04565f3f07f5b3f119a9d670c943b6697d0afb100f03b866b3b8a1f91d4d02d72c4ecf2bb64b5dd
-  languageName: node
-  linkType: hard
-
-"clone@npm:^2.1.1":
-  version: 2.1.2
-  resolution: "clone@npm:2.1.2"
-  checksum: aaf106e9bc025b21333e2f4c12da539b568db4925c0501a1bf4070836c9e848c892fa22c35548ce0d1132b08bbbfa17a00144fe58fccdab6fa900fec4250f67d
   languageName: node
   linkType: hard
 
@@ -9479,17 +9470,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-caching@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "fastify-caching@npm:6.1.0"
-  dependencies:
-    abstract-cache: ^1.0.1
-    fastify-plugin: ^3.0.0
-    uid-safe: ^2.1.5
-  checksum: 0bfd9bd2ba57340075c99e4839d1ee8ca553f17586911281715dac93685c6f14dee957e8a3fc862095934914f0d2b492f3f0bf60f379387eb09bf7dbf6fb5b13
-  languageName: node
-  linkType: hard
-
 "fastify-compress@npm:^3.6.0":
   version: 3.6.0
   resolution: "fastify-compress@npm:3.6.0"
@@ -10223,14 +10203,15 @@ __metadata:
     "@babel/cli": ^7.15.7
     "@babel/core": ^7.15.5
     "@babel/runtime": ^7.15.4
+    "@types/fs-extra": ^9.0.13
     "@types/node": ^14.17.20
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
     fastify: ^3.22.0
-    fastify-caching: ^6.1.0
     fastify-compress: ^3.6.0
     fastify-plugin: ^3.0.0
     fastify-static: ^4.2.4
+    fs-extra: ^10.0.0
     gatsby: ^3.14.1
     gatsby-plugin-utils: ^1.14.0
     open: ^8.2.1
@@ -12516,7 +12497,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-plain-obj@npm:^1.0.0, is-plain-obj@npm:^1.1, is-plain-obj@npm:^1.1.0":
+"is-plain-obj@npm:^1.0.0, is-plain-obj@npm:^1.1.0":
   version: 1.1.0
   resolution: "is-plain-obj@npm:1.1.0"
   checksum: 0ee04807797aad50859652a7467481816cbb57e5cc97d813a7dcd8915da8195dc68c436010bf39d195226cde6a2d352f4b815f16f26b7bf486a5754290629931
@@ -14315,13 +14296,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru_map@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "lru_map@npm:0.3.3"
-  checksum: ca9dd43c65ed7a4f117c548028101c5b6855e10923ea9d1f635af53ad20c5868ff428c364d454a7b57fe391b89c704982275410c3c5099cca5aeee00d76e169a
-  languageName: node
-  linkType: hard
-
 "macos-release@npm:^2.2.0":
   version: 2.5.0
   resolution: "macos-release@npm:2.5.0"
@@ -14652,15 +14626,6 @@ __metadata:
   version: 1.0.1
   resolution: "merge-descriptors@npm:1.0.1"
   checksum: 5abc259d2ae25bb06d19ce2b94a21632583c74e2a9109ee1ba7fd147aa7362b380d971e0251069f8b3eb7d48c21ac839e21fa177b335e82c76ec172e30c31a26
-  languageName: node
-  linkType: hard
-
-"merge-options@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "merge-options@npm:1.0.1"
-  dependencies:
-    is-plain-obj: ^1.1
-  checksum: 7e3d5d658879038cdc225107205dacd68fd8e22cf4f54fb37fd9e0687f7eb9efd7f0f2163577675325a3a72c9df0566e23911d0d8a2448ca8f83eee5199dd990
   languageName: node
   linkType: hard
 
@@ -17509,13 +17474,6 @@ __metadata:
   version: 5.1.1
   resolution: "quick-lru@npm:5.1.1"
   checksum: a516faa25574be7947969883e6068dbe4aa19e8ef8e8e0fd96cddd6d36485e9106d85c0041a27153286b0770b381328f4072aa40d3b18a19f5f7d2b78b94b5ed
-  languageName: node
-  linkType: hard
-
-"random-bytes@npm:~1.0.0":
-  version: 1.0.0
-  resolution: "random-bytes@npm:1.0.0"
-  checksum: 09faa256394aa2ca9754aa57e92a27c452c3e97ffb266e98bebb517332e9df7168fea393159f88d884febce949ba8bec8ddb02f03342da6c6023ecc7b155e0ae
   languageName: node
   linkType: hard
 
@@ -20520,15 +20478,6 @@ typescript@^3.8.3:
   version: 0.0.6
   resolution: "uid-number@npm:0.0.6"
   checksum: ff17525bb9b17313b839222efa1fe69baf136992cf675e8d1d50e9b1ef4563742968e390a96a57645d99cf8b283866c36ef9747bbf186bbbf2ef601b60ed4443
-  languageName: node
-  linkType: hard
-
-"uid-safe@npm:^2.1.5":
-  version: 2.1.5
-  resolution: "uid-safe@npm:2.1.5"
-  dependencies:
-    random-bytes: ~1.0.0
-  checksum: 07536043da9a026f4a2bc397543d0ace7587449afa1d9d2c4fd3ce76af8a5263a678788bcc429dff499ef29d45843cd5ee9d05434450fcfc19cc661229f703d1
   languageName: node
   linkType: hard
 
