@@ -30,22 +30,22 @@
   "dependencies": {
     "@babel/runtime": "^7.15.4",
     "fs-extra": "^10.0.0",
-    "open": "^8.2.1",
+    "open": "^8.3.0",
     "picomatch": "^2.3.0",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.15.8",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^14.17.20",
+    "@types/node": "^14.17.21",
     "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3",
     "fastify": "^3.22.0",
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
-    "fastify-static": "^4.2.4",
-    "gatsby": "^3.14.1",
+    "fastify-static": "^4.4.0",
+    "gatsby": "^3.14.2",
     "gatsby-plugin-utils": "^1.14.0"
   },
   "peerDependencies": {
