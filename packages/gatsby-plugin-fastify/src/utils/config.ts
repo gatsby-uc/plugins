@@ -17,6 +17,7 @@ export interface GatsbyNodeServerConfig extends GatsbyServerFeatureOptions {
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];
+  preloadLinks: { [key: string]: string[] };
 }
 
 export type GfCliOptions = {

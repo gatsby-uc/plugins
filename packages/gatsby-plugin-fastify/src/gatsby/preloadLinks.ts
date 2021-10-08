@@ -14,8 +14,8 @@ export async function getPreloadLinks(
   pluginData: PluginData,
   pluginOptions: GatsbyServerFeatureOptions,
 ) {
-  const { preloadLinkHeaders } = pluginOptions;
-  if (!preloadLinkHeaders) {
+  const { earlyHints } = pluginOptions;
+  if (!earlyHints) {
     return {};
   }
 

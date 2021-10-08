@@ -6,12 +6,14 @@ import { handleStatic } from "./static";
 import { getConfig } from "../utils/config";
 
 import fastifyCompress from "fastify-compress";
+import fastifyEarlyHints from "fastify-early-hints";
 import type { FastifyPluginAsync } from "fastify";
 import type { PluginOptions } from "gatsby";
 
 export interface GatsbyServerFeatureOptions extends PluginOptions {
   compression: boolean;
   preloadLinkHeaders: boolean;
+  earlyHints: boolean;
 }
 
 export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
@@ -25,12 +27,17 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
     console.info("Starting server with config: ", serverConfig);
   }
 
-  const { clientSideRoutes, redirects, compression, functions } = serverConfig;
+  const { clientSideRoutes, redirects, compression, functions, earlyHints } = serverConfig;
 
   // Optimizations
   if (compression) {
     console.info(`Compression enabled.`);
     await fastify.register(fastifyCompress, {});
+  }
+
+  if (earlyHints) {
+    console.info(`Early hints enabled.`);
+    await fastify.register(fastifyEarlyHints);
   }
 
   // Gatsby Functions

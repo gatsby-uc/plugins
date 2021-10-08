@@ -9520,6 +9520,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fastify-early-hints@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "fastify-early-hints@npm:0.0.3"
+  dependencies:
+    fastify-plugin: ^3.0.0
+    fastify-warning: ^0.2.0
+  checksum: 7dd4ce65e37946ea588c627ac0152854f6319b0cd6d67ef807d092f187ad16a7c0cec78b4895e1bb957fe2f9e18cf6199471d41d11f1f25d31e39e9582b1bf2f
+  languageName: node
+  linkType: hard
+
 "fastify-error@npm:^0.3.0":
   version: 0.3.1
   resolution: "fastify-error@npm:0.3.1"
@@ -10237,6 +10247,7 @@ __metadata:
     cross-env: ^7.0.3
     fastify: ^3.22.0
     fastify-compress: ^3.6.0
+    fastify-early-hints: ^0.0.3
     fastify-plugin: ^3.0.0
     fastify-static: ^4.2.4
     gatsby: ^3.14.1
