@@ -38,6 +38,7 @@ export const handleClientOnlyPaths: FastifyPluginAsync<{
           console.log("No preload links found for", p.path, preloadLinks, linkList);
         }
 
+        reply.header("Origin-Trial", "");
         reply.header("x-gatsby-fastify", `served-by: client-only-routes`);
         reply.sendFile("index.html", path.resolve("./public", p.path.replace("/", "")));
       },
