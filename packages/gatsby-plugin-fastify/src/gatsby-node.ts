@@ -1,45 +1,49 @@
-import fs from "fs";
-import type { GatsbyReduxStore } from "gatsby/dist/redux";
-import type { PathConfig } from "./plugins/clientPaths";
+import { existsSync, mkdir, writeJSON } from "fs-extra";
+
 import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
-import type { GatsbyNodeServerConfig } from "./utils";
-import type { PluginOptionsSchemaJoi } from "gatsby-plugin-utils";
+import type { GatsbyNodeServerConfig } from "./utils/config";
+import type { GatsbyNode } from "gatsby";
 
-export type GatsbyApiInput = { pathPrefix: string; store: GatsbyReduxStore };
+import { makePluginData } from "./utils/plugin-data";
+import { getFunctionManifest } from "./gatsby/functionsManifest";
+import { CONFIG_FILE_NAME, PATH_TO_CACHE } from "./utils/constants";
+import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
 
-export function onPostBuild(
-  { store, pathPrefix }: GatsbyApiInput,
+export const onPostBuild: GatsbyNode["onPostBuild"] = async (
+  { store, pathPrefix, reporter },
   pluginOptions: GatsbyServerFeatureOptions,
-) {
-  const { pages, redirects } = store.getState();
+) => {
+  const { redirects } = store.getState();
 
-  const p: PathConfig[] = [];
-  for (const page of pages.values()) {
-    p.push({
-      matchPath: page.matchPath,
-      path: page.path,
-    });
-  }
+  const pluginData = await makePluginData(store, pathPrefix);
+
+  const functions = await getFunctionManifest(pluginData);
+  const clientSideRoutes = await getClientSideRoutes(pluginData);
 
   // @ts-ignore
   delete pluginOptions.plugins;
 
   const config: GatsbyNodeServerConfig = {
     ...pluginOptions,
-    paths: p,
+    clientSideRoutes,
     redirects,
     prefix: pathPrefix,
+    functions,
   };
 
-  if (!fs.existsSync("public/")) {
-    fs.mkdirSync("public/");
+  if (!existsSync(PATH_TO_CACHE)) {
+    await mkdir(PATH_TO_CACHE);
   }
 
-  fs.writeFileSync("public/gatsby-plugin-node.json", JSON.stringify(config, null, 2));
-}
+  try {
+    await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
+  } catch (e) {
+    reporter.error("Error writing config file.", e, "gatsby-plugin-fastify");
+  }
+};
 
-export function pluginOptionsSchema({ Joi }: { Joi: PluginOptionsSchemaJoi }) {
+export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
   return Joi.object({
     compression: Joi.boolean().default(true),
   });
-}
+};

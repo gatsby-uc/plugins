@@ -1,6 +1,7 @@
 import path from "path";
 
 import type { FastifyPluginAsync } from "fastify";
+import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
 
 export type PathConfig = {
   matchPath: string | undefined;
@@ -8,15 +9,13 @@ export type PathConfig = {
 };
 
 export const handleClientOnlyPaths: FastifyPluginAsync<{
-  paths: PathConfig[];
+  paths: NoUndefinedField<PathConfig>[];
 }> = async (fastify, { paths }) => {
   for (const p of paths) {
-    if (p?.matchPath) {
-      console.info("Registering client-only route: ", p.path);
+    console.info("Registering client-only route: ", p.path);
 
-      fastify.get(p.matchPath, (_req, reply) => {
-        reply.sendFile("index.html", path.resolve("./public", p.path.replace("/", "")));
-      });
-    }
+    fastify.get(p.matchPath, (_req, reply) => {
+      reply.sendFile("index.html", path.resolve("./public", p.path.replace("/", "")));
+    });
   }
 };
