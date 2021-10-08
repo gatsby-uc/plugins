@@ -1,5 +1,13 @@
 # gatsby-plugin-fastify
 
+## 0.4.3
+
+### Patch Changes
+
+- [#82](https://github.com/gatsby-uc/plugins/pull/82) [`eb12e74`](https://github.com/gatsby-uc/plugins/commit/eb12e74e05268ee7778f00711772749cd7d8ab6c) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update non-major dependency versions
+
+* [#85](https://github.com/gatsby-uc/plugins/pull/85) [`80aa8f3`](https://github.com/gatsby-uc/plugins/commit/80aa8f39c79bed433b47dad39810767710d0bdd2) Thanks [@moonmeister](https://github.com/moonmeister)! - chore(gatsby-plugin-fastify): Misc cleanup and typing improvements
+
 ## 0.4.2
 
 ### Patch Changes

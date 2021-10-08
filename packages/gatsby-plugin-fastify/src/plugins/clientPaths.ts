@@ -1,11 +1,9 @@
 import path from "path";
 
-import { PATH_TO_PUBLIC } from "../utils/constants";
-
 import type { FastifyPluginAsync } from "fastify";
 import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
+
 import { getConfig } from "../utils/config";
-import { link } from "fs";
 
 export type PathConfig = {
   matchPath: string | undefined;

@@ -12,7 +12,6 @@ import type { PluginOptions } from "gatsby";
 
 export interface GatsbyServerFeatureOptions extends PluginOptions {
   compression: boolean;
-  preloadLinkHeaders: boolean;
   earlyHints: boolean;
 }
 

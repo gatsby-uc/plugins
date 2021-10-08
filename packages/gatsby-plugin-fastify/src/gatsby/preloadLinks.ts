@@ -36,7 +36,7 @@ function preloadHeadersByPage({
   publicFolder,
 }: {
   pages: IGatsbyState["pages"];
-  manifest: { [key: string]: string };
+  manifest: AssetManifest;
   pathPrefix: string;
   publicFolder: (...paths: string[]) => string;
 }) {

@@ -1,7 +1,6 @@
 import { existsSync, mkdir, writeJSON } from "fs-extra";
-
 import WebpackAssetsManifest from "webpack-assets-manifest";
-import { GatsbyNode } from "gatsby";
+import type { GatsbyNode } from "gatsby";
 
 import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 import type { GatsbyNodeServerConfig } from "./utils/config";
@@ -43,6 +42,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 
   // Get all data for server
   const { redirects } = store.getState();
+
   const preloadLinkList = await getPreloadLinks(pluginData, pluginOptions);
   const functions = await getFunctionManifest(pluginData);
   const clientSideRoutes = await getClientSideRoutes(pluginData);

@@ -13,4 +13,4 @@ export const PATH_TO_CACHE = ".cache";
 // Config Values
 
 export const CONFIG_FILE_NAME = "gatsby-plugin-fastify.json";
-export const CONFIG_FILE_PATH = ".cache";
+export const CONFIG_FILE_PATH = PATH_TO_CACHE;
