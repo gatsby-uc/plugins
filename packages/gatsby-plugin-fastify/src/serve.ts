@@ -22,7 +22,7 @@ export async function gatsbyServer() {
 
     if (openBrowser) open(listeningOn);
   } catch (err) {
-    console.error("Failed to start Fastify err");
+    console.error("Failed to start Fastify", err);
     process.exit(1);
   }
 
