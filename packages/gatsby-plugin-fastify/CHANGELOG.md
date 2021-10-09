@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.4.4
+
+### Patch Changes
+
+- [#87](https://github.com/gatsby-uc/plugins/pull/87) [`5529aad`](https://github.com/gatsby-uc/plugins/commit/5529aadf0f65c4b0c193131d606c3ce7d8d06651) Thanks [@moonmeister](https://github.com/moonmeister)! - Update main server execution to use async/await from callbacks
+
 ## 0.4.3
 
 ### Patch Changes
