@@ -1,5 +1,11 @@
 # gatsby-plugin-relative-ci
 
+## 1.2.1
+
+### Patch Changes
+
+- [#89](https://github.com/gatsby-uc/plugins/pull/89) [`e25969c`](https://github.com/gatsby-uc/plugins/commit/e25969c6e9ac10e3cbaaf0e96256f8b050e23bb7) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update dependency @babel/core to ^7.15.8
+
 ## 1.2.0
 
 ### Minor Changes
