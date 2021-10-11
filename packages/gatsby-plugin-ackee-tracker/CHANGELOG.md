@@ -1,5 +1,11 @@
 # gatsby-plugin-ackee-tracker
 
+## 3.0.3
+
+### Patch Changes
+
+- [#91](https://github.com/gatsby-uc/plugins/pull/91) [`2609944`](https://github.com/gatsby-uc/plugins/commit/2609944278068cb59a0fec6cdb35224956de85f4) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-ackee-tracker): update dependency @babel/core to ^7.15.8
+
 ## 3.0.2
 
 ### Patch Changes
