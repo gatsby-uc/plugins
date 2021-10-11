@@ -9,12 +9,13 @@
     "packages/**/test-site"
   ],
   "scripts": {
-    "ac": "all-contributors",
+    "ac": "yarn all-contributors",
     "build": "yarn workspaces foreach -vpi --no-private run build",
+    "cs": "yarn changeset",
     "format": "yarn run lint --write",
     "lint": "yarn prettier \"**/*.{js,ts,md,json,yml,json}\" --check",
-    "publish-ci": "lerna publish from-package -y --no-verify-access",
-    "postinstall": "husky install",
+    "publish-ci": "yarn build && yarn changeset publish",
+    "postinstall": "yarn husky install",
     "test": "yarn workspaces foreach -vp run test"
   },
   "devDependencies": {
@@ -22,7 +23,6 @@
     "@changesets/cli": "^2.17.0",
     "all-contributors-cli": "^6.20.0",
     "husky": "^7.0.2",
-    "lerna": "^4.0.0",
     "lint-staged": "^11.2.3",
     "prettier": "^2.4.1"
   },
