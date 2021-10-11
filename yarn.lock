@@ -10611,12 +10611,12 @@ __metadata:
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
     "@babel/cli": ^7.15.7
-    "@babel/core": ^7.15.5
+    "@babel/core": ^7.15.8
     "@octokit/rest": ^17.11.2
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
     gatsby-source-filesystem: ^3.14.0
-    mime-types: ^2.1.32
+    mime-types: ^2.1.33
     packagist-api-client: ^2.0.0
     prettier: ^2.4.1
   peerDependencies:
@@ -14686,12 +14686,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.30, mime-types@npm:^2.1.32, mime-types@npm:~2.1.19, mime-types@npm:~2.1.24":
+"mime-db@npm:1.50.0":
+  version: 1.50.0
+  resolution: "mime-db@npm:1.50.0"
+  checksum: 95fcc19c3664ae72391c8a7e4015dde7fb6817c98c951493ca3a1d48050feb8ee08810a372ce7d9e16310042d26e5bda168916f600583a9a583655eeea8ff5f5
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.30, mime-types@npm:~2.1.19, mime-types@npm:~2.1.24":
   version: 2.1.32
   resolution: "mime-types@npm:2.1.32"
   dependencies:
     mime-db: 1.49.0
   checksum: 4487dfd2f872126d2c219ec731ad47a6169a438d5a4cce6ecef7594ce08eaefaf0d85429485a76ec005f095016c7ec488a24cf8bfcc0ea06de0355e23395746f
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:^2.1.33":
+  version: 2.1.33
+  resolution: "mime-types@npm:2.1.33"
+  dependencies:
+    mime-db: 1.50.0
+  checksum: 05f2a0b3f169fbc51d79bdc7674ceb379dd07dbeadb0143059a7def865224686ee9f9051aeb340e98b6c11dbc06794ce0122181db4312cb1ad054fd90b0d510e
   languageName: node
   linkType: hard
 
