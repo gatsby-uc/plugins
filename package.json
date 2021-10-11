@@ -23,7 +23,7 @@
     "all-contributors-cli": "^6.20.0",
     "husky": "^7.0.2",
     "lerna": "^4.0.0",
-    "lint-staged": "^11.1.2",
+    "lint-staged": "^11.2.3",
     "prettier": "^2.4.1"
   },
   "packageManager": "yarn@3.1.0-rc.6",
