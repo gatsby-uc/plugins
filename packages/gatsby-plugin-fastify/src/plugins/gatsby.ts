@@ -7,10 +7,15 @@ import { getConfig } from "../utils/config";
 
 import fastifyCompress from "fastify-compress";
 import type { FastifyPluginAsync } from "fastify";
-import type { PluginOptions } from "gatsby";
 
-export interface GatsbyServerFeatureOptions extends PluginOptions {
+export interface GatsbyServerFeatureOptions {
   compression: boolean;
+  headers: {
+    [key: string]: string;
+  };
+  mergeSecurityHeaders: boolean;
+  mergeCacheHeaders: boolean;
+  plugins: unknown[];
 }
 
 export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {

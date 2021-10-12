@@ -3,6 +3,7 @@ import fastifyStatic, { FastifyStaticOptions } from "fastify-static";
 import fp from "fastify-plugin";
 import path from "path";
 import { isMatch } from "micromatch";
+import { IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
@@ -14,9 +15,9 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
           isMatch(path, "!**/sw.js")
         ) {
-          reply.setHeader("cache-control", "public, max-age=31536000, immutable");
+          reply.setHeader(...IMMUTABLE_CACHING_HEADER);
         } else {
-          reply.setHeader("cache-control", "public, max-age=0, must-revalidate");
+          reply.setHeader(...NEVER_CACHE_HEADER);
         }
       },
       ...opts,

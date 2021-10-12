@@ -30,8 +30,10 @@
   "dependencies": {
     "@babel/runtime": "^7.15.4",
     "fs-extra": "^10.0.0",
+    "lodash": "^4.17.21",
     "micromatch": "^4.0.4",
     "open": "^8.3.0",
+    "webpack-assets-manifest": "^5.0.6",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
@@ -39,6 +41,7 @@
     "@babel/core": "^7.15.8",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^14.17.21",
+    "@types/webpack-assets-manifest": "^5.0.2",
     "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3",
     "fastify": "^3.22.0",
