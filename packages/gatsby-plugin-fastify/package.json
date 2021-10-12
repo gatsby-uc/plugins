@@ -30,8 +30,8 @@
   "dependencies": {
     "@babel/runtime": "^7.15.4",
     "fs-extra": "^10.0.0",
+    "micromatch": "^4.0.4",
     "open": "^8.3.0",
-    "picomatch": "^2.3.0",
     "yargs": "^17.2.1"
   },
   "devDependencies": {

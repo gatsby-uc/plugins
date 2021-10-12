@@ -2,7 +2,7 @@ import { FastifyPluginAsync } from "fastify";
 import fastifyStatic, { FastifyStaticOptions } from "fastify-static";
 import fp from "fastify-plugin";
 import path from "path";
-import { isMatch } from "picomatch";
+import { isMatch } from "micromatch";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {

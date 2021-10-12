@@ -9082,8 +9082,8 @@ __metadata:
     fs-extra: ^10.0.0
     gatsby: ^3.14.2
     gatsby-plugin-utils: ^1.14.0
+    micromatch: ^4.0.4
     open: ^8.3.0
-    picomatch: ^2.3.0
     yargs: ^17.2.1
   peerDependencies:
     fastify: ^3.19.0
@@ -14593,7 +14593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.3, picomatch@npm:^2.3.0":
+"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.3":
   version: 2.3.0
   resolution: "picomatch@npm:2.3.0"
   checksum: 16818720ea7c5872b6af110760dee856c8e4cd79aed1c7a006d076b1cc09eff3ae41ca5019966694c33fbd2e1cc6ea617ab10e4adac6df06556168f13be3fca2
