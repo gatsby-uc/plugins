@@ -1,7 +1,7 @@
 import fastifyStatic, { FastifyStaticOptions } from "@fastify/static";
 import fp from "fastify-plugin";
 import { resolve } from "node:path";
-import { isMatch } from "picomatch";
+import { isMatch } from "micromatch";
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
 import { appendModuleHeader } from "../utils/headers";
 
