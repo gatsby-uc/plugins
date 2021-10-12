@@ -3810,6 +3810,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webpack-assets-manifest@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "@types/webpack-assets-manifest@npm:5.0.2"
+  dependencies:
+    "@types/node": "*"
+    tapable: ^2.2.0
+    webpack: ^5
+  checksum: 34ae621ae6a75f33d1dd0fb7fbafda1de76cc0bd798f1b2cc0707529df0d8f97cf4d6eb22ce7c4caee73564b132ae3558e49e122d6ddf204c0b503b8cdaa19b1
+  languageName: node
+  linkType: hard
+
 "@types/websocket@npm:1.0.2":
   version: 1.0.2
   resolution: "@types/websocket@npm:1.0.2"
@@ -5636,7 +5647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
+"chalk@npm:^4.0, chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -6857,7 +6868,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deepmerge@npm:^4.0.0, deepmerge@npm:^4.2.2":
+"deepmerge@npm:^4.0, deepmerge@npm:^4.0.0, deepmerge@npm:^4.2.2":
   version: 4.2.2
   resolution: "deepmerge@npm:4.2.2"
   checksum: a8c43a1ed8d6d1ed2b5bf569fa4c8eb9f0924034baf75d5d406e47e157a451075c4db353efea7b6bcc56ec48116a8ce72fccf867b6e078e7c561904b5897530b
@@ -7441,6 +7452,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"enhanced-resolve@npm:^5.8.3":
+  version: 5.8.3
+  resolution: "enhanced-resolve@npm:5.8.3"
+  dependencies:
+    graceful-fs: ^4.2.4
+    tapable: ^2.2.0
+  checksum: d79fbe531106448b768bb0673fb623ec0202d7ee70373ab7d4f4745d5dfe0806f38c9db7e7da8c941288fe475ab3d538db3791fce522056eeea40ca398c9e287
+  languageName: node
+  linkType: hard
+
 "enquirer@npm:^2.3.0, enquirer@npm:^2.3.5, enquirer@npm:^2.3.6":
   version: 2.3.6
   resolution: "enquirer@npm:2.3.6"
@@ -7535,6 +7556,13 @@ __metadata:
   version: 0.7.1
   resolution: "es-module-lexer@npm:0.7.1"
   checksum: c66fb633cc521529862818caf603897d58d30442c885a1a1ed16823ddbbb8a437e3952454a4b2650242df1c1b4d0efa42fedbe49594e3ef2ceb3c891cf1211dd
+  languageName: node
+  linkType: hard
+
+"es-module-lexer@npm:^0.9.0":
+  version: 0.9.3
+  resolution: "es-module-lexer@npm:0.9.3"
+  checksum: 84bbab23c396281db2c906c766af58b1ae2a1a2599844a504df10b9e8dc77ec800b3211fdaa133ff700f5703d791198807bba25d9667392d27a5e9feda344da8
   languageName: node
   linkType: hard
 
@@ -9073,6 +9101,7 @@ __metadata:
     "@babel/runtime": ^7.15.4
     "@types/fs-extra": ^9.0.13
     "@types/node": ^14.17.21
+    "@types/webpack-assets-manifest": ^5.0.2
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
     fastify: ^3.22.0
@@ -9082,8 +9111,10 @@ __metadata:
     fs-extra: ^10.0.0
     gatsby: ^3.14.2
     gatsby-plugin-utils: ^1.14.0
+    lodash: ^4.17.21
     micromatch: ^4.0.4
     open: ^8.3.0
+    webpack-assets-manifest: ^5.0.6
     yargs: ^17.2.1
   peerDependencies:
     fastify: ^3.19.0
@@ -12539,6 +12570,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lockfile@npm:^1.0":
+  version: 1.0.4
+  resolution: "lockfile@npm:1.0.4"
+  dependencies:
+    signal-exit: ^3.0.2
+  checksum: 8de35aace8acbe883cbca3cc3959e88904d57c79dccd4afffc64aea8f9cf7b4c63598d08b8add66fbf381f8fb3ce4fd4c518cd231c797c266b6c790eb7b33abc
+  languageName: node
+  linkType: hard
+
 "lodash.clonedeep@npm:4.5.0, lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
@@ -12588,10 +12628,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.get@npm:^4":
+"lodash.get@npm:^4, lodash.get@npm:^4.0":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
+  languageName: node
+  linkType: hard
+
+"lodash.has@npm:^4.0":
+  version: 4.5.2
+  resolution: "lodash.has@npm:4.5.2"
+  checksum: b3ec829a86852331d48b3730ff06088a283d128a3965aa521ffd942bcf5c82e06bed3164ff7a7751d11e768d88f0d7bab316192091489caf20f452d42f7055d5
   languageName: node
   linkType: hard
 
@@ -16438,7 +16485,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^3.0.0, schema-utils@npm:^3.1.0, schema-utils@npm:^3.1.1":
+"schema-utils@npm:^3.0, schema-utils@npm:^3.0.0, schema-utils@npm:^3.1.0, schema-utils@npm:^3.1.1":
   version: 3.1.1
   resolution: "schema-utils@npm:3.1.1"
   dependencies:
@@ -17697,7 +17744,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tapable@npm:^2.1.1, tapable@npm:^2.2.0":
+"tapable@npm:^2.0, tapable@npm:^2.1.1, tapable@npm:^2.2.0":
   version: 2.2.1
   resolution: "tapable@npm:2.2.1"
   checksum: 3b7a1b4d86fa940aad46d9e73d1e8739335efd4c48322cb37d073eb6f80f5281889bf0320c6d8ffcfa1a0dd5bfdbd0f9d037e252ef972aca595330538aac4d51
@@ -18905,6 +18952,23 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
+"webpack-assets-manifest@npm:^5.0.6":
+  version: 5.0.6
+  resolution: "webpack-assets-manifest@npm:5.0.6"
+  dependencies:
+    chalk: ^4.0
+    deepmerge: ^4.0
+    lockfile: ^1.0
+    lodash.get: ^4.0
+    lodash.has: ^4.0
+    schema-utils: ^3.0
+    tapable: ^2.0
+  peerDependencies:
+    webpack: ^5.2.0
+  checksum: cf8d71527cc45d6c252a5a576f956a8d385fed24fcbfe800c68bed77d69f4359c2fbf85f2fa9e3ca6070d895cc8d66d46eeab2cdebd48a0e9ca8024d3289f9d0
+  languageName: node
+  linkType: hard
+
 "webpack-dev-middleware@npm:^4.1.0":
   version: 4.3.0
   resolution: "webpack-dev-middleware@npm:4.3.0"
@@ -18961,6 +19025,43 @@ typescript@^3.8.3:
   dependencies:
     debug: ^3.0.0
   checksum: a1c19478a23eaebf4ee1ce7fa0a7a33204624a3676dc12f92f02197fa7ff3ef0007883b2fcc22b0ae2f106d3a4abc42fb9f8da103e9bec3ad82012b745bcf593
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5":
+  version: 5.58.1
+  resolution: "webpack@npm:5.58.1"
+  dependencies:
+    "@types/eslint-scope": ^3.7.0
+    "@types/estree": ^0.0.50
+    "@webassemblyjs/ast": 1.11.1
+    "@webassemblyjs/wasm-edit": 1.11.1
+    "@webassemblyjs/wasm-parser": 1.11.1
+    acorn: ^8.4.1
+    acorn-import-assertions: ^1.7.6
+    browserslist: ^4.14.5
+    chrome-trace-event: ^1.0.2
+    enhanced-resolve: ^5.8.3
+    es-module-lexer: ^0.9.0
+    eslint-scope: 5.1.1
+    events: ^3.2.0
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.2.4
+    json-parse-better-errors: ^1.0.2
+    loader-runner: ^4.2.0
+    mime-types: ^2.1.27
+    neo-async: ^2.6.2
+    schema-utils: ^3.1.0
+    tapable: ^2.1.1
+    terser-webpack-plugin: ^5.1.3
+    watchpack: ^2.2.0
+    webpack-sources: ^3.2.0
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: e05576c5c7410c9ef25dc3595a870f93b34e3b44778e7df5ccbc1d40a51edb755223959f938b6e8b9b4e2285eb938da2464a08c9103597ff3131cb98c19a1d86
   languageName: node
   linkType: hard
 
