@@ -1,4 +1,5 @@
 import { writeJSON } from "fs-extra";
+import WebpackAssetsManifest from "webpack-assets-manifest";
 
 import { hasFeature } from "gatsby-plugin-utils";
 
@@ -7,10 +8,34 @@ import type { GatsbyNode } from "gatsby";
 
 import { makePluginData } from "./utils/plugin-data";
 import { getFunctionManifest } from "./gatsby/funcitons-manifest";
-import { CONFIG_FILE_NAME } from "./utils/constants";
 import { getClientSideRoutes } from "./gatsby/client-side-route";
 import { getServerSideRoutes } from "./gatsby/server-routes";
 import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
+import {
+  CONFIG_FILE_NAME,
+  BUILD_HTML_STAGE,
+  BUILD_CSS_STAGE,
+} from "./utils/constants";
+import { buildHeadersProgram } from "./gatsby/headerBuilder";
+
+const assetsManifest: WebpackAssetsManifest.Assets = {};
+
+// Inject a webpack plugin to get the file manifests so we can translate all link headers
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions, stage }) => {
+  //@ts-expect-error
+  if (stage !== BUILD_HTML_STAGE && stage !== BUILD_CSS_STAGE) {
+    return;
+  }
+
+  actions.setWebpackConfig({
+    plugins: [
+      new WebpackAssetsManifest({
+        assets: assetsManifest, // mutates object with entries
+        merge: true,
+      }),
+    ],
+  });
+};
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
@@ -23,6 +48,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     const functions = await getFunctionManifest(pluginData);
     const clientSideRoutes = await getClientSideRoutes(pluginData);
     const serverSideRoutes = await getServerSideRoutes(pluginData);
+    const headers = await buildHeadersProgram(pluginData, pluginOptions);
 
     // @ts-expect-error This can't exist and making TS happy another way got complicated
     delete pluginOptions.plugins;
@@ -35,7 +61,8 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
       proxies,
       prefix: pathPrefix,
       functions,
-    };
+      headers,
+  };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
   } catch (error) {
@@ -46,6 +73,13 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 };
 
 export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
+  const MATCH_ALL_KEYS = /^/;
+  const headersSchema = Joi.object()
+    .pattern(
+      MATCH_ALL_KEYS,
+      Joi.array().items(Joi.string().pattern(/^[a-zA-Z\-]+\:\s*\S+\s*$/, { name: "header" })),
+    )
+    .description(`Add more headers to specific pages`);
   return Joi.object({
     features: Joi.object({
       reverseProxy: Joi.alternatives().try(Joi.boolean(), Joi.object()).default(true),
@@ -62,5 +96,8 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
           return value;
         }),
     }).default(),
+    headers: headersSchema,
+    mergeSecurityHeaders: Joi.boolean().default(true),
+    mergeCacheHeaders: Joi.boolean().default(true),
   });
 };
