@@ -33,27 +33,33 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
     const potentialPagePath = reverseFixedPagePath(requestedPagePath);
     const page = graphqlEngine.findPageByPath(potentialPagePath);
 
-    // Fetch Page Data adn SSR Data
-    if (page && (page.mode === `DSG` || page.mode === `SSR`)) {
-      const pageQueryData = await getData({
-        pathName: req.url,
-        graphqlEngine,
-        req,
-      });
-      const pageData = (await renderPageData({ data: pageQueryData })) as any;
-      if (page.mode === `SSR` && pageData.serverDataHeaders) {
-        for (const [name, value] of Object.entries(pageData.serverDataHeaders)) {
-          reply.header(name, value);
+    try {
+      // Fetch Page Data adn SSR Data
+      if (page && (page.mode === `DSG` || page.mode === `SSR`)) {
+        const pageQueryData = await getData({
+          pathName: req.url,
+          graphqlEngine,
+          req,
+        });
+        const pageData = (await renderPageData({ data: pageQueryData })) as any;
+        if (page.mode === `SSR` && pageData.serverDataHeaders) {
+          for (const [name, value] of Object.entries(pageData.serverDataHeaders)) {
+            reply.header(name, value);
+          }
         }
-      }
-      reply.header("x-gatsby-fastify", `served-by: ${page.mode}`);
+        reply.header("x-gatsby-fastify", `served-by: ${page.mode}`);
 
-      reply.send(pageData);
-    } else {
-      reply.code(404).send("Page data not found");
+        reply.send(pageData);
+      } else {
+        reply.code(404).send("Page data not found");
+      }
+    } catch (e) {
+      console.error("Error rendering route", page?.path, e);
+      reply.code(500).sendFile("500.html");
     }
   });
 
+  //Handle HTML for DSG/SSR
   fastify.get("*", async (req, reply) => {
     const accept = req.accepts();
     if (accept.types().includes("text/html")) {
@@ -61,26 +67,31 @@ export const handleDsgSsr: FastifyPluginAsync = async (fastify, {}) => {
       const potentialPagePath = reverseFixedPagePath(req.url);
       const page = graphqlEngine.findPageByPath(potentialPagePath);
 
-      if (page && (page.mode === "DSG" || page.mode === "SSR")) {
-        const data = await getData({
-          pathName: potentialPagePath,
-          graphqlEngine,
-          req,
-        });
-        const results = await renderHTML({ data });
-        if (page.mode === `SSR` && data.serverDataHeaders) {
-          for (const [name, value] of Object.entries(data.serverDataHeaders)) {
-            reply.header(name, value);
+      try {
+        if (page && (page.mode === "DSG" || page.mode === "SSR")) {
+          const data = await getData({
+            pathName: potentialPagePath,
+            graphqlEngine,
+            req,
+          });
+          const results = await renderHTML({ data });
+          if (page.mode === `SSR` && data.serverDataHeaders) {
+            for (const [name, value] of Object.entries(data.serverDataHeaders)) {
+              reply.header(name, value);
+            }
           }
-        }
 
-        reply.header("x-gatsby-fastify", `served-by: ${page.mode}`);
-        reply.type("text/html").send(results);
+          reply.header("x-gatsby-fastify", `served-by: ${page.mode}`);
+          reply.type("text/html").send(results);
+        } else if (req.url === "/favicon.ico") {
+          reply.code(404).send("Not found");
+        } else {
+          reply.callNotFound();
+        }
+      } catch (e) {
+        console.error("Error rendering route", page?.path, e);
+        reply.code(500).sendFile("500.html");
       }
-    } else if (req.url === "/favicon.ico") {
-      reply.code(404).send("Not found");
-    } else {
-      reply.callNotFound();
     }
   });
 };

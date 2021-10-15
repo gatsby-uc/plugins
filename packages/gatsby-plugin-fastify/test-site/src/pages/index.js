@@ -108,6 +108,9 @@ const IndexPage = () => {
           <a href={withPrefix("/api/test")}>API</a>
         </li>
         <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/api/test1/thisShouldWork")}>API Splat</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/perm-redirect")}>To permanent Redirect</a>
         </li>
         <li style={{ ...listItemStyles }}>
@@ -124,6 +127,9 @@ const IndexPage = () => {
         </li>
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/ssr")}>SSR Page</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/ssrBad")}>Bad SSR Page</a>
         </li>
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/__refresh/gatsby-source-wordpress")}>Refresh Endpoint</a>

@@ -1,6 +1,6 @@
 import { emitter } from "gatsby/dist/redux";
 import type { FastifyPluginAsync, FastifyRequest } from "fastify";
-import { getConfig } from "../utils";
+import { getConfig } from "../utils/config";
 
 async function refresh(req: FastifyRequest, pluginName?: string): Promise<void> {
   //Thi sis from Gatsby, not sure if we need it.
