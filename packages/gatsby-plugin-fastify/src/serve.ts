@@ -3,7 +3,7 @@ import Fastify from "fastify";
 import { getConfig } from "./utils/config";
 import open from "open";
 
-export function gatsbyServer() {
+export async function gatsbyServer() {
   const {
     cli: { port, host, open: openBrowser, verbose },
     server: { prefix },
@@ -13,16 +13,18 @@ export function gatsbyServer() {
 
   console.info("Registered Gatsby @ ", prefix || "/");
 
-  fastify.register(serveGatsby);
+  await fastify.register(serveGatsby);
 
-  fastify.listen(port, host, (err, listeningOn) => {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
+  try {
+    const listeningOn = await fastify.listen(port, host);
 
     console.log(`listening @ ${listeningOn}`);
 
     if (openBrowser) open(listeningOn);
-  });
+  } catch (err) {
+    console.error("Failed to start Fastify", err);
+    process.exit(1);
+  }
+
+  return fastify;
 }

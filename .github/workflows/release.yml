@@ -28,6 +28,7 @@ jobs:
       - name: Execute tests
         run: yarn test
   release:
+    needs: test
     name: Release
     runs-on: ubuntu-latest
     steps:
@@ -48,25 +49,8 @@ jobs:
 
       - name: Create Release Pull Request
         uses: changesets/action@master
+        with:
+          release: yarn publish-ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  publish-npm:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
-          cache: "yarn"
-
-      - name: Install Dependencies
-        run: yarn install --immutable
-
-      - name: Build packages
-        run: yarn build
-
-      - run: yarn publish-ci
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
