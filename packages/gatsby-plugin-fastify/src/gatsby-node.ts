@@ -78,6 +78,7 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
       MATCH_ALL_KEYS,
       Joi.array().items(Joi.string().pattern(/^[a-zA-Z\-]+\:\s*\S+\s*$/, { name: "header" })),
     )
+    .default({})
     .description(`Add more headers to specific pages`);
   return Joi.object({
     compression: Joi.boolean()
