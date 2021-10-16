@@ -56,4 +56,8 @@ export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IG
         }
       }
     }
+
+    fastify.all("/*", async (_req, reply) => {
+      reply.code(404).send("Function not found.");
+    });
   };
