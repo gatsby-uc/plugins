@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-ackee-tracker",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Gatsby plugin to add Ackee Tracker to a site.",
   "keywords": [
     "ackee",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.15.8",
     "ackee-tracker": "^5",
     "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3"
