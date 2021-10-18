@@ -7,7 +7,6 @@ import { PATH_TO_PUBLIC } from "../utils/constants";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
-    console.log("path to public", path.resolve(PATH_TO_PUBLIC));
     fastify.register(fastifyStatic, {
       root: path.resolve(PATH_TO_PUBLIC),
       redirect: true,
