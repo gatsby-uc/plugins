@@ -9,14 +9,14 @@ jest.mock("../../utils/constants", () => ({
   CONFIG_FILE_PATH: __dirname + "../../../../test-site/.cache/",
 }));
 
-function createCliConfig({ host, port, verbose, open }) {
+function createCliConfig({ host, port, logLevel, open }) {
   return {
     host,
     h: host,
     port,
     p: port,
-    verbose,
-    v: verbose,
+    logLevel,
+    l: logLevel,
     open,
     o: open,
   };
@@ -29,7 +29,7 @@ describe(`Test Gatsby Server`, () => {
       createCliConfig({
         port: 3000,
         host: "127.0.0.1",
-        verbose: false,
+        logLevel: "fatal",
         open: false,
       }),
     );
