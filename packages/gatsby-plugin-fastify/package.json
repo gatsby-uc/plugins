@@ -35,6 +35,7 @@
     "fs-extra": "^10.0.0",
     "open": "^8.3.0",
     "picomatch": "^2.3.0",
+    "pino-pretty": "^7.1.0",
     "yargs": "^17.2.1"
   },
   "devDependencies": {

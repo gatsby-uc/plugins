@@ -14,7 +14,7 @@ export const handleClientOnlyPaths: FastifyPluginAsync<{
   paths: NoUndefinedField<PathConfig>[];
 }> = async (fastify, { paths }) => {
   for (const p of paths) {
-    console.info("Registering client-only route: ", p.path);
+    fastify.log.info(`Registering client-only route: ${p.path}`);
 
     fastify.get(p.matchPath, (_req, reply) => {
       reply.sendFile("index.html", path.resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
