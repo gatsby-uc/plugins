@@ -1,28 +1,27 @@
 import { serveGatsby } from "./plugins/gatsby";
 import Fastify from "fastify";
 import { getConfig } from "./utils/config";
-import open from "open";
 
 export async function gatsbyServer() {
   const {
-    cli: { port, host, open: openBrowser },
+    cli: { port, host },
     server: { prefix },
   } = getConfig();
 
-  const fastify = Fastify({ ignoreTrailingSlash: true });
+  const fastify = Fastify({
+    ignoreTrailingSlash: true,
+    logger: { level: "info", prettyPrint: true },
+    disableRequestLogging: true,
+  });
 
-  console.info("Registered Gatsby @ ", prefix || "/");
-
-  await fastify.register(serveGatsby);
+  fastify.log.info(`Registered Gatsby @ ${prefix || "/"}`);
 
   try {
-    const listeningOn = await fastify.listen(port, host);
+    await fastify.register(serveGatsby, { prefix });
 
-    console.log(`listening @ ${listeningOn}`);
-
-    if (openBrowser) open(listeningOn);
+    await fastify.listen(port, host);
   } catch (err) {
-    console.error("Failed to start Fastify", err);
+    fastify.log.fatal("Failed to start Fastify", err);
     process.exit(1);
   }
 

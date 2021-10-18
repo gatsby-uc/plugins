@@ -7,13 +7,8 @@ import { getConfig } from "../utils/config";
 
 import fastifyCompress from "fastify-compress";
 import type { FastifyPluginAsync } from "fastify";
-import type { PluginOptions } from "gatsby";
 
-export interface GatsbyServerFeatureOptions extends PluginOptions {
-  compression: boolean;
-}
-
-export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
+export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   //@ts-ignore
   const {
     cli: { verbose },
