@@ -48,7 +48,7 @@ export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IG
                 console.error(e);
                 // Don't send the error if that would cause another error.
                 if (!reply.sent) {
-                  reply.code(500).send("Error executing Gatsby Funciton.");
+                  reply.code(500).send("Error executing Gatsby Function.");
                 }
               }
             },

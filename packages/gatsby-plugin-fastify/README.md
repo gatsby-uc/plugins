@@ -22,7 +22,7 @@
 
 - Serving Gatsby Functions
 - Serving static files
-- 404 page middleware
+- Gatsby 404 page
 - Gatsby redirects
 - Client-side paths
 - Serving the site with pathPrefix - set it up inside `gatsby-config.js`, the plugin will take care of it
