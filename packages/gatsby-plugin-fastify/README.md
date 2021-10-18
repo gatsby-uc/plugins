@@ -71,14 +71,17 @@ This plugin implements a server that's ready to go. To use this you can configur
 ### CLI Config
 
 ```
-  -p, --port  Port to run the server on               [number] [default: "8080"]
-  -h, --host  Host to run the server on          [string] [default: "127.0.0.1"]
-  -o, --open  Open the browser                        [boolean] [default: false]
+  Server
+  -p, --port  Port to run the server on              [number] [default: "8080"]
+  -h, --host  Host to run the server on         [string] [default: "127.0.0.1"]
+  -o, --open  Open the browser                       [boolean] [default: false]
 
 Options:
-      --help     Show help                                             [boolean]
-      --version  Show version number                                   [boolean]
-  -v, --verbose  Show verbose output                  [boolean] [default: false]
+      --help      Show help                                           [boolean]
+      --version   Show version number                                 [boolean]
+  -l, --logLevel  set logging level
+         [string] [choices: "trace", "debug", "info", "warn", "error", "fatal"]
+                                                              [default: "info"]
 ```
 
 All settings may be change via environment variables prefixed with `GATSBY_SERVER_` and the flag name.
@@ -88,6 +91,10 @@ All settings may be change via environment variables prefixed with `GATSBY_SERVE
 export GATSBY_SERVER_PORT=3000
 export GATSBY_SERVER_ADDRESS=0.0.0.0
 ```
+
+#### Logging
+
+By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
 ### Gatsby Fastify Plugin (advanced)
 
