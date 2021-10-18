@@ -1,5 +1,5 @@
 const { gatsbyServer } = require("../../serve");
-const { ConfigKeyEnum, setConfig, getServerConfig } = require("../../utils/config");
+const { ConfigKeyEnum, setConfig, getServerConfig, getConfig } = require("../../utils/config");
 
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
@@ -35,6 +35,28 @@ describe(`Test Gatsby Server`, () => {
     );
 
     setConfig(ConfigKeyEnum.SERVER, getServerConfig());
+  });
+
+  describe(`Gatsby Path Prefix`, () => {
+    it(`Should be served at prefix`, async () => {
+      const { server: defaultconfig } = getConfig();
+      const newConfig = { ...defaultconfig, prefix: "/test" };
+      setConfig(ConfigKeyEnum.SERVER, newConfig);
+
+      const fastify = await gatsbyServer();
+
+      const response = await fastify.inject({
+        url: "/test/",
+        method: "GET",
+      });
+
+      await fastify.close();
+
+      expect(response.statusCode).toEqual(200);
+      expect(response.payload).toMatchSnapshot();
+
+      setConfig(ConfigKeyEnum.SERVER, defaultconfig);
+    });
   });
 
   describe(`Gatsby Static Routes`, () => {

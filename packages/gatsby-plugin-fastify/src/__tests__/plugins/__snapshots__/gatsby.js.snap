@@ -40,6 +40,23 @@ exports[`Test Gatsby Server Gatsby Functions Should serve function route 1`] = `
 
 exports[`Test Gatsby Server Gatsby Functions Should serve function splat route 1`] = `"{\\"splat\\":\\"doesThisWork\\"}"`;
 
+exports[`Test Gatsby Server Gatsby Path Prefix Should be served at prefix 1`] = `
+"<!DOCTYPE html>
+<html lang=\\"en\\">
+
+<head>
+  <meta charset=\\"utf-8\\">
+  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">
+  <title>Gatsby Plugin Fastify</title>
+</head>
+
+<body>
+  <h1>Hello World</h1>
+</body>
+
+</html>"
+`;
+
 exports[`Test Gatsby Server Gatsby Static Routes Should serve custom 404 1`] = `
 "<!DOCTYPE html>
 <html lang=\\"en\\">
