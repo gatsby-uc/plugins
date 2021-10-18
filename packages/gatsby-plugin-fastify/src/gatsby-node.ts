@@ -1,6 +1,5 @@
 import { existsSync, mkdir, writeJSON } from "fs-extra";
 
-import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 import type { GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
@@ -11,7 +10,7 @@ import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyServerFeatureOptions,
+  pluginOptions: GatsbyNodeServerConfig,
 ) => {
   const { redirects } = store.getState();
 
