@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.4.5
+
+### Patch Changes
+
+- [#95](https://github.com/gatsby-uc/plugins/pull/95) [`7007934`](https://github.com/gatsby-uc/plugins/commit/700793427bf754a8449717179d51dabe76096d81) Thanks [@moonmeister](https://github.com/moonmeister)! - Add 404 handler for Gatsby functions to not use default Gatsby 404. thus any unknown route under "/api" now just returns a 404 and not found text.
+
 ## 0.4.4
 
 ### Patch Changes
