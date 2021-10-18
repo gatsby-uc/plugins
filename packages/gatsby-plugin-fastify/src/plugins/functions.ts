@@ -15,8 +15,7 @@ async function getFunctionToExec({
   const funcImportAbsPath = path.resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
 
   if (!existsSync(funcImportAbsPath)) {
-    console.error("Unable to find function to import @ ", funcImportAbsPath);
-    return null;
+    throw new Error(`Unable to find function to import @ ${funcImportAbsPath}`);
   }
 
   const func = await import(funcImportAbsPath);
@@ -36,23 +35,27 @@ export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IG
   async (fastify, { prefix, functions }) => {
     if (functions?.length > 0) {
       for (const funcConfig of functions) {
-        const fnToExecute = await getFunctionHandler(funcConfig);
+        try {
+          const fnToExecute = await getFunctionHandler(funcConfig);
 
-        if (fnToExecute) {
-          console.info("Registering function: ", prefix + funcConfig.functionRoute);
-          fastify.all(funcConfig.functionRoute, {
-            handler: async function (req, reply) {
-              try {
-                await Promise.resolve(fnToExecute(req, reply));
-              } catch (e) {
-                console.error(e);
-                // Don't send the error if that would cause another error.
-                if (!reply.sent) {
-                  reply.code(500).send("Error executing Gatsby Funciton.");
+          if (fnToExecute) {
+            fastify.log.info(`Registering function:  ${prefix + funcConfig.functionRoute}`);
+            fastify.all(funcConfig.functionRoute, {
+              handler: async function (req, reply) {
+                try {
+                  await Promise.resolve(fnToExecute(req, reply));
+                } catch (e) {
+                  fastify.log.error(e);
+                  // Don't send the error if that would cause another error.
+                  if (!reply.sent) {
+                    reply.code(500).send("Error executing Gatsby Function.");
+                  }
                 }
-              }
-            },
-          });
+              },
+            });
+          }
+        } catch (e) {
+          fastify.log.error(e);
         }
       }
     }

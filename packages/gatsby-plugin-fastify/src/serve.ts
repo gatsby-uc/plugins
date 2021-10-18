@@ -14,7 +14,7 @@ export async function gatsbyServer() {
     disableRequestLogging: true,
   });
 
-  fastify.log.info(`Registered Gatsby @ ${prefix || "/"}`);
+  fastify.log.info(`Mounting Gatsby @ ${prefix || "/"}`);
 
   try {
     await fastify.register(serveGatsby, { prefix });
