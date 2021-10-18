@@ -10,14 +10,7 @@ import type { FastifyPluginAsync } from "fastify";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   //@ts-ignore
-  const {
-    cli: { verbose },
-    server: serverConfig,
-  } = getConfig();
-
-  if (verbose) {
-    fastify.log.debug("Starting server with config: ", serverConfig);
-  }
+  const { server: serverConfig } = getConfig();
 
   const { clientSideRoutes, redirects, compression, functions } = serverConfig;
 

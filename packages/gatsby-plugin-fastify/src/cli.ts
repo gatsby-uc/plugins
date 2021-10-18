@@ -8,11 +8,12 @@ import open from "open";
 
 yargs(hideBin(process.argv))
   .options({
-    v: {
-      alias: "verbose",
-      default: false,
-      type: "boolean",
-      describe: "Show verbose output",
+    l: {
+      alias: "logLevel",
+      default: "info",
+      choices: ["trace", "debug", "info", "warn", "error", "fatal"],
+      type: "string",
+      describe: "set logging level",
       global: true,
     },
     p: {

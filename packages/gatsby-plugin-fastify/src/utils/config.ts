@@ -27,8 +27,8 @@ export type GfCliOptions = {
   h: string;
   open: boolean;
   o: boolean;
-  verbose: boolean;
-  v: boolean;
+  logLevel: string;
+  l: string;
 };
 
 export enum ConfigKeyEnum {

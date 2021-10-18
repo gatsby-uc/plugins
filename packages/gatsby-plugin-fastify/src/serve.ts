@@ -4,16 +4,17 @@ import { getConfig } from "./utils/config";
 
 export async function gatsbyServer() {
   const {
-    cli: { port, host },
+    cli: { port, host, logLevel },
     server: { prefix },
   } = getConfig();
 
   const fastify = Fastify({
     ignoreTrailingSlash: true,
-    logger: { level: "info", prettyPrint: true },
-    disableRequestLogging: true,
+    logger: { level: logLevel, prettyPrint: true },
+    disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });
 
+  fastify.log.info(`Logging Level set @ ${logLevel}`);
   fastify.log.info(`Mounting Gatsby @ ${prefix || "/"}`);
 
   try {
