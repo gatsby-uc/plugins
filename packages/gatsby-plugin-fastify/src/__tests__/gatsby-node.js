@@ -10,9 +10,42 @@ jest.mock("../../utils/constants", () => ({
 }));
 
 jest.mock("fs-extra", () => ({
-  ...jest.requireActual("fs-extra"),
+  existsSync: jest.fn((path) => {
+    if (path.includes(".cache/functions")) {
+      return true;
+    }
+    return false;
+  }),
   mkdir: jest.fn(),
   writeJSON: jest.fn(),
+  readJSON: jest.fn((path) => {
+    if (path.includes("manifest.json")) {
+      return [
+        {
+          functionRoute: "splat/:splat",
+          pluginName: "default-site-plugin",
+          originalAbsoluteFilePath:
+            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/splat/:splat.js",
+          originalRelativeFilePath: "splat/:splat.js",
+          relativeCompiledFilePath: "splat/:splat.js",
+          absoluteCompiledFilePath:
+            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/splat/:splat.js",
+        },
+        {
+          functionRoute: "test",
+          pluginName: "default-site-plugin",
+          originalAbsoluteFilePath:
+            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/test.js",
+          originalRelativeFilePath: "test.js",
+          relativeCompiledFilePath: "test.js",
+          absoluteCompiledFilePath:
+            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/test.js",
+        },
+      ];
+    } else {
+      throw new Error("Invalid path");
+    }
+  }),
 }));
 
 const pathPrefix = "/test";
