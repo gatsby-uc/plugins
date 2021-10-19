@@ -21,8 +21,8 @@ export const SECURITY_HEADERS = {
   ],
 };
 
-export const IMMUTABLE_CACHING_HEADER = [`Cache-Control`, `public, max-age=31536000, immutable`];
-export const NEVER_CACHE_HEADER = [`Cache-Control`, `public, max-age=0, must-revalidate`];
+export const IMMUTABLE_CACHING_HEADER = `Cache-Control: public, max-age=31536000, immutable`;
+export const NEVER_CACHE_HEADER = `Cache-Control: public, max-age=0, must-revalidate`;
 
 export const CACHING_HEADERS = {
   "/static/*": [IMMUTABLE_CACHING_HEADER],
