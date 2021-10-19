@@ -3497,6 +3497,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jest@npm:^27.0.2":
+  version: 27.0.2
+  resolution: "@types/jest@npm:27.0.2"
+  dependencies:
+    jest-diff: ^27.0.0
+    pretty-format: ^27.0.0
+  checksum: 814ad5f5d2f277849f47e52906da4b745758e555630fc8cb46a071bde648eefeffb1b35710c530a8cea7fc4ea7c1d813812c120484bf7902ab6c5e473cdd49c9
+  languageName: node
+  linkType: hard
+
 "@types/json-patch@npm:0.0.30":
   version: 0.0.30
   resolution: "@types/json-patch@npm:0.0.30"
@@ -9004,7 +9014,9 @@ __metadata:
     "@babel/core": ^7.15.8
     "@babel/runtime": ^7.15.4
     "@types/fs-extra": ^9.0.13
+    "@types/jest": ^27.0.2
     "@types/node": ^14.17.21
+    babel-jest: ^27.2.5
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
     fastify: ^3.22.0
@@ -9014,6 +9026,7 @@ __metadata:
     fs-extra: ^10.0.0
     gatsby: ^3.14.2
     gatsby-plugin-utils: ^1.14.0
+    jest: ^27.2.5
     open: ^8.3.0
     picomatch: ^2.3.0
     pino-pretty: ^7.1.0
@@ -11500,7 +11513,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^27.2.5":
+"jest-diff@npm:^27.0.0, jest-diff@npm:^27.2.5":
   version: 27.2.5
   resolution: "jest-diff@npm:27.2.5"
   dependencies:
@@ -15246,7 +15259,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^27.2.5":
+"pretty-format@npm:^27.0.0, pretty-format@npm:^27.2.5":
   version: 27.2.5
   resolution: "pretty-format@npm:27.2.5"
   dependencies:
