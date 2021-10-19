@@ -29,7 +29,7 @@ jobs:
         run: yarn test
   release:
     needs: test
-    name: Release
+    name: Package Version and Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -50,7 +50,7 @@ jobs:
       - name: Create Release Pull Request
         uses: changesets/action@master
         with:
-          release: yarn publish-ci
+          publish: yarn publish-ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
