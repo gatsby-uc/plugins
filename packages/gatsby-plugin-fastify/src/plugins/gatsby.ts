@@ -8,32 +8,15 @@ import { getConfig } from "../utils/config";
 import fastifyCompress from "fastify-compress";
 import type { FastifyPluginAsync } from "fastify";
 
-export interface GatsbyServerFeatureOptions {
-  compression: boolean;
-  headers: {
-    [key: string]: string;
-  };
-  mergeSecurityHeaders: boolean;
-  mergeCacheHeaders: boolean;
-  plugins: unknown[];
-}
-
-export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
+export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   //@ts-ignore
-  const {
-    cli: { verbose },
-    server: serverConfig,
-  } = getConfig();
-
-  if (verbose) {
-    console.info("Starting server with config: ", serverConfig);
-  }
+  const { server: serverConfig } = getConfig();
 
   const { clientSideRoutes, redirects, compression, functions } = serverConfig;
 
   // Optimizations
   if (compression) {
-    console.info(`Compression enabled.`);
+    fastify.log.info(`Compression enabled`);
     await fastify.register(fastifyCompress, {});
   }
 

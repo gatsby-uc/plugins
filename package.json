@@ -16,7 +16,7 @@
     "lint": "yarn prettier \"**/*.{js,ts,md,json,yml,json}\" --check",
     "publish-ci": "yarn build && yarn changeset publish",
     "postinstall": "yarn husky install",
-    "test": "yarn workspaces foreach -vp run test"
+    "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.1",

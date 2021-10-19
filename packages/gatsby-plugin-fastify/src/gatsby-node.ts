@@ -1,7 +1,6 @@
 import { existsSync, mkdir, writeJSON } from "fs-extra";
 import WebpackAssetsManifest from "webpack-assets-manifest";
 
-import type { GatsbyServerFeatureOptions } from "./plugins/gatsby";
 import type { GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
@@ -35,39 +34,38 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ act
   });
 };
 
-//@ts-expect-error
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyServerFeatureOptions,
+  pluginOptions: GatsbyNodeServerConfig,
 ) => {
   const { redirects } = store.getState();
 
-  const pluginData = await makePluginData(store, assetsManifest, pathPrefix);
-
-  const functions = await getFunctionManifest(pluginData);
-  const clientSideRoutes = await getClientSideRoutes(pluginData);
-  const headers = await buildHeadersProgram(pluginData, pluginOptions);
-
-  // @ts-ignore
-  delete pluginOptions.plugins;
-
-  const config: GatsbyNodeServerConfig = {
-    ...pluginOptions,
-    clientSideRoutes,
-    redirects,
-    prefix: pathPrefix,
-    functions,
-    headers,
-  };
-
-  if (!existsSync(PATH_TO_CACHE)) {
-    await mkdir(PATH_TO_CACHE);
-  }
-
   try {
+    const pluginData = await makePluginData(store, assetsManifest, pathPrefix);
+
+    const functions = await getFunctionManifest(pluginData);
+    const clientSideRoutes = await getClientSideRoutes(pluginData);
+    const headers = await buildHeadersProgram(pluginData, pluginOptions);
+
+    // @ts-ignore
+    delete pluginOptions.plugins;
+
+    const config: GatsbyNodeServerConfig = {
+      ...pluginOptions,
+      clientSideRoutes,
+      redirects,
+      prefix: pathPrefix,
+      functions,
+      headers,
+    };
+
+    if (!existsSync(PATH_TO_CACHE)) {
+      await mkdir(PATH_TO_CACHE);
+    }
+
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
   } catch (e) {
-    reporter.error("Error writing config file.", e, "gatsby-plugin-fastify");
+    reporter.error("Error building config for Fastify Server", e, "gatsby-plugin-fastify");
   }
 };
 
