@@ -65,7 +65,7 @@
 import _ from "lodash";
 import { SECURITY_HEADERS, CACHING_HEADERS, IMMUTABLE_CACHING_HEADER } from "../utils/constants";
 import type { PluginData } from "../utils/plugin-data";
-import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
+import type { GatsbyNodeServerConfig } from "../utils/config";
 
 function getHeaderName(header) {
   const matches = header.match(/^([^:]+):/);
@@ -110,7 +110,7 @@ function headersMerge(userHeaders, defaultHeaders) {
 
 // program methods
 const applySecurityHeaders =
-  ({ mergeSecurityHeaders }: GatsbyServerFeatureOptions) =>
+  ({ mergeSecurityHeaders }: GatsbyNodeServerConfig) =>
   (headers) => {
     if (!mergeSecurityHeaders) {
       return headers;
@@ -120,7 +120,7 @@ const applySecurityHeaders =
   };
 
 const applyCachingHeaders =
-  (pluginData: PluginData, { mergeCacheHeaders }: GatsbyServerFeatureOptions) =>
+  (pluginData: PluginData, { mergeCacheHeaders }: GatsbyNodeServerConfig) =>
   (headers) => {
     if (!mergeCacheHeaders) {
       return headers;
@@ -138,9 +138,9 @@ const applyCachingHeaders =
       chunks = Array.from(pluginData.pages.values()).map((page) => page.componentChunkName);
     }
 
-    chunks.push(`pages-manifest`, `app`);
+    chunks.push(`polyfill`, `app`);
 
-    const files = [...chunks.map((chunk) => pluginData.manifest[chunk])];
+    const files = chunks.flatMap((chunk) => pluginData.manifest[chunk]);
 
     const cachingHeaders = {};
 
