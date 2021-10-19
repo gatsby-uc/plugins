@@ -25,21 +25,21 @@ jest.mock("fs-extra", () => ({
           functionRoute: "splat/:splat",
           pluginName: "default-site-plugin",
           originalAbsoluteFilePath:
-            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/splat/:splat.js",
+            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/splat/:splat.js",
           originalRelativeFilePath: "splat/:splat.js",
           relativeCompiledFilePath: "splat/:splat.js",
           absoluteCompiledFilePath:
-            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/splat/:splat.js",
+            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/splat/:splat.js",
         },
         {
           functionRoute: "test",
           pluginName: "default-site-plugin",
           originalAbsoluteFilePath:
-            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/test.js",
+            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/test.js",
           originalRelativeFilePath: "test.js",
           relativeCompiledFilePath: "test.js",
           absoluteCompiledFilePath:
-            "/Users/alex.moon/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/test.js",
+            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/test.js",
         },
       ];
     } else {
@@ -102,10 +102,12 @@ const pluginOptions = {
 };
 
 describe(`Gatsby Node API`, () => {
-  it(`Should Build stuff`, async () => {
+  it(`Should Build Config`, async () => {
     await onPostBuild({ store, reporter, pathPrefix }, pluginOptions);
 
+    const writeJSONCall = fs.writeJSON.mock.calls[0];
     expect(fs.writeJSON).toHaveBeenCalledTimes(1);
-    expect(fs.writeJSON).toMatchSnapshot();
+    expect(writeJSONCall[0]).toContain(".cache/gatsby-plugin-fastify.json");
+    expect(writeJSONCall[1]).toMatchSnapshot();
   });
 });
