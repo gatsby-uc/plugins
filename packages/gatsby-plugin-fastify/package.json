@@ -52,17 +52,17 @@
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.4.0",
-    "gatsby": "next",
-    "gatsby-plugin-utils": "next",
+    "gatsby": "^4.0.0",
+    "gatsby-plugin-utils": "^2.0.0",
     "jest": "^27.2.5"
   },
   "peerDependencies": {
     "fastify": "^3.19.0",
-    "fastify-accepts": "*",
+    "fastify-accepts": "^2.1.0",
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.0",
-    "gatsby": "^4.0.0-zz-next.1"
+    "gatsby": "^4.0.0"
   },
   "engines": {
     "node": ">=12.13.0"

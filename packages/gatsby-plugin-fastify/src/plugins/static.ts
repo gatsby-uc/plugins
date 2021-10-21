@@ -9,7 +9,7 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
   async (fastify, opts) => {
     fastify.register(fastifyStatic, {
       root: path.resolve(PATH_TO_PUBLIC),
-      redirect: true,
+      wildcard: false,
       setHeaders: (reply, path, _stat) => {
         if (
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
