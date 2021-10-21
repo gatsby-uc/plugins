@@ -1,5 +1,19 @@
 # gatsby-plugin-fastify
 
+## 0.5.0
+
+### Minor Changes
+
+- [#100](https://github.com/gatsby-uc/plugins/pull/100) [`fec2c31`](https://github.com/gatsby-uc/plugins/commit/fec2c31d1d64a51d6b99297ff0c1345ec2f4bad3) Thanks [@moonmeister](https://github.com/moonmeister)! - Implemented better logging. This means we removed teh "verbose" flag from the CLI in favor of a "logLevel" flag. See docs for more info.
+
+* [#97](https://github.com/gatsby-uc/plugins/pull/97) [`09bb2c2`](https://github.com/gatsby-uc/plugins/commit/09bb2c272f7127a732e1ad54d2b8fb38db054523) Thanks [@moonmeister](https://github.com/moonmeister)! - Implemented testing and that came with some minor changes and fixes.
+
+## 0.4.5
+
+### Patch Changes
+
+- [#95](https://github.com/gatsby-uc/plugins/pull/95) [`7007934`](https://github.com/gatsby-uc/plugins/commit/700793427bf754a8449717179d51dabe76096d81) Thanks [@moonmeister](https://github.com/moonmeister)! - Add 404 handler for Gatsby functions to not use default Gatsby 404. thus any unknown route under "/api" now just returns a 404 and not found text.
+
 ## 0.4.4
 
 ### Patch Changes

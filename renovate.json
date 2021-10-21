@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "config:base",
-    "schedule:earlyMondays",
-    ":disablePeerDependencies"
-  ],
+  "extends": ["config:base", "schedule:monthly", ":disablePeerDependencies"],
   "major": {
     "masterIssueApproval": true
   },

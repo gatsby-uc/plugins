@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gatsby Node API Should Build Config 1`] = `
+Object {
+  "clientSideRoutes": Array [
+    Object {
+      "matchPath": "/app/*",
+      "path": "/app/[...]/",
+    },
+  ],
+  "fakeOption": "fakeValue",
+  "functions": Array [
+    Object {
+      "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/splat/:splat.js",
+      "functionRoute": "splat/:splat",
+      "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/splat/:splat.js",
+      "originalRelativeFilePath": "splat/:splat.js",
+      "pluginName": "default-site-plugin",
+      "relativeCompiledFilePath": "splat/:splat.js",
+    },
+    Object {
+      "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/test.js",
+      "functionRoute": "test",
+      "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/test.js",
+      "originalRelativeFilePath": "test.js",
+      "pluginName": "default-site-plugin",
+      "relativeCompiledFilePath": "test.js",
+    },
+  ],
+  "prefix": "/test",
+  "redirects": Array [
+    Object {
+      "fromPath": "/perm-redirect",
+      "ignoreCase": true,
+      "isPermanent": true,
+      "redirectInBrowser": false,
+      "toPath": "/posts/page-1",
+    },
+    Object {
+      "fromPath": "/temp-redirect",
+      "ignoreCase": true,
+      "isPermanent": false,
+      "redirectInBrowser": false,
+      "toPath": "/posts/page-2",
+    },
+    Object {
+      "fromPath": "/alt-redirect",
+      "ignoreCase": true,
+      "isPermanent": false,
+      "redirectInBrowser": false,
+      "statusCode": 307,
+      "toPath": "/posts/page-3",
+    },
+  ],
+}
+`;

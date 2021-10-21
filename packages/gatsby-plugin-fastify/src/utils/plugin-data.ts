@@ -14,6 +14,7 @@ export function buildPrefixer(prefix: string, ...paths: string[]) {
 // hashed filenames and ensure we pull in the componentChunkName.
 export async function makePluginData(store: Store, pathPrefix: string): Promise<PluginData> {
   const { program, pages } = store.getState() as IGatsbyState;
+
   const publicFolder = buildPrefixer(program.directory, PATH_TO_PUBLIC);
   const functionsFolder = buildPrefixer(program.directory, PATH_TO_FUNCTIONS);
   const configFolder = buildPrefixer(program.directory, PATH_TO_CACHE);
