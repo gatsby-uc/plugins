@@ -3,7 +3,7 @@ const { createCliConfig } = require("../src/__tests__/__utils__/config");
 const { gatsbyServer } = require("gatsby-plugin-fastify/serve");
 const { getServerConfig, setConfig, ConfigKeyEnum } = require("gatsby-plugin-fastify/utils/config");
 
-Benchmark.options.minSamples = 200;
+Benchmark.options.minSamples = 500;
 Benchmark.options.async = true;
 const suite = Benchmark.Suite();
 
