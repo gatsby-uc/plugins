@@ -1,4 +1,4 @@
-import ackeeTracker from "ackee-tracker"
+import * as ackeeTracker from "ackee-tracker"
 
 /**
  * Hold the tracker instance. Persists after the client is hydrated,
