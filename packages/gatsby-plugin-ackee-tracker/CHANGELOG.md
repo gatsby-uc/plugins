@@ -1,5 +1,11 @@
 # gatsby-plugin-ackee-tracker
 
+## 3.1.0
+
+### Minor Changes
+
+- [`7bed454`](https://github.com/gatsby-uc/plugins/commit/7bed45443e3340cb9c2a27c40ef5f260dc7b9bad) Thanks [@moonmeister](https://github.com/moonmeister)! - add `.npmignore` so actual transpiled code is shipped andplugin works.
+
 ## 3.0.3
 
 ### Patch Changes
