@@ -1,5 +1,11 @@
 # gatsby-plugin-ackee-tracker
 
+## 3.2.0
+
+### Minor Changes
+
+- [#108](https://github.com/gatsby-uc/plugins/pull/108) [`0692da6`](https://github.com/gatsby-uc/plugins/commit/0692da6ef52f5abb27c5b2e39acec4bf859e8d1d) Thanks [@moonmeister](https://github.com/moonmeister)! - Fix import issue causing trackign to break. Bump Gatsby v4 Compatibility.
+
 ## 3.1.0
 
 ### Minor Changes
