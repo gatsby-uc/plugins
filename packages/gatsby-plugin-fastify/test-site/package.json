@@ -15,10 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "fastify": "^3.22.0",
+    "fastify": "^3.22.1",
     "fastify-accepts": "^2.0.1",
-    "fastify-compress": "^3.6.0",
-    "fastify-static": "^4.4.0",
+    "fastify-compress": "^3.6.1",
+    "fastify-static": "^4.4.2",
     "gatsby": "^4.0.0",
     "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^2.0.0",
@@ -30,7 +30,7 @@
     "gatsby-source-faker": "^4.0.0",
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-transformer-sharp": "^4.0.0",
-    "postcss": "^8.3.9",
+    "postcss": "^8.3.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0"
