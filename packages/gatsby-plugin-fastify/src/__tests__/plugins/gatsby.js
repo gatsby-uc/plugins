@@ -1,6 +1,6 @@
 const { gatsbyServer } = require("../../serve");
 const { ConfigKeyEnum, setConfig, getServerConfig, getConfig } = require("../../utils/config");
-
+const { createCliConfig } = require("../__utils__/config");
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
   PATH_TO_FUNCTIONS: "test-site/.cache/functions/",
@@ -8,19 +8,6 @@ jest.mock("../../utils/constants", () => ({
   PATH_TO_CACHE: "test-site/.cache/",
   CONFIG_FILE_PATH: __dirname + "../../../../test-site/.cache/",
 }));
-
-function createCliConfig({ host, port, logLevel, open }) {
-  return {
-    host,
-    h: host,
-    port,
-    p: port,
-    logLevel,
-    l: logLevel,
-    open,
-    o: open,
-  };
-}
 
 describe(`Test Gatsby Server`, () => {
   beforeAll(() => {
