@@ -131,9 +131,6 @@ const IndexPage = () => {
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/ssrBad")}>Bad SSR Page</a>
         </li>
-        <li style={{ ...listItemStyles }}>
-          <a href={withPrefix("/__refresh/gatsby-source-wordpress")}>Refresh Endpoint</a>
-        </li>
       </ul>
     </main>
   );
