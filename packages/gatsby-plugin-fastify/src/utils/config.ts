@@ -65,7 +65,7 @@ export function setConfig(key: ConfigKeyEnum, incomingConfig: GetConfigOptions<C
 export function getServerConfig(): GatsbyNodeServerConfig {
   const configPath = configPrefixer(CONFIG_FILE_NAME);
   if (!existsSync(configPath)) {
-    throw Error("No Server config found, did you do a production Gatsby Build?");
+    throw Error(`No Server config found @ ${configPath}, did you do a production Gatsby Build?`);
   }
   return readJSONSync(configPath, { encoding: "utf8" });
 }

@@ -5126,6 +5126,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"benchmark@npm:^2.1.4":
+  version: 2.1.4
+  resolution: "benchmark@npm:2.1.4"
+  dependencies:
+    lodash: ^4.17.4
+    platform: ^1.3.3
+  checksum: aa466561d4f2b0a2419a3069b8f90fd35ffacf26849697eea9de525ecfbd10b44da11070cc51c88d772076db8cb2415641b493de7d6c024fdf8551019c6fcf1c
+  languageName: node
+  linkType: hard
+
 "better-opn@npm:^2.0.0, better-opn@npm:^2.1.1":
   version: 2.1.1
   resolution: "better-opn@npm:2.1.1"
@@ -7412,9 +7422,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.564, electron-to-chromium@npm:^1.3.878":
-  version: 1.3.885
-  resolution: "electron-to-chromium@npm:1.3.885"
-  checksum: 6a92ad89a103dc11f22a1b7012c5dc2b7288e9f22ad71ba397b631106db7e7af4afb5e8defa317457cf3ef558afd343fa8b83c1b3d7f3d7d706bb10c0f9dd907
+  version: 1.3.886
+  resolution: "electron-to-chromium@npm:1.3.886"
+  checksum: c171a1444095f8f61b3cef75a4b3b1d4a0e5deadbdd37020fc680cfc37849067219de6c94c8ea75b60e6fc7f825241c5ce55809dd2b33fadadda236255337c85
   languageName: node
   linkType: hard
 
@@ -15759,7 +15769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"platform@npm:^1.3.6":
+"platform@npm:^1.3.3, platform@npm:^1.3.6":
   version: 1.3.6
   resolution: "platform@npm:1.3.6"
   checksum: 6f472a09c61d418c7e26c1c16d0bdc029549d512dbec6526216a1e59ec68100d07007d0097dcba69dddad883d6f2a83361b4bdfe0094a3d9a2af24158643d85e
@@ -18922,6 +18932,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "test-fastify-gatsby@workspace:packages/gatsby-plugin-fastify/test-site"
   dependencies:
+    benchmark: ^2.1.4
     fastify: ^3.22.1
     fastify-accepts: ^2.0.1
     fastify-compress: ^3.6.1

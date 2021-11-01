@@ -13,6 +13,12 @@ module.exports = {
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [`node_modules`],
 
+  testMatch: [
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[jt]s?(x)",
+    "!**/__tests__/__*__/*",
+  ],
+
   modulePathIgnorePatterns: [`<rootDir>/test-site/`],
   // The test environment that will be used for testing
   testEnvironment: `node`,
