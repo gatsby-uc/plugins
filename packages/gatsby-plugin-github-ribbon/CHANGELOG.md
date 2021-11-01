@@ -1,5 +1,11 @@
 # gatsby-plugin-github-ribbon
 
+## 1.3.0
+
+### Minor Changes
+
+- [#108](https://github.com/gatsby-uc/plugins/pull/108) [`0692da6`](https://github.com/gatsby-uc/plugins/commit/0692da6ef52f5abb27c5b2e39acec4bf859e8d1d) Thanks [@moonmeister](https://github.com/moonmeister)! - Bump Gatsby v4 Compatiblity
+
 ## 1.2.3
 
 ### Patch Changes
