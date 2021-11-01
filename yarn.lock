@@ -10471,7 +10471,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^7.0.2":
+"husky@npm:^7.0.4":
   version: 7.0.4
   resolution: "husky@npm:7.0.4"
   bin:
@@ -12484,7 +12484,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^11.2.3":
+"lint-staged@npm:^11.2.6":
   version: 11.2.6
   resolution: "lint-staged@npm:11.2.6"
   dependencies:
@@ -15146,8 +15146,8 @@ __metadata:
     "@changesets/changelog-github": ^0.4.1
     "@changesets/cli": ^2.17.0
     all-contributors-cli: ^6.20.0
-    husky: ^7.0.2
-    lint-staged: ^11.2.3
+    husky: ^7.0.4
+    lint-staged: ^11.2.6
     prettier: ^2.4.1
   languageName: unknown
   linkType: soft
