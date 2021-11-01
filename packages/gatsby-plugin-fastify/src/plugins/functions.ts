@@ -34,12 +34,14 @@ async function getFunctionHandler(routeConfig: IGatsbyFunction) {
 export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IGatsbyFunction[] }> =
   async (fastify, { prefix, functions }) => {
     if (functions?.length > 0) {
+      fastify.log.info(`Registering ${functions.length} function(s)`);
+
       for (const funcConfig of functions) {
         try {
           const fnToExecute = await getFunctionHandler(funcConfig);
 
           if (fnToExecute) {
-            fastify.log.info(`Registering function:  ${prefix + funcConfig.functionRoute}`);
+            fastify.log.debug(`Registering function:  ${prefix + funcConfig.functionRoute}`);
             fastify.all(funcConfig.functionRoute, {
               handler: async function (req, reply) {
                 try {
