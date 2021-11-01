@@ -11,7 +11,23 @@ export const handleDsgSsr: FastifyPluginAsync<{
   paths: ServerSideRoute[];
 }> = async (fastify, { paths }) => {
   if (paths?.length > 0) {
-    fastify.log.info(`Registering ${paths?.length} DSG & SSR route(s)`);
+    const { dsgCount, ssrCount } = paths.reduce(
+      (acc, path) => {
+        switch (path.mode) {
+          case "SSR":
+            acc.ssrCount++;
+            break;
+          case "DSG":
+            acc.dsgCount++;
+            break;
+        }
+        return acc;
+      },
+      { dsgCount: 0, ssrCount: 0 },
+    );
+
+    fastify.log.info(`Registering ${dsgCount} DSG route(s)`);
+    fastify.log.info(`Registering ${ssrCount} SSR route(s)`);
 
     const cachePath = resolve("./.cache");
 
@@ -106,7 +122,9 @@ export const handleDsgSsr: FastifyPluginAsync<{
                 }
               }
 
-              reply.header(...NEVER_CACHE_HEADER);
+              if (page.mode === "DSG") {
+                reply.header(...NEVER_CACHE_HEADER);
+              }
 
               reply.type("text/html").send(results);
             } else {
