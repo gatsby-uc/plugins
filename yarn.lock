@@ -8410,7 +8410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-compress@npm:^3.6.0":
+"fastify-compress@npm:^3.6.0, fastify-compress@npm:^3.6.1":
   version: 3.6.1
   resolution: "fastify-compress@npm:3.6.1"
   dependencies:
@@ -8446,7 +8446,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-static@npm:^4.4.0":
+"fastify-static@npm:^4.4.0, fastify-static@npm:^4.4.2":
   version: 4.4.2
   resolution: "fastify-static@npm:4.4.2"
   dependencies:
@@ -8468,7 +8468,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify@npm:^3.22.0":
+"fastify@npm:^3.22.0, fastify@npm:^3.22.1":
   version: 3.22.1
   resolution: "fastify@npm:3.22.1"
   dependencies:
@@ -9271,7 +9271,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"gatsby-plugin-sharp@npm:^3.14.1":
+"gatsby-plugin-sharp@npm:^3.14.2":
   version: 3.14.2
   resolution: "gatsby-plugin-sharp@npm:3.14.2"
   dependencies:
@@ -9517,7 +9517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^3.14.2":
+"gatsby@npm:^3.14.2, gatsby@npm:^3.14.5":
   version: 3.14.5
   resolution: "gatsby@npm:3.14.5"
   dependencies:
@@ -15582,7 +15582,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.5, postcss@npm:^8.3.9":
+"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.3.5":
   version: 8.3.11
   resolution: "postcss@npm:8.3.11"
   dependencies:
@@ -18244,20 +18244,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "test-fastify-gatsby@workspace:packages/gatsby-plugin-fastify/test-site"
   dependencies:
-    fastify: ^3.22.0
-    fastify-compress: ^3.6.0
-    fastify-static: ^4.4.0
-    gatsby: ^3.14.2
+    fastify: ^3.22.1
+    fastify-compress: ^3.6.1
+    fastify-static: ^4.4.2
+    gatsby: ^3.14.5
     gatsby-plugin-fastify: "*"
     gatsby-plugin-image: ^1.14.1
     gatsby-plugin-manifest: ^3.14.0
     gatsby-plugin-postcss: ^4.14.0
     gatsby-plugin-react-helmet: ^4.14.0
-    gatsby-plugin-sharp: ^3.14.1
+    gatsby-plugin-sharp: ^3.14.2
     gatsby-plugin-sitemap: ^4.10.0
     gatsby-source-filesystem: ^3.14.0
     gatsby-transformer-sharp: ^3.14.0
-    postcss: ^8.3.9
+    postcss: ^8.3.11
     react: ^17.0.2
     react-dom: ^17.0.2
     react-helmet: ^6.1.0
