@@ -4,7 +4,6 @@ const { gatsbyServer } = require("gatsby-plugin-fastify/serve");
 const { getServerConfig, setConfig, ConfigKeyEnum } = require("gatsby-plugin-fastify/utils/config");
 
 Benchmark.options.minSamples = 500;
-Benchmark.options.async = true;
 const suite = Benchmark.Suite();
 
 setConfig(
@@ -19,48 +18,59 @@ setConfig(
 
 setConfig(ConfigKeyEnum.SERVER, getServerConfig());
 
+function expectResp(def, path, code = 200) {
+  return (res) => {
+    if (res.statusCode !== code) {
+      console.log(path, res.statusCode);
+      throw new Error(`Expected status code ${code}, got ${res.statusCode}`);
+    }
+    def.resolve();
+  };
+}
+
 (async () => {
   try {
+    console.log("launching server");
     const server = await gatsbyServer().catch((err) => {
       console.error(err);
     });
 
     await server.ready();
 
+    console.log("server ready");
     suite
-      .add("Serve Static HTML file from root", {
+      .add("Serve SSG HTML file from root", {
         defer: true,
-        fn: async (def) => {
+        fn: (def) => {
           server
             .inject({
               method: "GET",
               url: "/",
             })
-            .then((res) => {
-              def.resolve();
-            });
+            .then(expectResp(def, "/"));
         },
       })
       .add("Serve SSG HTML from path", {
         defer: true,
-        fn: async (def) => {
+        fn: (def) => {
           server
             .inject({
               method: "GET",
-              url: "/posts/page-1",
+              url: "/posts/page-1/",
+              timeout: 10000,
             })
-            .then((res) => def.resolve());
+            .then(expectResp(def, "/posts/page-1/"));
         },
       })
       .add("Serve SSG `page-data.json` from path", {
         defer: true,
-        fn: async (def) => {
+        fn: (def) => {
           server
             .inject({
               method: "GET",
               url: "/page-data/posts/page-1/page-data.json",
             })
-            .then((res) => def.resolve());
+            .then(expectResp(def, "/page-data/posts/page-1/page-data.json"));
         },
       })
       .add("Serve CSR", {
@@ -71,7 +81,7 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
               method: "GET",
               url: "/app/",
             })
-            .then((res) => def.resolve());
+            .then(expectResp(def, "/app"));
         },
       })
       .add("Serve 404", {
@@ -82,9 +92,7 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
               method: "GET",
               url: "/nonExistentRoute",
             })
-            .then((res) => {
-              def.resolve();
-            });
+            .then(expectResp(def, "/nonExistentRoute", 404));
         },
       })
       .add("Serve Redirect", {
@@ -95,9 +103,7 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
               method: "GET",
               url: "/perm-redirect/",
             })
-            .then((res) => {
-              def.resolve();
-            });
+            .then(expectResp(def, "/perm-redirect/", 301));
         },
       })
       .add("Serve Function", {
@@ -108,12 +114,12 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
               method: "GET",
               url: "/api/test",
             })
-            .then((res) => def.resolve());
+            .then(expectResp(def, "/api/test", 200));
         },
       })
-      // .on("cycle", function (event) {
-      //   console.log(String(event.target));
-      // })
+      .on("cycle", function (event) {
+        console.log(String(event.target));
+      })
       .on("complete", () => {
         console.log("complete");
         server.close().then(() => {
