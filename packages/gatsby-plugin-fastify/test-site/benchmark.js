@@ -3,7 +3,7 @@ const { createCliConfig } = require("../src/__tests__/__utils__/config");
 const { gatsbyServer } = require("gatsby-plugin-fastify/serve");
 const { getServerConfig, setConfig, ConfigKeyEnum } = require("gatsby-plugin-fastify/utils/config");
 
-Benchmark.options.minSamples = 500;
+Benchmark.options.minSamples = 10;
 Benchmark.options.async = true;
 const suite = Benchmark.Suite();
 
@@ -17,7 +17,9 @@ setConfig(
   }),
 );
 
-setConfig(ConfigKeyEnum.SERVER, getServerConfig());
+const serverConfig = getServerConfig();
+console.log(serverConfig);
+setConfig(ConfigKeyEnum.SERVER, serverConfig);
 
 (async () => {
   try {
@@ -26,6 +28,8 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
     });
 
     await server.ready();
+
+    console.log("server is ready");
 
     suite
       .add("Serve Static HTML file from root", {
@@ -43,13 +47,16 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
       })
       .add("Serve SSG HTML from path", {
         defer: true,
-        fn: async (def) => {
+        fn: (def) => {
           server
             .inject({
               method: "GET",
               url: "/posts/page-1",
             })
-            .then((res) => def.resolve());
+            .then((res) => {
+              console.log("ssg", res.statusCode);
+              def.resolve();
+            });
         },
       })
       .add("Serve SSG `page-data.json` from path", {
@@ -74,6 +81,48 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
             .then((res) => def.resolve());
         },
       })
+      .add("Serve SSR HTML", {
+        defer: true,
+        fn: (def) => {
+          server
+            .inject({
+              method: "GET",
+              url: "/ssr",
+            })
+            .then((res) => {
+              console.log("SSR", res.statusCode, res.headers);
+              def.resolve();
+            });
+        },
+      })
+      .add("Serve DSG HTML", {
+        defer: true,
+        fn: (def) => {
+          server
+            .inject({
+              method: "GET",
+              url: "/generated/page-6",
+            })
+            .then((res) => {
+              console.log("DSG html", res.statusCode, res.headers);
+              def.resolve();
+            });
+        },
+      })
+      .add("Serve DSG/SSR page-data.json", {
+        defer: true,
+        fn: (def) => {
+          server
+            .inject({
+              method: "GET",
+              url: "/page-data/generated/page-6/page-data.json",
+            })
+            .then((res) => {
+              console.log("DSG pagedata", res.statusCode, res.headers);
+              def.resolve();
+            });
+        },
+      })
       .add("Serve 404", {
         defer: true,
         fn: (def) => {
@@ -83,6 +132,20 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
               url: "/nonExistentRoute",
             })
             .then((res) => {
+              def.resolve();
+            });
+        },
+      })
+      .add("Serve 500", {
+        defer: true,
+        fn: (def) => {
+          server
+            .inject({
+              method: "GET",
+              url: "/ssrBad/",
+            })
+            .then((res) => {
+              console.log("500", res.statusCode);
               def.resolve();
             });
         },
@@ -111,9 +174,20 @@ setConfig(ConfigKeyEnum.SERVER, getServerConfig());
             .then((res) => def.resolve());
         },
       })
-      // .on("cycle", function (event) {
-      //   console.log(String(event.target));
-      // })
+      .add("Serve Splat Function", {
+        defer: true,
+        fn: (def) => {
+          server
+            .inject({
+              method: "GET",
+              url: "/api//api/test1/thisShouldWork",
+            })
+            .then((res) => def.resolve());
+        },
+      })
+      .on("cycle", function (event) {
+        console.log(String(event.target));
+      })
       .on("complete", () => {
         console.log("complete");
         server.close().then(() => {
