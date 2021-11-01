@@ -3,6 +3,7 @@ import { readJSONSync, existsSync } from "fs-extra";
 import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
 import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
 import type { PluginOptions } from "gatsby";
+import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 import { PathConfig } from "../plugins/clientPaths";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -14,6 +15,7 @@ const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 
 export interface GatsbyNodeServerConfig extends PluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
+  serverSideRoutes: ServerSideRoute[];
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];

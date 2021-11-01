@@ -14,7 +14,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   //@ts-ignore
   const { server: serverConfig } = getConfig();
 
-  const { clientSideRoutes, redirects, compression, functions } = serverConfig;
+  const { clientSideRoutes, serverSideRoutes, redirects, compression, functions } = serverConfig;
 
   // Utils
   fastify.register(fastifyAccepts);
@@ -43,7 +43,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handleRedirects, { redirects });
 
   // Gatsby DSG & SSR
-  await fastify.register(handleDsgSsr);
+  await fastify.register(handleDsgSsr, { paths: serverSideRoutes });
 
   // Gatsby 404
   await fastify.register(handle404, {});

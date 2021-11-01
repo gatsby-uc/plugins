@@ -23,7 +23,6 @@ export const handleClientOnlyPaths: FastifyPluginAsync<{
     fastify.get(
       fastifyMatchPath,
       {
-        exposeHeadRoute: true,
         prefixTrailingSlash: "slash",
       },
       (_req, reply) => {
