@@ -18,7 +18,6 @@ export interface GatsbyNodeServerConfig extends PluginOptions {
   prefix: string | undefined;
   functions: IGatsbyFunction[];
   compression: boolean;
-  refreshEndpoint: boolean;
 }
 
 export type GfCliOptions = {

@@ -1,4 +1,3 @@
-import { handleRefreshEndpoint } from "./refreshEndpoint";
 import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
@@ -42,9 +41,6 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
 
   // Gatsby Redirects
   await fastify.register(handleRedirects, { redirects });
-
-  // Gatsby Refresh Endpoint
-  await fastify.register(handleRefreshEndpoint);
 
   // Gatsby DSG & SSR
   await fastify.register(handleDsgSsr);
