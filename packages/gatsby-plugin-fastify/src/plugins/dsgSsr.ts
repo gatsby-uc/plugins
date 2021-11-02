@@ -101,7 +101,7 @@ export const handleDsgSsr: FastifyPluginAsync<{
 
       fastify.get(path, async (req, reply) => {
         const accept = req.accepts();
-        if (accept.types().includes("text/html")) {
+        if (accept.type(["html"])) {
           fastify.log.debug(`DSG/SSR for "text/html" @  ${req.url}`);
           const potentialPagePath = reverseFixedPagePath(req.url);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
@@ -140,7 +140,8 @@ export const handleDsgSsr: FastifyPluginAsync<{
             }
           }
         } else {
-          reply.callNotFound();
+          fastify.log.warn(`Request for route ${req.url} does not support "text/html"`);
+          reply.code(400).send("Request must support html via the `accept` header.");
         }
       });
     }
