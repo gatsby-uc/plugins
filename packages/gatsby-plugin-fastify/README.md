@@ -115,12 +115,13 @@ For an example on how to use thi reference the server implementation file from [
 Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
 
 ```js
-import { handle } from "gatsby-plugin-fastify/plugins/gatsby";
 import { handle404 } from "gatsby-plugin-fastify/plugins/404";
+import { handle500 } from "gatsby-plugin-fastify/plugins/500";
 import { handleClientOnlyPaths } from "gatsby-plugin-fastify/plugins/clientPaths";
 import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
 import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
 import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
+import { handleServerRoutes } from "gatsby-plugin-fastify/plugins/serverRoutes";
 ```
 
 For an example on how to use these you see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).

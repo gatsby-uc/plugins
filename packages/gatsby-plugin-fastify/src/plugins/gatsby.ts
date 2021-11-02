@@ -2,7 +2,7 @@ import { handleClientOnlyPaths } from "./clientPaths";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
-import { handleDsgSsr } from "./dsgSsr";
+import { handleServerRoutes } from "./serverRoutes";
 import { handle404 } from "./404";
 import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
@@ -12,7 +12,6 @@ import fastifyAccepts from "fastify-accepts";
 import type { FastifyPluginAsync } from "fastify";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
-  //@ts-ignore
   const { server: serverConfig } = getConfig();
 
   const { clientSideRoutes, serverSideRoutes, redirects, compression, functions } = serverConfig;
@@ -20,7 +19,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   // Utils
   fastify.register(fastifyAccepts);
 
-  // Gatsby 500
+  // Gatsby 500 - This must be registered before anything that wants to use it
   await fastify.register(handle500, {});
 
   // Optimizations
@@ -47,7 +46,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handleRedirects, { redirects });
 
   // Gatsby DSG & SSR
-  await fastify.register(handleDsgSsr, { paths: serverSideRoutes });
+  await fastify.register(handleServerRoutes, { paths: serverSideRoutes });
 
   // Gatsby 404
   await fastify.register(handle404, {});

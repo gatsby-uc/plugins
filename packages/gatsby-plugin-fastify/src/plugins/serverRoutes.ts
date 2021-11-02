@@ -1,13 +1,12 @@
 import { join, posix, resolve } from "path";
-import { existsSync } from "fs-extra";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
-import { NEVER_CACHE_HEADER, PATH_TO_CACHE, PATH_TO_PUBLIC } from "../utils/constants";
+import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
 
-export const handleDsgSsr: FastifyPluginAsync<{
+export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
 }> = async (fastify, { paths }) => {
   if (paths?.length > 0) {
