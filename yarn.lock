@@ -9330,7 +9330,7 @@ __metadata:
     fs-extra: ^10.0.0
     gatsby: ^4.0.0
     gatsby-plugin-utils: ^2.0.0
-    jest: ^27.2.5
+    jest: ^27.3.1
     open: ^8.3.0
     picomatch: ^2.3.0
     pino-pretty: ^7.1.0
@@ -12603,7 +12603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^27.2.5":
+"jest@npm:^27.2.5, jest@npm:^27.3.1":
   version: 27.3.1
   resolution: "jest@npm:27.3.1"
   dependencies:

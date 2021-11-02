@@ -54,7 +54,7 @@
     "fastify-static": "^4.4.0",
     "gatsby": "^4.0.0",
     "gatsby-plugin-utils": "^2.0.0",
-    "jest": "^27.2.5"
+    "jest": "^27.3.1"
   },
   "peerDependencies": {
     "fastify": "^3.19.0",
@@ -65,6 +65,6 @@
     "gatsby": "^4.0.0"
   },
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=14.15.0"
   }
 }

@@ -5,7 +5,7 @@ import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
-import { NEVER_CACHE_HEADER, PATH_TO_PUBLIC } from "../utils/constants";
+import { NEVER_CACHE_HEADER, PATH_TO_CACHE, PATH_TO_PUBLIC } from "../utils/constants";
 
 export const handleDsgSsr: FastifyPluginAsync<{
   paths: ServerSideRoute[];
@@ -29,7 +29,7 @@ export const handleDsgSsr: FastifyPluginAsync<{
     fastify.log.info(`Registering ${dsgCount} DSG route(s)`);
     fastify.log.info(`Registering ${ssrCount} SSR route(s)`);
 
-    const cachePath = resolve("./.cache");
+    const cachePath = resolve(PATH_TO_CACHE);
 
     const { GraphQLEngine } = (await import(
       join(cachePath, "query-engine")
@@ -87,7 +87,7 @@ export const handleDsgSsr: FastifyPluginAsync<{
         } catch (e) {
           fastify.log.error("Error rendering route", page?.path, e);
           if (gatsby500ErrorFileExists) {
-            reply.code(500).sendFile("500.html");
+            return reply.code(500).sendFile("500.html");
           } else {
             reply.code(500).send("Error rendering route");
           }
@@ -129,12 +129,12 @@ export const handleDsgSsr: FastifyPluginAsync<{
               reply.type("text/html").send(results);
             } else {
               fastify.log.warn(`DSG/SSR for ${req.url} not found`);
-              reply.callNotFound();
+              return reply.callNotFound();
             }
           } catch (e) {
             fastify.log.error(`Error rendering route @ ${page?.path}: ${e}`);
             if (gatsby500ErrorFileExists) {
-              reply.code(500).sendFile("500.html");
+              return reply.code(500).sendFile("500.html");
             } else {
               reply.code(500).send("Error rendering route");
             }
