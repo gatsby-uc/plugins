@@ -11,7 +11,7 @@ const { exit } = require("process");
 const { serveGatsby } = require("gatsby-plugin-fastify/plugins/gatsby");
 const Fastify = require("fastify");
 
-Benchmark.options.minSamples = 10;
+Benchmark.options.minSamples = 500;
 const suite = Benchmark.Suite();
 
 setConfig(
