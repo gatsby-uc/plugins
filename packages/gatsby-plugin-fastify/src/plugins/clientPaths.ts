@@ -1,4 +1,4 @@
-import path from "path";
+import { resolve } from "path";
 
 import { PATH_TO_PUBLIC } from "../utils/constants";
 
@@ -31,7 +31,7 @@ export const handleClientOnlyPaths: FastifyPluginAsync<{
         },
         (_req, reply) => {
           reply.header("x-gatsby-fastify", `served-by: client-only-routes`);
-          reply.sendFile("index.html", path.resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
+          reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
         },
       );
     }

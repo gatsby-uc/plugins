@@ -1,5 +1,5 @@
 import { join, posix, resolve } from "path";
-import fs from "fs-extra";
+import { existsSync } from "fs-extra";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
@@ -43,7 +43,7 @@ export const handleDsgSsr: FastifyPluginAsync<{
       dbPath: join(cachePath, "data", "datastore"),
     });
 
-    const gatsby500ErrorFileExists = fs.existsSync(resolve(PATH_TO_PUBLIC, "500.html"));
+    const gatsby500ErrorFileExists = existsSync(resolve(PATH_TO_PUBLIC, "500.html"));
     fastify.log.info(
       `Gatsby 500 error page ${
         gatsby500ErrorFileExists ? "exists" : "missing, using generic 500 error for DSG/SSR"
@@ -79,17 +79,17 @@ export const handleDsgSsr: FastifyPluginAsync<{
             }
 
             reply.header(...NEVER_CACHE_HEADER);
-            reply.send(pageData);
+            return reply.send(pageData);
           } else {
             fastify.log.warn(`DSG/SSR for ${req.url} not found`);
-            reply.code(404).send("Page data not found");
+            return reply.code(404).send("Page data not found");
           }
         } catch (e) {
           fastify.log.error("Error rendering route", page?.path, e);
           if (gatsby500ErrorFileExists) {
             return reply.code(500).sendFile("500.html");
           } else {
-            reply.code(500).send("Error rendering route");
+            return reply.code(500).send("Error rendering route");
           }
         }
       });
@@ -126,7 +126,7 @@ export const handleDsgSsr: FastifyPluginAsync<{
                 reply.header(...NEVER_CACHE_HEADER);
               }
 
-              reply.type("text/html").send(results);
+              return reply.type("text/html").send(results);
             } else {
               fastify.log.warn(`DSG/SSR for ${req.url} not found`);
               return reply.callNotFound();
@@ -136,7 +136,7 @@ export const handleDsgSsr: FastifyPluginAsync<{
             if (gatsby500ErrorFileExists) {
               return reply.code(500).sendFile("500.html");
             } else {
-              reply.code(500).send("Error rendering route");
+              return reply.code(500).send("Error rendering route");
             }
           }
         } else {

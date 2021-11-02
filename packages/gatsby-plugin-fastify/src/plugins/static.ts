@@ -1,14 +1,14 @@
 import { FastifyPluginAsync } from "fastify";
 import fastifyStatic, { FastifyStaticOptions } from "fastify-static";
 import fp from "fastify-plugin";
-import path from "path";
+import { resolve } from "path";
 import { isMatch } from "picomatch";
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
     fastify.register(fastifyStatic, {
-      root: path.resolve(PATH_TO_PUBLIC),
+      root: resolve(PATH_TO_PUBLIC),
       wildcard: true,
       setHeaders: (reply, path, _stat) => {
         if (

@@ -1,4 +1,4 @@
-import path from "path";
+import { resolve } from "path";
 import { existsSync } from "fs-extra";
 import { IGatsbyFunction } from "gatsby/dist/redux/types";
 import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
@@ -12,7 +12,7 @@ export type GatsbyFunctionHandler = (
 async function getFunctionToExec({
   relativeCompiledFilePath,
 }: IGatsbyFunction): Promise<GatsbyFunctionHandler | null> {
-  const funcImportAbsPath = path.resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
+  const funcImportAbsPath = resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
 
   if (!existsSync(funcImportAbsPath)) {
     throw new Error(`Unable to find function to import @ ${funcImportAbsPath}`);
