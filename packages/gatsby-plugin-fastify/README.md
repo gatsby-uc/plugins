@@ -24,10 +24,10 @@
 - Serving static files
 - Serving DSG/SSR Routes
 - Gatsby 404 page
+- Gatsby 500 page
 - Gatsby redirects
 - Client-side paths
 - Serving the site with pathPrefix - set it up inside `gatsby-config.js`, the plugin will take care of it
-- A Webhook to trigger updates in the Gatsby datalayer.
 - File compression, Etags, and more.
 
 # Installation

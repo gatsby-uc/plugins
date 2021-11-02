@@ -4,6 +4,7 @@ import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
 import { handleDsgSsr } from "./dsgSsr";
 import { handle404 } from "./404";
+import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
 import fastifyCompress from "fastify-compress";
@@ -18,6 +19,9 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
 
   // Utils
   fastify.register(fastifyAccepts);
+
+  // Gatsby 500
+  await fastify.register(handle500, {});
 
   // Optimizations
   if (compression) {

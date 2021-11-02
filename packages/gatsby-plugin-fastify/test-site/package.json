@@ -11,7 +11,7 @@
     "benchmark": "node benchmark.js",
     "develop": "gatsby develop",
     "start": "gserve",
-    "build": "GATSBY_LOGGER=yurnalist gatsby build",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },

@@ -43,13 +43,6 @@ export const handleDsgSsr: FastifyPluginAsync<{
       dbPath: join(cachePath, "data", "datastore"),
     });
 
-    const gatsby500ErrorFileExists = existsSync(resolve(PATH_TO_PUBLIC, "500.html"));
-    fastify.log.info(
-      `Gatsby 500 error page ${
-        gatsby500ErrorFileExists ? "exists" : "missing, using generic 500 error for DSG/SSR"
-      }`,
-    );
-
     // Handle page data for SSR/DSG routes
     for (const { path, mode } of paths) {
       const pageDataPath = posix.join("/page-data", path, "page-data.json");
@@ -60,37 +53,29 @@ export const handleDsgSsr: FastifyPluginAsync<{
         fastify.log.debug(`DSG/SSR for "page-data.json" @ ${path}`);
         const potentialPagePath = reverseFixedPagePath(path);
         const page = graphqlEngine.findPageByPath(potentialPagePath);
-
+        if (!page) {
+          throw new Error(`No page data found for path: ${req.url}`);
+        }
         reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
 
         try {
           // Fetch Page Data adn SSR Data
-          if (page && (page.mode === `DSG` || page.mode === `SSR`)) {
-            const pageQueryData = await getData({
-              pathName: req.url,
-              graphqlEngine,
-              req,
-            });
-            const pageData = (await renderPageData({ data: pageQueryData })) as any;
-            if (page.mode === `SSR` && pageData.serverDataHeaders) {
-              for (const [name, value] of Object.entries(pageData.serverDataHeaders)) {
-                reply.header(name, value);
-              }
+          const pageQueryData = await getData({
+            pathName: req.url,
+            graphqlEngine,
+            req,
+          });
+          const pageData = (await renderPageData({ data: pageQueryData })) as any;
+          if (page.mode === `SSR` && pageData.serverDataHeaders) {
+            for (const [name, value] of Object.entries(pageData.serverDataHeaders)) {
+              reply.header(name, value);
             }
+          }
 
-            reply.header(...NEVER_CACHE_HEADER);
-            return reply.send(pageData);
-          } else {
-            fastify.log.warn(`DSG/SSR for ${req.url} not found`);
-            return reply.code(404).send("Page data not found");
-          }
+          reply.header(...NEVER_CACHE_HEADER);
+          return reply.send(pageData);
         } catch (e) {
-          fastify.log.error("Error rendering route", page?.path, e);
-          if (gatsby500ErrorFileExists) {
-            return reply.code(500).sendFile("500.html");
-          } else {
-            return reply.code(500).send("Error rendering route");
-          }
+          throw new Error(`Error fetching page data for ${path}: ${e.message}`);
         }
       });
     }
@@ -106,42 +91,36 @@ export const handleDsgSsr: FastifyPluginAsync<{
           const potentialPagePath = reverseFixedPagePath(req.url);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
 
+          if (!page) {
+            throw new Error(`No page found for ${req.url}`);
+          }
+
           reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
 
           try {
-            if (page && (page.mode === "DSG" || page.mode === "SSR")) {
-              const data = await getData({
-                pathName: potentialPagePath,
-                graphqlEngine,
-                req,
-              });
-              const results = await renderHTML({ data });
-              if (page.mode === `SSR` && data.serverDataHeaders) {
-                for (const [name, value] of Object.entries(data.serverDataHeaders)) {
-                  reply.header(name, value);
-                }
+            const data = await getData({
+              pathName: potentialPagePath,
+              graphqlEngine,
+              req,
+            });
+            const results = await renderHTML({ data });
+            if (page.mode === `SSR` && data.serverDataHeaders) {
+              for (const [name, value] of Object.entries(data.serverDataHeaders)) {
+                reply.header(name, value);
               }
-
-              if (page.mode === "DSG") {
-                reply.header(...NEVER_CACHE_HEADER);
-              }
-
-              return reply.type("text/html").send(results);
-            } else {
-              fastify.log.warn(`DSG/SSR for ${req.url} not found`);
-              return reply.callNotFound();
             }
+
+            if (page.mode === "DSG") {
+              reply.header(...NEVER_CACHE_HEADER);
+            }
+
+            return reply.type("text/html").send(results);
           } catch (e) {
-            fastify.log.error(`Error rendering route @ ${page?.path}: ${e}`);
-            if (gatsby500ErrorFileExists) {
-              return reply.code(500).sendFile("500.html");
-            } else {
-              return reply.code(500).send("Error rendering route");
-            }
+            throw new Error(`Error fetching page HTML for ${path}: ${e.message}`);
           }
         } else {
           fastify.log.warn(`Request for route ${req.url} does not support "text/html"`);
-          reply.code(400).send("Request must support html via the `accept` header.");
+          return reply.code(400).send("Request must support html via the `accept` header.");
         }
       });
     }

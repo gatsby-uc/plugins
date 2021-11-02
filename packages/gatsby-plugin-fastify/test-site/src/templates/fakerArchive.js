@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 
 export default function fakerData({ pageContext: { posts } }) {
   return (
