@@ -20,6 +20,8 @@ module.exports = {
   ],
 
   modulePathIgnorePatterns: [`<rootDir>/test-site/`],
+  transformIgnorePatterns: ["/query-engine/", "/page-ssr/", "/test-sites/fastify/"],
+  coveragePathIgnorePatterns: ["/query-engine/", "/page-ssr/", "/test-sites/fastify/"],
   // The test environment that will be used for testing
   testEnvironment: `node`,
 };
