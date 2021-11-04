@@ -1,11 +1,11 @@
-import { existsSync, mkdir, writeJSON } from "fs-extra";
+import { writeJSON } from "fs-extra";
 
 import type { GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
 import { makePluginData } from "./utils/plugin-data";
 import { getFunctionManifest } from "./gatsby/functionsManifest";
-import { CONFIG_FILE_NAME, PATH_TO_CACHE } from "./utils/constants";
+import { CONFIG_FILE_NAME } from "./utils/constants";
 import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
 import { getServerSideRoutes } from "./gatsby/serverRoutes";
 
@@ -33,10 +33,6 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
       prefix: pathPrefix,
       functions,
     };
-
-    if (!existsSync(PATH_TO_CACHE)) {
-      await mkdir(PATH_TO_CACHE);
-    }
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
   } catch (e) {
