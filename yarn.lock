@@ -18928,9 +18928,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"test-fastify-gatsby@workspace:packages/gatsby-plugin-fastify/test-site":
+"test-fastify-gatsby@workspace:test-sites/fastify":
   version: 0.0.0-use.local
-  resolution: "test-fastify-gatsby@workspace:packages/gatsby-plugin-fastify/test-site"
+  resolution: "test-fastify-gatsby@workspace:test-sites/fastify"
   dependencies:
     benchmark: ^2.1.4
     fastify: ^3.22.1

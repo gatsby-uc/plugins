@@ -57,7 +57,15 @@ const responseData = [
     registered: "2019-10-23T07:06:59 +07:00",
     latitude: 4.157784,
     longitude: 79.800439,
-    tags: ["Lorem", "enim", "sint", "commodo", "minim", "tempor", "consectetur"],
+    tags: [
+      "Lorem",
+      "enim",
+      "sint",
+      "commodo",
+      "minim",
+      "tempor",
+      "consectetur",
+    ],
     friends: [
       {
         id: 0,
@@ -95,7 +103,15 @@ const responseData = [
     registered: "2018-07-10T08:23:13 +07:00",
     latitude: -41.232792,
     longitude: 14.620843,
-    tags: ["ipsum", "voluptate", "reprehenderit", "fugiat", "nulla", "elit", "dolore"],
+    tags: [
+      "ipsum",
+      "voluptate",
+      "reprehenderit",
+      "fugiat",
+      "nulla",
+      "elit",
+      "dolore",
+    ],
     friends: [
       {
         id: 0,
@@ -133,7 +149,15 @@ const responseData = [
     registered: "2017-10-26T05:06:57 +07:00",
     latitude: 62.176215,
     longitude: 50.081649,
-    tags: ["eiusmod", "esse", "adipisicing", "deserunt", "minim", "dolor", "sint"],
+    tags: [
+      "eiusmod",
+      "esse",
+      "adipisicing",
+      "deserunt",
+      "minim",
+      "dolor",
+      "sint",
+    ],
     friends: [
       {
         id: 0,
@@ -265,8 +289,8 @@ const responseData = [
     greeting: "Hello, Lee Good! You have 7 unread messages.",
     favoriteFruit: "strawberry",
   },
-];
+]
 
 export default function handler(req, res) {
-  res.code(200).send(responseData);
+  res.code(200).send(responseData)
 }
