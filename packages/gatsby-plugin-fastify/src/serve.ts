@@ -22,7 +22,8 @@ export async function gatsbyServer() {
 
     await fastify.listen(port, host);
   } catch (err) {
-    fastify.log.fatal("Failed to start Fastify", err);
+    console.error(err);
+    fastify.log.fatal("Failed to start Fastify");
     process.exit(1);
   }
 
