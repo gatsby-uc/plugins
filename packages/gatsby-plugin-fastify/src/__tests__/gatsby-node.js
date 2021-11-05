@@ -1,7 +1,7 @@
 const { onPostBuild } = require("../gatsby-node");
 const fs = require("fs-extra");
 
-jest.mock("../../utils/constants", () => ({
+jest.mock("../utils/constants", () => ({
   ...jest.requireActual("../utils/constants"),
   PATH_TO_FUNCTIONS: "test-site/.cache/functions/",
   PATH_TO_PUBLIC: __dirname + "/__files__/public/",
@@ -62,6 +62,14 @@ const store = {
       {
         matchPath: "/app/*",
         path: "/app/[...]/",
+      },
+      {
+        path: "/ssr",
+        mode: "SSR",
+      },
+      {
+        path: "/my/dsg/path",
+        mode: "DSG",
       },
     ],
     redirects: [

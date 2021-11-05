@@ -52,5 +52,15 @@ Object {
       "toPath": "/posts/page-3",
     },
   ],
+  "serverSideRoutes": Array [
+    Object {
+      "mode": "SSR",
+      "path": "/ssr",
+    },
+    Object {
+      "mode": "DSG",
+      "path": "/my/dsg/path",
+    },
+  ],
 }
 `;

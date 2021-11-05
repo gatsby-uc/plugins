@@ -1,4 +1,4 @@
-import path from "path";
+import { resolve } from "path";
 import { existsSync } from "fs-extra";
 import { IGatsbyFunction } from "gatsby/dist/redux/types";
 import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
@@ -12,7 +12,7 @@ export type GatsbyFunctionHandler = (
 async function getFunctionToExec({
   relativeCompiledFilePath,
 }: IGatsbyFunction): Promise<GatsbyFunctionHandler | null> {
-  const funcImportAbsPath = path.resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
+  const funcImportAbsPath = resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
 
   if (!existsSync(funcImportAbsPath)) {
     throw new Error(`Unable to find function to import @ ${funcImportAbsPath}`);
@@ -34,15 +34,18 @@ async function getFunctionHandler(routeConfig: IGatsbyFunction) {
 export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IGatsbyFunction[] }> =
   async (fastify, { prefix, functions }) => {
     if (functions?.length > 0) {
+      fastify.log.info(`Registering ${functions.length} function(s)`);
+
       for (const funcConfig of functions) {
         try {
           const fnToExecute = await getFunctionHandler(funcConfig);
 
           if (fnToExecute) {
-            fastify.log.info(`Registering function:  ${prefix + funcConfig.functionRoute}`);
+            fastify.log.debug(`Registering function:  ${prefix + funcConfig.functionRoute}`);
             fastify.all(funcConfig.functionRoute, {
               handler: async function (req, reply) {
                 try {
+                  reply.header("x-gatsby-fastify", "served-by: functions");
                   await Promise.resolve(fnToExecute(req, reply));
                 } catch (e) {
                   fastify.log.error(e);
