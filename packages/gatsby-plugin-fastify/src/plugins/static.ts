@@ -7,9 +7,12 @@ import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "..
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
+    const publicPath = resolve(PATH_TO_PUBLIC);
+    fastify.log.debug(`Serving Static Assets from ${publicPath}`);
     fastify.register(fastifyStatic, {
-      root: resolve(PATH_TO_PUBLIC),
+      root: publicPath,
       redirect: true,
+      wildcard: true,
       setHeaders: (reply, path, _stat) => {
         if (
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&

@@ -4,7 +4,6 @@ const Fastify = require("fastify");
 
 const { createCliConfig } = require("../__utils__/config");
 
-console.log(__dirname);
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
   PATH_TO_FUNCTIONS: "../../test-sites/fastify/.cache/functions/",
@@ -91,21 +90,22 @@ describe(`Test Gatsby Server`, () => {
       expect(response.payload).toMatchSnapshot();
     });
 
-    it(`Should serve static route with or without trailing /`, async () => {
+    it.skip(`Should serve static route with or without trailing /`, async () => {
       const fastify = await createFastifyInstance();
 
-      const response1 = await fastify.inject({
+      const noSlashResponse = await fastify.inject({
         url: "/posts/page-1",
         method: "GET",
       });
 
-      const response2 = await fastify.inject({
+      const slashResponse = await fastify.inject({
         url: "/posts/page-1/",
         method: "GET",
       });
 
-      expect(response1.statusCode).toEqual(response2.statusCode);
-      expect(response1.payload).toEqual(response2.payload);
+      expect(noSlashResponse.statusCode).toEqual(200);
+      expect(slashResponse.statusCode).toEqual(200);
+      expect(noSlashResponse.payload).toEqual(slashResponse.payload);
     });
   });
 
