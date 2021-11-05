@@ -14,7 +14,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.15.7":
+"@babel/cli@npm:^7.15.7, @babel/cli@npm:^7.16.0":
   version: 7.16.0
   resolution: "@babel/cli@npm:7.16.0"
   dependencies:
@@ -99,7 +99,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.15.5, @babel/core@npm:^7.15.8, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.15.5, @babel/core@npm:^7.15.8, @babel/core@npm:^7.16.0, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5":
   version: 7.16.0
   resolution: "@babel/core@npm:7.16.0"
   dependencies:
@@ -9351,13 +9351,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-github-ribbon@workspace:packages/gatsby-plugin-github-ribbon"
   dependencies:
-    "@babel/cli": ^7.15.7
-    "@babel/core": ^7.15.8
-    babel-jest: ^27.2.5
+    "@babel/cli": ^7.16.0
+    "@babel/core": ^7.16.0
+    babel-jest: ^27.3.1
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
-    gatsby: ^3.14.2
-    jest: ^27.2.5
+    gatsby: ^3.14.5
+    jest: ^27.3.1
     react: ^17.0.2
     react-dom: ^17.0.2
     request: ^2.88.2
@@ -9922,7 +9922,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^3.14.2":
+"gatsby@npm:^3.14.5":
   version: 3.14.5
   resolution: "gatsby@npm:3.14.5"
   dependencies:
@@ -12603,7 +12603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^27.2.5, jest@npm:^27.3.1":
+"jest@npm:^27.3.1":
   version: 27.3.1
   resolution: "jest@npm:27.3.1"
   dependencies:
