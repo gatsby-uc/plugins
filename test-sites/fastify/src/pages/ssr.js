@@ -16,6 +16,9 @@ export async function getServerData() {
       throw new Error(`Response failed`)
     }
     return {
+      headers: {
+        "x-test": "Custom Headers Work!",
+      },
       props: await res.json(),
     }
   } catch (error) {

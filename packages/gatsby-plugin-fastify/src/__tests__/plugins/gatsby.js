@@ -1,8 +1,7 @@
 const { serveGatsby } = require("../../plugins/gatsby");
 const { ConfigKeyEnum, setConfig, getServerConfig, getConfig } = require("../../utils/config");
-const Fastify = require("fastify");
 
-const { createCliConfig } = require("../__utils__/config");
+const { createCliConfig, createFastifyInstance } = require("../__utils__/config");
 
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
@@ -11,24 +10,6 @@ jest.mock("../../utils/constants", () => ({
   PATH_TO_CACHE: "../../test-sites/fastify/.cache",
   CONFIG_FILE_PATH: "../../test-sites/fastify/.cache",
 }));
-
-async function createFastifyInstance(logLevel = "fatal") {
-  const fastify = Fastify({
-    ignoreTrailingSlash: true,
-    logger: { level: logLevel, prettyPrint: true },
-    disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
-  });
-
-  const {
-    server: { prefix },
-  } = getConfig();
-  await fastify.register(serveGatsby, { prefix });
-  await fastify.ready();
-
-  return fastify;
-}
-
-const logLevel = "fatal";
 
 describe(`Test Gatsby Server`, () => {
   beforeAll(() => {
@@ -51,7 +32,7 @@ describe(`Test Gatsby Server`, () => {
       const newConfig = { ...defaultconfig, prefix: "/test" };
       setConfig(ConfigKeyEnum.SERVER, newConfig);
 
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/test/",
@@ -67,7 +48,7 @@ describe(`Test Gatsby Server`, () => {
 
   describe(`Gatsby Static Routes`, () => {
     it(`Should serve custom 404`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/badRoute",
@@ -79,7 +60,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it(`Should serve static index route`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/",
@@ -91,7 +72,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it.skip(`Should serve static route with or without trailing /`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const noSlashResponse = await fastify.inject({
         url: "/posts/page-1",
@@ -111,7 +92,7 @@ describe(`Test Gatsby Server`, () => {
 
   describe(`Gatsby Functions`, () => {
     it(`Should serve function route`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/api/test",
@@ -124,7 +105,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it(`Should serve function splat route`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/api/splat/doesThisWork",
@@ -137,7 +118,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it(`Should 404 on bad function route`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/api/badRoute",
@@ -151,7 +132,7 @@ describe(`Test Gatsby Server`, () => {
 
   describe(`Gatsby Redirects`, () => {
     it(`Should handle permanent redirect`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/perm-redirect",
@@ -163,7 +144,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it(`Should handle temporary redirect`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/temp-redirect",
@@ -175,7 +156,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it(`Should handle alt redirect`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/alt-redirect",
@@ -189,7 +170,7 @@ describe(`Test Gatsby Server`, () => {
 
   describe(`Client Side Routes`, () => {
     it(`Should handle base route`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const response = await fastify.inject({
         url: "/app/",
@@ -201,7 +182,7 @@ describe(`Test Gatsby Server`, () => {
     });
 
     it(`Should handle sub routes`, async () => {
-      const fastify = await createFastifyInstance();
+      const fastify = await createFastifyInstance(serveGatsby);
 
       const responseBase = await fastify.inject({
         url: "/app/",

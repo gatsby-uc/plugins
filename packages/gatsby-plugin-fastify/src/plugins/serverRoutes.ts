@@ -42,7 +42,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
       dbPath: join(cachePath, "data", "datastore"),
     });
 
-    // Handle page data for SSR/DSG routes
+    // Handle page-data for SSR/DSG routes
     for (const { path, mode } of paths) {
       const pageDataPath = posix.join("/page-data", path, "page-data.json");
 
@@ -53,6 +53,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
         const potentialPagePath = reverseFixedPagePath(path);
         const page = graphqlEngine.findPageByPath(potentialPagePath);
         if (!page) {
+          //this theoreticall shouldn't happen cause we're creating these routes based on data from build.
           throw new Error(`No page data found for path: ${req.url}`);
         }
         reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
@@ -65,8 +66,9 @@ export const handleServerRoutes: FastifyPluginAsync<{
             req,
           });
           const pageData = (await renderPageData({ data: pageQueryData })) as any;
-          if (page.mode === `SSR` && pageData.serverDataHeaders) {
-            for (const [name, value] of Object.entries(pageData.serverDataHeaders)) {
+
+          if (page.mode === `SSR` && pageQueryData?.serverDataHeaders) {
+            for (const [name, value] of Object.entries(pageQueryData.serverDataHeaders)) {
               reply.header(name, value);
             }
           }
