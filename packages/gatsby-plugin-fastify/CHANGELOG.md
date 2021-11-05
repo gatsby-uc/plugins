@@ -1,5 +1,21 @@
 # gatsby-plugin-fastify
 
+## 0.6.0
+
+### Minor Changes
+
+- [#68](https://github.com/gatsby-uc/plugins/pull/68) [`e736248`](https://github.com/gatsby-uc/plugins/commit/e736248513e6bdbeb29cbedd06b79ed40ac0294f) Thanks [@moonmeister](https://github.com/moonmeister)! - feat: much improved logging
+
+* [#68](https://github.com/gatsby-uc/plugins/pull/68) [`e736248`](https://github.com/gatsby-uc/plugins/commit/e736248513e6bdbeb29cbedd06b79ed40ac0294f) Thanks [@moonmeister](https://github.com/moonmeister)! - feat: add support for Gatsby 500 error if SSR/DSG throws an error.
+
+- [#68](https://github.com/gatsby-uc/plugins/pull/68) [`e736248`](https://github.com/gatsby-uc/plugins/commit/e736248513e6bdbeb29cbedd06b79ed40ac0294f) Thanks [@moonmeister](https://github.com/moonmeister)! - Support for Gatsby v4's DSG and SSR routes.
+
+### Patch Changes
+
+- [#68](https://github.com/gatsby-uc/plugins/pull/68) [`e736248`](https://github.com/gatsby-uc/plugins/commit/e736248513e6bdbeb29cbedd06b79ed40ac0294f) Thanks [@moonmeister](https://github.com/moonmeister)! - Fix: SSR/DSG routes throwing non-fatal error when returning file.
+
+* [#68](https://github.com/gatsby-uc/plugins/pull/68) [`e736248`](https://github.com/gatsby-uc/plugins/commit/e736248513e6bdbeb29cbedd06b79ed40ac0294f) Thanks [@moonmeister](https://github.com/moonmeister)! - fix: handle situations where dev doesn't provide 404 page by falling back to generic 404.
+
 ## 0.5.0
 
 ### Minor Changes
