@@ -5,7 +5,6 @@ const {
   ConfigKeyEnum,
   getConfig,
 } = require("gatsby-plugin-fastify/utils/config")
-const { exit } = require("process")
 const { serveGatsby } = require("gatsby-plugin-fastify/plugins/gatsby")
 const Fastify = require("fastify")
 
@@ -44,7 +43,7 @@ function expectResp(def, path, code = 200) {
       console.log(
         `Expected status code ${code}, got ${res.statusCode} from ${path}`
       )
-      exit(1)
+      process.exit(1)
     }
     def.resolve()
   }
