@@ -14,7 +14,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.15.7":
+"@babel/cli@npm:^7.15.7, @babel/cli@npm:^7.16.0":
   version: 7.16.0
   resolution: "@babel/cli@npm:7.16.0"
   dependencies:
@@ -99,7 +99,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.15.5, @babel/core@npm:^7.15.8, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.15.5, @babel/core@npm:^7.15.8, @babel/core@npm:^7.16.0, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5":
   version: 7.16.0
   resolution: "@babel/core@npm:7.16.0"
   dependencies:
@@ -9490,8 +9490,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-relative-ci@workspace:packages/gatsby-plugin-relative-ci"
   dependencies:
-    "@babel/cli": ^7.15.7
-    "@babel/core": ^7.15.8
+    "@babel/cli": ^7.16.0
+    "@babel/core": ^7.16.0
     "@relative-ci/agent": ^2.1.0
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
