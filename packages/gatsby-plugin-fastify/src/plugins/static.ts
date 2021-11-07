@@ -3,7 +3,7 @@ import fp from "fastify-plugin";
 import type { FastifyPluginAsync } from "fastify";
 
 import { resolve } from "path";
-import { isMatch } from "micromatch";
+import { isMatch } from "picomatch";
 
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
 
