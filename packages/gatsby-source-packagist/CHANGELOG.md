@@ -1,5 +1,11 @@
 # gatsby-source-packagist
 
+## 1.1.3
+
+### Patch Changes
+
+- [#115](https://github.com/gatsby-uc/plugins/pull/115) [`ff02910`](https://github.com/gatsby-uc/plugins/commit/ff02910bf270187a53a635051df0ec1dc61403e6) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-source-packagist): update non-major dependency versions
+
 ## 1.1.2
 
 ### Patch Changes
