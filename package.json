@@ -6,7 +6,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "packages/**/test-site"
+    "test-sites/*"
   ],
   "scripts": {
     "ac": "yarn all-contributors",
@@ -22,11 +22,11 @@
     "@changesets/changelog-github": "^0.4.1",
     "@changesets/cli": "^2.17.0",
     "all-contributors-cli": "^6.20.0",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.2.3",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "prettier": "^2.4.1"
   },
-  "packageManager": "yarn@3.1.0-rc.6",
+  "packageManager": "yarn@3.1.0",
   "lint-staged": {
     "**/*.{js,ts,md,json,yml,json}": "prettier --write"
   }

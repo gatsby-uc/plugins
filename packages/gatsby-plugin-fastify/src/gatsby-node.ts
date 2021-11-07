@@ -1,19 +1,15 @@
-import { existsSync, mkdir, writeJSON } from "fs-extra";
+import { writeJSON } from "fs-extra";
 import WebpackAssetsManifest from "webpack-assets-manifest";
 
 import type { GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
+import { CONFIG_FILE_NAME, BUILD_HTML_STAGE, BUILD_CSS_STAGE } from "./utils/constants";
 import { makePluginData } from "./utils/plugin-data";
 import { getFunctionManifest } from "./gatsby/functionsManifest";
-import {
-  CONFIG_FILE_NAME,
-  PATH_TO_CACHE,
-  BUILD_HTML_STAGE,
-  BUILD_CSS_STAGE,
-} from "./utils/constants";
 import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
 import { buildHeadersProgram } from "./gatsby/headerBuilder";
+import { getServerSideRoutes } from "./gatsby/serverRoutes";
 
 const assetsManifest: WebpackAssetsManifest.Assets = {};
 
@@ -45,6 +41,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 
     const functions = await getFunctionManifest(pluginData);
     const clientSideRoutes = await getClientSideRoutes(pluginData);
+    const serverSideRoutes = await getServerSideRoutes(pluginData);
     const headers = await buildHeadersProgram(pluginData, pluginOptions);
 
     // @ts-ignore
@@ -53,15 +50,12 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     const config: GatsbyNodeServerConfig = {
       ...pluginOptions,
       clientSideRoutes,
+      serverSideRoutes,
       redirects,
       prefix: pathPrefix,
       functions,
       headers,
     };
-
-    if (!existsSync(PATH_TO_CACHE)) {
-      await mkdir(PATH_TO_CACHE);
-    }
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
   } catch (e) {

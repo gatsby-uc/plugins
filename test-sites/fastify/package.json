@@ -1,0 +1,42 @@
+{
+  "name": "test-fastify-gatsby",
+  "version": "1.0.7",
+  "private": true,
+  "description": "Gatsby test site for gatsby-plugin-fastify",
+  "author": "Alex Moon",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "benchmark": "node benchmark.js",
+    "develop": "gatsby develop",
+    "start": "gserve",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "fastify": "^3.22.1",
+    "fastify-accepts": "^2.0.1",
+    "fastify-compress": "^3.6.1",
+    "fastify-static": "^4.4.2",
+    "gatsby": "^4.0.0",
+    "gatsby-plugin-fastify": "*",
+    "gatsby-plugin-image": "^2.0.0",
+    "gatsby-plugin-manifest": "^4.0.0",
+    "gatsby-plugin-postcss": "^5.0.0",
+    "gatsby-plugin-react-helmet": "^5.0.0",
+    "gatsby-plugin-sharp": "^4.0.0",
+    "gatsby-plugin-sitemap": "^5.0.0",
+    "gatsby-source-faker": "^4.0.0",
+    "gatsby-source-filesystem": "^4.0.0",
+    "gatsby-transformer-sharp": "^4.0.0",
+    "postcss": "^8.3.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4"
+  }
+}

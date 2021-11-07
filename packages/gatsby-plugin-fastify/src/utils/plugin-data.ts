@@ -1,7 +1,7 @@
 //This file was initially coppied from `gatsby-plugin-gatsby-cloud`
 
-import path from "path";
 import { readJSON } from "fs-extra";
+import { join } from "path";
 import { PATH_TO_CACHE, PATH_TO_FUNCTIONS, PATH_TO_PUBLIC } from "./constants";
 
 import type { Store } from "gatsby";
@@ -9,7 +9,7 @@ import type { IGatsbyState } from "gatsby/dist/redux/types";
 import type WebpackAssetsManifest from "webpack-assets-manifest";
 
 export function buildPrefixer(prefix: string, ...paths: string[]) {
-  return (...subpaths: string[]) => path.join(prefix, ...paths, ...subpaths);
+  return (...subpaths: string[]) => join(prefix, ...paths, ...subpaths);
 }
 
 // This function assembles data across the manifests and store to match a similar

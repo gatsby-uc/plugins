@@ -11,18 +11,23 @@ export const BUILD_CSS_STAGE = `build-css`;
 export const CONFIG_FILE_NAME = "gatsby-plugin-fastify.json";
 export const CONFIG_FILE_PATH = PATH_TO_CACHE;
 
+type Header = [string, string];
+
 // implementation values
-export const SECURITY_HEADERS = {
+export const SECURITY_HEADERS: { [key: string]: Header[] } = {
   "/*": [
-    `X-Frame-Options: DENY`,
-    `X-XSS-Protection: 1; mode=block`,
-    `X-Content-Type-Options: nosniff`,
-    `Referrer-Policy: same-origin`,
+    [`X-Frame-Options`, `DENY`],
+    [`X-XSS-Protection`, `1; mode=block`],
+    [`X-Content-Type-Options`, `nosniff`],
+    [`Referrer-Policy`, `same-origin`],
   ],
 };
 
-export const IMMUTABLE_CACHING_HEADER = `Cache-Control: public, max-age=31536000, immutable`;
-export const NEVER_CACHE_HEADER = `Cache-Control: public, max-age=0, must-revalidate`;
+export const IMMUTABLE_CACHING_HEADER: Header = [
+  `cache-control`,
+  `public, max-age=31536000, immutable`,
+];
+export const NEVER_CACHE_HEADER: Header = [`cache-control`, `public, max-age=0, must-revalidate`];
 
 export const CACHING_HEADERS = {
   "/static/*": [IMMUTABLE_CACHING_HEADER],
