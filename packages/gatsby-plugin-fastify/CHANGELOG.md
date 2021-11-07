@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.6.1
+
+### Patch Changes
+
+- [#112](https://github.com/gatsby-uc/plugins/pull/112) [`529590e`](https://github.com/gatsby-uc/plugins/commit/529590eb9e83ec4188ad9ef23eca9c9d14fb8729) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update non-major dependency versions
+
 ## 0.6.0
 
 ### Minor Changes

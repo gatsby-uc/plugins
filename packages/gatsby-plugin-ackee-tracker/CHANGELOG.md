@@ -1,5 +1,11 @@
 # gatsby-plugin-ackee-tracker
 
+## 3.2.1
+
+### Patch Changes
+
+- [#116](https://github.com/gatsby-uc/plugins/pull/116) [`c59a9d7`](https://github.com/gatsby-uc/plugins/commit/c59a9d79483459555883cedb397948754492c40b) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-ackee-tracker): update non-major dependency versions
+
 ## 3.2.0
 
 ### Minor Changes
