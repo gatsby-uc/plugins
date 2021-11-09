@@ -5,6 +5,7 @@ import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
+import { appendModuleHeader } from "../utils/headers";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
@@ -56,7 +57,8 @@ export const handleServerRoutes: FastifyPluginAsync<{
           //this theoreticall shouldn't happen cause we're creating these routes based on data from build.
           throw new Error(`No page data found for path: ${req.url}`);
         }
-        reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
+
+        appendModuleHeader(page?.mode as "DSG" | "SSR", reply);
 
         try {
           // Fetch Page Data adn SSR Data
@@ -73,6 +75,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
           }
 
+          //TODO: This must be fixed
           reply.header(...NEVER_CACHE_HEADER);
           return reply.send(pageData);
         } catch (e) {
@@ -96,7 +99,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             throw new Error(`No page found for ${req.url}`);
           }
 
-          reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
+          appendModuleHeader(page?.mode as "DSG" | "SSR", reply);
 
           try {
             const data = await getData({
@@ -112,6 +115,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
 
             if (page.mode === "DSG") {
+              //TODO: This must be fixed
               reply.header(...NEVER_CACHE_HEADER);
             }
 

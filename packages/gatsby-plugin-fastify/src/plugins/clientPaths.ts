@@ -4,6 +4,7 @@ import { PATH_TO_PUBLIC } from "../utils/constants";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
+import { appendModuleHeader } from "../utils/headers";
 
 export type PathConfig = {
   matchPath: string | undefined;
@@ -25,7 +26,7 @@ export const handleClientOnlyPaths: FastifyPluginAsync<{
       // const fastifyMatchPath = p.matchPath.replace(/\/\*$/, "*");
 
       fastify.get(p.matchPath, (_req, reply) => {
-        reply.header("x-gatsby-fastify", `served-by: client-only-routes`);
+        appendModuleHeader("CSR", reply);
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
       });
     }

@@ -33,7 +33,11 @@
   "dependencies": {
     "@babel/runtime": "^7.16.0",
     "fs-extra": "^10.0.0",
-    "lodash": "^4.17.21",
+    "just-compose": "^1.2.2",
+    "just-map-object": "^2.0.0",
+    "just-map-values": "^3.0.0",
+    "just-merge": "^2.1.1",
+    "just-typeof": "^2.2.0",
     "open": "^8.4.0",
     "picomatch": "^2.3.0",
     "pino-pretty": "^7.2.0",

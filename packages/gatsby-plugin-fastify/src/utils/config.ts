@@ -19,7 +19,9 @@ export interface GatsbyNodeServerConfig extends PluginOptions {
   compression: boolean;
   functions: IGatsbyFunction[];
   headers: {
-    [key: string]: string;
+    [path: string]: {
+      [name: string]: string;
+    };
   };
   mergeCacheHeaders: boolean;
   mergeSecurityHeaders: boolean;

@@ -3,6 +3,7 @@ import { existsSync } from "fs-extra";
 import { IGatsbyFunction } from "gatsby/dist/redux/types";
 import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
 import { PATH_TO_FUNCTIONS } from "../utils/constants";
+import { appendModuleHeader } from "../utils/headers";
 
 export type GatsbyFunctionHandler = (
   req: FastifyRequest,
@@ -45,7 +46,7 @@ export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IG
             fastify.all(funcConfig.functionRoute, {
               handler: async function (req, reply) {
                 try {
-                  reply.header("x-gatsby-fastify", "served-by: functions");
+                  appendModuleHeader("Functions", reply);
                   await Promise.resolve(fnToExecute(req, reply));
                 } catch (e) {
                   fastify.log.error(e);

@@ -6,6 +6,7 @@ import { resolve } from "path";
 import { isMatch } from "picomatch";
 
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
+import { appendModuleHeader } from "../utils/headers";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
@@ -20,11 +21,12 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
           isMatch(path, "!**/sw.js")
         ) {
-          reply.setHeader(...IMMUTABLE_CACHING_HEADER);
+          reply.headers(IMMUTABLE_CACHING_HEADER);
         } else {
-          reply.setHeader(...NEVER_CACHE_HEADER);
+          reply.headers(NEVER_CACHE_HEADER);
         }
-        reply.setHeader("x-gatsby-fastify", "served-by: static");
+
+        appendModuleHeader("Static", reply);
       },
       ...opts,
     });

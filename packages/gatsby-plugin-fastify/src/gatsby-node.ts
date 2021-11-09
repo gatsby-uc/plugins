@@ -66,12 +66,9 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
   const MATCH_ALL_KEYS = /^/;
   const headersSchema = Joi.object()
-    .pattern(
-      MATCH_ALL_KEYS,
-      Joi.array().items(Joi.string().pattern(/^[a-zA-Z\-]+\:\s*\S+\s*$/, { name: "header" })),
-    )
+    .pattern(MATCH_ALL_KEYS, Joi.object().pattern(MATCH_ALL_KEYS, Joi.string().required()))
     .default({})
-    .description(`Add more headers to specific pages`);
+    .description(`Add headers to specific pages`);
   return Joi.object({
     compression: Joi.boolean()
       .default(true)

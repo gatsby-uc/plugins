@@ -26,7 +26,21 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-fastify`,
-      options: {},
+      options: {
+        headers: {
+          "/*": {
+            "x-test-2": "Does this show",
+            "x-test": "Doesthisshow",
+            "X-Content-Type-Options": "this is overridden",
+          },
+          "/static/*": {
+            "cache-control": "max-age=31536000",
+          },
+          "/polyfill.js": {
+            "x-test": "someStuff here",
+          },
+        },
+      },
     },
     "gatsby-plugin-sitemap",
     {
