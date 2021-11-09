@@ -67,9 +67,13 @@ export const handleServerRoutes: FastifyPluginAsync<{
           });
           const pageData = (await renderPageData({ data: pageQueryData })) as any;
 
-          if (page.mode === `SSR` && pageQueryData?.serverDataHeaders) {
-            for (const [name, value] of Object.entries(pageQueryData.serverDataHeaders)) {
-              reply.header(name, value);
+          if (page.mode === `SSR`) {
+            if (pageQueryData?.serverDataHeaders) {
+              reply.headers(pageQueryData.serverDataHeaders);
+            }
+
+            if (pageQueryData?.serverDataStatus) {
+              reply.code(pageQueryData.serverDataStatus);
             }
           }
 
@@ -99,15 +103,21 @@ export const handleServerRoutes: FastifyPluginAsync<{
           reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
 
           try {
-            const data = await getData({
+            const pageQueryData = await getData({
               pathName: potentialPagePath,
               graphqlEngine,
               req,
             });
-            const results = await renderHTML({ data });
-            if (page.mode === `SSR` && data.serverDataHeaders) {
-              for (const [name, value] of Object.entries(data.serverDataHeaders)) {
-                reply.header(name, value);
+
+            const results = await renderHTML({ data: pageQueryData });
+
+            if (page.mode === `SSR`) {
+              if (pageQueryData?.serverDataHeaders) {
+                reply.headers(pageQueryData.serverDataHeaders);
+              }
+
+              if (pageQueryData?.serverDataStatus) {
+                reply.code(pageQueryData.serverDataStatus);
               }
             }
 
