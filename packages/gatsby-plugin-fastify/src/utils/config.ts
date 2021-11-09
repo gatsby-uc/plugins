@@ -24,6 +24,13 @@ export interface GatsbyFastifyPluginOptions extends PluginOptions {
 export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
   serverSideRoutes: ServerSideRoute[];
+  headers: {
+    [patPh: string]: {
+      [name: string]: string;
+    };
+  };
+  mergeCacheHeaders: boolean;
+  mergeSecurityHeaders: boolean;
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];

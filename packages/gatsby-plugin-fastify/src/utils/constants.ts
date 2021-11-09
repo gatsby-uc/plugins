@@ -3,8 +3,8 @@ export const PATH_TO_FUNCTIONS = ".cache/functions";
 export const PATH_TO_PUBLIC = "public";
 export const PATH_TO_CACHE = ".cache";
 
-export const BUILD_HTML_STAGE = `build-html`;
-export const BUILD_CSS_STAGE = `build-css`;
+export const BUILD_HTML_STAGE = "build-html";
+export const BUILD_CSS_STAGE = "build-css";
 
 // Config Values
 

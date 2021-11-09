@@ -1,111 +1,24 @@
-// import { getConfig } from "../utils/config";
+import compose from "just-compose";
+import merge from "just-merge";
+import typeOf from "just-typeof";
 
-// import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
-// export function buildPathHeaders(path: string): string[] {
-//   const {
-//     server: { headers },
-//   } = getConfig();
-
-//   const routeHeaders: string[] = [];
-
-//   for(const header of headers) {}
-
-//   return routeHeaders
-// }
-
-// function getHeaderParts(header: string): string[] {
-//   const parts = /^([^\s:]+):\s*([^\s:]+)\s*$/.exec(header);
-// }
-
-// const {
-//   server: { mergeSecurityHeaders, mergeCacheHeaders, headers },
-// } = getConfig();
-
-// function applySecurityHeaders(headers: string[]): string[] {
-//   return headers.concat(securityHeaders);
-// }
-
-// function applyCacheHeaders({ mergeCacheHeaders }: GatsbyServerFeatureOptions) {
-
-//   return (headers) => {
-//     if (!mergeCacheHeaders) {
-//       return headers;
-//     }
-//     if (
-//       isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
-//       isMatch(path, "!**/sw.js")
-//       ) {
-//         reply.setHeader(...IMMUTABLE_CACHING_HEADER);
-//       } else {
-//         reply.setHeader(...NEVER_CACHE_HEADER);
-//       }
-//     }
-// }
-
-// // Pulled from gatsby cloud plugin
-// function transformLink(manifest, publicFolder, pathPrefix) {
-//   return header =>
-//     header.replace(LINK_REGEX, (__, prefix, file, suffix) => {
-//       const hashed = manifest[file]
-//       if (hashed) {
-//         return `${prefix}${pathPrefix}${hashed}${suffix}`
-//       } else if (existsSync(publicFolder(file))) {
-//         return `${prefix}${pathPrefix}${file}${suffix}`
-//       } else {
-//         throw new Error(
-//           `Could not find the file specified in the Link header \`${header}\`.` +
-//             `The gatsby-plugin-gatsby-cloud is looking for a matching file (with or without a ` +
-//             `webpack hash). Check the public folder and your gatsby-config.js to ensure you are ` +
-//             `pointing to a public file.`
-//         )
-//       }
-//     })
-// }
-
-import _ from "lodash";
 import { SECURITY_HEADERS, CACHING_HEADERS, IMMUTABLE_CACHING_HEADER } from "../utils/constants";
 import type { PluginData } from "../utils/plugin-data";
 import type { GatsbyNodeServerConfig } from "../utils/config";
 
-function getHeaderName(header) {
-  const matches = header.match(/^([^:]+):/);
-  return matches && matches[1];
-}
-
-function defaultMerge(...headers) {
-  function unionMerge(objValue, srcValue) {
-    if (_.isArray(objValue)) {
-      return _.union(objValue, srcValue);
-    } else {
-      return undefined; // opt into default merge behavior
+function deepMerge(...headers) {
+  return headers.reduce((acc, header: { [key: string]: object }) => {
+    for (let [key, value] of Object.entries(header)) {
+      console.log(typeOf(value));
+      if (acc.hasOwnProperty(key) && typeOf(value) === `object`) {
+        //merge needs empty object to prevent overwriting of references use across multiple routes
+        acc[key] = merge({}, acc[key], value);
+      } else {
+        acc[key] = value;
+      }
     }
-  }
-
-  return _.mergeWith({}, ...headers, unionMerge);
-}
-
-function headersMerge(userHeaders, defaultHeaders) {
-  const merged = {};
-  Object.keys(defaultHeaders).forEach((path) => {
-    if (!userHeaders[path]) {
-      merged[path] = defaultHeaders[path];
-      return;
-    }
-    const headersMap = {};
-    defaultHeaders[path].forEach((header) => {
-      headersMap[getHeaderName(header)] = header;
-    });
-    userHeaders[path].forEach((header) => {
-      headersMap[getHeaderName(header)] = header; // override if exists
-    });
-    merged[path] = Object.values(headersMap);
-  });
-  Object.keys(userHeaders).forEach((path) => {
-    if (!merged[path]) {
-      merged[path] = userHeaders[path];
-    }
-  });
-  return merged;
+    return acc;
+  }, {});
 }
 
 // program methods
@@ -116,7 +29,7 @@ const applySecurityHeaders =
       return headers;
     }
 
-    return headersMerge(headers, SECURITY_HEADERS);
+    return deepMerge(SECURITY_HEADERS, headers);
   };
 
 const applyCachingHeaders =
@@ -146,15 +59,15 @@ const applyCachingHeaders =
 
     files.forEach((file) => {
       if (typeof file === `string`) {
-        cachingHeaders[`/` + file] = [IMMUTABLE_CACHING_HEADER];
+        cachingHeaders[`/` + file] = IMMUTABLE_CACHING_HEADER;
       }
     });
 
-    return defaultMerge(headers, cachingHeaders, CACHING_HEADERS);
+    return deepMerge(cachingHeaders, CACHING_HEADERS, headers);
   };
 
 export function buildHeadersProgram(pluginData, pluginOptions) {
-  return _.flow(
+  return compose(
     applySecurityHeaders(pluginOptions),
     applyCachingHeaders(pluginData, pluginOptions),
   )(pluginOptions.headers);

@@ -1,7 +1,7 @@
 import fastifyStatic, { FastifyStaticOptions } from "@fastify/static";
 import fp from "fastify-plugin";
 import { resolve } from "node:path";
-import { isMatch } from "micromatch";
+import { isMatch } from "picomatch";
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
 import { appendModuleHeader } from "../utils/headers";
 
@@ -21,9 +21,9 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
           isMatch(path, "!**/sw.js")
         ) {
-          reply.setHeader(...IMMUTABLE_CACHING_HEADER);
+          reply.headers(IMMUTABLE_CACHING_HEADER);
         } else {
-          reply.setHeader(...NEVER_CACHE_HEADER);
+          reply.headers(NEVER_CACHE_HEADER);
         }
         appendModuleHeader("Static", reply);
       },

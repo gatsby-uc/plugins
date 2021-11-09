@@ -3,6 +3,7 @@ import { existsSync } from "fs-extra";
 import { StatusCodes } from "http-status-codes";
 
 import { PATH_TO_FUNCTIONS } from "../utils/constants";
+import { appendModuleHeader } from "../utils/headers";
 
 import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
 import type { IGatsbyFunction } from "gatsby/dist/redux/types";
