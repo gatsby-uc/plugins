@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome! Submit a PR, answer questions, join the [Discord](discord.gg/wr9xhj9v).
+Welcome! Submit a PR, answer questions, join the [Discord](https://discord.gg/gwnqfzetjv).
 
 ## Contributing a plugin
 
