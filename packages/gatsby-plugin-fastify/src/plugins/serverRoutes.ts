@@ -65,6 +65,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             graphqlEngine,
             req,
           });
+
           const pageData = (await renderPageData({ data: pageQueryData })) as any;
 
           if (page.mode === `SSR`) {
