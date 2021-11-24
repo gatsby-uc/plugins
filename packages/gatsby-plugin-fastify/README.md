@@ -20,14 +20,14 @@
 
 `gatsby-plugin-fastify` gives you a way to integrate your Gatsby site with a Node.js server using Fastify. Use to serve a standard Gatsby.js site normally - the plugin will take care of everything:
 
-- Serving Gatsby Functions
-- Serving static files
-- Serving DSG/SSR Routes
-- Gatsby 404 page
-- Gatsby 500 page
-- Gatsby redirects
-- Client-side paths
-- Serving the site with pathPrefix - set it up inside `gatsby-config.js`, the plugin will take care of it
+- Serving [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/)
+- Serving [static files](https://www.gatsbyjs.com/docs/caching/#static-files)
+- Serving [DSG](https://www.gatsbyjs.com/docs/reference/rendering-options/deferred-static-generation/)/[SSR](https://www.gatsbyjs.com/docs/reference/rendering-options/server-side-rendering/) Routes
+- Gatsby [404 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-404-page/)
+- Gatsby [500 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-500-page/)
+- Gatsby [redirects](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect)
+- [Client-only routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
+- Serving the site with [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) - set it up inside `gatsby-config.js`, the plugin will take care of it
 - File compression, Etags, and more.
 
 # Installation
@@ -35,7 +35,7 @@
 Install the plugin using npm or yarn
 
 ```sh
-npm install gatsby-plugin-fastify fastify fastify-static fastify-compress fastify-plugin fastify-accepts
+npm install gatsby-plugin-fastify fastify
 ```
 
 and add it to your `gatsby-config.js`
@@ -117,7 +117,7 @@ Finally, each of the Gatsby features (functions, static files, redirects, client
 ```js
 import { handle404 } from "gatsby-plugin-fastify/plugins/404";
 import { handle500 } from "gatsby-plugin-fastify/plugins/500";
-import { handleClientOnlyPaths } from "gatsby-plugin-fastify/plugins/clientPaths";
+import { handleClientOnlyRoutes } from "gatsby-plugin-fastify/plugins/clientRoutes";
 import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
 import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
 import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
