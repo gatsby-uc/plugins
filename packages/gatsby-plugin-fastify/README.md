@@ -26,7 +26,7 @@
 - Gatsby [404 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-404-page/)
 - Gatsby [500 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-500-page/)
 - Gatsby [redirects](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect)
-- [Client-side routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
+- [Client-only routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
 - Serving the site with [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) - set it up inside `gatsby-config.js`, the plugin will take care of it
 - File compression, Etags, and more.
 
@@ -117,7 +117,7 @@ Finally, each of the Gatsby features (functions, static files, redirects, client
 ```js
 import { handle404 } from "gatsby-plugin-fastify/plugins/404";
 import { handle500 } from "gatsby-plugin-fastify/plugins/500";
-import { handleClientOnlyPaths } from "gatsby-plugin-fastify/plugins/clientPaths";
+import { handleClientOnlyRoutes } from "gatsby-plugin-fastify/plugins/clientRoutes";
 import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
 import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
 import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
