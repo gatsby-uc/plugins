@@ -20,7 +20,7 @@ describe(`adds github ribbon to html`, () => {
       {
         setPreBodyComponents,
       },
-      pluginOptions,
+      pluginOptions
     );
 
     expect(setPreBodyComponents).toMatchSnapshot();

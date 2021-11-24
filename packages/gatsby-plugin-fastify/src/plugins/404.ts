@@ -8,7 +8,7 @@ export const handle404: FastifyPluginAsync = async (fastify, _opts) => {
   fastify.log.info(
     `Gatsby 404 error page ${
       gatsby404ErrorFileExists ? "exists" : "missing, using generic 404 error"
-    }`,
+    }`
   );
 
   fastify.setNotFoundHandler((req, reply) => {

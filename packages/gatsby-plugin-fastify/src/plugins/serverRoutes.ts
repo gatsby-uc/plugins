@@ -22,7 +22,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
         }
         return acc;
       },
-      { dsgCount: 0, ssrCount: 0 },
+      { dsgCount: 0, ssrCount: 0 }
     );
 
     fastify.log.info(`Registering ${dsgCount} DSG route(s)`);
