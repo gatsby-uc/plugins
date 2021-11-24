@@ -1,15 +1,15 @@
-const Benchmark = require("benchmark")
+const Benchmark = require("benchmark");
 const {
   getServerConfig,
   setConfig,
   ConfigKeyEnum,
   getConfig,
-} = require("gatsby-plugin-fastify/utils/config")
-const { serveGatsby } = require("gatsby-plugin-fastify/plugins/gatsby")
-const Fastify = require("fastify")
+} = require("gatsby-plugin-fastify/utils/config");
+const { serveGatsby } = require("gatsby-plugin-fastify/plugins/gatsby");
+const Fastify = require("fastify");
 
-Benchmark.options.minSamples = 500
-const suite = Benchmark.Suite()
+Benchmark.options.minSamples = 500;
+const suite = Benchmark.Suite();
 
 function createCliConfig({ host, port, logLevel, open }) {
   return {
@@ -21,7 +21,7 @@ function createCliConfig({ host, port, logLevel, open }) {
     l: logLevel,
     open,
     o: open,
-  }
+  };
 }
 
 setConfig(
@@ -31,37 +31,35 @@ setConfig(
     host: "127.0.0.1",
     logLevel: "fatal",
     open: false,
-  })
-)
+  }),
+);
 
-const serverConfig = getServerConfig()
-setConfig(ConfigKeyEnum.SERVER, serverConfig)
+const serverConfig = getServerConfig();
+setConfig(ConfigKeyEnum.SERVER, serverConfig);
 
 function expectResp(def, path, code = 200) {
   return (res) => {
     if (res.statusCode !== code) {
-      console.log(
-        `Expected status code ${code}, got ${res.statusCode} from ${path}`
-      )
-      process.exit(1)
+      console.log(`Expected status code ${code}, got ${res.statusCode} from ${path}`);
+      process.exit(1);
     }
-    def.resolve()
-  }
+    def.resolve();
+  };
 }
 
-;(async () => {
+(async () => {
   const {
     cli: { logLevel },
-  } = getConfig()
+  } = getConfig();
   const server = Fastify({
     ignoreTrailingSlash: true,
     logger: { level: logLevel, prettyPrint: true },
     disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
-  })
+  });
 
-  await server.register(serveGatsby, { prefix: "" })
+  await server.register(serveGatsby, { prefix: "" });
 
-  console.log("server is ready")
+  console.log("server is ready");
 
   suite
     .add("Serve SSG HTML file from root", {
@@ -72,7 +70,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/",
           })
-          .then(expectResp(def, "/"))
+          .then(expectResp(def, "/"));
       },
     })
     .add("Serve SSG HTML from path", {
@@ -84,7 +82,7 @@ function expectResp(def, path, code = 200) {
             url: "/posts/page-1/",
             timeout: 10000,
           })
-          .then(expectResp(def, "/posts/page-1/"))
+          .then(expectResp(def, "/posts/page-1/"));
       },
     })
     .add("Serve SSG `page-data.json` from path", {
@@ -95,7 +93,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/page-data/posts/page-1/page-data.json",
           })
-          .then(expectResp(def, "/page-data/posts/page-1/page-data.json"))
+          .then(expectResp(def, "/page-data/posts/page-1/page-data.json"));
       },
     })
     .add("Serve CSR", {
@@ -106,7 +104,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/app/",
           })
-          .then(expectResp(def, "/app"))
+          .then(expectResp(def, "/app"));
       },
     })
     .add("Serve SSR HTML", {
@@ -118,7 +116,7 @@ function expectResp(def, path, code = 200) {
             url: "/ssr",
             hostname: "localhost:3001",
           })
-          .then(expectResp(def, "/ssr"))
+          .then(expectResp(def, "/ssr"));
       },
     })
     .add("Serve DSG HTML", {
@@ -129,7 +127,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/generated/page-6",
           })
-          .then(expectResp(def, "/generated/page-6"))
+          .then(expectResp(def, "/generated/page-6"));
       },
     })
     .add("Serve DSG/SSR page-data.json", {
@@ -140,7 +138,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/page-data/generated/page-6/page-data.json",
           })
-          .then(expectResp(def, "/page-data/generated/page-6/page-data.json"))
+          .then(expectResp(def, "/page-data/generated/page-6/page-data.json"));
       },
     })
     .add("Serve 404", {
@@ -151,7 +149,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/nonExistentRoute",
           })
-          .then(expectResp(def, "/nonExistentRoute", 404))
+          .then(expectResp(def, "/nonExistentRoute", 404));
       },
     })
     .add("Serve 500", {
@@ -162,7 +160,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/ssrBad/",
           })
-          .then(expectResp(def, "/ssrBad/", 500))
+          .then(expectResp(def, "/ssrBad/", 500));
       },
     })
     .add("Serve Redirect", {
@@ -173,7 +171,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/perm-redirect/",
           })
-          .then(expectResp(def, "/perm-redirect/", 301))
+          .then(expectResp(def, "/perm-redirect/", 301));
       },
     })
     .add("Serve Function", {
@@ -184,7 +182,7 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/api/test",
           })
-          .then(expectResp(def, "/api/test", 200))
+          .then(expectResp(def, "/api/test", 200));
       },
     })
     .add("Serve Splat Function", {
@@ -195,17 +193,17 @@ function expectResp(def, path, code = 200) {
             method: "GET",
             url: "/api/test1/thisShouldWork",
           })
-          .then(expectResp(def, "/api/test1/thisShouldWork", 200))
+          .then(expectResp(def, "/api/test1/thisShouldWork", 200));
       },
     })
     .on("cycle", function (event) {
-      console.log(String(event.target))
+      console.log(String(event.target));
     })
     .on("complete", () => {
-      console.log("complete")
+      console.log("complete");
       server.close().then(() => {
-        console.log("server closed")
-      })
+        console.log("server closed");
+      });
     })
-    .run()
-})()
+    .run();
+})();

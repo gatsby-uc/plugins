@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import { Link } from "gatsby";
 
 export default function fakerData({ pageContext: { posts } }) {
   return (
@@ -13,9 +13,9 @@ export default function fakerData({ pageContext: { posts } }) {
                 {lorem.words} - {name.firstName} {name.lastName}
               </Link>
             </li>
-          )
+          );
         })}
       </ol>
     </>
-  )
+  );
 }

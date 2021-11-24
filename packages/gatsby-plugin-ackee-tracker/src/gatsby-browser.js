@@ -1,10 +1,10 @@
-import * as ackeeTracker from "ackee-tracker"
+import * as ackeeTracker from "ackee-tracker";
 
 /**
  * Hold the tracker instance. Persists after the client is hydrated,
  * so is destroyed when any page is re-fetched from the server.
  */
-let trackerInstance
+let trackerInstance;
 
 /**
  * Record a page visit when it is visited.
@@ -14,7 +14,7 @@ let trackerInstance
  */
 export const onRouteUpdate = (
   _,
-  { domainId, server, ignoreLocalhost, ignoreOwnVisits, detailed }
+  { domainId, server, ignoreLocalhost, ignoreOwnVisits, detailed },
 ) => {
   /**
    * If there is no tracker instance, instantiate one with the plugin options.
@@ -24,11 +24,11 @@ export const onRouteUpdate = (
       ignoreLocalhost,
       ignoreOwnVisits,
       detailed,
-    })
+    });
   }
 
   /**
    * Record the visit to this route.
    */
-  trackerInstance.record(domainId)
-}
+  trackerInstance.record(domainId);
+};

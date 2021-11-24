@@ -38,7 +38,7 @@ plugins: [
       detailed: false,
     },
   },
-]
+];
 ```
 
 ## License
