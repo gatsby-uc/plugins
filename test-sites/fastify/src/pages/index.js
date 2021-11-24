@@ -131,6 +131,9 @@ const IndexPage = () => {
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/ssrBad")}>Bad SSR Page</a>
         </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/ssr403")}>Unauthorized SSR Page</a>
+        </li>
       </ul>
     </main>
   )

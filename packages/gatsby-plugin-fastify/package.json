@@ -52,7 +52,7 @@
     "fastify-compress": "^3.6.1",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.5.0",
-    "gatsby": "^4.1.0",
+    "gatsby": "^4.2.0",
     "gatsby-plugin-utils": "^2.1.0",
     "jest": "^27.3.1"
   },
@@ -62,7 +62,7 @@
     "fastify-compress": "^3.6.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.0",
-    "gatsby": "^4.0.0"
+    "gatsby": "^4.2.0"
   },
   "engines": {
     "node": ">=14.15.0"
