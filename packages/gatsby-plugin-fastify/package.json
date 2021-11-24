@@ -32,6 +32,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.0",
+    "fastify-accepts": "^2.1.0",
+    "fastify-compress": "^3.6.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-static": "^4.5.0",
     "fs-extra": "^10.0.0",
     "open": "^8.4.0",
     "picomatch": "^2.3.0",
@@ -48,20 +52,12 @@
     "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3",
     "fastify": "^3.23.0",
-    "fastify-accepts": "^2.1.0",
-    "fastify-compress": "^3.6.1",
-    "fastify-plugin": "^3.0.0",
-    "fastify-static": "^4.5.0",
     "gatsby": "^4.1.0",
     "gatsby-plugin-utils": "^2.1.0",
     "jest": "^27.3.1"
   },
   "peerDependencies": {
     "fastify": "^3.19.0",
-    "fastify-accepts": "^2.1.0",
-    "fastify-compress": "^3.6.0",
-    "fastify-plugin": "^3.0.0",
-    "fastify-static": "^4.2.0",
     "gatsby": "^4.0.0"
   },
   "engines": {
