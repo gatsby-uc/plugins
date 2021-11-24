@@ -1,5 +1,15 @@
 # gatsby-plugin-fastify
 
+## 0.7.0
+
+### Minor Changes
+
+- [#124](https://github.com/gatsby-uc/plugins/pull/124) [`e93dc62`](https://github.com/gatsby-uc/plugins/commit/e93dc62044ce2ac2069d80c339247901b4416ece) Thanks [@moonmeister](https://github.com/moonmeister)! - Updated "client path" name to "client routes" for consistency. Imports changed to `import { handleClientOnlyRoutes } from "./clientRoutes";`
+
+* [#124](https://github.com/gatsby-uc/plugins/pull/124) [`e93dc62`](https://github.com/gatsby-uc/plugins/commit/e93dc62044ce2ac2069d80c339247901b4416ece) Thanks [@moonmeister](https://github.com/moonmeister)! - Remove fastify plugins from peer deps to normal dependencies. Only Gatsby and fastify are peer deps now.
+
+- [#123](https://github.com/gatsby-uc/plugins/pull/123) [`acbf356`](https://github.com/gatsby-uc/plugins/commit/acbf356b305eff55f4ef96c77fbb47b2360319da) Thanks [@moonmeister](https://github.com/moonmeister)! - Set the HTTP response code when `status` is returned from `getServerData`. https://www.gatsbyjs.com/docs/reference/release-notes/v4.2/#getserverdata-improvements
+
 ## 0.6.1
 
 ### Patch Changes

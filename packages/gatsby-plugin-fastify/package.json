@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-fastify",
   "description": "Gatsby plugin for integration serving gatsby on Node.js using Fastify.",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "main": "index.js",
   "repository": {
     "type": "git",
