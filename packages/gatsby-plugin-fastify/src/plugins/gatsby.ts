@@ -1,4 +1,4 @@
-import { handleClientOnlyPaths } from "./clientPaths";
+import { handleClientOnlyRoutes } from "./clientRoutes";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
@@ -38,7 +38,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handleStatic, {});
 
   // Gatsby Client Only Routes
-  await fastify.register(handleClientOnlyPaths, {
+  await fastify.register(handleClientOnlyRoutes, {
     paths: clientSideRoutes,
   });
 
