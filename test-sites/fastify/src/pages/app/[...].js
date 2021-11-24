@@ -1,6 +1,6 @@
-import React from "react"
-import { Router } from "@reach/router"
-import { Link } from "gatsby"
+import React from "react";
+import { Router } from "@reach/router";
+import { Link } from "gatsby";
 
 const A = () => {
   return (
@@ -8,16 +8,16 @@ const A = () => {
       <h2>route A</h2>
       <Link to="/app">Go To app Home</Link>
     </>
-  )
-}
+  );
+};
 const B = () => {
   return (
     <>
       <h2>route b</h2>
       <Link to="/app">Go To app Home</Link>
     </>
-  )
-}
+  );
+};
 
 const App = () => {
   return (
@@ -32,6 +32,6 @@ const App = () => {
         <B path="/b" />
       </Router>
     </>
-  )
-}
-export default App
+  );
+};
+export default App;

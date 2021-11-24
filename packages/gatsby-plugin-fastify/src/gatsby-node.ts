@@ -11,7 +11,7 @@ import { getServerSideRoutes } from "./gatsby/serverRoutes";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyNodeServerConfig,
+  pluginOptions: GatsbyNodeServerConfig
 ) => {
   const { redirects } = store.getState();
 

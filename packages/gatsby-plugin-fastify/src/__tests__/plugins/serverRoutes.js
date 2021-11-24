@@ -21,7 +21,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
         host: "127.0.0.1",
         logLevel: "fatal",
         open: false,
-      }),
+      })
     );
 
     setConfig(ConfigKeyEnum.SERVER, getServerConfig());
