@@ -1,9 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@1.6.1/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    { "repo": "gatsby-uc/plugins" }
-  ],
+  "changelog": ["@changesets/changelog-github", { "repo": "gatsby-uc/plugins" }],
   "commit": false,
   "linked": [],
   "access": "public",

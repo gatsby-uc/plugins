@@ -6,7 +6,7 @@ import { PATH_TO_FUNCTIONS } from "../utils/constants";
 
 export type GatsbyFunctionHandler = (
   req: FastifyRequest,
-  res: FastifyReply,
+  res: FastifyReply
 ) => void | Promise<void>;
 
 async function getFunctionToExec({
