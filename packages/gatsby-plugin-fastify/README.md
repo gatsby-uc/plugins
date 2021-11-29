@@ -108,7 +108,7 @@ This plugin also implements a Fastify plugin for serving Gatsby. This may be imp
 import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
 ```
 
-For an example on how to use thi reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
+For an example on how to use this, reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
 
 ### Gatsby Feature Fastify Plugins (expert)
 
@@ -124,13 +124,13 @@ import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
 import { handleServerRoutes } from "gatsby-plugin-fastify/plugins/serverRoutes";
 ```
 
-For an example on how to use these you see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
+For an example on how to use these, see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
 
 ## Gatsby Functions
 
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
 
-> THIS IS NOT TRUE FOR THIS PLUGIN
+> **THIS IS NOT TRUE FOR THIS PLUGIN**
 
 Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API.
 
