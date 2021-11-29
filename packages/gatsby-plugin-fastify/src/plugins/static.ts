@@ -30,5 +30,5 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
       },
       ...opts,
     });
-  },
+  }
 );

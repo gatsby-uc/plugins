@@ -21,7 +21,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
         host: "127.0.0.1",
         logLevel: "fatal",
         open: false,
-      }),
+      })
     );
 
     setConfig(ConfigKeyEnum.SERVER, getServerConfig());
@@ -175,5 +175,27 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     expect(response.statusCode).toEqual(404);
+  });
+
+  it(`Should throw returned status code from getServer Data for HTML`, async () => {
+    const fastify = await createFastifyInstance(serveGatsby);
+
+    const response = await fastify.inject({
+      url: "/ssr403",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(403);
+  });
+
+  it(`Should throw returned status code from getServer Data for page-data.json`, async () => {
+    const fastify = await createFastifyInstance(serveGatsby);
+
+    const response = await fastify.inject({
+      url: "/page-data/ssr403/page-data.json",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(403);
   });
 });

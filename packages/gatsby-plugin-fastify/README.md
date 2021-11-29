@@ -20,14 +20,14 @@
 
 `gatsby-plugin-fastify` gives you a way to integrate your Gatsby site with a Node.js server using Fastify. Use to serve a standard Gatsby.js site normally - the plugin will take care of everything:
 
-- Serving Gatsby Functions
-- Serving static files
-- Serving DSG/SSR Routes
-- Gatsby 404 page
-- Gatsby 500 page
-- Gatsby redirects
-- Client-side paths
-- Serving the site with pathPrefix - set it up inside `gatsby-config.js`, the plugin will take care of it
+- Serving [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/)
+- Serving [static files](https://www.gatsbyjs.com/docs/caching/#static-files)
+- Serving [DSG](https://www.gatsbyjs.com/docs/reference/rendering-options/deferred-static-generation/)/[SSR](https://www.gatsbyjs.com/docs/reference/rendering-options/server-side-rendering/) Routes
+- Gatsby [404 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-404-page/)
+- Gatsby [500 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-500-page/)
+- Gatsby [redirects](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect)
+- [Client-only routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
+- Serving the site with [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) - set it up inside `gatsby-config.js`, the plugin will take care of it
 - File compression, Etags, and more.
 
 # Installation
@@ -35,7 +35,7 @@
 Install the plugin using npm or yarn
 
 ```sh
-npm install gatsby-plugin-fastify fastify fastify-static fastify-compress fastify-plugin fastify-accepts
+npm install gatsby-plugin-fastify fastify
 ```
 
 and add it to your `gatsby-config.js`
@@ -96,11 +96,11 @@ export GATSBY_SERVER_PORT=3000
 export GATSBY_SERVER_ADDRESS=0.0.0.0
 ```
 
-#### Logging
+### Logging
 
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
-### Gatsby Fastify Plugin (advanced)
+## Gatsby Fastify Plugin (advanced)
 
 This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
 
@@ -108,29 +108,29 @@ This plugin also implements a Fastify plugin for serving Gatsby. This may be imp
 import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
 ```
 
-For an example on how to use thi reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
+For an example on how to use this, reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
 
-### Gatsby Feature Fastify Plugins (expert)
+## Gatsby Feature Fastify Plugins (expert)
 
 Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
 
 ```js
 import { handle404 } from "gatsby-plugin-fastify/plugins/404";
 import { handle500 } from "gatsby-plugin-fastify/plugins/500";
-import { handleClientOnlyPaths } from "gatsby-plugin-fastify/plugins/clientPaths";
+import { handleClientOnlyRoutes } from "gatsby-plugin-fastify/plugins/clientRoutes";
 import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
 import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
 import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
 import { handleServerRoutes } from "gatsby-plugin-fastify/plugins/serverRoutes";
 ```
 
-For an example on how to use these you see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
+For an example on how to use these, see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
 
 ## Gatsby Functions
 
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
 
-> THIS IS NOT TRUE FOR THIS PLUGIN
+> **THIS IS NOT TRUE FOR THIS PLUGIN**
 
 Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API.
 

@@ -1,4 +1,4 @@
-const { buildImgUrl } = require(`../common`)
+const { buildImgUrl } = require(`../common`);
 
 describe(`gatsby-plugin-github-ribbon`, () => {
   describe(`buildImgUrl`, () => {
@@ -16,11 +16,8 @@ describe(`gatsby-plugin-github-ribbon`, () => {
       ${`orange`}   | ${`right`} | ${`https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png`}
       ${`gray`}     | ${`right`} | ${`https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png`}
       ${`white`}    | ${`right`} | ${`https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png`}
-    `(
-      `returns valid url to the $color $position image on aws`,
-      ({ color, position, expected }) => {
-        expect(buildImgUrl(color, position)).toBe(expected)
-      }
-    )
-  })
-})
+    `(`returns valid url to the $color $position image on aws`, ({ color, position, expected }) => {
+      expect(buildImgUrl(color, position)).toBe(expected);
+    });
+  });
+});

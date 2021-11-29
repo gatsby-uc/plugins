@@ -5,5 +5,5 @@ export const pluginOptionsSchema = ({ Joi }) => {
     ignoreLocalhost: Joi.boolean().default(true),
     ignoreOwnVisits: Joi.boolean().default(false),
     detailed: Joi.boolean().default(false),
-  })
-}
+  });
+};

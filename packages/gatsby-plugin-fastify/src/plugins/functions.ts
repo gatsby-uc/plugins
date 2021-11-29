@@ -7,7 +7,7 @@ import { appendModuleHeader } from "../utils/headers";
 
 export type GatsbyFunctionHandler = (
   req: FastifyRequest,
-  res: FastifyReply,
+  res: FastifyReply
 ) => void | Promise<void>;
 
 async function getFunctionToExec({

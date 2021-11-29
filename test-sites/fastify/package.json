@@ -1,6 +1,6 @@
 {
   "name": "test-fastify-gatsby",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "private": true,
   "description": "Gatsby test site for gatsby-plugin-fastify",
   "author": "Alex Moon",
@@ -17,10 +17,7 @@
   },
   "dependencies": {
     "fastify": "^3.22.1",
-    "fastify-accepts": "^2.0.1",
-    "fastify-compress": "^3.6.1",
-    "fastify-static": "^4.4.2",
-    "gatsby": "^4.0.0",
+    "gatsby": "^4.2.0",
     "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^2.0.0",
     "gatsby-plugin-manifest": "^4.0.0",

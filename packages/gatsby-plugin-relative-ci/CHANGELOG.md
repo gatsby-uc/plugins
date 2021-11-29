@@ -1,5 +1,11 @@
 # gatsby-plugin-relative-ci
 
+## 1.3.1
+
+### Patch Changes
+
+- [#114](https://github.com/gatsby-uc/plugins/pull/114) [`dd0bff6`](https://github.com/gatsby-uc/plugins/commit/dd0bff6d78494f168439c96e135b77df32e43350) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update non-major dependency versions
+
 ## 1.3.0
 
 ### Minor Changes

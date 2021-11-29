@@ -5,7 +5,7 @@ import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
 import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
-import { PathConfig } from "../plugins/clientPaths";
+import { PathConfig } from "../plugins/clientRoutes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
 import { buildPrefixer } from "./plugin-data";
 

@@ -32,7 +32,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ act
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyNodeServerConfig,
+  pluginOptions: GatsbyNodeServerConfig
 ) => {
   const { redirects } = store.getState();
 

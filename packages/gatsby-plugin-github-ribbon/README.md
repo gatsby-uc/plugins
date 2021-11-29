@@ -28,7 +28,7 @@ plugins: [
       position: `left`, //`left` or `right`
     },
   },
-]
+];
 ```
 
 ## Options

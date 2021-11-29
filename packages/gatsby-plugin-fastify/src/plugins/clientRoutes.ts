@@ -11,7 +11,7 @@ export type PathConfig = {
   path: string;
 };
 
-export const handleClientOnlyPaths: FastifyPluginAsync<{
+export const handleClientOnlyRoutes: FastifyPluginAsync<{
   paths: NoUndefinedField<PathConfig>[];
 }> = async (fastify, { paths }) => {
   fastify.log.info(`Registering ${paths?.length} client-only route(s)`);
