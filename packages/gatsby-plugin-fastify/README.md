@@ -96,11 +96,11 @@ export GATSBY_SERVER_PORT=3000
 export GATSBY_SERVER_ADDRESS=0.0.0.0
 ```
 
-#### Logging
+### Logging
 
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
-### Gatsby Fastify Plugin (advanced)
+## Gatsby Fastify Plugin (advanced)
 
 This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
 
@@ -110,7 +110,7 @@ import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
 
 For an example on how to use this, reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
 
-### Gatsby Feature Fastify Plugins (expert)
+## Gatsby Feature Fastify Plugins (expert)
 
 Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
 
