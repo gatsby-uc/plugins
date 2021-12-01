@@ -1,5 +1,11 @@
 # gatsby-source-packagist
 
+## 1.1.4
+
+### Patch Changes
+
+- [#129](https://github.com/gatsby-uc/plugins/pull/129) [`4168e1f`](https://github.com/gatsby-uc/plugins/commit/4168e1ff2e0fb93ccd3039ba5e39cfab26d7d673) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-source-packagist): update dependency mime-types to ^2.1.34
+
 ## 1.1.3
 
 ### Patch Changes
