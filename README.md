@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="https://github.com/gatsby-uc/plugins/raw/HEAD/.github/guc-logo.png" alt="GUC Logo"/>
+<p align="center" >
+  <img src="https://github.com/gatsby-uc/plugins/raw/HEAD/.github/guc-logo.png" alt="GUC Logo" width="50%"/>
 </p>
 <p align="center">
   <h2 align="center">Gatsby User Collective</h2>
