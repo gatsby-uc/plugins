@@ -1,5 +1,11 @@
 # gatsby-plugin-github-ribbon
 
+## 1.3.2
+
+### Patch Changes
+
+- [#130](https://github.com/gatsby-uc/plugins/pull/130) [`4ec4687`](https://github.com/gatsby-uc/plugins/commit/4ec4687de3818f62892123d8cb6216a70e4c8b1f) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-github-ribbon): update non-major dependency versions
+
 ## 1.3.1
 
 ### Patch Changes
