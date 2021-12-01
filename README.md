@@ -1,12 +1,21 @@
-# Welcome to the Gatsby User Collective!
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<p align="center">
+  <img src="https://github.com/gatsby-uc/plugins/raw/HEAD/.github/guc-logo.png" alt="GUC Logo"/>
+</p>
+<p align="center">
+  <h2 align="center">Gatsby User Collective</h2>
+</p>
+<p align="center">
+  <i>
+    The Gatsby UC was born out of a desire to create higher quality plugins in the Gatsby ecosystem by reducing maintainer work loads.
+  </i>
+</p>
+<p align="center">
+  <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
-The Gatsby UC was born out of a desire to create higher quality plugins in the Gatsby ecosystem by reducing maintainer work loads.
+  <!-- ALL-CONTRIBUTORS-BADGE:END -->
+</p>
 
 ## What we aspire to be
 
