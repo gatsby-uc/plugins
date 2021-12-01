@@ -19,14 +19,14 @@
     "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.1",
-    "@changesets/cli": "^2.17.0",
+    "@changesets/changelog-github": "^0.4.2",
+    "@changesets/cli": "^2.18.1",
     "all-contributors-cli": "^6.20.0",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.0"
   },
-  "packageManager": "yarn@3.1.0",
+  "packageManager": "yarn@3.1.1",
   "lint-staged": {
     "**/*.{js,ts,md,json,yml,json}": "prettier --write"
   }
