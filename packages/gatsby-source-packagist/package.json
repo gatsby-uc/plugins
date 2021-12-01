@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^17.11.2",
-    "mime-types": "^2.1.33",
+    "mime-types": "^2.1.34",
     "packagist-api-client": "^2.0.0"
   },
   "scripts": {
