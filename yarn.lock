@@ -9724,7 +9724,6 @@ __metadata:
     "@relative-ci/agent": ^2.1.0
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
-    prettier: ^2.4.1
   peerDependencies:
     gatsby: ^3.0.0 || ^4.0.0
   languageName: unknown
@@ -10183,7 +10182,6 @@ __metadata:
     gatsby-source-filesystem: ^3.14.0
     mime-types: ^2.1.33
     packagist-api-client: ^2.0.0
-    prettier: ^2.4.1
   peerDependencies:
     gatsby: ^2.4.0 || ^3.0.0
     gatsby-source-filesystem: ^2.2.4
