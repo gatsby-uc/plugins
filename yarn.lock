@@ -10719,8 +10719,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
-    "@babel/cli": ^7.16.0
-    "@babel/core": ^7.16.0
+    "@babel/cli": ^7.16.7
+    "@babel/core": ^7.16.7
     "@octokit/rest": ^17.11.2
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
