@@ -31,30 +31,30 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.3",
+    "@babel/runtime": "^7.16.7",
     "fastify-accepts": "^2.1.0",
     "fastify-compress": "^3.7.0",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.5.0",
     "fs-extra": "^10.0.0",
     "open": "^8.4.0",
-    "picomatch": "^2.3.0",
-    "pino-pretty": "^7.2.0",
-    "yargs": "^17.3.0"
+    "picomatch": "^2.3.1",
+    "pino-pretty": "^7.3.0",
+    "yargs": "^17.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^27.0.3",
-    "@types/node": "^14.17.34",
-    "babel-jest": "^27.4.2",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^14.18.4",
+    "babel-jest": "^27.4.5",
     "babel-preset-gatsby-package": "^1.14.0",
     "cross-env": "^7.0.3",
-    "fastify": "^3.24.1",
-    "gatsby": "^4.3.0",
-    "gatsby-plugin-utils": "^2.3.0",
-    "jest": "^27.4.3"
+    "fastify": "^3.25.3",
+    "gatsby": "^4.4.0",
+    "gatsby-plugin-utils": "^2.4.0",
+    "jest": "^27.4.5"
   },
   "peerDependencies": {
     "fastify": "^3.19.0",
