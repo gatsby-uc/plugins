@@ -10067,8 +10067,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-ackee-tracker@workspace:packages/gatsby-plugin-ackee-tracker"
   dependencies:
-    "@babel/cli": ^7.16.0
-    "@babel/core": ^7.16.0
+    "@babel/cli": ^7.16.7
+    "@babel/core": ^7.16.7
     ackee-tracker: ^5
     babel-preset-gatsby-package: ^1.14.0
     cross-env: ^7.0.3
