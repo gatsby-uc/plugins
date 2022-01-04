@@ -34,6 +34,10 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "babel-preset-gatsby": "^2.4.0",
     "benchmark": "^2.1.4"
   }
 }
