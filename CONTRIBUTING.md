@@ -2,6 +2,8 @@
 
 Welcome! Submit a PR, answer questions, join the [Discord](https://discord.gg/gwnqfzetjv).
 
+We have a monthly community meeting that is listed in the Discord](https://discord.gg/gwnqfzetjv) server under events. The meeting is handled there in a voice channel. Anyone is welcome to come, listen, and join the conversation. The meeting is usually held on the last Tuesday of the month.
+
 ## Contributing a plugin
 
 Thanks for considering doing so. We're always looking to expand the community and improve the Gatsby ecosystem. Your first question might very well be, "Why should I trust you and give you maintainer permissions on my NPM package?". Please know we're glad this is your first concern. We don't ever want to take security lightly.
@@ -64,7 +66,7 @@ Maybe this will get automated so all PR authors/contributors get added per plugi
 
 ### To build or not to build
 
-Not all packages NEED to be run through Babel. Any project with a non-insignificant amount of code should most likely be transpiled for compatability reasons. `babel-preset-gatsby-package` makes this easy but this does add a slight bit of maintenance over head. I'd default to adding transpilation to a package over not. Here is the minimal config for transpiling that a package will need.
+Not all packages NEED to be run through Babel. Any project with a non-insignificant amount of code should most likely be transpiled for compatability reasons. `babel-preset-gatsby-package` makes this easy but this does add a slight bit of maintenance over head. Here is the minimal config for transpiling that a package will need.
 
 ```json
 {

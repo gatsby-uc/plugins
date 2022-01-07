@@ -63,6 +63,7 @@ There is no strict minimum number of contributions needed to reach this level, a
 
 #### Recognized Contributions
 
+- **GitHub:** Contributing a new or existing Gatsby plugin
 - **GitHub:** Submitting non-trivial pull requests and RFCs
 - **GitHub:** Reviewing non-trivial pull requests and RFCs
 - **Discord:** Supporting users in Discord
