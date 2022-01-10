@@ -39,7 +39,7 @@ Have you done something (big or small) to contribute to the health, success, or 
 
 #### Privileges
 
-At this time we have no specifics for this role. as the community grows we anticipate privleges to come. If you have ides here please let us know!
+At this time we have no specifics for this role. as the community grows we anticipate privleges to come. If you have ideas here please let us know!
 
 #### Responsibilities
 
@@ -82,7 +82,6 @@ There is no strict minimum number of contributions needed to reach this level, a
 - Ability to push branches to the repo (No more personal fork needed).
 - Ability to review GitHub PRs.
 - Ability to merge _some_ GitHub PRs.
-- Ability to vote on _some_ initiatives (see [Voting](#voting) below).
 
 #### Responsibilities
 
@@ -95,7 +94,7 @@ There is no strict minimum number of contributions needed to reach this level, a
 
 #### Nomination
 
-To be considered, a contributor is expected to already be performing some of the responsibilities of a Maintainer over the course of at least a couple of weeks. There is no hard requiremen for what you need to do, but if you show up and participate we'll most likely recognize your contribution and give you this title if you desire. If you're interested in being a maintainer and feel you meet these requirements feel free to reach out to an existing maintainer or steward.
+To be considered, a contributor is expected to already be performing some of the responsibilities of a Maintainer over the course of at least a couple of weeks. There is no hard requirement for what you need to do, but if you show up and participate we'll most likely recognize your contribution and give you this title if you desire. If you're interested in being a maintainer and feel you meet these requirements, feel free to reach out to an existing maintainer or steward.
 
 In some rare cases, this role may be revoked by a project Steward. However, under normal circumstances this role is granted for as long as the contributor wishes to engage with the project.
 
@@ -140,7 +139,7 @@ Anyone may report a violation. Violations can be reported in the following ways:
 - In public, via a GitHub comment (mentioning `@gatsbuy_uc/maintainers`).
 - In public, via the project Discord server (mentioning `steward`).
 
-> Note: While there is only one steward community members who don't feel comfortable reporting the issue to the steward (e.g. the steward themself violated the CoC), please report the infraction to a trusted maintainer or community member who can approach the steward about the issue.
+> Note: While there is only one steward, community members who don't feel comfortable reporting the issue to the steward (e.g. the steward themself violated the CoC), please report the infraction to a trusted maintainer or community member who can approach the steward about the issue.
 
 ### Who gets involved?
 
