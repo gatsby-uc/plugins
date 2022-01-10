@@ -1,5 +1,11 @@
 # gatsby-source-packagist
 
+## 1.1.5
+
+### Patch Changes
+
+- [`5d1f1bf`](https://github.com/gatsby-uc/plugins/commit/5d1f1bf7989c119540760dc40ae7bc4dcf822836) Thanks [@moonmeister](https://github.com/moonmeister)! - Update package dependencies
+
 ## 1.1.4
 
 ### Patch Changes
