@@ -66,7 +66,7 @@ Maybe this will get automated so all PR authors/contributors get added per plugi
 
 ### To build or not to build
 
-Not all packages NEED to be run through Babel. Any project with a non-insignificant amount of code should most likely be transpiled for compatability reasons. `babel-preset-gatsby-package` makes this easy but this does add a slight bit of maintenance over head. Here is the minimal config for transpiling that a package will need.
+Not all packages **need** to be run through Babel. Any project with a non-insignificant amount of code should most likely be transpiled for compatability reasons. `babel-preset-gatsby-package` makes this easy but this does add a slight bit of maintenance overhead. Here is the minimal config for transpiling that a package will need.
 
 ```json
 {
