@@ -76,7 +76,7 @@ There is no strict minimum number of contributions needed to reach this level, a
 - All privileges of the [Contributor role](#level-1---contributor), plus...
 - `@maintainer` role on [Discord](https://discord.gg/gwnqfzetjv)
 - New name color on Discord: **blue**.
-- Invitation to the private #maintainers channel on Discord.
+- Invitation to the private `#maintainers` channel on Discord.
 - Invitation to the `maintainers` team on GitHub.
 - Ability to moderate Discord.
 - Ability to push branches to the repo (No more personal fork needed).
