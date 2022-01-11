@@ -2,7 +2,7 @@
 
 Welcome! Submit a PR, answer questions, join the [Discord](https://discord.gg/gwnqfzetjv).
 
-We have a monthly community meeting that is listed in the Discord](https://discord.gg/gwnqfzetjv) server under events. The meeting is handled there in a voice channel. Anyone is welcome to come, listen, and join the conversation. The meeting is usually held on the last Tuesday of the month.
+We have a monthly community meeting that is listed in the [Discord](https://discord.gg/gwnqfzetjv) server under events. The meeting is handled there in a voice channel. Anyone is welcome to come, listen, and join the conversation. The meeting is usually held on the last Tuesday of the month.
 
 ## Contributing a plugin
 
