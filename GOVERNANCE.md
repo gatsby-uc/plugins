@@ -39,7 +39,7 @@ Have you done something (big or small) to contribute to the health, success, or 
 
 #### Privileges
 
-At this time we have no specifics for this role. as the community grows we anticipate privleges to come. If you have ideas here please let us know!
+At this time we have no specifics for this role. As the community grows we anticipate privileges to come. If you have ideas here please let us know!
 
 #### Responsibilities
 
