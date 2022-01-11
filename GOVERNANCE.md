@@ -1,4 +1,4 @@
-> Note: OUr model is extremely new, and not yet binding. Once merged into the `main` branch, we will trial what's outlined here and make changes based on any feedback. All changes will go through the PR review process. This note will be removed when this governance model is seen as binding.
+> Note: Our model is extremely new, and not yet binding. Once merged into the `main` branch, we will trial what's outlined here and make changes based on any feedback. All changes will go through the PR review process. This note will be removed when this governance model is seen as binding.
 
 # Governance
 
@@ -39,7 +39,7 @@ Have you done something (big or small) to contribute to the health, success, or 
 
 #### Privileges
 
-At this time we have no specifics for this role. as the community grows we anticipate privleges to come. If you have ideas here please let us know!
+At this time we have no specifics for this role. As the community grows we anticipate privileges to come. If you have ideas here please let us know!
 
 #### Responsibilities
 
@@ -53,7 +53,7 @@ n/a
 
 ### Level 2 (L2) - Maintainer
 
-The **Maintainer** role is available to any contributor who wants to join the team and take part in the long-term maintenance of a plugin(s) in the GUC.
+The **Maintainer** role is available to any contributor who wants to join the team and take part in the long-term maintenance of plugins in the GUC.
 
 The Maintainer role is critical to the long-term health of GUC plugins. Maintainers act as the first line of defense when it comes to new issues, pull requests and Discord activity. Maintainers are most likely the first people that a user will interact with on Discord or GitHub.
 
@@ -76,7 +76,7 @@ There is no strict minimum number of contributions needed to reach this level, a
 - All privileges of the [Contributor role](#level-1---contributor), plus...
 - `@maintainer` role on [Discord](https://discord.gg/gwnqfzetjv)
 - New name color on Discord: **blue**.
-- Invitation to the private #maintainers channel on Discord.
+- Invitation to the private `#maintainers` channel on Discord.
 - Invitation to the `maintainers` team on GitHub.
 - Ability to moderate Discord.
 - Ability to push branches to the repo (No more personal fork needed).
