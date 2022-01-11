@@ -51,7 +51,7 @@ If you're interested in reaching the next level and becoming a Maintainer, you c
 
 n/a
 
-### Level 2 (L2) - Maintainer
+### Level 2 - Maintainer
 
 The **Maintainer** role is available to any contributor who wants to join the team and take part in the long-term maintenance of plugins in the GUC.
 
@@ -75,13 +75,14 @@ There is no strict minimum number of contributions needed to reach this level, a
 
 - All privileges of the [Contributor role](#level-1---contributor), plus...
 - `@maintainer` role on [Discord](https://discord.gg/gwnqfzetjv)
-- New name color on Discord: **blue**.
-- Invitation to the private `#maintainers` channel on Discord.
-- Invitation to the `maintainers` team on GitHub.
-- Ability to moderate Discord.
-- Ability to push branches to the repo (No more personal fork needed).
-- Ability to review GitHub PRs.
-- Ability to merge _some_ GitHub PRs.
+- New name color on Discord: **blue**
+- Invitation to the private `#maintainers` channel on Discord
+- Invitation to the `maintainers` team on GitHub
+- Ability to moderate Discord
+- Ability to push branches to the repo (No more personal fork needed)
+- Ability to review GitHub PRs
+- Ability to merge GitHub PRs
+- Define project direction and planning
 
 #### Responsibilities
 
@@ -116,7 +117,6 @@ The project Steward is currently: **@moonmeister**
 - Administration privileges on the [GUC GitHub org](https://github.com/gatsby_uc)
 - Administration privileges on the [GUC Discord server](https://discord.gg/GwNqFzeTJv)
 - Publish access to all GUC npm packages
-- Define project direction and planning
 - Ability to decide on moderation decisions
 
 #### Nomination
