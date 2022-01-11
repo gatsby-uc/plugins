@@ -53,7 +53,7 @@ n/a
 
 ### Level 2 (L2) - Maintainer
 
-The **Maintainer** role is available to any contributor who wants to join the team and take part in the long-term maintenance of a plugin(s) in the GUC.
+The **Maintainer** role is available to any contributor who wants to join the team and take part in the long-term maintenance of plugins in the GUC.
 
 The Maintainer role is critical to the long-term health of GUC plugins. Maintainers act as the first line of defense when it comes to new issues, pull requests and Discord activity. Maintainers are most likely the first people that a user will interact with on Discord or GitHub.
 
