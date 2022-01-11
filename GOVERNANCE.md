@@ -1,4 +1,4 @@
-> Note: OUr model is extremely new, and not yet binding. Once merged into the `main` branch, we will trial what's outlined here and make changes based on any feedback. All changes will go through the PR review process. This note will be removed when this governance model is seen as binding.
+> Note: Our model is extremely new, and not yet binding. Once merged into the `main` branch, we will trial what's outlined here and make changes based on any feedback. All changes will go through the PR review process. This note will be removed when this governance model is seen as binding.
 
 # Governance
 
