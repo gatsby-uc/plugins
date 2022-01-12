@@ -86,7 +86,7 @@ There is no strict minimum number of contributions needed to reach this level, a
 
 #### Responsibilities
 
-- Participate in the project as a team player.
+- Participate in the project as a team player
 - Bring a friendly, welcoming voice to the GUC community.
 - Triage new issues.
 - Review pull requests.
@@ -117,7 +117,7 @@ The project Steward is currently: **@moonmeister**
 - Administration privileges on the [GUC GitHub org](https://github.com/gatsby_uc)
 - Administration privileges on the [GUC Discord server](https://discord.gg/GwNqFzeTJv)
 - Publish access to all GUC npm packages
-- Ability to decide on moderation decisions
+- Final say on moderation decisions
 
 #### Nomination
 
