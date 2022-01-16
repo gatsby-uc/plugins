@@ -108,3 +108,9 @@ Remove package specific prettier configs so the repository config is used.
 ### Eslint
 
 At this time the Repo doesn't have an opinion on this. We're open to it if someone has a suggestion on what this should be.
+
+## Code Owners
+
+We are experimenting with using [Github's CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) tooling to notify contributors when certain files are editted. (E.g. Stewards are required to approve any changes in community docs.) You can see our [CODEOWNERS file](https://github.com/gatsby-uc/plugins/blob/main/.github/CODEOWNERS) for more info.
+
+If you would like to help own maintaining a plugin long term, please submit a PR adding yourself as a code owner.
