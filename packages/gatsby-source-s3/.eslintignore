@@ -1,0 +1,2 @@
+# ignoring examples because of eslint conflicts with the nested package
+examples
