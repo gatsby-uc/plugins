@@ -6,7 +6,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "test-sites/*"
+    "examples/*"
   ],
   "scripts": {
     "ac": "yarn all-contributors",
