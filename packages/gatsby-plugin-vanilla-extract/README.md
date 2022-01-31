@@ -32,7 +32,7 @@ export default function Index() {
 }
 ```
 
-`src/styles/index.css.ts`
+`src/styles/index.css.ts`:
 
 ```ts
 import { style } from "@vanilla-extract/css";
