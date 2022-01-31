@@ -2,7 +2,7 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `gatsby-starter-source-s3`,
+    title: `source-s3`,
   },
   plugins: [
     {

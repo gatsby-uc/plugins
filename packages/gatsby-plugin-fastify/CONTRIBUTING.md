@@ -8,4 +8,4 @@ Running `yarn test` will run tests. Make sure they pass when you start, and then
 
 ## Benchmarks
 
-When fixing bugs or adding features it'simportant to make sure our servers are fast. You can run benchmarks by building the `gatsby-starter-fastify` via `yarn build` then run benchmarks with `yarn benchmark` from the `examples/gatsby-starter-fastify` folder. to keep things consistent shut down as many other applications as possible.
+When fixing bugs or adding features it'simportant to make sure our servers are fast. You can run benchmarks by building `integration-tests/plugin-fastify` via `yarn build` then run benchmarks with `yarn benchmark` from the `integration-tests/plugin-fastify` folder. To keep things consistent, shutdown as many other applications as possible.

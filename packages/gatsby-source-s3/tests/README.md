@@ -3,7 +3,7 @@
 The plugin is tested end-to-end using [Cypress](https://www.cypress.io/).
 
 The CI builds and serves the
-[example Gatsby site](../examples/gatsby-starter-source-s3) in this repo, and
+[example Gatsby site](../integration-tests/source-s3) in this repo, and
 runs the [Cypress tests](e2e/main.spec.js) against it.
 
 The example site sources images from real S3 buckets, so the tests cover the
@@ -19,4 +19,4 @@ In total, the buckets hold 1502 objects, and the e2e tests assert that all are
 correctly sourced and rendered.
 
 Read more about the example site's AWS setup in the
-[example site's README](../examples/gatsby-starter-source-s3).
+[example site's README](../integration-tests/source-s3).

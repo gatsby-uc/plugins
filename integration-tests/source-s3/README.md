@@ -1,4 +1,4 @@
-# gatsby-starter-source-s3
+# source-s3
 
 This starter is an example of how to source objects from AWS S3 in a Gatsby site
 at build time, using `gatsby-source-s3`.

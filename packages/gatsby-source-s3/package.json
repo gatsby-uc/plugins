@@ -40,7 +40,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint '*/**/*.{ts,tsx}'",
-    "start": "(cd ../../examples/gatsby-starter-source-s3 && yarn build && yarn serve)",
+    "start": "(cd ../../integration-tests/source-s3 && yarn build && yarn serve)",
     "test:old": "cypress run",
     "test:e2e": "start-server-and-test http://localhost:9000"
   },
