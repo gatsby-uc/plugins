@@ -52,6 +52,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "robinmetral",
+      "name": "Robin Métral",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35560568?v=4",
+      "profile": "https://robinmetral.com/",
+      "contributions": [
+        "plugin"
+      ]
     }
   ],
   "contributorsPerLine": 7
