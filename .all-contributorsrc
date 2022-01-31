@@ -53,6 +53,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "marvinjude",
+      "name": "Jude Agboola",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17142206?v=4",
+      "profile": "https://marvinjude.dev/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

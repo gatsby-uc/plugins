@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -49,6 +49,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://everfund.co.uk/"><img src="https://avatars.githubusercontent.com/u/15834048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Burns</b></sub></a><br /><a href="#plugin-Burnsy" title="Plugin/utility libraries">🔌</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=Burnsy" title="Code">💻</a></td>
     <td align="center"><a href="https://www.bricolage.io/"><img src="https://avatars.githubusercontent.com/u/71047?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Mathews</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=KyleAMathews" title="Documentation">📖</a> <a href="#plugin-KyleAMathews" title="Plugin/utility libraries">🔌</a></td>
     <td align="center"><a href="http://www.davejudd.com/"><img src="https://avatars.githubusercontent.com/u/12941979?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dave Judd</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=SirDaev" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://marvinjude.dev/"><img src="https://avatars.githubusercontent.com/u/17142206?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jude Agboola</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=marvinjude" title="Code">💻</a></td>
   </tr>
 </table>
 
