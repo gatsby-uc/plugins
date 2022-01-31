@@ -18,7 +18,7 @@ module.exports = {
 
 ## How to use
 
-See the [vanilla-extract README](https://github.com/seek-oss/vanilla-extract#readme) for full documentation.
+See the [vanilla-extract website](https://vanilla-extract.style/) for full documentation.
 
 Simple example.
 
