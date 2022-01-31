@@ -8,6 +8,6 @@ exports.onCreateBabelConfig = ({ actions }, pluginOptions) => {
 
 exports.onCreateWebpackConfig = ({ actions }, pluginOptions) => {
   actions.setWebpackConfig({
-    plugins: [new VanillaExtractPlugin(pluginOptions)]
+    plugins: [new VanillaExtractPlugin(pluginOptions)],
   });
 };

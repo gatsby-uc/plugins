@@ -24,9 +24,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-vanilla-extract`,
       options: {
-        identifiers: `short`
-      }
-    }
+        identifiers: `short`,
+      },
+    },
   ],
 };
 ```
