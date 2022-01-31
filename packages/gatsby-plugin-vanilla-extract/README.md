@@ -20,9 +20,7 @@ module.exports = {
 
 See the [vanilla-extract website](https://vanilla-extract.style/) for full documentation.
 
-Simple example.
-
-`src/pages/index.tsx`
+`src/pages/index.tsx`:
 
 ```tsx
 import * as React from "react";
