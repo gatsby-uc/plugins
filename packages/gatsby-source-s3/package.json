@@ -41,8 +41,8 @@
     "build": "tsc",
     "lint": "eslint '*/**/*.{ts,tsx}'",
     "start": "(cd ../../integration-tests/source-s3 && yarn build && yarn serve)",
-    "test:old": "cypress run",
-    "test:e2e": "start-server-and-test http://localhost:9000"
+    "test:e2e": "cypress run",
+    "test": "start-server-and-test 'yarn start' http://localhost:9000 'yarn test:e2e'"
   },
   "dependencies": {
     "aws-sdk": "^2.1058.0",
