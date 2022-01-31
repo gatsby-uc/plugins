@@ -19,9 +19,8 @@ module.exports = {
     "!**/__tests__/__*__/*",
   ],
 
-  modulePathIgnorePatterns: [`<rootDir>/test-site/`],
-  transformIgnorePatterns: ["/query-engine/", "/page-ssr/", "/test-sites/fastify/"],
-  coveragePathIgnorePatterns: ["/query-engine/", "/page-ssr/", "/test-sites/fastify/"],
+  transformIgnorePatterns: ["/query-engine/", "/page-ssr/"],
+  coveragePathIgnorePatterns: ["/query-engine/", "/page-ssr/"],
   // The test environment that will be used for testing
   testEnvironment: `node`,
 };

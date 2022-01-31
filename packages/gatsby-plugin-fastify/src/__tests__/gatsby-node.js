@@ -3,10 +3,10 @@ const fs = require("fs-extra");
 
 jest.mock("../utils/constants", () => ({
   ...jest.requireActual("../utils/constants"),
-  PATH_TO_FUNCTIONS: "test-site/.cache/functions/",
+  PATH_TO_FUNCTIONS: "../../examples/gatsby-starter-fastify/.cache/functions/",
   PATH_TO_PUBLIC: __dirname + "/__files__/public/",
-  PATH_TO_CACHE: "test-site/.cache/",
-  CONFIG_FILE_PATH: __dirname + "../../../test-site/.cache/",
+  PATH_TO_CACHE: "../../examples/gatsby-starter-fastify/.cache/",
+  CONFIG_FILE_PATH: "../../examples/gatsby-starter-fastify/.cache/",
 }));
 
 jest.mock("fs-extra", () => ({
@@ -25,21 +25,21 @@ jest.mock("fs-extra", () => ({
           functionRoute: "splat/:splat",
           pluginName: "default-site-plugin",
           originalAbsoluteFilePath:
-            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/splat/:splat.js",
+            "/Users/user/code/gatsby-uc/plugins/examples/gatsby-starter-fastify/src/api/splat/:splat.js",
           originalRelativeFilePath: "splat/:splat.js",
           relativeCompiledFilePath: "splat/:splat.js",
           absoluteCompiledFilePath:
-            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/splat/:splat.js",
+            "/Users/user/code/gatsby-uc/plugins/examples/gatsby-starter-fastify/.cache/functions/splat/:splat.js",
         },
         {
           functionRoute: "test",
           pluginName: "default-site-plugin",
           originalAbsoluteFilePath:
-            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/test.js",
+            "/Users/user/code/gatsby-uc/plugins/examples/gatsby-starter-fastify/src/api/test.js",
           originalRelativeFilePath: "test.js",
           relativeCompiledFilePath: "test.js",
           absoluteCompiledFilePath:
-            "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/test.js",
+            "/Users/user/code/gatsby-uc/plugins/examples/gatsby-starter-fastify/.cache/functions/test.js",
         },
       ];
     } else {

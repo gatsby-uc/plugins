@@ -6,10 +6,10 @@ const { createCliConfig, createFastifyInstance } = require("../__utils__/config"
 
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
-  PATH_TO_FUNCTIONS: "../../test-sites/fastify/.cache/functions/",
+  PATH_TO_FUNCTIONS: "../../examples/gatsby-starter-fastify/.cache/functions/",
   PATH_TO_PUBLIC: "src/__tests__/__files__/public",
-  PATH_TO_CACHE: "../../test-sites/fastify/.cache",
-  CONFIG_FILE_PATH: "../../test-sites/fastify/.cache",
+  PATH_TO_CACHE: "../../examples/gatsby-starter-fastify/.cache",
+  CONFIG_FILE_PATH: "../../examples/gatsby-starter-fastify/.cache",
 }));
 
 describe(`Test Gatsby DSG/SSR Routes`, () => {
