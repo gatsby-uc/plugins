@@ -1,25 +1,33 @@
 {
-  "name": "@robinmetral/gatsby-source-s3",
+  "name": "gatsby-source-s3",
   "description": "A Gatsby plugin to source objects and images from AWS S3",
-  "version": "0.0.0-semantically-released",
+  "version": "3.0.0",
   "main": "gatsby-node.js",
-  "author": "Robin Métral <robin@metral.ch>",
-  "repository": "https://github.com/robinmetral/gatsby-source-s3.git",
+  "contributors": [
+    "Robin Métral <robin@metral.ch>",
+    "Alex Moon <alex.jared.moon@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-source-s3"
+  },
   "license": "MIT",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
-    "gatsby-source-plugin"
+    "gatsby-source-plugin",
+    "s3"
   ],
   "files": [
     "gatsby-node.js"
   ],
   "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
     "@types/node": "^14.18.4",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "cypress": "^9.2.1",
-    "@tsconfig/node14": "^1.0.1",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
