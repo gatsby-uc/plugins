@@ -1,7 +1,7 @@
 # gatsby-starter-source-s3
 
 This starter is an example of how to source objects from AWS S3 in a Gatsby site
-at build time, using `@robinmetral/gatsby-source-s3`.
+at build time, using `gatsby-source-s3`.
 
 It uses a local version of the plugin located in `/src`, and it can be used for
 local development and testing.

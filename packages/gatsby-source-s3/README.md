@@ -10,9 +10,9 @@ Install the plugin:
 
 ```bash
 # with npm
-npm install @robinmetral/gatsby-source-s3
+npm install gatsby-source-s3
 # with yarn
-yarn add @robinmetral/gatsby-source-s3
+yarn add gatsby-source-s3
 ```
 
 Declare it in your `gatsby-config.js`, making sure to pass your AWS credentials
@@ -26,7 +26,7 @@ require("dotenv").config();
 module.exports = {
   plugins: [
     {
-      resolve: `@robinmetral/gatsby-source-s3`,
+      resolve: `gatsby-source-s3`,
       options: {
         aws: {
           accessKeyId: process.env.AWS_ACCESS_KEY_ID,

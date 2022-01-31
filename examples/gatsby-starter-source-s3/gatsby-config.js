@@ -6,12 +6,12 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `@robinmetral/gatsby-source-s3`,
+      resolve: `gatsby-source-s3`,
       options: {
         aws: {
-          accessKeyId: process.env.AWS_ACCESS_KEY_ID_,
-          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_,
-          region: process.env.AWS_REGION_,
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+          region: process.env.AWS_REGION,
         },
         buckets: [
           "gatsby-source-s3-example",

@@ -40,10 +40,9 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint '*/**/*.{ts,tsx}'",
-    "prestart": "yarn build && npm pack && (cd ../../examples/gatsby-starter-source-s3 && yarn add ../../robinmetral-gatsby-source-s3-0.0.0-semantically-released.tgz)",
     "start": "(cd ../../examples/gatsby-starter-source-s3 && yarn build && yarn serve)",
-    "test": "cypress run",
-    "e2e": "start-server-and-test http://localhost:9000"
+    "test:old": "cypress run",
+    "test:e2e": "start-server-and-test http://localhost:9000"
   },
   "dependencies": {
     "aws-sdk": "^2.1058.0",
