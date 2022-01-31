@@ -42,9 +42,9 @@ export const className = style({
 });
 ```
 
-## Using a Starter
-Kick off your project using our [Typescript starter](https://github.com/gatsbyjs/gatsby-starter-typescript
-)
+### Example Project
+
+Kick off your project using Gatsby's [example project](TODO)
 
 ## Useful Links
 
