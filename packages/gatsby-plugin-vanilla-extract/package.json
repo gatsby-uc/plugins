@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KyleAMathews/gatsby-plugin-vanilla-extract.git"
+    "url": "git+https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-plugin-vanilla-extract"
   },
   "keywords": [
     "gatsby",
@@ -17,9 +18,9 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KyleAMathews/gatsby-plugin-vanilla-extract/issues"
+    "url": "https://github.com/gatsby-uc/plugins/issues"
   },
-  "homepage": "https://github.com/KyleAMathews/gatsby-plugin-vanilla-extract#readme",
+  "homepage": "https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-vanilla-extract#readme",
   "peerDependencies": {
     "gatsby": "^3.0.0 || ^4.0.0",
     "@vanilla-extract/babel-plugin": "^1.0.0",
