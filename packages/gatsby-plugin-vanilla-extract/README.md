@@ -16,6 +16,21 @@ module.exports = {
 };
 ```
 
+You can also pass any [vanilla-extract configuration object](https://vanilla-extract.style/documentation/setup/#configuration) to the plugin.
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-vanilla-extract`,
+      options: {
+        identifiers: `short`
+      }
+    }
+  ],
+};
+```
+
 ## How to use
 
 See the [vanilla-extract website](https://vanilla-extract.style/) for full documentation.
