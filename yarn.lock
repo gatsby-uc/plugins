@@ -11057,8 +11057,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-relative-ci@workspace:packages/gatsby-plugin-relative-ci"
   dependencies:
-    "@babel/cli": ^7.16.7
-    "@babel/core": ^7.16.7
+    "@babel/cli": ^7.16.8
+    "@babel/core": ^7.16.12
     "@relative-ci/agent": ^2.1.0
     babel-preset-gatsby-package: ^2.6.0
     cross-env: ^7.0.3
