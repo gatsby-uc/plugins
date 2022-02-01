@@ -49,11 +49,11 @@
     "@types/jest": "^27.4.0",
     "@types/node": "^14.18.4",
     "babel-jest": "^27.4.5",
-    "babel-preset-gatsby-package": "^1.14.0",
+    "babel-preset-gatsby-package": "^2.6.0",
     "cross-env": "^7.0.3",
     "fastify": "^3.25.3",
     "gatsby": "^4.4.0",
-    "gatsby-plugin-utils": "^2.4.0",
+    "gatsby-plugin-utils": "^3.0.0",
     "jest": "^27.4.5"
   },
   "peerDependencies": {

@@ -10639,7 +10639,7 @@ __metadata:
     "@types/jest": ^27.4.0
     "@types/node": ^14.18.4
     babel-jest: ^27.4.5
-    babel-preset-gatsby-package: ^1.14.0
+    babel-preset-gatsby-package: ^2.6.0
     cross-env: ^7.0.3
     fastify: ^3.25.3
     fastify-accepts: ^2.1.0
@@ -10648,7 +10648,7 @@ __metadata:
     fastify-static: ^4.5.0
     fs-extra: ^10.0.0
     gatsby: ^4.4.0
-    gatsby-plugin-utils: ^2.4.0
+    gatsby-plugin-utils: ^3.0.0
     jest: ^27.4.5
     open: ^8.4.0
     picomatch: ^2.3.1
@@ -11020,6 +11020,18 @@ __metadata:
   peerDependencies:
     gatsby: ^4.0.0-next
   checksum: 9f0b9aae33842fafded39fe716e5fe45137a150b9fef4637aa1283cf843bd849e370bc28145a8be26b3e9479495e2652b2ece3621ec8086f8bacbba27877e161
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-utils@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "gatsby-plugin-utils@npm:3.0.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    joi: ^17.4.2
+  peerDependencies:
+    gatsby: ^4.0.0-next
+  checksum: 8946a05a5a22fe5732bce744aa2099e9a80c661f1d24cd87e59dac67a4575046ed3ee21f03f531579b225acd884997a54626ebbbcc7115dfebb17f3f0c857594
   languageName: node
   linkType: hard
 
