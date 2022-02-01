@@ -10857,7 +10857,7 @@ __metadata:
     "@babel/cli": ^7.16.7
     "@babel/core": ^7.16.7
     "@relative-ci/agent": ^2.1.0
-    babel-preset-gatsby-package: ^1.14.0
+    babel-preset-gatsby-package: ^2.6.0
     cross-env: ^7.0.3
   peerDependencies:
     gatsby: ^3.0.0 || ^4.0.0
