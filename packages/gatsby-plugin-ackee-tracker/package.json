@@ -36,7 +36,7 @@
     "@babel/cli": "^7.16.7",
     "@babel/core": "^7.16.7",
     "ackee-tracker": "^5",
-    "babel-preset-gatsby-package": "^1.14.0",
+    "babel-preset-gatsby-package": "^2.6.0",
     "cross-env": "^7.0.3"
   },
   "devDependencies": {
