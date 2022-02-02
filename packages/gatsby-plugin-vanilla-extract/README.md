@@ -59,8 +59,10 @@ export const className = style({
 
 ### Example Project
 
-Kick off your project using Gatsby's [example project](TODO)
+Kick off your project using Gatsby's [example project](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-vanilla-extract)
 
 ## Useful Links
 
 - [TypeScript & Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
+- [vanilla-extract website](https://vanilla-extract.style/)
+- [Talk/Video Explanation](https://www.youtube.com/watch?v=23VqED_kO2Q)
