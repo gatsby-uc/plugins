@@ -1,5 +1,13 @@
 # gatsby-plugin-github-ribbon
 
+## 1.3.4
+
+### Patch Changes
+
+- [#151](https://github.com/gatsby-uc/plugins/pull/151) [`bc143b4`](https://github.com/gatsby-uc/plugins/commit/bc143b48969f35c03bdd8cb407c1b78d4b477137) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-github-ribbon): update non-major dependency versions
+
+* [#164](https://github.com/gatsby-uc/plugins/pull/164) [`dfc17cd`](https://github.com/gatsby-uc/plugins/commit/dfc17cd3d5cb3a02b8484a9e9e3c3158b9b7d8cc) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-github-ribbon): update gatsby monorepo (major)
+
 ## 1.3.3
 
 ### Patch Changes

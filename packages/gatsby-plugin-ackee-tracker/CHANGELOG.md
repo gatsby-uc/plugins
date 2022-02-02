@@ -1,5 +1,13 @@
 # gatsby-plugin-ackee-tracker
 
+## 3.2.3
+
+### Patch Changes
+
+- [#161](https://github.com/gatsby-uc/plugins/pull/161) [`54f525f`](https://github.com/gatsby-uc/plugins/commit/54f525fb22d040ac37a831b9790176c15df3bb6f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-ackee-tracker): update dependency babel-preset-gatsby-package to v2
+
+* [#156](https://github.com/gatsby-uc/plugins/pull/156) [`c5bbdd4`](https://github.com/gatsby-uc/plugins/commit/c5bbdd4077e229a5f5109de86ace7e89ceab0c16) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-ackee-tracker): update non-major dependency versions
+
 ## 3.2.2
 
 ### Patch Changes

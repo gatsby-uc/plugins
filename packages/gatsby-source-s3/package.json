@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-s3",
   "description": "A Gatsby plugin to source objects and images from AWS S3",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "gatsby-node.js",
   "contributors": [
     "Robin Métral <robin@metral.ch>",
