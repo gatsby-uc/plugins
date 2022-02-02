@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-github-ribbon",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Add the \"Fork me on Github\" ribbon to your Gatsby Site.",
   "main": "index.js",
   "author": "Alex Moon",

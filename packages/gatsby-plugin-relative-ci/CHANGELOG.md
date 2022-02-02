@@ -1,5 +1,13 @@
 # gatsby-plugin-relative-ci
 
+## 1.3.3
+
+### Patch Changes
+
+- [#152](https://github.com/gatsby-uc/plugins/pull/152) [`36dc878`](https://github.com/gatsby-uc/plugins/commit/36dc878ee96782b5b5cd7816df3f1e8fb633f4fb) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update non-major dependency versions
+
+* [#165](https://github.com/gatsby-uc/plugins/pull/165) [`8aa63c4`](https://github.com/gatsby-uc/plugins/commit/8aa63c44b19da85c999b126cf53294a700c57882) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update dependency babel-preset-gatsby-package to v2
+
 ## 1.3.2
 
 ### Patch Changes
