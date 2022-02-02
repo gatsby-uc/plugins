@@ -24,7 +24,7 @@ jobs:
       - name: Format source code
         run: yarn lint
   test:
-    name: Run package tests
+    name: Run package tests (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
