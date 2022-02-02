@@ -1,4 +1,5 @@
 # Old Repo Issue Response
+
 When archiving a repo that's been transfered to the GUC issues that could still be implemented need to be responded to if not transfered to the GUC issues. Here is the recomended response:
 
 ```markdown
