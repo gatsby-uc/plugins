@@ -15,6 +15,7 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -30,5 +31,5 @@ jobs:
         with:
           publish: yarn publish-ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GUC_BOT_TOKEN }}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
