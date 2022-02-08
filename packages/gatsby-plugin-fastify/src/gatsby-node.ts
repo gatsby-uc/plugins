@@ -41,7 +41,5 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 };
 
 export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
-  return Joi.object({
-    compression: Joi.boolean().default(true),
-  });
+  return Joi.object({});
 };
