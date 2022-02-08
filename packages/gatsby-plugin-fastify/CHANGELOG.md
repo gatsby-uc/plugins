@@ -1,5 +1,25 @@
 # gatsby-plugin-fastify
 
+## 0.7.3
+
+### Patch Changes
+
+- [#163](https://github.com/gatsby-uc/plugins/pull/163) [`a3c5e55`](https://github.com/gatsby-uc/plugins/commit/a3c5e55542ad0b3dd97afcc04d686a00d44bdbe3) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update gatsby monorepo (major)
+
+* [#150](https://github.com/gatsby-uc/plugins/pull/150) [`1d9f473`](https://github.com/gatsby-uc/plugins/commit/1d9f4732872028be5cd8e77e7af15c478d392311) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update non-major dependency versions
+
+## 0.7.2
+
+### Patch Changes
+
+- [`5d1f1bf`](https://github.com/gatsby-uc/plugins/commit/5d1f1bf7989c119540760dc40ae7bc4dcf822836) Thanks [@moonmeister](https://github.com/moonmeister)! - Update package dependencies
+
+## 0.7.1
+
+### Patch Changes
+
+- [#128](https://github.com/gatsby-uc/plugins/pull/128) [`331bf7d`](https://github.com/gatsby-uc/plugins/commit/331bf7d2464701f8dab39c8e680efa3c996f056b) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-fastify): update non-major dependency versions
+
 ## 0.7.0
 
 ### Minor Changes

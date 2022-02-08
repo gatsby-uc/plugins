@@ -6,29 +6,7 @@ on:
       - main
 
 jobs:
-  test:
-    name: Run package tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: "yarn"
-
-      - name: Install dependencies
-        run: yarn install --immutable
-
-      - name: Build packages
-        run: yarn build
-
-      - name: Execute tests
-        run: yarn test
   release:
-    needs: test
     name: Package Version and Release
     runs-on: ubuntu-latest
     steps:
@@ -37,20 +15,21 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+          persist-credentials: false
 
-      - name: Setup Node.js 14.x
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
           cache: "yarn"
 
       - name: Install Dependencies
         run: yarn install --immutable
 
       - name: Create Release Pull Request
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           publish: yarn publish-ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GUC_BOT_TOKEN }}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}

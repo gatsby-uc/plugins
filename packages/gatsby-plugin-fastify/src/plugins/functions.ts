@@ -32,39 +32,41 @@ async function getFunctionHandler(routeConfig: IGatsbyFunction) {
   return execFunction;
 }
 
-export const handleFunctions: FastifyPluginAsync<{ prefix: string; functions: IGatsbyFunction[] }> =
-  async (fastify, { prefix, functions }) => {
-    if (functions?.length > 0) {
-      fastify.log.info(`Registering ${functions.length} function(s)`);
+export const handleFunctions: FastifyPluginAsync<{
+  prefix: string;
+  functions: IGatsbyFunction[];
+}> = async (fastify, { prefix, functions }) => {
+  if (functions?.length > 0) {
+    fastify.log.info(`Registering ${functions.length} function(s)`);
 
-      for (const funcConfig of functions) {
-        try {
-          const fnToExecute = await getFunctionHandler(funcConfig);
+    for (const funcConfig of functions) {
+      try {
+        const fnToExecute = await getFunctionHandler(funcConfig);
 
-          if (fnToExecute) {
-            fastify.log.debug(`Registering function:  ${prefix + funcConfig.functionRoute}`);
-            fastify.all(funcConfig.functionRoute, {
-              handler: async function (req, reply) {
-                try {
-                  appendModuleHeader("Functions", reply);
-                  await Promise.resolve(fnToExecute(req, reply));
-                } catch (e) {
-                  fastify.log.error(e);
-                  // Don't send the error if that would cause another error.
-                  if (!reply.sent) {
-                    reply.code(500).send("Error executing Gatsby Function.");
-                  }
+        if (fnToExecute) {
+          fastify.log.debug(`Registering function:  ${prefix + funcConfig.functionRoute}`);
+          fastify.all(funcConfig.functionRoute, {
+            handler: async function (req, reply) {
+              try {
+                appendModuleHeader("Functions", reply);
+                await Promise.resolve(fnToExecute(req, reply));
+              } catch (e) {
+                fastify.log.error(e);
+                // Don't send the error if that would cause another error.
+                if (!reply.sent) {
+                  reply.code(500).send("Error executing Gatsby Function.");
                 }
-              },
-            });
-          }
-        } catch (e) {
-          fastify.log.error(e);
+              }
+            },
+          });
         }
+      } catch (e) {
+        fastify.log.error(e);
       }
     }
+  }
 
-    fastify.all("/*", async (_req, reply) => {
-      reply.code(404).send("Function not found.");
-    });
-  };
+  fastify.all("/*", async (_req, reply) => {
+    reply.code(404).send("Function not found.");
+  });
+};

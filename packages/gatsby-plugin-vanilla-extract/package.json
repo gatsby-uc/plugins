@@ -1,0 +1,27 @@
+{
+  "name": "gatsby-plugin-vanilla-extract",
+  "version": "2.0.1",
+  "description": "Gatsby plugin which wraps the vanilla-extract package for easy use",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-plugin-vanilla-extract"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gatsby-uc/plugins/issues"
+  },
+  "homepage": "https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-vanilla-extract#readme",
+  "peerDependencies": {
+    "@vanilla-extract/babel-plugin": "^1.0.0",
+    "@vanilla-extract/css": "^1.0.0",
+    "@vanilla-extract/webpack-plugin": "^2.0.0",
+    "gatsby": "^3.0.0 || ^4.0.0"
+  }
+}

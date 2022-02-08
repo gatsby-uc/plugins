@@ -11,17 +11,17 @@ Object {
   "fakeOption": "fakeValue",
   "functions": Array [
     Object {
-      "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/splat/:splat.js",
+      "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/.cache/functions/splat/:splat.js",
       "functionRoute": "splat/:splat",
-      "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/splat/:splat.js",
+      "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/src/api/splat/:splat.js",
       "originalRelativeFilePath": "splat/:splat.js",
       "pluginName": "default-site-plugin",
       "relativeCompiledFilePath": "splat/:splat.js",
     },
     Object {
-      "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/.cache/functions/test.js",
+      "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/.cache/functions/test.js",
       "functionRoute": "test",
-      "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/packages/gatsby-plugin-fastify/test-site/src/api/test.js",
+      "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/src/api/test.js",
       "originalRelativeFilePath": "test.js",
       "pluginName": "default-site-plugin",
       "relativeCompiledFilePath": "test.js",
