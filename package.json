@@ -23,7 +23,7 @@
     "@changesets/cli": "^2.20.0",
     "all-contributors-cli": "^6.20.0",
     "husky": "^7.0.4",
-    "lint-staged": "^11.2.6",
+    "lint-staged": "^12.3.3",
     "prettier": "^2.5.1"
   },
   "packageManager": "yarn@3.1.1",
