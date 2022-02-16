@@ -4,6 +4,7 @@ import fp from "fastify-plugin";
 import { resolve } from "path";
 import { isMatch } from "picomatch";
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
+import { getConfig } from "../utils/config";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
@@ -11,7 +12,7 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
     fastify.log.debug(`Serving Static Assets from ${publicPath}`);
     fastify.register(fastifyStatic, {
       root: publicPath,
-      redirect: true,
+      redirect: false,
       wildcard: true,
       setHeaders: (reply, path, _stat) => {
         if (

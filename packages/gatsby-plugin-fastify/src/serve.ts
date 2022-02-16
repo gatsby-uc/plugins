@@ -5,11 +5,13 @@ import { getConfig } from "./utils/config";
 export async function gatsbyServer() {
   const {
     cli: { port, host, logLevel },
-    server: { prefix },
+    server: { prefix, trailingSlash },
   } = getConfig();
 
   const fastify = Fastify({
-    ignoreTrailingSlash: true,
+    // This will 200 on either slash or no slash.
+    //TODO: Still need to handle /index.html routes
+    ignoreTrailingSlash: trailingSlash === "ignore" || trailingSlash === "legacy" ? true : false,
     logger: { level: logLevel, prettyPrint: true },
     disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });

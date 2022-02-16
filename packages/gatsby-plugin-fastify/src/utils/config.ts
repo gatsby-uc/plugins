@@ -4,6 +4,7 @@ import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
 import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
 import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
+import type { TrailingSlash } from "gatsby-page-utils";
 
 import { PathConfig } from "../plugins/clientRoutes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -20,6 +21,7 @@ export interface GatsbyNodeServerConfig extends PluginOptions {
   prefix: string | undefined;
   functions: IGatsbyFunction[];
   compression: boolean;
+  trailingSlash: TrailingSlash;
 }
 
 export type GfCliOptions = {

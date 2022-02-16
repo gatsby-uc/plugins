@@ -32,6 +32,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
       redirects,
       prefix: pathPrefix,
       functions,
+      trailingSlash: pluginData.trailingSlash,
     };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });

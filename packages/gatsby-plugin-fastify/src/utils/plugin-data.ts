@@ -4,6 +4,7 @@ import { join } from "path";
 import { PATH_TO_CACHE, PATH_TO_FUNCTIONS, PATH_TO_PUBLIC } from "./constants";
 import type { Store } from "gatsby";
 import { IGatsbyState } from "gatsby/dist/redux/types";
+import type { TrailingSlash } from "gatsby-page-utils";
 
 export function buildPrefixer(prefix: string, ...paths: string[]) {
   return (...subpaths: string[]) => join(prefix, ...paths, ...subpaths);
@@ -13,7 +14,11 @@ export function buildPrefixer(prefix: string, ...paths: string[]) {
 // shape of `static-entry.js`. With it, we can build headers that point to the correct
 // hashed filenames and ensure we pull in the componentChunkName.
 export async function makePluginData(store: Store, pathPrefix: string): Promise<PluginData> {
-  const { program, pages } = store.getState() as IGatsbyState;
+  const {
+    program,
+    pages,
+    config: { trailingSlash = "always" },
+  } = store.getState() as IGatsbyState;
 
   const publicFolder = buildPrefixer(program.directory, PATH_TO_PUBLIC);
   const functionsFolder = buildPrefixer(program.directory, PATH_TO_FUNCTIONS);
@@ -26,6 +31,7 @@ export async function makePluginData(store: Store, pathPrefix: string): Promise<
     publicFolder,
     functionsFolder,
     configFolder,
+    trailingSlash,
   };
 }
 
@@ -36,4 +42,5 @@ export interface PluginData {
   publicFolder: (...paths: string[]) => string;
   functionsFolder: (...paths: string[]) => string;
   configFolder: (...paths: string[]) => string;
+  trailingSlash: TrailingSlash;
 }
