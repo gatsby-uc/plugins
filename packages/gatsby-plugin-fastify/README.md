@@ -134,7 +134,7 @@ Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getti
 
 Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Reference/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reference/Reply/) API.
 
-If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
+If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Reference/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
 
 ## TypeScript
 
