@@ -66,7 +66,7 @@ This plugin implements a server that's ready to go. To use this you can configur
 
 ```json
 {
-  "scrips": {
+  "scripts": {
     "start": "gserve"
   }
 }
@@ -132,7 +132,7 @@ Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getti
 
 > **THIS IS NOT TRUE FOR THIS PLUGIN**
 
-Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API.
+Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Reference/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reference/Reply/) API.
 
 If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
 
