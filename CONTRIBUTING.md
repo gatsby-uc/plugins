@@ -24,7 +24,7 @@ The reality is we'll solve these problems as they come up. This is a community, 
 
 ### Your Access
 
-When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit on your plugin.
+When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit your plugin.
 
 ### Licence
 
