@@ -1,8 +1,8 @@
 # Contributing
 
-Welcome! Submit a PR, answer questions, join the [Discord](https://discord.gg/gwnqfzetjv).
+Welcome! Submit a PR, answer questions, join the [Discord](https://discord.gg/Qy2rwbHbwN).
 
-We have a monthly community meeting that is listed in the [Discord](https://discord.gg/gwnqfzetjv) server under events. The meeting is handled there in a voice channel. Anyone is welcome to come, listen, and join the conversation. The meeting is usually held on the last Tuesday of the month.
+We have a monthly community meeting that is listed in the [Discord](https://discord.gg/Qy2rwbHbwN) server under events. The meeting is handled there in a voice channel. Anyone is welcome to come, listen, and join the conversation. The meeting is usually held on the last Tuesday of the month.
 
 ## Contributing a plugin
 
@@ -24,7 +24,7 @@ The reality is we'll solve these problems as they come up. This is a community, 
 
 ### Your Access
 
-When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit your on plugin.
+When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit on your plugin.
 
 ### Licence
 
