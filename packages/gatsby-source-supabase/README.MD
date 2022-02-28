@@ -14,7 +14,7 @@ Gatsby source plugin for building websites using Supabase as a data source
 ## How to install
 
 ```
-npm install gatsby-source-supabase
+npm install gatsby-source-supabase @supabase/supabase-js
 ```
 
 ## Available options
@@ -38,11 +38,11 @@ module.exports = {
         types: [
           {
             type: "User",
-            query: (client) => client.from("users").select("*"),
+            query: (client) => client.from("users").select("*"), //sync or async
           },
           {
             type: "Project",
-            query: (client) => client.from("projects").select("*"),
+            query: (client) => client.from("projects").select("*"), 
           },
         ],
       },
@@ -115,17 +115,3 @@ Will result with:
   }
 }
 ```
-
-## Contributing
-
-If you have some usecases that are not currently covered by the plugin, you are more than welcome to contribute:
-
-1. Clone this repo
-2. Create a branch: `git checkout -b your-feature`
-3. Make some changes
-4. Test your changes
-5. Push your branch and open a Pull Request
-
-## LICENSE
-
-MIT
