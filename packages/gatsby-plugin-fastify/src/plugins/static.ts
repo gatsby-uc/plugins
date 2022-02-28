@@ -4,15 +4,19 @@ import fp from "fastify-plugin";
 import { resolve } from "path";
 import { isMatch } from "picomatch";
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
-import { getConfig } from "../utils/config";
+import type { TrailingSlash } from "gatsby-page-utils";
 
-export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
+type GatsbyStaticOptions = {
+  trailingSlash: TrailingSlash;
+};
+
+export const handleStatic: FastifyPluginAsync<Partial<GatsbyStaticOptions>> = fp(
   async (fastify, opts) => {
     const publicPath = resolve(PATH_TO_PUBLIC);
     fastify.log.debug(`Serving Static Assets from ${publicPath}`);
     fastify.register(fastifyStatic, {
       root: publicPath,
-      redirect: false,
+      redirect: true,
       wildcard: true,
       setHeaders: (reply, path, _stat) => {
         if (

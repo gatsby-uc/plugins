@@ -10306,7 +10306,7 @@ __metadata:
     yargs: ^17.3.1
   peerDependencies:
     fastify: ^3.19.0
-    gatsby: ^4.2.0
+    gatsby: ^4.7.0
   bin:
     gserve: ./cli.js
   languageName: unknown
@@ -10737,7 +10737,7 @@ __metadata:
     babel-preset-gatsby: ^2.6.0
     benchmark: ^2.1.4
     fastify: ^3.27.0
-    gatsby: ^4.6.1
+    gatsby: ^4.7.0
     gatsby-plugin-fastify: "*"
     gatsby-plugin-image: ^2.6.0
     gatsby-plugin-manifest: ^4.6.0

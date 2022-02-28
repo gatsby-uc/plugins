@@ -2,12 +2,14 @@ import { join, posix, resolve } from "path";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
+import type { TrailingSlash } from "gatsby-page-utils";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
+  trailingSlash: TrailingSlash;
 }> = async (fastify, { paths }) => {
   if (paths?.length > 0) {
     const { dsgCount, ssrCount } = paths.reduce(
@@ -90,11 +92,15 @@ export const handleServerRoutes: FastifyPluginAsync<{
     for (const { path, mode } of paths) {
       fastify.log.debug(`Registering "${path}" as "${mode}" route.`);
 
-      fastify.get(path, async (req, reply) => {
+      console.log(path);
+      const [pathWithoutSlash, pathWithSlash, pathWithFile] = generatePaths(path);
+      console.log(pathWithoutSlash, pathWithSlash, pathWithFile);
+      fastify.get(pathWithoutSlash, async (req, reply) => {
         const accept = req.accepts();
         if (accept.type(["html"])) {
           fastify.log.debug(`DSG/SSR for "text/html" @  ${req.url}`);
           const potentialPagePath = reverseFixedPagePath(req.url);
+          console.log(potentialPagePath);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
 
           if (!page) {
@@ -138,3 +144,10 @@ export const handleServerRoutes: FastifyPluginAsync<{
     }
   }
 };
+
+function generatePaths(path) {
+  const cleanPath = path.replace(/\/$/, "");
+  console.log(cleanPath);
+
+  return [cleanPath, cleanPath + "/", cleanPath + "/index.html"];
+}
