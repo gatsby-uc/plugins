@@ -10436,6 +10436,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"gatsby-source-supabase@workspace:packages/gatsby-source-supabase":
+  version: 0.0.0-use.local
+  resolution: "gatsby-source-supabase@workspace:packages/gatsby-source-supabase"
+  peerDependencies:
+    "@supabase/supabase-js": ^1.0.0
+  languageName: unknown
+  linkType: soft
+
 "gatsby-starter-fastify@workspace:integration-tests/plugin-fastify":
   version: 0.0.0-use.local
   resolution: "gatsby-starter-fastify@workspace:integration-tests/plugin-fastify"
