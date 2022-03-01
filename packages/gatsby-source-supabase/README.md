@@ -1,6 +1,6 @@
 # gatsby-source-supabase
 
-<table>
+<table align="center">
   <tr>
     <td valign="top"><img height="100px" width="100px" src="https://res.cloudinary.com/practicaldev/image/fetch/s--Fda3jJaA--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/organization/profile_image/2653/80840bff-1061-4544-841e-86da7aa1dd8e.png"></td>
     <td valign="top"> <img height="100px" width="100px" src="https://res.cloudinary.com/practicaldev/image/fetch/s---1zZlXx3--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/organization/profile_image/1968/c0dbe341-1d94-4192-a93b-921519678894.png"></td>
@@ -42,7 +42,7 @@ module.exports = {
           },
           {
             type: "Project",
-            query: (client) => client.from("projects").select("*"), 
+            query: (client) => client.from("projects").select("*"),
           },
         ],
       },
