@@ -4,9 +4,8 @@ import { Octokit } from "@octokit/rest";
 
 export async function sourceNodes(
   { actions, createNodeId, createContentDigest, reporter },
-  { query, githubApi }
+  { query }
 ) {
-  // plugin-options
   if (!query || !(query.name || query.type || query.tags)) {
     reporter.error("No query paramaters passed to packagist api", query);
   } else {
@@ -32,14 +31,13 @@ export async function sourceNodes(
       if (e.response) {
         reporter.error("Error searching for packages: ", e);
       }
-      console.error(e);
-      reporter.panic("unkown error");
+      reporter.panic("unknown error", e);
     }
   }
 }
 
 export async function createResolvers(
-  { actions, createResolvers, createNodeId, createContentDigest, reporter, store, cache },
+  { actions, createResolvers, createNodeId, reporter, store, cache },
   { githubApi }
 ) {
   global.reporter = reporter;
