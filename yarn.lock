@@ -32,33 +32,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/cli@npm:7.16.7"
-  dependencies:
-    "@nicolo-ribaudo/chokidar-2": 2.1.8-no-fsevents.3
-    chokidar: ^3.4.0
-    commander: ^4.0.1
-    convert-source-map: ^1.1.0
-    fs-readdir-recursive: ^1.1.0
-    glob: ^7.0.0
-    make-dir: ^2.1.0
-    slash: ^2.0.0
-    source-map: ^0.5.0
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  dependenciesMeta:
-    "@nicolo-ribaudo/chokidar-2":
-      optional: true
-    chokidar:
-      optional: true
-  bin:
-    babel: ./bin/babel.js
-    babel-external-helpers: ./bin/babel-external-helpers.js
-  checksum: dc931ede61bd9f4af8a8dbe8dd2cb81e1aaf79a7655cf1cef60662a2895977ca91f3c2b47f693c038fa0625ace54c07dbf183e5cbd678cebd5313677ad650847
-  languageName: node
-  linkType: hard
-
 "@babel/cli@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/cli@npm:7.16.8"
@@ -234,29 +207,6 @@ __metadata:
     semver: ^6.3.0
     source-map: ^0.5.0
   checksum: 29b56f3cb7c329fc038a2efaccf64ac3025835676b3d90f57f2265b6acd477a970114d09021b38d019ac8f20b2bb1596a9e79ce1f820d6b8cf0e4a802891817c
-  languageName: node
-  linkType: hard
-
-"@babel/core@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/core@npm:7.16.7"
-  dependencies:
-    "@babel/code-frame": ^7.16.7
-    "@babel/generator": ^7.16.7
-    "@babel/helper-compilation-targets": ^7.16.7
-    "@babel/helper-module-transforms": ^7.16.7
-    "@babel/helpers": ^7.16.7
-    "@babel/parser": ^7.16.7
-    "@babel/template": ^7.16.7
-    "@babel/traverse": ^7.16.7
-    "@babel/types": ^7.16.7
-    convert-source-map: ^1.7.0
-    debug: ^4.1.0
-    gensync: ^1.0.0-beta.2
-    json5: ^2.1.2
-    semver: ^6.3.0
-    source-map: ^0.5.0
-  checksum: 3206e077e76db189726c4da19a5296eae11c6c1f5abea7013e74f18708bb91616914717ff8d8ca466cc0ba9d2d2147e9a84c3c357b9ad4cba601da14107838ed
   languageName: node
   linkType: hard
 
@@ -11091,8 +11041,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
-    "@babel/cli": ^7.16.7
-    "@babel/core": ^7.16.7
+    "@babel/cli": ^7.17.6
+    "@babel/core": ^7.17.5
     "@octokit/rest": ^17.11.2
     babel-preset-gatsby-package: ^2.8.0
     cross-env: ^7.0.3
