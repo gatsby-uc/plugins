@@ -14,16 +14,18 @@ let config: Partial<GfConfig> = {};
 
 const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 
-export interface GatsbyNodeServerConfig extends PluginOptions {
+export interface GatsbyFastifyPluginOptions extends PluginOptions {
+  features: {
+    reverseProxy: boolean | {};
+  };
+}
+export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
   serverSideRoutes: ServerSideRoute[];
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];
   proxies: GatsbyFastifyProxy[];
-  features: {
-    reverseProxy: boolean | {};
-  };
 }
 
 export type GfCliOptions = {

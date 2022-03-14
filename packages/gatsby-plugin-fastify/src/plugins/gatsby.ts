@@ -41,7 +41,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handleRedirects, { redirects });
 
   // Gatsby Reverse Proxy
-  if (features.reverseProxy) {
+  if (features?.reverseProxy) {
     await fastify.register(handleReverseProxy, { proxies });
   }
 

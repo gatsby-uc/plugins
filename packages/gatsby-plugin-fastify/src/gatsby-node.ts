@@ -1,5 +1,5 @@
 import { writeJSON } from "fs-extra";
-import type { GatsbyNodeServerConfig } from "./utils/config";
+import type { GatsbyFastifyPluginOptions, GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
 import { makePluginData } from "./utils/plugin-data";
@@ -11,7 +11,7 @@ import { getProxiesAndRedirects } from "./gatsby/proxiesAndRedirects";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyNodeServerConfig
+  pluginOptions: GatsbyFastifyPluginOptions
 ) => {
   try {
     const { proxies, redirects } = getProxiesAndRedirects(store);
