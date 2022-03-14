@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.7.5
+
+### Patch Changes
+
+- [#187](https://github.com/gatsby-uc/plugins/pull/187) [`48c3369`](https://github.com/gatsby-uc/plugins/commit/48c336942ad638f1fb7483460ceb8fc4607ef3cc) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update non-major dependency versions
+
 ## 0.7.4
 
 ### Patch Changes
