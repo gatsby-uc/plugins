@@ -29,7 +29,7 @@
 - Gatsby [reverse proxy](https://support.gatsbyjs.com/hc/en-us/articles/1500003051241-Working-with-Redirects-and-Rewrites)
 - [Client-only routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
 - Serving the site with [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) - set it up inside `gatsby-config.js`, the plugin will take care of it
-- File compression, Etags, and more.
+- Etags, and more.
 
 # Installation
 
@@ -49,17 +49,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-fastify`,
       /* Default option value shown */
-      options: {
-        compresion: true; //When set to false gzip/bz compression assets is disabled.
-      }
-    }
+      options: { s },
+    },
   ],
 };
 ```
 
 # Serving your site
 
-Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to node. This allows the Edge web server to handle security, TLS/SSL, load balencing, etc. Then the node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability.
+Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to the Node server. This edge server may handle caching, TLS/SSL, load balancing, compression, etc. Then the Node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability and may be use in place of the edge server, though this may be less secure.
 
 ## Server CLI (expected)
 

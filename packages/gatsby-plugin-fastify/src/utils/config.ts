@@ -20,7 +20,6 @@ export interface GatsbyNodeServerConfig extends PluginOptions {
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];
-  compression: boolean;
   proxies: GatsbyFastifyProxy[];
   features: {
     reverseProxy: boolean | {};

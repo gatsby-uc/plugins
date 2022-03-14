@@ -1,5 +1,13 @@
 # gatsby-plugin-github-ribbon
 
+## 1.3.5
+
+### Patch Changes
+
+- [#197](https://github.com/gatsby-uc/plugins/pull/197) [`8acdc0c`](https://github.com/gatsby-uc/plugins/commit/8acdc0c0efaa16ec6472e2982e74022e9e738a12) Thanks [@moonmeister](https://github.com/moonmeister)! - fix: work around for jest on broken tests
+
+* [#188](https://github.com/gatsby-uc/plugins/pull/188) [`04bff6a`](https://github.com/gatsby-uc/plugins/commit/04bff6ad5fb7433b04ff30845f6014f581a8e7a6) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-github-ribbon): update non-major dependency versions
+
 ## 1.3.4
 
 ### Patch Changes
