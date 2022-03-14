@@ -4,6 +4,7 @@ import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
 import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
 import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
+import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
 
 import { PathConfig } from "../plugins/clientRoutes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -20,6 +21,10 @@ export interface GatsbyNodeServerConfig extends PluginOptions {
   prefix: string | undefined;
   functions: IGatsbyFunction[];
   compression: boolean;
+  proxies: GatsbyFastifyProxy[];
+  features: {
+    reverseProxy: boolean | {};
+  };
 }
 
 export type GfCliOptions = {

@@ -34,6 +34,7 @@
     "@babel/runtime": "^7.17.2",
     "fastify-accepts": "^2.1.0",
     "fastify-compress": "^3.7.0",
+    "fastify-http-proxy": "^6.2.2",
     "fastify-plugin": "^3.0.1",
     "fastify-static": "^4.5.0",
     "fs-extra": "^10.0.1",

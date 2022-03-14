@@ -1,4 +1,3 @@
-import pluginHttpProxy from "fastify-http-proxy";
 import { StatusCodes } from "http-status-codes";
 
 import type { FastifyPluginAsync } from "fastify";
