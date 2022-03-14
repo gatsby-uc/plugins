@@ -7,9 +7,12 @@ import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
 export const handleReverseProxy: FastifyPluginAsync<{
   proxies: GatsbyFastifyProxy[];
 }> = async (fastify, { proxies }) => {
+  fastify.log.info(`Registering ${proxies.length} reverse proxy route(s)`);
+
   for (const proxy of proxies) {
     try {
       const proxyTo = new URL(proxy.toPath);
+      fastify.log.debug(`Registering "${proxy.fromPath}" as proxied route to "${proxy.toPath}".`);
 
       fastify.register(pluginHttpProxy, {
         upstream: proxyTo.href,

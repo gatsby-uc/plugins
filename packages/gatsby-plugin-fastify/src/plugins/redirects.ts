@@ -13,8 +13,14 @@ export function getResponseCode(redirect: IRedirect): StatusCodes {
 export const handleRedirects: FastifyPluginAsync<{
   redirects: IRedirect[];
 }> = async (fastify, { redirects }) => {
+  fastify.log.info(`Registering ${redirects.length} redirect(s)`);
+
   for (const redirect of redirects) {
     const responseCode = getResponseCode(redirect);
+    fastify.log.debug(
+      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`
+    );
+
     fastify.get(redirect.fromPath, (_req, reply) => {
       reply.code(responseCode).redirect(redirect.toPath);
     });
