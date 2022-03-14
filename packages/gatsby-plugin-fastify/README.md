@@ -48,8 +48,9 @@ module.exports = {
     /* Rest of the plugins */
     {
       resolve: `gatsby-plugin-fastify`,
-      /* Default option value shown */
-      options: { s },
+      options: {
+        /* discussed below */
+      }, // All options are optional
     },
   ],
 };
@@ -100,6 +101,29 @@ export GATSBY_SERVER_ADDRESS=0.0.0.0
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
 ## Features
+
+Some features can be disabled through the plugin options. This will not provide increased performance but is probided as an option to control features in certain deploys or to handoff certain features to an edge server or CDN as desired.
+
+```js
+module.exports = {
+  /* Site config */
+  plugins: [
+    /* Rest of the plugins */
+    {
+      resolve: `gatsby-plugin-fastify`,
+      /* Default option value shown */
+      options: {
+        features: {
+          redirects: true,
+          reverseProxy: true,
+        },
+      },
+    },
+  ],
+};
+```
+
+### Gatsby Reverse Proxy
 
 Building on top of the `createRedirects` API Gatsby Cloud now supports reverse proxies. We've implemented this feature here as well.
 

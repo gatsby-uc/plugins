@@ -44,6 +44,7 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
   return Joi.object({
     features: Joi.object({
       reverseProxy: Joi.alternatives().try(Joi.boolean(), Joi.object()).default(true),
+      redirects: Joi.boolean().default(true),
     }).default(),
   });
 };

@@ -17,6 +17,7 @@ const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 export interface GatsbyFastifyPluginOptions extends PluginOptions {
   features: {
     reverseProxy: boolean | {};
+    redirects: boolean;
   };
 }
 export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
