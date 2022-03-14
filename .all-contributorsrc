@@ -71,6 +71,25 @@
       "contributions": [
         "plugin"
       ]
+    },
+    {
+      "login": "jrotering",
+      "name": "James Rotering",
+      "avatar_url": "https://avatars.githubusercontent.com/u/311128?v=4",
+      "profile": "https://github.com/jrotering",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "alan2207",
+      "name": "Alan Alickovic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12713315?v=4",
+      "profile": "https://github.com/alan2207",
+      "contributions": [
+        "doc",
+        "plugin"
+      ]
     }
   ],
   "contributorsPerLine": 7

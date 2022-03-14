@@ -1,5 +1,21 @@
 # gatsby-plugin-relative-ci
 
+## 1.4.1
+
+### Patch Changes
+
+- [#184](https://github.com/gatsby-uc/plugins/pull/184) [`bc6aa89`](https://github.com/gatsby-uc/plugins/commit/bc6aa89323cf4514c3ac6dacc1dc1acc9c842286) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update non-major dependency versions
+
+## 1.4.0
+
+### Minor Changes
+
+- [#169](https://github.com/gatsby-uc/plugins/pull/169) [`8a62978`](https://github.com/gatsby-uc/plugins/commit/8a629788ed0ce4c32d77816e40afbea72950b072) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-relative-ci): update dependency @relative-ci/agent to v3
+
+### Patch Changes
+
+- [#174](https://github.com/gatsby-uc/plugins/pull/174) [`20dc073`](https://github.com/gatsby-uc/plugins/commit/20dc07340a232d03b10803df8a755570df15fa57) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update non-major dependency versions
+
 ## 1.3.3
 
 ### Patch Changes

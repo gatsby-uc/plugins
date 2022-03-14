@@ -1,5 +1,12 @@
 # test-fastify-gatsby
 
+## 1.0.13
+
+### Patch Changes
+
+- Updated dependencies [[`4c1365d`](https://github.com/gatsby-uc/plugins/commit/4c1365d639ecb1f0409d72db4e15593706d82639)]:
+  - gatsby-plugin-fastify@0.7.4
+
 ## 1.0.12
 
 ### Patch Changes
