@@ -1,4 +1,5 @@
 import { join, posix, resolve } from "path";
+import { StatusCodes } from "http-status-codes";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
@@ -132,7 +133,9 @@ export const handleServerRoutes: FastifyPluginAsync<{
           }
         } else {
           fastify.log.warn(`Request for route ${req.url} does not support "text/html"`);
-          return reply.code(400).send("Request must support html via the `accept` header.");
+          return reply
+            .code(StatusCodes.BAD_REQUEST)
+            .send("Request must support html via the `accept` header.");
         }
       });
     }
