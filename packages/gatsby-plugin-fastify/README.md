@@ -98,32 +98,6 @@ export GATSBY_SERVER_ADDRESS=0.0.0.0
 
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
-## Gatsby Fastify Plugin (advanced)
-
-This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
-
-```js
-import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
-```
-
-For an example on how to use this, reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
-
-## Gatsby Feature Fastify Plugins (expert)
-
-Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
-
-```js
-import { handle404 } from "gatsby-plugin-fastify/plugins/404";
-import { handle500 } from "gatsby-plugin-fastify/plugins/500";
-import { handleClientOnlyRoutes } from "gatsby-plugin-fastify/plugins/clientRoutes";
-import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
-import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
-import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
-import { handleServerRoutes } from "gatsby-plugin-fastify/plugins/serverRoutes";
-```
-
-For an example on how to use these, see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
-
 ## Gatsby Functions
 
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.

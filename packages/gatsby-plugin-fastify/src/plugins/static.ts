@@ -1,9 +1,11 @@
-import { FastifyPluginAsync } from "fastify";
 import fastifyStatic, { FastifyStaticOptions } from "fastify-static";
 import fp from "fastify-plugin";
 import { resolve } from "path";
 import { isMatch } from "picomatch";
 import { PATH_TO_PUBLIC, IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../utils/constants";
+import { appendModuleHeader } from "../utils/headers";
+
+import type { FastifyPluginAsync } from "fastify";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, opts) => {
@@ -22,7 +24,7 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
         } else {
           reply.setHeader(...NEVER_CACHE_HEADER);
         }
-        reply.setHeader("x-gatsby-fastify", "served-by: static");
+        appendModuleHeader("Static", reply);
       },
       ...opts,
     });
