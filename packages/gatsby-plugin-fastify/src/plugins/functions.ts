@@ -47,7 +47,7 @@ export const handleFunctions: FastifyPluginAsync<{
           fastify.all(funcConfig.functionRoute, {
             handler: async function (req, reply) {
               try {
-                reply.header("x-gatsby-fastify", "served-by: functions");
+                reply.appendModuleHeader("Functions");
                 await Promise.resolve(fnToExecute(req, reply));
               } catch (e) {
                 fastify.log.error(e);

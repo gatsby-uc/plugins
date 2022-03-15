@@ -56,7 +56,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
           //this theoreticall shouldn't happen cause we're creating these routes based on data from build.
           throw new Error(`No page data found for path: ${req.url}`);
         }
-        reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
+        reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
 
         try {
           // Fetch Page Data adn SSR Data
@@ -101,7 +101,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             throw new Error(`No page found for ${req.url}`);
           }
 
-          reply.header("x-gatsby-fastify", `served-by: ${page?.mode || "dsg/ssr handler"}`);
+          reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
 
           try {
             const pageQueryData = await getData({

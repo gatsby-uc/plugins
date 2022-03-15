@@ -14,6 +14,7 @@ export const handle500: FastifyPluginAsync = fp(async (fastify, _opts) => {
 
   fastify.setErrorHandler(async (err, req, reply) => {
     fastify.log.error(`Error processing ${req.url}, ${err.message}`);
+    reply.appendModuleHeader("500");
 
     if (gatsby500ErrorFileExists) {
       return reply.code(500).sendFile("500.html");
