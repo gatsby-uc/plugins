@@ -1,8 +1,11 @@
 import { resolve } from "path";
 import { existsSync } from "fs-extra";
-import { IGatsbyFunction } from "gatsby/dist/redux/types";
-import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
+import { StatusCodes } from "http-status-codes";
+
 import { PATH_TO_FUNCTIONS } from "../utils/constants";
+
+import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
+import type { IGatsbyFunction } from "gatsby/dist/redux/types";
 
 export type GatsbyFunctionHandler = (
   req: FastifyRequest,
@@ -47,13 +50,15 @@ export const handleFunctions: FastifyPluginAsync<{
           fastify.all(funcConfig.functionRoute, {
             handler: async function (req, reply) {
               try {
-                reply.header("x-gatsby-fastify", "served-by: functions");
+                reply.appendModuleHeader("Functions");
                 await Promise.resolve(fnToExecute(req, reply));
               } catch (e) {
                 fastify.log.error(e);
                 // Don't send the error if that would cause another error.
                 if (!reply.sent) {
-                  reply.code(500).send("Error executing Gatsby Function.");
+                  reply
+                    .code(StatusCodes.INTERNAL_SERVER_ERROR)
+                    .send("Error executing Gatsby Function.");
                 }
               }
             },
@@ -66,6 +71,6 @@ export const handleFunctions: FastifyPluginAsync<{
   }
 
   fastify.all("/*", async (_req, reply) => {
-    reply.code(404).send("Function not found.");
+    reply.code(StatusCodes.NOT_FOUND).send("Function not found.");
   });
 };

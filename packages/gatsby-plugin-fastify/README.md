@@ -159,34 +159,3 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
   res.send(`I am TYPESCRIPT`);
 }
 ```
-
-## Appendices
-
-### Appendix 1 - Alternative server usage
-
-#### Gatsby Fastify Plugin (advanced)
-
-This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
-
-```js
-import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
-```
-
-For an example on how to use this, reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
-
-#### Gatsby Feature Fastify Plugins (expert)
-
-Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
-
-```js
-import { handle404 } from "gatsby-plugin-fastify/plugins/404";
-import { handle500 } from "gatsby-plugin-fastify/plugins/500";
-import { handleClientOnlyRoutes } from "gatsby-plugin-fastify/plugins/clientRoutes";
-import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
-import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
-import { handleReverseProxy } from "gatsby-plugin-fastify/plugins/reverseProxy";
-import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
-import { handleServerRoutes } from "gatsby-plugin-fastify/plugins/serverRoutes";
-```
-
-For an example on how to use these, see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).

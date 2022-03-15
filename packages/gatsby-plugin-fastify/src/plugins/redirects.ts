@@ -22,6 +22,8 @@ export const handleRedirects: FastifyPluginAsync<{
     );
 
     fastify.get(redirect.fromPath, (_req, reply) => {
+      reply.appendModuleHeader("Redirects");
+
       reply.code(responseCode).redirect(redirect.toPath);
     });
   }
