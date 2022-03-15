@@ -42,11 +42,15 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   // Gatsby Redirects
   if (features?.redirects) {
     await fastify.register(handleRedirects, { redirects });
+  } else {
+    fastify.log.warn("Redirects disabled.");
   }
 
   // Gatsby Reverse Proxy
   if (features?.reverseProxy) {
     await fastify.register(handleReverseProxy, { proxies });
+  } else {
+    fastify.log.warn("Reverse proxy disabled.");
   }
 
   // Gatsby DSG & SSR
