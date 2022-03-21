@@ -28,7 +28,7 @@
 - Gatsby [redirects](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect)
 - [Client-only routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
 - Serving the site with [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) - set it up inside `gatsby-config.js`, the plugin will take care of it
-- File compression, Etags, and more.
+- Etags, and more.
 
 # Installation
 
@@ -48,17 +48,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-fastify`,
       /* Default option value shown */
-      options: {
-        compresion: true; //When set to false gzip/bz compression assets is disabled.
-      }
-    }
+      options: { s },
+    },
   ],
 };
 ```
 
 # Serving your site
 
-Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to node. This allows the Edge web server to handle security, TLS/SSL, load balencing, etc. Then the node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability.
+Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to the Node server. This edge server may handle caching, TLS/SSL, load balancing, compression, etc. Then the Node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability and may be use in place of the edge server, though this may be less secure.
 
 ## Server CLI (expected)
 
@@ -66,7 +64,7 @@ This plugin implements a server that's ready to go. To use this you can configur
 
 ```json
 {
-  "scrips": {
+  "scripts": {
     "start": "gserve"
   }
 }
@@ -100,41 +98,15 @@ export GATSBY_SERVER_ADDRESS=0.0.0.0
 
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
-## Gatsby Fastify Plugin (advanced)
-
-This plugin also implements a Fastify plugin for serving Gatsby. This may be imported via:
-
-```js
-import { serveGatsby } from "gatsby-plugin-fastify/plugins/gatsby";
-```
-
-For an example on how to use this, reference the server implementation file from [`src/serve.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/serve.ts).
-
-## Gatsby Feature Fastify Plugins (expert)
-
-Finally, each of the Gatsby features (functions, static files, redirects, client-only routes, and 404 handling) is implemented in it's own plugin. Those may be imported as well for use in a custom server implementation.
-
-```js
-import { handle404 } from "gatsby-plugin-fastify/plugins/404";
-import { handle500 } from "gatsby-plugin-fastify/plugins/500";
-import { handleClientOnlyRoutes } from "gatsby-plugin-fastify/plugins/clientRoutes";
-import { handleFunctions } from "gatsby-plugin-fastify/plugins/functions";
-import { handleRedirects } from "gatsby-plugin-fastify/plugins/redirects";
-import { handleStatic } from "gatsby-plugin-fastify/plugins/static";
-import { handleServerRoutes } from "gatsby-plugin-fastify/plugins/serverRoutes";
-```
-
-For an example on how to use these, see the `serveGatsby` implementation file from [`src/plugins/gatsby.ts`](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-plugin-fastify/src/plugins/gatsby.ts).
-
 ## Gatsby Functions
 
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
 
 > **THIS IS NOT TRUE FOR THIS PLUGIN**
 
-Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reply/) API.
+Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Reference/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reference/Reply/) API.
 
-If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
+If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Reference/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
 
 ## TypeScript
 

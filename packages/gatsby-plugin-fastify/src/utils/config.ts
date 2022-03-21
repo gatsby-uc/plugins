@@ -16,8 +16,6 @@ const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 export interface GatsbyNodeServerConfig extends PluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
   serverSideRoutes: ServerSideRoute[];
-  compression: boolean;
-  functions: IGatsbyFunction[];
   headers: {
     [path: string]: {
       [name: string]: string;
@@ -25,8 +23,9 @@ export interface GatsbyNodeServerConfig extends PluginOptions {
   };
   mergeCacheHeaders: boolean;
   mergeSecurityHeaders: boolean;
-  prefix: string | undefined;
   redirects: IRedirect[];
+  prefix: string | undefined;
+  functions: IGatsbyFunction[];
 }
 
 export type GfCliOptions = {

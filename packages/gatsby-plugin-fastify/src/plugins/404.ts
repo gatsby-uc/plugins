@@ -3,6 +3,8 @@ import { resolve } from "path";
 import { existsSync } from "fs-extra";
 import { PATH_TO_PUBLIC } from "../utils/constants";
 
+import { StatusCodes, ReasonPhrases } from "http-status-codes";
+
 export const handle404: FastifyPluginAsync = async (fastify, _opts) => {
   const gatsby404ErrorFileExists = existsSync(resolve(PATH_TO_PUBLIC, "404.html"));
   fastify.log.info(
@@ -13,10 +15,12 @@ export const handle404: FastifyPluginAsync = async (fastify, _opts) => {
 
   fastify.setNotFoundHandler((req, reply) => {
     fastify.log.warn(`404: '${req.url}' not found.`);
+    reply.appendModuleHeader("404");
+
     if (gatsby404ErrorFileExists) {
-      reply.code(404).sendFile("404.html");
+      reply.code(StatusCodes.NOT_FOUND).sendFile("404.html");
     } else {
-      reply.code(404).send("Page not found.");
+      reply.code(StatusCodes.NOT_FOUND).send(ReasonPhrases.NOT_FOUND);
     }
   });
 };

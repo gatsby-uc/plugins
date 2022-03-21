@@ -1,11 +1,11 @@
 import { join, posix, resolve } from "path";
+import { StatusCodes } from "http-status-codes";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
-import { appendModuleHeader } from "../utils/headers";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
@@ -57,8 +57,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
           //this theoreticall shouldn't happen cause we're creating these routes based on data from build.
           throw new Error(`No page data found for path: ${req.url}`);
         }
-
-        appendModuleHeader(page?.mode as "DSG" | "SSR", reply);
+        reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
 
         try {
           // Fetch Page Data adn SSR Data
@@ -104,7 +103,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             throw new Error(`No page found for ${req.url}`);
           }
 
-          appendModuleHeader(page?.mode as "DSG" | "SSR", reply);
+          reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
 
           try {
             const pageQueryData = await getData({
@@ -136,7 +135,9 @@ export const handleServerRoutes: FastifyPluginAsync<{
           }
         } else {
           fastify.log.warn(`Request for route ${req.url} does not support "text/html"`);
-          return reply.code(400).send("Request must support html via the `accept` header.");
+          return reply
+            .code(StatusCodes.BAD_REQUEST)
+            .send("Request must support html via the `accept` header.");
         }
       });
     }

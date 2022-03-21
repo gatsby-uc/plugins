@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -51,6 +51,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.davejudd.com/"><img src="https://avatars.githubusercontent.com/u/12941979?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dave Judd</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=SirDaev" title="Documentation">📖</a></td>
     <td align="center"><a href="https://marvinjude.dev/"><img src="https://avatars.githubusercontent.com/u/17142206?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jude Agboola</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=marvinjude" title="Code">💻</a></td>
     <td align="center"><a href="https://robinmetral.com/"><img src="https://avatars.githubusercontent.com/u/35560568?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Robin Métral</b></sub></a><br /><a href="#plugin-robinmetral" title="Plugin/utility libraries">🔌</a></td>
+    <td align="center"><a href="https://github.com/jrotering"><img src="https://avatars.githubusercontent.com/u/311128?v=4?s=100" width="100px;" alt=""/><br /><sub><b>James Rotering</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=jrotering" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/alan2207"><img src="https://avatars.githubusercontent.com/u/12713315?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alan Alickovic</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=alan2207" title="Documentation">📖</a> <a href="#plugin-alan2207" title="Plugin/utility libraries">🔌</a></td>
   </tr>
 </table>
 

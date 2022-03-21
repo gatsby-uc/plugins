@@ -70,9 +70,6 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
     .default({})
     .description(`Add headers to specific pages`);
   return Joi.object({
-    compression: Joi.boolean()
-      .default(true)
-      .description("Enable server side compression of text assets."),
     headers: headersSchema,
     mergeSecurityHeaders: Joi.boolean().default(true),
     mergeCacheHeaders: Joi.boolean().default(true),

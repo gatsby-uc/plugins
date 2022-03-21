@@ -1,5 +1,17 @@
 # gatsby-source-packagist
 
+## 2.0.0
+
+### Major Changes
+
+- [#166](https://github.com/gatsby-uc/plugins/pull/166) [`1856da5`](https://github.com/gatsby-uc/plugins/commit/1856da53b484a2f66442d9dad93d87965ea699fa) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-source-packagist): update gatsby monorepo (major)
+
+### Patch Changes
+
+- [#153](https://github.com/gatsby-uc/plugins/pull/153) [`a122923`](https://github.com/gatsby-uc/plugins/commit/a122923650464122548ca22124fdaf83141c171f) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-source-packagist): update non-major dependency versions
+
+* [#193](https://github.com/gatsby-uc/plugins/pull/193) [`b907b3e`](https://github.com/gatsby-uc/plugins/commit/b907b3edc80c1e69cb6ce886ae62731ce4d0b31f) Thanks [@moonmeister](https://github.com/moonmeister)! - Some doc and code cleanup. no functional changes.
+
 ## 1.1.5
 
 ### Patch Changes

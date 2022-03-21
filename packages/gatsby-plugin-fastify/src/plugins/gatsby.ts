@@ -1,4 +1,5 @@
 import { handleClientOnlyRoutes } from "./clientRoutes";
+import { implementUtilDecorators } from "./decorators";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
@@ -7,26 +8,20 @@ import { handle404 } from "./404";
 import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
-import fastifyCompress from "fastify-compress";
 import fastifyAccepts from "fastify-accepts";
 import type { FastifyPluginAsync } from "fastify";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
 
-  const { clientSideRoutes, serverSideRoutes, redirects, compression, functions } = serverConfig;
+  const { clientSideRoutes, serverSideRoutes, redirects, functions } = serverConfig;
 
   // Utils
-  fastify.register(fastifyAccepts);
+  await fastify.register(fastifyAccepts);
+  await fastify.register(implementUtilDecorators);
 
   // Gatsby 500 - This must be registered before anything that wants to use it
   await fastify.register(handle500, {});
-
-  // Optimizations
-  if (compression) {
-    fastify.log.info(`Compression enabled`);
-    await fastify.register(fastifyCompress, {});
-  }
 
   // Gatsby Functions
   await fastify.register(handleFunctions, {

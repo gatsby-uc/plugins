@@ -26,7 +26,8 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
       // const fastifyMatchPath = p.matchPath.replace(/\/\*$/, "*");
 
       fastify.get(p.matchPath, (_req, reply) => {
-        appendModuleHeader("CSR", reply);
+        reply.appendModuleHeader("Client Route");
+
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
       });
     }

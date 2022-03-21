@@ -25,7 +25,6 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
         } else {
           reply.headers(NEVER_CACHE_HEADER);
         }
-
         appendModuleHeader("Static", reply);
       },
       ...opts,
