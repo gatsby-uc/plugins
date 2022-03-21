@@ -79,4 +79,10 @@ exports.createPages = async (gatsbyUtilities) => {
     toPath: "http://example.com",
     statusCode: 200,
   });
+
+  createRedirect({
+    fromPath: "/example-proxy-star/*",
+    toPath: "http://example.com/*",
+    statusCode: 200,
+  });
 };
