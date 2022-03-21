@@ -1,5 +1,6 @@
 import { handleClientOnlyRoutes } from "./clientRoutes";
 import { implementUtilDecorators } from "./decorators";
+import { implementCustomHeaders } from "./headers";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
@@ -19,6 +20,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   // Utils
   await fastify.register(fastifyAccepts);
   await fastify.register(implementUtilDecorators);
+  await fastify.register(implementCustomHeaders);
 
   // Gatsby 500 - This must be registered before anything that wants to use it
   await fastify.register(handle500, {});

@@ -79,8 +79,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
           }
 
-          //TODO: This must be fixed
-          reply.header(...NEVER_CACHE_HEADER);
+          reply.headers(NEVER_CACHE_HEADER);
           return reply.send(pageData);
         } catch (e) {
           throw new Error(`Error fetching page data for ${path}: ${e.message}`);
@@ -125,8 +124,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
 
             if (page.mode === "DSG") {
-              //TODO: This must be fixed
-              reply.header(...NEVER_CACHE_HEADER);
+              reply.headers(NEVER_CACHE_HEADER);
             }
 
             return reply.type("text/html").send(results);
