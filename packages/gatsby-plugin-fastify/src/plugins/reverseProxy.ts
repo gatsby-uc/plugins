@@ -11,12 +11,17 @@ export const handleReverseProxy: FastifyPluginAsync<{
 
   for (const proxy of proxies) {
     try {
-      const proxyTo = new URL(proxy.toPath);
-      fastify.log.debug(`Registering "${proxy.fromPath}" as proxied route to "${proxy.toPath}".`);
+      // Fastify doesn't not support/require the trailing "*" in the path, so we need to remove if they exist
+      const cleanTo = proxy.toPath.replace(/\*$/, "");
+      const cleanFrom = proxy.fromPath.replace(/\*$/, "");
+
+      const proxyTo = new URL(cleanTo);
+
+      fastify.log.debug(`Registering "${cleanFrom}" as proxied route to "${cleanTo}".`);
 
       fastify.register(pluginHttpProxy, {
         upstream: proxyTo.href,
-        prefix: proxy.fromPath,
+        prefix: cleanFrom,
         replyOptions: {
           onResponse: (_req, reply, res) => {
             (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
