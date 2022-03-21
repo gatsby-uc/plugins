@@ -132,7 +132,7 @@ Building on top of the `createRedirects` API Gatsby Cloud now supports reverse p
 createRedirect({
   fromPath: `/docs/`,
   toPath: `https://www.awesomesite.com/docs/`,
-  statusCode: 200,
+  statusCode: 200, // The 200 is required to denote a proxy response as opposed to a redirect
 });
 ```
 
@@ -145,10 +145,6 @@ Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getti
 > **THIS IS NOT TRUE FOR THIS PLUGIN**
 
 Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Reference/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reference/Reply/) API.
-
-If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Reference/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
-
-### Gatsby Reverse Proxy
 
 ### TypeScript
 
