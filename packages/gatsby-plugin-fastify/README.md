@@ -26,6 +26,7 @@
 - Gatsby [404 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-404-page/)
 - Gatsby [500 page](https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-500-page/)
 - Gatsby [redirects](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect)
+- Gatsby [reverse proxy](https://support.gatsbyjs.com/hc/en-us/articles/1500003051241-Working-with-Redirects-and-Rewrites)
 - [Client-only routes](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication)
 - Serving the site with [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) - set it up inside `gatsby-config.js`, the plugin will take care of it
 - Etags, and more.
@@ -47,8 +48,9 @@ module.exports = {
     /* Rest of the plugins */
     {
       resolve: `gatsby-plugin-fastify`,
-      /* Default option value shown */
-      options: { s },
+      options: {
+        /* discussed below */
+      }, // All options are optional
     },
   ],
 };
@@ -98,7 +100,45 @@ export GATSBY_SERVER_ADDRESS=0.0.0.0
 
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
-## Gatsby Functions
+## Features
+
+Some features can be disabled through the plugin options. This will not provide increased performance but is probided as an option to control features in certain deploys or to handoff certain features to an edge server or CDN as desired.
+
+```js
+module.exports = {
+  /* Site config */
+  plugins: [
+    /* Rest of the plugins */
+    {
+      resolve: `gatsby-plugin-fastify`,
+      /* Default option value shown */
+      options: {
+        features: {
+          redirects: true,
+          reverseProxy: true,
+        },
+      },
+    },
+  ],
+};
+```
+
+### Gatsby Reverse Proxy
+
+Building on top of the `createRedirects` API Gatsby Cloud now supports reverse proxies. We've implemented this feature here as well.
+
+```js
+// gatsby-node.js
+createRedirect({
+  fromPath: `/docs/`,
+  toPath: `https://www.awesomesite.com/docs/`,
+  statusCode: 200, // The 200 is required to denote a proxy response as opposed to a redirect
+});
+```
+
+> The Gatsby docs note ending the to and from paths with `*`. This is not allowed in this plugin. If included they are stripped for compatibility.
+
+### Gatsby Functions
 
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
 
@@ -106,9 +146,7 @@ Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getti
 
 Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Reference/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reference/Reply/) API.
 
-If you'd like to use Fastify with an _Express like_ API there are plugins for Fastify to do this, see their [docs on middleware](https://www.fastify.io/docs/latest/Reference/Middleware/). You'll need to use the exports provided in this package to write your own server implementation and add the correct plugins to support this.
-
-## TypeScript
+### TypeScript
 
 ```ts
 import type { FastifyRequest, FastifyReply } from "fastify";

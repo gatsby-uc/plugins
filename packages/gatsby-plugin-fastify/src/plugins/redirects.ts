@@ -1,18 +1,26 @@
-import { IRedirect } from "gatsby/dist/redux/types";
-import { FastifyPluginAsync } from "fastify";
+import { StatusCodes } from "http-status-codes";
 
-export function getResponseCode(redirect: IRedirect): HttpRedirectCodes {
+import type { FastifyPluginAsync } from "fastify";
+import type { IRedirect } from "gatsby/dist/redux/types";
+
+export function getResponseCode(redirect: IRedirect): StatusCodes {
   return (
     redirect.statusCode ||
-    (redirect.isPermanent ? HttpRedirectCodes.MovedPermanently : HttpRedirectCodes.Found)
+    (redirect.isPermanent ? StatusCodes.MOVED_PERMANENTLY : StatusCodes.MOVED_TEMPORARILY)
   );
 }
 
 export const handleRedirects: FastifyPluginAsync<{
   redirects: IRedirect[];
 }> = async (fastify, { redirects }) => {
+  fastify.log.info(`Registering ${redirects.length} redirect(s)`);
+
   for (const redirect of redirects) {
     const responseCode = getResponseCode(redirect);
+    fastify.log.debug(
+      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`
+    );
+
     fastify.get(redirect.fromPath, (_req, reply) => {
       reply.appendModuleHeader("Redirects");
 
@@ -20,14 +28,3 @@ export const handleRedirects: FastifyPluginAsync<{
     });
   }
 };
-enum HttpRedirectCodes {
-  MultipleChoices = 300,
-  MovedPermanently = 301,
-  Found = 302,
-  SeeOther = 303,
-  NotModified = 304,
-  UseProxy = 305,
-  SwitchProxy = 306,
-  TemporaryRedirect = 307,
-  PermanentRedirect = 308,
-}
