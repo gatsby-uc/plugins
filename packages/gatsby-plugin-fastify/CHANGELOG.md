@@ -1,5 +1,17 @@
 # gatsby-plugin-fastify
 
+## 0.8.0
+
+### Minor Changes
+
+- [#176](https://github.com/gatsby-uc/plugins/pull/176) [`f556171`](https://github.com/gatsby-uc/plugins/commit/f556171cfbd44a379960a9bceb9f52b081f9ef8c) Thanks [@moonmeister](https://github.com/moonmeister)! - This plugin's focus is on serving the web app. Compression should be handled by an edge server (e.g. Nginx). Therefore we are removing this feature, this should not break an existing config, though you may see a warning during build if you explicitly set the compression setting in your `gatsby-config.js`.
+
+* [#200](https://github.com/gatsby-uc/plugins/pull/200) [`4a291b1`](https://github.com/gatsby-uc/plugins/commit/4a291b16d9fab8989ae045845a6ac95b11d1a7d3) Thanks [@moonmeister](https://github.com/moonmeister)! - We're nolonger treating the fastify plugins as public API. They've been removed from docs. If you're using them you may continue to do so at your own risk. If you'd like to contribute to help make these publically maintainable please open an issue.
+
+### Patch Changes
+
+- [#199](https://github.com/gatsby-uc/plugins/pull/199) [`eec780b`](https://github.com/gatsby-uc/plugins/commit/eec780bc8643bc5b2b5da9b85fc221c14cec743b) Thanks [@moonmeister](https://github.com/moonmeister)! - Did some reworking of redirects and added support for Gatsby's new Reverse Proxy functionality.
+
 ## 0.7.5
 
 ### Patch Changes
