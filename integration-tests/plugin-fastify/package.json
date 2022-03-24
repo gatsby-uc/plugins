@@ -17,16 +17,16 @@
   },
   "dependencies": {
     "fastify": "^3.27.4",
-    "gatsby": "^4.10.1",
+    "gatsby": "^4.10.3",
     "gatsby-plugin-fastify": "*",
-    "gatsby-plugin-image": "^2.10.0",
-    "gatsby-plugin-manifest": "^4.10.1",
+    "gatsby-plugin-image": "^2.10.1",
+    "gatsby-plugin-manifest": "^4.10.2",
     "gatsby-plugin-postcss": "^5.10.0",
     "gatsby-plugin-react-helmet": "^5.10.0",
-    "gatsby-plugin-sharp": "^4.10.1",
-    "gatsby-plugin-sitemap": "^5.10.1",
+    "gatsby-plugin-sharp": "^4.10.2",
+    "gatsby-plugin-sitemap": "^5.10.2",
     "gatsby-source-faker": "^4.10.0",
-    "gatsby-source-filesystem": "^4.10.0",
+    "gatsby-source-filesystem": "^4.10.1",
     "gatsby-source-wordpress": "^6.10.2",
     "gatsby-transformer-sharp": "^4.10.0",
     "postcss": "^8.4.12",
@@ -37,8 +37,8 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/preset-typescript": "^7.16.7",
-    "babel-loader": "^8.2.3",
-    "babel-preset-gatsby": "^2.10.0",
+    "babel-loader": "^8.2.4",
+    "babel-preset-gatsby": "^2.10.1",
     "benchmark": "^2.1.4"
   }
 }
