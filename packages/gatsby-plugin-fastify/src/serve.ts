@@ -9,6 +9,7 @@ export async function gatsbyServer() {
   } = getConfig();
 
   const fastify = Fastify({
+    maxParamLength: 500,
     ignoreTrailingSlash: true,
     logger: { level: logLevel, prettyPrint: true },
     disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,

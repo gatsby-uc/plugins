@@ -1,9 +1,10 @@
 import { handleClientOnlyRoutes } from "./clientRoutes";
 import { implementUtilDecorators } from "./decorators";
+import { handleServerRoutes } from "./serverRoutes";
+import { handleImageTransforms } from "./imageTransform";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleStatic } from "./static";
-import { handleServerRoutes } from "./serverRoutes";
 import { handle404 } from "./404";
 import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
@@ -22,6 +23,9 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
 
   // Gatsby 500 - This must be registered before anything that wants to use it
   await fastify.register(handle500, {});
+
+  // Gatsby Image CDN
+  await fastify.register(handleImageTransforms, {});
 
   // Gatsby Functions
   await fastify.register(handleFunctions, {

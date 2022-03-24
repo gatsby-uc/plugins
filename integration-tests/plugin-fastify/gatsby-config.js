@@ -25,6 +25,17 @@ module.exports = {
       __key: "images",
     },
     {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `https://alexwpegatsby.wpengine.com/graphql`,
+        type: {
+          MediaItem: {
+            createFileNodes: false,
+          },
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-fastify`,
       options: {},
     },
