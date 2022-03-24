@@ -123,6 +123,9 @@ const IndexPage = () => {
           <a href={withPrefix("/alt-redirect")}>To alt Redirect</a>
         </li>
         <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/example-proxy")}>To rev proxy</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/generated/page-1")}>SSG via create page</a>
         </li>
         <li style={{ ...listItemStyles }}>

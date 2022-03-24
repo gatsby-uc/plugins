@@ -4,6 +4,7 @@ import { handleServerRoutes } from "./serverRoutes";
 import { handleImageTransforms } from "./imageTransform";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
+import { handleReverseProxy } from "./reverseProxy";
 import { handleStatic } from "./static";
 import { handle404 } from "./404";
 import { handle500 } from "./500";
@@ -15,7 +16,8 @@ import type { FastifyPluginAsync } from "fastify";
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
 
-  const { clientSideRoutes, serverSideRoutes, redirects, functions } = serverConfig;
+  const { clientSideRoutes, serverSideRoutes, redirects, functions, proxies, features } =
+    serverConfig;
 
   // Utils
   await fastify.register(fastifyAccepts);
@@ -42,7 +44,18 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   });
 
   // Gatsby Redirects
-  await fastify.register(handleRedirects, { redirects });
+  if (features?.redirects) {
+    await fastify.register(handleRedirects, { redirects });
+  } else {
+    fastify.log.warn("Redirects disabled.");
+  }
+
+  // Gatsby Reverse Proxy
+  if (features?.reverseProxy) {
+    await fastify.register(handleReverseProxy, { proxies });
+  } else {
+    fastify.log.warn("Reverse proxy disabled.");
+  }
 
   // Gatsby DSG & SSR
   await fastify.register(handleServerRoutes, { paths: serverSideRoutes });
