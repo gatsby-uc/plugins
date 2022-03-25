@@ -12,6 +12,8 @@ jest.mock("../../utils/constants", () => ({
   CONFIG_FILE_PATH: "../../integration-tests/plugin-fastify/.cache",
 }));
 
+jest.setTimeout(10000);
+
 describe(`Test Gatsby DSG/SSR Routes`, () => {
   beforeAll(() => {
     setConfig(
