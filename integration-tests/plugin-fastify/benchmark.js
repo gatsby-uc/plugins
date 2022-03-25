@@ -174,6 +174,17 @@ function expectResp(def, path, code = 200) {
           .then(expectResp(def, "/perm-redirect/", 301));
       },
     })
+    .add("Serve Reverse Proxy", {
+      defer: true,
+      fn: (def) => {
+        server
+          .inject({
+            method: "GET",
+            url: "/example-proxy/",
+          })
+          .then(expectResp(def, "/example-proxy/", 200));
+      },
+    })
     .add("Serve Function", {
       defer: true,
       fn: (def) => {

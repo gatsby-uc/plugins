@@ -1,6 +1,5 @@
 import { writeJSON } from "fs-extra";
-
-import type { GatsbyNodeServerConfig } from "./utils/config";
+import type { GatsbyFastifyPluginOptions, GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
 import { makePluginData } from "./utils/plugin-data";
@@ -8,14 +7,14 @@ import { getFunctionManifest } from "./gatsby/functionsManifest";
 import { CONFIG_FILE_NAME } from "./utils/constants";
 import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
 import { getServerSideRoutes } from "./gatsby/serverRoutes";
+import { getProxiesAndRedirects } from "./gatsby/proxiesAndRedirects";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyNodeServerConfig
+  pluginOptions: GatsbyFastifyPluginOptions
 ) => {
-  const { redirects } = store.getState();
-
   try {
+    const { proxies, redirects } = getProxiesAndRedirects(store);
     const pluginData = await makePluginData(store, pathPrefix);
 
     const functions = await getFunctionManifest(pluginData);
@@ -30,6 +29,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
       clientSideRoutes,
       serverSideRoutes,
       redirects,
+      proxies,
       prefix: pathPrefix,
       functions,
     };
@@ -41,5 +41,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 };
 
 export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
-  return Joi.object({});
+  return Joi.object({
+    features: Joi.object({
+      reverseProxy: Joi.alternatives().try(Joi.boolean(), Joi.object()).default(true),
+      redirects: Joi.boolean().default(true),
+    }).default(),
+  });
 };

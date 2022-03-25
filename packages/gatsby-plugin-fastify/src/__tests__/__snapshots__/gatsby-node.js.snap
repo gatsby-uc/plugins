@@ -28,6 +28,7 @@ Object {
     },
   ],
   "prefix": "/test",
+  "proxies": Array [],
   "redirects": Array [
     Object {
       "fromPath": "/perm-redirect",
