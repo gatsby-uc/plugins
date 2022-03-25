@@ -116,7 +116,7 @@ module.exports = {
         features: {
           redirects: true,
           reverseProxy: true,
-          imageCdn: true, // may be false if you're on an older version of Gatsby
+          imageCdn: true, // default may be false if you're on an older version of Gatsby
         },
       },
     },

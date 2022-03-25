@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs-extra";
 import mime from "mime";
-import { fetchRemoteFile } from "gatsby-core-utils/fetch-remote-file";
+import { fetchRemoteFile } from "gatsby-core-utils";
 import { transformImage } from "gatsby-plugin-utils/polyfill-remote-file/transform-images";
 
 import type { FastifyPluginAsync } from "fastify";
