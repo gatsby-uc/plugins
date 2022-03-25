@@ -1,4 +1,7 @@
 import { writeJSON } from "fs-extra";
+
+import { hasFeature } from "gatsby-plugin-utils";
+
 import type { GatsbyFastifyPluginOptions, GatsbyNodeServerConfig } from "./utils/config";
 import type { GatsbyNode } from "gatsby";
 
@@ -45,6 +48,17 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
     features: Joi.object({
       reverseProxy: Joi.alternatives().try(Joi.boolean(), Joi.object()).default(true),
       redirects: Joi.boolean().default(true),
+      imageCdn: Joi.boolean()
+        .default(hasFeature("image-cdn"))
+        .custom((value, helpers) => {
+          if (value && !hasFeature("image-cdn")) {
+            return helpers.error(
+              "The Image CDN is not supported by your Gatsby version. Please upgrade to Gatsby v4.10.0 or higher to use it."
+            );
+          }
+
+          return value;
+        }),
     }).default(),
   });
 };
