@@ -116,7 +116,7 @@ module.exports = {
         features: {
           redirects: true,
           reverseProxy: true,
-          imageCdn: true, // default may be false if you're on an older version of Gatsby that doesn't support Image CDN
+          imageCdn: false, // Feature in Beta, use with caution
         },
       },
     },
@@ -124,7 +124,9 @@ module.exports = {
 };
 ```
 
-## Gatsby Image CDN
+## Gatsby Image CDN (BETA)
+
+> **BETA:** This feature is under going active development to fix bugs and extend functionality by the Gatsby team. I'm releasing this feature here with compatability for `gatsby@4.12.1`, `gatsby-source-wordpres@6.12.1`, and `gatsby-source-contentful@7.10.0` No guarantee it works on newer or older versions.
 
 While not strictly a CDN in our case this still implements the ability for Images to be transformed outside of build time.
 

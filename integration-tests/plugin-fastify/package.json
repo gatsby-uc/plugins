@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "fastify": "^3.27.4",
-    "gatsby": "^4.10.3",
+    "gatsby": "^4.12.0",
     "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^2.10.1",
     "gatsby-plugin-manifest": "^4.10.2",
@@ -27,7 +27,7 @@
     "gatsby-plugin-sitemap": "^5.10.2",
     "gatsby-source-faker": "^4.10.0",
     "gatsby-source-filesystem": "^4.10.1",
-    "gatsby-source-wordpress": "^6.10.2",
+    "gatsby-source-wordpress": "^6.12.1",
     "gatsby-transformer-sharp": "^4.10.0",
     "postcss": "^8.4.12",
     "react": "^17.0.2",

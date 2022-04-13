@@ -2,10 +2,16 @@ import path from "path";
 import fs from "fs-extra";
 import mime from "mime";
 import { fetchRemoteFile } from "gatsby-core-utils";
+import { ImageCDNUrlKeys } from "gatsby-plugin-utils/polyfill-remote-file/utils/url-generator";
 import { transformImage } from "gatsby-plugin-utils/polyfill-remote-file/transform-images";
 
 import type { FastifyPluginAsync } from "fastify";
 import { PATH_TO_PUBLIC } from "../utils/constants";
+
+type iQueryString = {
+  [ImageCDNUrlKeys.URL]: string;
+  [ImageCDNUrlKeys.ARGS]: string;
+};
 
 export const handleImageTransforms: FastifyPluginAsync = async (fastify) => {
   fastify.log.debug(`📷  Handling file transforms`);
@@ -14,14 +20,15 @@ export const handleImageTransforms: FastifyPluginAsync = async (fastify) => {
       url: string;
       filename: string;
     };
+    Querystring: iQueryString;
   }>(`/_gatsby/file/:url/:filename`, async (req, reply) => {
     // remove the file extension
-    const { url, filename } = req.params;
+    const { filename } = req.params;
     const outputDir = path.join(process.cwd(), `public`, `_gatsby`, `file`);
-
+    req.query;
     const filePath = await fetchRemoteFile({
       directory: outputDir,
-      url: url,
+      url: req.query[ImageCDNUrlKeys.URL] as string,
       name: filename,
     });
     reply.appendModuleHeader(`Image Transforms`);
@@ -36,11 +43,15 @@ export const handleImageTransforms: FastifyPluginAsync = async (fastify) => {
       params: string;
       filename: string;
     };
+    Querystring: iQueryString;
   }>(`/_gatsby/image/:url/:params/:filename`, async (req, reply) => {
-    const { params, url, filename } = req.params;
+    const { url, params, filename } = req.params;
 
-    const searchParams = new URLSearchParams(Buffer.from(params, `base64`).toString());
+    const remoteUrl = decodeURIComponent(req.query[ImageCDNUrlKeys.URL] as string);
 
+    const searchParams = new URLSearchParams(
+      decodeURIComponent(req.query[ImageCDNUrlKeys.ARGS] as string)
+    );
     const resizeParams: {
       width: number;
       height: number;
@@ -74,8 +85,7 @@ export const handleImageTransforms: FastifyPluginAsync = async (fastify) => {
       }
     }
 
-    const remoteUrl = Buffer.from(url, `base64`).toString();
-    const outputDir = path.join(PATH_TO_PUBLIC, `_gatsby`, `_image`, url);
+    const outputDir = path.join(PATH_TO_PUBLIC, `_gatsby`, `_image`, url, params);
 
     const filePath = await transformImage({
       outputDir,
