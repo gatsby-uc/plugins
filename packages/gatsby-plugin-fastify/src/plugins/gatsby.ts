@@ -11,6 +11,7 @@ import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
 import fastifyAccepts from "fastify-accepts";
+import middiePlugin from "middie";
 import type { FastifyPluginAsync } from "fastify";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
@@ -27,7 +28,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handle500, {});
 
   // Gatsby Image CDN
-  await fastify.register(handleImageTransforms, {});
+  await fastify.register(middiePlugin).register(handleImageTransforms, {});
 
   // Gatsby Functions
   await fastify.register(handleFunctions, {

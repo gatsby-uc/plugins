@@ -27,7 +27,6 @@
     "build": "babel src --out-dir . --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
     "pretest": "cd ../../integration-tests/plugin-fastify/ && yarn run build",
     "test": "jest --coverage",
-    "test:watch": "jest --watch",
     "watch": "yarn build --watch"
   },
   "dependencies": {
@@ -40,6 +39,7 @@
     "gatsby-core-utils": "^3.10.1",
     "gatsby-plugin-utils": "^3.6.1",
     "http-status-codes": "^2.2.0",
+    "middie": "^6.0.0",
     "mime": "^3.0.0",
     "open": "^8.4.0",
     "picomatch": "^2.3.1",
