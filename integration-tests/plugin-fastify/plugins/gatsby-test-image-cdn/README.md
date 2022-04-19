@@ -1,1 +1,0 @@
-# gatsby-test-image-cdn

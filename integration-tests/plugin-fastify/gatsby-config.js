@@ -24,7 +24,6 @@ module.exports = {
       },
       __key: "images",
     },
-    "gatsby-test-image-cdn",
     {
       resolve: `gatsby-plugin-fastify`,
       options: {},
