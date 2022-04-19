@@ -3,6 +3,10 @@ const { ConfigKeyEnum, setConfig, getServerConfig, getConfig } = require("../../
 
 const { createCliConfig, createFastifyInstance } = require("../__utils__/config");
 
+jest.mock("gatsby-source-wordpress/dist/steps/temp-prevent-multiple-instances.js", () => ({
+  tempPreventMultipleInstances: () => {},
+}));
+
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
   PATH_TO_FUNCTIONS: "../../integration-tests/plugin-fastify/.cache/functions/",
@@ -10,6 +14,8 @@ jest.mock("../../utils/constants", () => ({
   PATH_TO_CACHE: "../../integration-tests/plugin-fastify/.cache",
   CONFIG_FILE_PATH: "../../integration-tests/plugin-fastify/.cache",
 }));
+
+let globalFastify = null;
 
 describe(`Test Gatsby Server`, () => {
   beforeAll(() => {
@@ -24,6 +30,11 @@ describe(`Test Gatsby Server`, () => {
     );
 
     setConfig(ConfigKeyEnum.SERVER, getServerConfig());
+
+    return createFastifyInstance(serveGatsby).then((fastify) => {
+      globalFastify = fastify;
+      return Promise.resolve();
+    });
   });
 
   describe(`Gatsby Path Prefix`, () => {

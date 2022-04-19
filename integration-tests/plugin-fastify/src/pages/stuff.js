@@ -15,14 +15,14 @@ export default function StuffsArchive({ data }) {
   );
 }
 
-export const pageQuery = graphql`
-  query {
-    allWpPost {
-      nodes {
-        id
-        uri
-        title
-      }
-    }
-  }
-`;
+// export const pageQuery = graphql`
+//   query {
+//     allWpPost {
+//       nodes {
+//         id
+//         uri
+//         title
+//       }
+//     }
+//   }
+// `;
