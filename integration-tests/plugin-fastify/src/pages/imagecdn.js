@@ -6,9 +6,6 @@ export default function StuffsArchive({ data }) {
     <main>
       <h1>Gatsby Image CDN Image</h1>
       <p>here's some content</p>
-      <pre>
-        <code>{JSON.stringify(data, null, 2)}</code>
-      </pre>
       <GatsbyImage image={data.testImage.gatsbyImage} />
     </main>
   );
