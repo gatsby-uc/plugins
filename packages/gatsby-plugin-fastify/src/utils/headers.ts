@@ -18,7 +18,8 @@ export type Modules =
   | "Redirects"
   | "Reverse Proxy"
   | "404"
-  | "500";
+  | "500"
+  | "Image Transforms";
 
 function servedBy(module: Modules) {
   return `served-by: ${module};`;

@@ -11,6 +11,8 @@ jest.mock("../../utils/constants", () => ({
   CONFIG_FILE_PATH: "../../integration-tests/plugin-fastify/.cache",
 }));
 
+let globalFastify = null;
+
 describe(`Test Gatsby Server`, () => {
   beforeAll(() => {
     setConfig(
@@ -24,6 +26,11 @@ describe(`Test Gatsby Server`, () => {
     );
 
     setConfig(ConfigKeyEnum.SERVER, getServerConfig());
+
+    return createFastifyInstance(serveGatsby).then((fastify) => {
+      globalFastify = fastify;
+      return Promise.resolve();
+    });
   });
 
   describe(`Gatsby Path Prefix`, () => {

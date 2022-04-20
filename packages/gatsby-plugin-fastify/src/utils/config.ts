@@ -18,6 +18,7 @@ export interface GatsbyFastifyPluginOptions extends PluginOptions {
   features: {
     reverseProxy: boolean | {};
     redirects: boolean;
+    imageCdn: boolean;
   };
 }
 export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {

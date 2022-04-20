@@ -116,12 +116,23 @@ module.exports = {
         features: {
           redirects: true,
           reverseProxy: true,
+          imageCdn: false, // Feature in Beta, use with caution
         },
       },
     },
   ],
 };
 ```
+
+## Gatsby Image CDN (BETA)
+
+> **BETA:** This feature is under going active development to fix bugs and extend functionality by the Gatsby team. I'm releasing this feature here with compatability for `gatsby@4.12.1`, `gatsby-source-wordpres@6.12.1`, and `gatsby-source-contentful@7.10.0` No guarantee it works on newer or older versions.
+
+While not strictly a CDN in our case this still implements the ability for Images to be transformed outside of build time.
+
+> Please note that this writes generated images to the `/public/\_gatsby folder. This must be writeable in production.
+
+This will be enabled by default if your version of Gatsby supports the image CDN. You may manually disable it in the config if you don't need it.
 
 ### Gatsby Reverse Proxy
 
