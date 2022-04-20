@@ -52,7 +52,7 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
   for (let i = 1; i <= 10; i++) {
     createPage({
       path: `/generated/page-${i}`,
-      component: require.resolve(`./src/templates/example.js`),
+      component: path.resolve(`./src/templates/example.js`),
       defer: i <= 5 ? false : true,
       context: {
         pageNumber: i,
@@ -92,9 +92,7 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({
   actions,
   schema,
-  reporter,
 }) => {
-  reporter.info("image-cdn-test plugin schemaCustomization");
   actions.createTypes(
     schema.buildObjectType({
       name: `TestImage`,
@@ -106,10 +104,8 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
   );
 };
 
-export const sourceNodes: GatsbyNode["sourceNodes"] = async ({ actions, reporter }) => {
-  reporter.info("image-cdn-test plugin sourceNodes");
-
-  const testImage = {
+export const sourceNodes: GatsbyNode["sourceNodes"] = async ({ actions }) => {
+  actions.createNode({
     id: `test-image`,
     url: "https://images.unsplash.com/photo-1650247452475-b5866374545d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
     mimeType: "image/jpeg",
@@ -121,7 +117,5 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({ actions, reporter
       type: `TestImage`,
       contentDigest: `test-image`,
     },
-  };
-
-  actions.createNode(testImage);
+  });
 };
