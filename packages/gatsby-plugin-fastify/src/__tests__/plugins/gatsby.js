@@ -3,10 +3,6 @@ const { ConfigKeyEnum, setConfig, getServerConfig, getConfig } = require("../../
 
 const { createCliConfig, createFastifyInstance } = require("../__utils__/config");
 
-jest.mock("gatsby-source-wordpress/dist/steps/temp-prevent-multiple-instances.js", () => ({
-  tempPreventMultipleInstances: () => {},
-}));
-
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
   PATH_TO_FUNCTIONS: "../../integration-tests/plugin-fastify/.cache/functions/",
