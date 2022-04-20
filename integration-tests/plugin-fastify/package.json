@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "fastify": "^3.27.4",
-    "gatsby": "^4.10.3",
+    "gatsby": "^4.12.0",
     "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^2.10.1",
     "gatsby-plugin-manifest": "^4.10.2",

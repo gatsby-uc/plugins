@@ -1,6 +1,7 @@
-const path = require("path");
+import path from "path";
+import type { GatsbyNode } from "gatsby";
 
-exports.createPages = async (gatsbyUtilities) => {
+export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) => {
   const {
     actions: { createRedirect, createPage },
     graphql,
@@ -32,10 +33,11 @@ exports.createPages = async (gatsbyUtilities) => {
     component: fakerPostArchive,
     defer: true,
     context: {
+      //@ts-ignore
       posts: result.data.allNameData.nodes,
     },
   });
-
+  //@ts-ignore
   result.data.allNameData.nodes.forEach((node) => {
     createPage({
       path: `/faker/${node.lorem.slug}`,
@@ -50,7 +52,7 @@ exports.createPages = async (gatsbyUtilities) => {
   for (let i = 1; i <= 10; i++) {
     createPage({
       path: `/generated/page-${i}`,
-      component: require.resolve(`./src/templates/example.js`),
+      component: path.resolve(`./src/templates/example.js`),
       defer: i <= 5 ? false : true,
       context: {
         pageNumber: i,
@@ -84,5 +86,36 @@ exports.createPages = async (gatsbyUtilities) => {
     fromPath: "/example-proxy-star/*",
     toPath: "http://example.com/*",
     statusCode: 200,
+  });
+};
+
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({
+  actions,
+  schema,
+}) => {
+  actions.createTypes(
+    schema.buildObjectType({
+      name: `TestImage`,
+      fields: {
+        title: "String",
+      },
+      interfaces: [`Node`, `RemoteFile`],
+    })
+  );
+};
+
+export const sourceNodes: GatsbyNode["sourceNodes"] = async ({ actions }) => {
+  actions.createNode({
+    id: `test-image`,
+    url: "https://images.unsplash.com/photo-1650247452475-b5866374545d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
+    mimeType: "image/jpeg",
+    title: "test image",
+    filename: "indonesia.jpg",
+    width: 2666,
+    height: 3996,
+    internal: {
+      type: `TestImage`,
+      contentDigest: `test-image`,
+    },
   });
 };

@@ -102,6 +102,9 @@ const IndexPage = () => {
           <Link to="/app">Client side App</Link>
         </li>
         <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/imagecdn")}>Image CDN</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/faker/")}>Faker Page</a>
         </li>
         <li style={{ ...listItemStyles }}>
