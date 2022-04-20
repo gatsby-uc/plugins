@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.8.1
+
+### Patch Changes
+
+- [#202](https://github.com/gatsby-uc/plugins/pull/202) [`9ced9cb`](https://github.com/gatsby-uc/plugins/commit/9ced9cbc77b2eac88790ced90d8dcf401e258a55) Thanks [@moonmeister](https://github.com/moonmeister)! - Implemented the new "Gatsby Image CDN" from Gatsby Cloud. See the docs for getting started.
+
 ## 0.8.0
 
 ### Minor Changes
