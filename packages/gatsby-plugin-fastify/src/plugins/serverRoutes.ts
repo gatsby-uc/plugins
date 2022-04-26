@@ -88,10 +88,11 @@ export const handleServerRoutes: FastifyPluginAsync<{
     }
 
     //Handle HTML for DSG/SSR
-    for (const { path, mode } of paths) {
-      fastify.log.debug(`Registering "${path}" as "${mode}" route.`);
-
-      fastify.get(path, async (req, reply) => {
+    for (const serverPath of paths) {
+      const { path, mode } = serverPath;
+      const route = serverPath?.matchPath ?? path;
+      fastify.log.debug(`Registering "${route}" as "${mode}" route.`);
+      fastify.get(route, async (req, reply) => {
         const accept = req.accepts();
         if (accept.type(["html"])) {
           fastify.log.debug(`DSG/SSR for "text/html" @  ${req.url}`);

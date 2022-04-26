@@ -1,6 +1,6 @@
 import type { PluginData } from "../utils/plugin-data";
 
-export type ServerSideRoute = { path: string; mode: "DSG" | "SSR" };
+export type ServerSideRoute = { path: string; mode: "DSG" | "SSR"; matchPath?: string };
 
 export async function getServerSideRoutes(pageData: PluginData) {
   const { pages } = pageData;
@@ -13,6 +13,7 @@ export async function getServerSideRoutes(pageData: PluginData) {
       routes.push({
         path,
         mode,
+        ...(page?.matchPath && { matchPath: page.matchPath }),
       });
     }
   }

@@ -9,7 +9,7 @@ export async function getClientSideRoutes(pageData: PluginData) {
   const routes: NoUndefinedField<PathConfig>[] = [];
 
   for (const page of pages.values()) {
-    if (page?.matchPath) {
+    if (page?.matchPath && page?.mode !== "DSG" && page?.mode !== "SSR") {
       routes.push({
         matchPath: page.matchPath,
         path: page.path,
