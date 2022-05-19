@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^17.11.2",
-    "mime-types": "^2.1.34",
+    "mime-types": "^2.1.35",
     "packagist-api-client": "^2.0.0"
   },
   "scripts": {
@@ -31,11 +31,11 @@
     "watch": "yarn build --watch"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
-    "babel-preset-gatsby-package": "^2.8.0",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.0",
+    "babel-preset-gatsby-package": "^2.14.0",
     "cross-env": "^7.0.3",
-    "gatsby-source-filesystem": "^4.8.1"
+    "gatsby-source-filesystem": "^4.14.0"
   },
   "peerDependencies": {
     "gatsby": "^2.4.0 || ^3.0.0",
