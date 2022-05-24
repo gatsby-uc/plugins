@@ -23,10 +23,10 @@
     "@changesets/cli": "^2.22.0",
     "all-contributors-cli": "^6.20.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.3.8",
+    "lint-staged": "^12.4.1",
     "prettier": "^2.6.2"
   },
-  "packageManager": "yarn@3.2.0",
+  "packageManager": "yarn@3.2.1",
   "lint-staged": {
     "**/*.{js,ts,md,json,yml,json}": "prettier --write"
   }
