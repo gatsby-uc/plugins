@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install --immutable
-        
+
   check_format:
     name: Validate formating with Prettier
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
         uses: ./.github/actions/cache-restore
         with:
           node-version: ${{ matrix.node }}
-          
+
       - name: Build packages
         run: yarn build
 
