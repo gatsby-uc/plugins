@@ -3,7 +3,7 @@ description: "Setup a NodeJS environment and restore cache if any, given a node 
 
 inputs:
   node-version:
-    description: "Node version to use, default to LTS Gallium (14.x)"
+    description: "Node version to use, default to LTS Gallium (16.x)"
     required: true
     default: 16
 outputs:
@@ -24,7 +24,7 @@ runs:
       id: node-cache
       uses: actions/cache@v3
       with:
-        path: node_modules
+        path: "**/node_modules"
         # Make the cache dependencies depending on the node version for matrix
         # testing: the package-lock.json would be the same so an additional
         # criteria is required to distinguish the caches
