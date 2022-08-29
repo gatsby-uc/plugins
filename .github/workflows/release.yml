@@ -13,12 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/cache-restore
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: ./.github/actions/cache-restore
         id: cache-node-modules
 
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install --immutable
+        
   release:
     name: Package Version and Release
     runs-on: ubuntu-latest

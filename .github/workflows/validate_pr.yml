@@ -14,13 +14,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/cache-restore
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: ./.github/actions/cache-restore
         id: cache-node-modules
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install --immutable
+        
   check_format:
     name: Validate formating with Prettier
     runs-on: ubuntu-latest
@@ -31,11 +35,9 @@ jobs:
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
-        with:
-          node-version: 16
 
       - name: Format source code
-        run: yarn test:lint
+        run: yarn test:format
   runt-tests:
     name: Run package tests on (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
@@ -51,6 +53,7 @@ jobs:
         uses: ./.github/actions/cache-restore
         with:
           node-version: ${{ matrix.node }}
+          
       - name: Build packages
         run: yarn build
 
