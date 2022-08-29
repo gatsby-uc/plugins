@@ -41,6 +41,7 @@ jobs:
   runt-tests:
     name: Run package tests on (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
+    environment: Test
     needs: [setup]
     strategy:
       matrix:
