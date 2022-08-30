@@ -14237,39 +14237,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-source-filesystem@npm:^4.8.1":
-  version: 4.8.1
-  resolution: "gatsby-source-filesystem@npm:4.8.1"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    chokidar: ^3.5.2
-    file-type: ^16.5.3
-    fs-extra: ^10.0.0
-    gatsby-core-utils: ^3.8.1
-    got: ^9.6.0
-    md5-file: ^5.0.0
-    mime: ^2.5.2
-    pretty-bytes: ^5.4.1
-    progress: ^2.0.3
-    valid-url: ^1.0.9
-    xstate: ^4.26.1
-  peerDependencies:
-    gatsby: ^4.0.0-next
-  checksum: f4d4ccf8cca281d5f16ec16a763fe85ce91cf6dfb0dfe5447fef853d3198bb5027001c889e9671248b8ce11fdb4f889f9a714be6b710f5b6de44daf15d8d850e
-  languageName: node
-  linkType: hard
-
 "gatsby-source-packagist@workspace:packages/gatsby-source-packagist":
   version: 0.0.0-use.local
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
-    "@babel/cli": ^7.17.6
-    "@babel/core": ^7.17.5
+    "@babel/cli": ^7.17.10
+    "@babel/core": ^7.18.0
     "@octokit/rest": ^17.11.2
-    babel-preset-gatsby-package: ^2.8.0
+    babel-preset-gatsby-package: ^2.14.0
     cross-env: ^7.0.3
-    gatsby-source-filesystem: ^4.8.1
-    mime-types: ^2.1.34
+    gatsby-source-filesystem: ^4.14.0
+    mime-types: ^2.1.35
     packagist-api-client: ^2.0.0
   peerDependencies:
     gatsby: ^2.4.0 || ^3.0.0
@@ -18969,10 +18947,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-db@npm:1.51.0":
-  version: 1.51.0
-  resolution: "mime-db@npm:1.51.0"
-  checksum: 613b1ac9d6e725cc24444600b124a7f1ce6c60b1baa654f39a3e260d0995a6dffc5693190217e271af7e2a5612dae19f2a73f3e316707d797a7391165f7ef423
+"mime-db@npm:1.52.0":
+  version: 1.52.0
+  resolution: "mime-db@npm:1.52.0"
+  checksum: 0d99a03585f8b39d68182803b12ac601d9c01abfa28ec56204fa330bc9f3d1c5e14beb049bafadb3dbdf646dfb94b87e24d4ec7b31b7279ef906a8ea9b6a513f
   languageName: node
   linkType: hard
 
@@ -18985,12 +18963,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.34":
-  version: 2.1.34
-  resolution: "mime-types@npm:2.1.34"
+"mime-types@npm:^2.1.35":
+  version: 2.1.35
+  resolution: "mime-types@npm:2.1.35"
   dependencies:
-    mime-db: 1.51.0
-  checksum: 67013de9e9d6799bde6d669d18785b7e18bcd212e710d3e04a4727f92f67a8ad4e74aee24be28b685adb794944814bde649119b58ee3282ffdbee58f9278d9f3
+    mime-db: 1.52.0
+  checksum: 89a5b7f1def9f3af5dad6496c5ed50191ae4331cc5389d7c521c8ad28d5fdad2d06fd81baf38fed813dc4e46bb55c8145bb0ff406330818c9cf712fb2e9b3836
   languageName: node
   linkType: hard
 
