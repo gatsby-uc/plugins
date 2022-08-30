@@ -1,15 +1,15 @@
 import { createRemoteFileNode } from "gatsby-source-filesystem";
+import AWS from "aws-sdk";
+
 import type { CreateNodeArgs, SourceNodesArgs, CreateSchemaCustomizationArgs } from "gatsby";
-import AWS = require("aws-sdk");
+import type { ClientApiVersions } from "aws-sdk/clients/acm";
+import type { ConfigurationServicePlaceholders } from "aws-sdk/lib/config_service_placeholders";
+import type { ConfigurationOptions } from "aws-sdk";
 
 const isImage = (key: string): boolean => /\.(jpe?g|png|webp|tiff?)$/i.test(key);
 
 type pluginOptionsType = {
-  aws: {
-    accessKeyId: string;
-    secretAccessKey: string;
-    region: string;
-  };
+  aws: ConfigurationOptions & ConfigurationServicePlaceholders & ClientApiVersions;
   buckets: string[];
   expiration: number;
 };
@@ -28,6 +28,8 @@ export async function sourceNodes(
   // configure aws
   AWS.config.update(awsConfig);
   const s3 = new AWS.S3();
+
+  reporter.verbose(`AWS S3 Config: ${JSON.stringify(s3.config, null, 2)}`);
 
   // get objects
   const getS3ListObjects = async (params: { Bucket: string; ContinuationToken?: string }) => {

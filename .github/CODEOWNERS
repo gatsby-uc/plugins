@@ -5,13 +5,13 @@ GOVERNANCE.md @gatsby-uc/stewards
 LICENSE @gatsby-uc/stewards
 
 # Repo Configs
-.changeset/* @gatsby-uc/stewards @gatsby-uc/maintainers
-.github/* @gatsby-uc/stewards @gatsby-uc/maintainers
-.husky/* @gatsby-uc/stewards @gatsby-uc/maintainers
-.yarn/* @gatsby-uc/stewards @gatsby-uc/maintainers
-.prettierrc.js @gatsby-uc/stewards @gatsby-uc/maintainers
-.yarnrc.yml @gatsby-uc/stewards @gatsby-uc/maintainers
-renovate.json @gatsby-uc/stewards @gatsby-uc/maintainers
+.changeset/* @gatsby-uc/maintainers
+.github/* @gatsby-uc/maintainers
+.husky/* @gatsby-uc/maintainers
+.yarn/* @gatsby-uc/maintainers
+.prettierrc.js @gatsby-uc/maintainers
+.yarnrc.yml @gatsby-uc/maintainers
+renovate.json @gatsby-uc/maintainers
 
 # packages
 
