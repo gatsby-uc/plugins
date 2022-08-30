@@ -24,7 +24,9 @@ runs:
       id: node-cache
       uses: actions/cache@v3
       with:
-        path: ["**/node_modules", /home/runner/.cache/Cypress]
+        path: |
+          "**/node_modules"
+          .cache/Cypress
         # Make the cache dependencies depending on the node version for matrix
         # testing: the package-lock.json would be the same so an additional
         # criteria is required to distinguish the caches
