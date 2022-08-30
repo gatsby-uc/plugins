@@ -1,9 +1,10 @@
 import { createRemoteFileNode } from "gatsby-source-filesystem";
+import AWS from "aws-sdk";
+
 import type { CreateNodeArgs, SourceNodesArgs, CreateSchemaCustomizationArgs } from "gatsby";
-import AWS = require("aws-sdk");
-import { ClientApiVersions } from "aws-sdk/clients/acm";
-import { ConfigurationServicePlaceholders } from "aws-sdk/lib/config_service_placeholders";
-import { ConfigurationOptions } from "aws-sdk";
+import type { ClientApiVersions } from "aws-sdk/clients/acm";
+import type { ConfigurationServicePlaceholders } from "aws-sdk/lib/config_service_placeholders";
+import type { ConfigurationOptions } from "aws-sdk";
 
 const isImage = (key: string): boolean => /\.(jpe?g|png|webp|tiff?)$/i.test(key);
 
