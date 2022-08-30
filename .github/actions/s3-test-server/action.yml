@@ -1,0 +1,14 @@
+name: "S3 Test Server"
+description: "Setup an S3 server for testing gatsby-source-s3"
+
+runs:
+  using: "composite" # Mandatory parameter
+  steps:
+    - name: Setup minio
+      shell: bash
+      run: |
+        docker run -d -p 9001:9000 --name minio \
+          -e "MINIO_ACCESS_KEY=minioadmin" \
+          -e "MINIO_SECRET_KEY=minioadmin" \
+          -v ${{ github.workspace }}/integration-tests/source-s3/test-data/:/data \
+          minio/minio server /data
