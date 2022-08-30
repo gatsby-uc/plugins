@@ -1,7 +1,21 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "outDir": "."
-  },
-  "files": ["./src/gatsby-node.ts"]
+    "target": "ESNext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "skipLibCheck": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "paths": {}
+  }
 }
