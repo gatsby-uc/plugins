@@ -7,7 +7,7 @@ runs:
     - name: Setup minio
       shell: bash
       run: |
-        docker run -d -p 9000:9001 --name minio \
+        docker run -d -p 9001:9000 --name minio \
           -e "MINIO_ACCESS_KEY=minioadmin" \
           -e "MINIO_SECRET_KEY=minioadmin" \
           -v ${{ github.workspace }}/integration-tests/source-s3/test-data/:/data \
