@@ -28,6 +28,3 @@ runs:
           **/node_modules
           ~/.cache
         key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-${{ inputs.node-version }}-
-          ${{ runner.os }}-yarn-
