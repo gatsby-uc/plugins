@@ -23,6 +23,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/cli@npm:^7.17.10":
+  version: 7.17.10
+  resolution: "@babel/cli@npm:7.17.10"
+  dependencies:
+    "@jridgewell/trace-mapping": ^0.3.8
+    "@nicolo-ribaudo/chokidar-2": 2.1.8-no-fsevents.3
+    chokidar: ^3.4.0
+    commander: ^4.0.1
+    convert-source-map: ^1.1.0
+    fs-readdir-recursive: ^1.1.0
+    glob: ^7.0.0
+    make-dir: ^2.1.0
+    slash: ^2.0.0
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  dependenciesMeta:
+    "@nicolo-ribaudo/chokidar-2":
+      optional: true
+    chokidar:
+      optional: true
+  bin:
+    babel: ./bin/babel.js
+    babel-external-helpers: ./bin/babel-external-helpers.js
+  checksum: 66b50a7d60e9366c82301c45346a1639b2a7351d2049ff9c47812093060802711fbb1690243826e09823cf06be5306d608327fa8c8ea2827fd6340923ac827a0
+  languageName: node
+  linkType: hard
+
 "@babel/cli@npm:^7.17.6":
   version: 7.17.6
   resolution: "@babel/cli@npm:7.17.6"
@@ -2629,22 +2656,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bundle-stats/plugin-webpack-filter@npm:^3.1.3":
-  version: 3.2.0
-  resolution: "@bundle-stats/plugin-webpack-filter@npm:3.2.0"
+"@bundle-stats/plugin-webpack-filter@npm:3.3.8":
+  version: 3.3.8
+  resolution: "@bundle-stats/plugin-webpack-filter@npm:3.3.8"
   peerDependencies:
-    core-js: ^3.16.2
-    lodash: ^4.17.21
-  checksum: 0d9cb5286e4d2b5d731cf03bcb3517de8f9b6957a585b46219d392bbdebf1932e6daca89f5ce27e8dd64e31c5ac8a9ceec7c12a75a20a88f4748aadd58035fd2
+    core-js: ^3.0.0
+    lodash: ^4.0.0
+  checksum: d24664984b2a2fbbec32278886be72ff29ebdd342340592779126242e3a45332d839b7b804b2feba08ce5e28b7fd8c7ff8fe1250472cdc900c4fc01d7dcd5af9
   languageName: node
   linkType: hard
 
-"@bundle-stats/plugin-webpack-validate@npm:^3.1.3":
-  version: 3.2.0
-  resolution: "@bundle-stats/plugin-webpack-validate@npm:3.2.0"
+"@bundle-stats/plugin-webpack-validate@npm:3.3.8":
+  version: 3.3.8
+  resolution: "@bundle-stats/plugin-webpack-validate@npm:3.3.8"
   dependencies:
-    superstruct: ^0.8.3
-  checksum: cda01f63ce1c85d74f98cb5f380f88ab85d4f4c0d0460134249cc67ec97f61fc77477cb655e55962a52aefcd15dcc4dffc85d796091233839790371079e815ed
+    superstruct: 0.8.3
+  checksum: 18e0b8eb96e6b118d6ffb75d6f258ba18cedd541c2558c586a990b815c842b8ef5d971f3a2d6a25194a8c6a573060dcf7c2c938ad665db91bea0fb74a499c217
   languageName: node
   linkType: hard
 
@@ -4694,7 +4721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/trace-mapping@npm:^0.3.9":
+"@jridgewell/trace-mapping@npm:^0.3.8, @jridgewell/trace-mapping@npm:^0.3.9":
   version: 0.3.13
   resolution: "@jridgewell/trace-mapping@npm:0.3.13"
   dependencies:
@@ -5960,26 +5987,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@relative-ci/agent@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "@relative-ci/agent@npm:3.1.1"
+"@relative-ci/agent@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "@relative-ci/agent@npm:3.1.3"
   dependencies:
-    "@bundle-stats/plugin-webpack-filter": ^3.1.3
-    "@bundle-stats/plugin-webpack-validate": ^3.1.3
-    core-js: ^3.6.4
-    cosmiconfig: ^7.0.0
-    debug: ^4.1.1
-    dotenv: ^16.0.0
-    env-ci: ^7.0.0
-    fs-extra: ^10.0.0
-    isomorphic-fetch: ^3.0.0
-    lodash: ^4.17.15
-    yargs: ^17.1.1
+    "@bundle-stats/plugin-webpack-filter": 3.3.8
+    "@bundle-stats/plugin-webpack-validate": 3.3.8
+    core-js: 3.22.3
+    cosmiconfig: 7.0.1
+    debug: 4.3.4
+    dotenv: 16.0.0
+    env-ci: 7.1.0
+    fs-extra: 10.1.0
+    isomorphic-fetch: 3.0.0
+    lodash: 4.17.21
+    yargs: 17.4.1
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0-rc.1
   bin:
     relative-ci-agent: bin/index.js
-  checksum: 6d7d870865d57352c08ea4f3de78b257add44022ea6def0425fffb9d8742b47ee1a9712b9eff4d767925a0409ed79a8cdf478bad3e2370ee4e75b2121995e40b
+  checksum: 159438d94c45e675eac2cb43810e45ec06f2becf0b479f143fbbf5eb3e09162ef46bd5066e78e80fef7ddaf2e58ab68d43a7f426d1b0b4f0fc5abf1dd7be3d92
   languageName: node
   linkType: hard
 
@@ -8143,6 +8170,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-preset-gatsby-package@npm:^2.14.0":
+  version: 2.14.0
+  resolution: "babel-preset-gatsby-package@npm:2.14.0"
+  dependencies:
+    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.5
+    "@babel/plugin-proposal-optional-chaining": ^7.14.5
+    "@babel/plugin-syntax-dynamic-import": ^7.8.3
+    "@babel/plugin-transform-runtime": ^7.15.0
+    "@babel/plugin-transform-typescript": ^7.15.4
+    "@babel/preset-env": ^7.15.4
+    "@babel/preset-flow": ^7.14.0
+    "@babel/preset-react": ^7.14.0
+    "@babel/runtime": ^7.15.4
+    babel-plugin-dynamic-import-node: ^2.3.3
+    core-js: ^3.22.3
+  peerDependencies:
+    "@babel/core": ^7.11.6
+  checksum: 7b5c751cfe40880f75256d6e5d0e06c916ac2fc530d6c2a9cce57b714b2a29a99ff8aa919f3adf62a79266db5ac57f6a0ebb0641ae9673a0421c155185417ab4
+  languageName: node
+  linkType: hard
+
 "babel-preset-gatsby-package@npm:^2.8.0":
   version: 2.8.0
   resolution: "babel-preset-gatsby-package@npm:2.8.0"
@@ -9601,7 +9649,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.17.2, core-js@npm:^3.6.4":
+"core-js@npm:3.22.3":
+  version: 3.22.3
+  resolution: "core-js@npm:3.22.3"
+  checksum: cbea855339f5a712fb4ae0b3f6f4074ff254b0e9e914a06ce4f411d6046fe730bb418d209d0f35e9afacd6dde701c45f78079ad6b4f047516db7e9524081c338
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.17.2":
   version: 3.19.0
   resolution: "core-js@npm:3.19.0"
   checksum: 9f03e72f01d9eeafb2724ee5787ab8d6e7dcf0e3b44c4dec23e6a0cfc9e2e0a76460b77ce7d1d0be09db918618b11595fad6838978ff97f2684270738898c5a2
@@ -9661,6 +9716,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cosmiconfig@npm:7.0.1, cosmiconfig@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "cosmiconfig@npm:7.0.1"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.2.1
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.10.0
+  checksum: 4be63e7117955fd88333d7460e4c466a90f556df6ef34efd59034d2463484e339666c41f02b523d574a797ec61f4a91918c5b89a316db2ea2f834e0d2d09465b
+  languageName: node
+  linkType: hard
+
 "cosmiconfig@npm:^6.0.0":
   version: 6.0.0
   resolution: "cosmiconfig@npm:6.0.0"
@@ -9671,19 +9739,6 @@ __metadata:
     path-type: ^4.0.0
     yaml: ^1.7.2
   checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
-  languageName: node
-  linkType: hard
-
-"cosmiconfig@npm:^7.0.0":
-  version: 7.0.1
-  resolution: "cosmiconfig@npm:7.0.1"
-  dependencies:
-    "@types/parse-json": ^4.0.0
-    import-fresh: ^3.2.1
-    parse-json: ^5.0.0
-    path-type: ^4.0.0
-    yaml: ^1.10.0
-  checksum: 4be63e7117955fd88333d7460e4c466a90f556df6ef34efd59034d2463484e339666c41f02b523d574a797ec61f4a91918c5b89a316db2ea2f834e0d2d09465b
   languageName: node
   linkType: hard
 
@@ -10238,6 +10293,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:4.3.4, debug@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "debug@npm:4.3.4"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 3dbad3f94ea64f34431a9cbf0bafb61853eda57bff2880036153438f50fb5a84f27683ba0d8e5426bf41a8c6ff03879488120cf5b3a761e77953169c0600a708
+  languageName: node
+  linkType: hard
+
 "debug@npm:=3.1.0":
   version: 3.1.0
   resolution: "debug@npm:3.1.0"
@@ -10265,18 +10332,6 @@ __metadata:
     supports-color:
       optional: true
   checksum: 14472d56fe4a94dbcfaa6dbed2dd3849f1d72ba78104a1a328047bb564643ca49df0224c3a17fa63533fd11dd3d4c8636cd861191232a2c6735af00cc2d4de16
-  languageName: node
-  linkType: hard
-
-"debug@npm:^4.3.4":
-  version: 4.3.4
-  resolution: "debug@npm:4.3.4"
-  dependencies:
-    ms: 2.1.2
-  peerDependenciesMeta:
-    supports-color:
-      optional: true
-  checksum: 3dbad3f94ea64f34431a9cbf0bafb61853eda57bff2880036153438f50fb5a84f27683ba0d8e5426bf41a8c6ff03879488120cf5b3a761e77953169c0600a708
   languageName: node
   linkType: hard
 
@@ -10759,7 +10814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.0":
+"dotenv@npm:16.0.0":
   version: 16.0.0
   resolution: "dotenv@npm:16.0.0"
   checksum: 664cebb51f0a9a1d1b930f51f0271e72e26d62feaecc9dc03df39453dd494b4e724809ca480fb3ec3213382b1ed3f791aaeb83569a137f9329ce58efd4853dbf
@@ -10979,7 +11034,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"env-ci@npm:^7.0.0":
+"env-ci@npm:7.1.0":
   version: 7.1.0
   resolution: "env-ci@npm:7.1.0"
   dependencies:
@@ -12721,6 +12776,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:10.1.0, fs-extra@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "fs-extra@npm:10.1.0"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^6.0.1
+    universalify: ^2.0.0
+  checksum: dc94ab37096f813cc3ca12f0f1b5ad6744dfed9ed21e953d72530d103cea193c2f81584a39e9dee1bea36de5ee66805678c0dddc048e8af1427ac19c00fffc50
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:^10.0.0":
   version: 10.0.0
   resolution: "fs-extra@npm:10.0.0"
@@ -12740,17 +12806,6 @@ __metadata:
     jsonfile: ^6.0.1
     universalify: ^2.0.0
   checksum: c1faaa5eb9e1c5c7c7ff09f966e93922ecb068ae1b04801cfc983ef05fcc1f66bfbb8d8d0b745c910014c7a2e7317fb6cf3bfe7390450c1157e3cc1a218f221d
-  languageName: node
-  linkType: hard
-
-"fs-extra@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "fs-extra@npm:10.1.0"
-  dependencies:
-    graceful-fs: ^4.2.0
-    jsonfile: ^6.0.1
-    universalify: ^2.0.0
-  checksum: dc94ab37096f813cc3ca12f0f1b5ad6744dfed9ed21e953d72530d103cea193c2f81584a39e9dee1bea36de5ee66805678c0dddc048e8af1427ac19c00fffc50
   languageName: node
   linkType: hard
 
@@ -13776,10 +13831,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-relative-ci@workspace:packages/gatsby-plugin-relative-ci"
   dependencies:
-    "@babel/cli": ^7.17.6
-    "@babel/core": ^7.17.5
-    "@relative-ci/agent": ^3.1.1
-    babel-preset-gatsby-package: ^2.9.0
+    "@babel/cli": ^7.17.10
+    "@babel/core": ^7.18.0
+    "@relative-ci/agent": ^3.1.3
+    babel-preset-gatsby-package: ^2.14.0
     cross-env: ^7.0.3
   peerDependencies:
     gatsby: ^3.0.0 || ^4.0.0
@@ -16918,7 +16973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic-fetch@npm:^3.0.0":
+"isomorphic-fetch@npm:3.0.0":
   version: 3.0.0
   resolution: "isomorphic-fetch@npm:3.0.0"
   dependencies:
@@ -23781,13 +23836,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superstruct@npm:^0.8.3":
-  version: 0.8.4
-  resolution: "superstruct@npm:0.8.4"
+"superstruct@npm:0.8.3":
+  version: 0.8.3
+  resolution: "superstruct@npm:0.8.3"
   dependencies:
     kind-of: ^6.0.2
     tiny-invariant: ^1.0.6
-  checksum: dc21b602f7b646d48635e0254e8998d411a92815d44d2c52b9e9a077cd6b23797cd2a4585446161280fd2f3705d8da09dc85b7d07d512ae32a1b6cbff6d6efe0
+  checksum: 03699d3d860aa2b506a247c31d623ee8b4d5403fff097a49b1a166821b1cdef4da6fda65b501c4cc6d7cbcc9e6d47bd3490b0c336a0b1f93e812aa97ce83d2bb
   languageName: node
   linkType: hard
 
@@ -25691,6 +25746,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"yargs@npm:17.4.1, yargs@npm:^17.4.1":
+  version: 17.4.1
+  resolution: "yargs@npm:17.4.1"
+  dependencies:
+    cliui: ^7.0.2
+    escalade: ^3.1.1
+    get-caller-file: ^2.0.5
+    require-directory: ^2.1.1
+    string-width: ^4.2.3
+    y18n: ^5.0.5
+    yargs-parser: ^21.0.0
+  checksum: e9012322870d7e4e912a6ae1f63b203e365f911c0cf158be92c36edefddfb3bd38ce17eb9ef0d18858a4777f047c50589ea22dacb44bd949169ba37dc6d34bee
+  languageName: node
+  linkType: hard
+
 "yargs@npm:^15.0.1, yargs@npm:^15.1.0, yargs@npm:^15.3.1, yargs@npm:^15.4.1":
   version: 15.4.1
   resolution: "yargs@npm:15.4.1"
@@ -25726,8 +25796,8 @@ __metadata:
   linkType: hard
 
 "yargs@npm:^17.1.1":
-  version: 17.3.1
-  resolution: "yargs@npm:17.3.1"
+  version: 17.5.1
+  resolution: "yargs@npm:17.5.1"
   dependencies:
     cliui: ^7.0.2
     escalade: ^3.1.1
@@ -25736,22 +25806,7 @@ __metadata:
     string-width: ^4.2.3
     y18n: ^5.0.5
     yargs-parser: ^21.0.0
-  checksum: 64fc2e32c56739f1d14d2d24acd17a6944c3c8e3e3558f09fc1953ac112e868cc16013d282886b9d5be22187f8b9ed4f60741a6b1011f595ce2718805a656852
-  languageName: node
-  linkType: hard
-
-"yargs@npm:^17.4.1":
-  version: 17.4.1
-  resolution: "yargs@npm:17.4.1"
-  dependencies:
-    cliui: ^7.0.2
-    escalade: ^3.1.1
-    get-caller-file: ^2.0.5
-    require-directory: ^2.1.1
-    string-width: ^4.2.3
-    y18n: ^5.0.5
-    yargs-parser: ^21.0.0
-  checksum: e9012322870d7e4e912a6ae1f63b203e365f911c0cf158be92c36edefddfb3bd38ce17eb9ef0d18858a4777f047c50589ea22dacb44bd949169ba37dc6d34bee
+  checksum: 00d58a2c052937fa044834313f07910fd0a115dec5ee35919e857eeee3736b21a4eafa8264535800ba8bac312991ce785ecb8a51f4d2cc8c4676d865af1cfbde
   languageName: node
   linkType: hard
 
