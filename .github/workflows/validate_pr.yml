@@ -41,11 +41,6 @@ jobs:
   run-tests:
     name: Run package tests on (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
-    environment: test
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
     needs: [setup]
     strategy:
       matrix:
@@ -61,6 +56,9 @@ jobs:
 
       - name: Build packages
         run: yarn build
+
+      - name: Set up S3 Server
+        uses: ./.github/actions/s3-test-server
 
       - name: Execute tests
         run: yarn test
