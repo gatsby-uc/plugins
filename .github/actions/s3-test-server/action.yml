@@ -5,9 +5,10 @@ runs:
   using: "composite" # Mandatory parameter
   steps:
     - name: Setup minio
+      shell: bash
       run: |
         docker run -d -p 9000:9001 --name minio \
           -e "MINIO_ACCESS_KEY=minioadmin" \
           -e "MINIO_SECRET_KEY=minioadmin" \
-          -v ${{ GITHUB_WORKSPACE }}/integration-tests/source-s3/test-data/:/data \
+          -v ${{ github.workspace }}/integration-tests/source-s3/test-data/:/data \
           minio/minio server /data
