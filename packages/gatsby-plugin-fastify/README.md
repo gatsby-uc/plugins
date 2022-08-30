@@ -94,6 +94,7 @@ All settings may be change via environment variables prefixed with `GATSBY_SERVE
 # For example:
 export GATSBY_SERVER_PORT=3000
 export GATSBY_SERVER_ADDRESS=0.0.0.0
+export GATSBY_SERVER_LOG_LEVEL=debug
 ```
 
 ### Logging
