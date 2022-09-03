@@ -10,11 +10,11 @@
   ],
   "scripts": {
     "ac": "yarn all-contributors",
-    "build": "yarn workspaces foreach -vpi --no-private run build",
+    "build": "yarn turbo run build --filter=\"./packages/*\"",
     "cs": "yarn changeset",
     "format": "yarn test:format --write",
     "test:format": "yarn prettier \"**/*.{js,ts,md,json,yml,json}\" --check",
-    "publish-ci": "yarn build && yarn changeset publish",
+    "publish-ci": "yarn changeset publish",
     "postinstall": "yarn husky install",
     "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
   },
@@ -24,7 +24,8 @@
     "all-contributors-cli": "^6.20.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.5.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "turbo": "^1.4.3"
   },
   "packageManager": "yarn@3.2.3",
   "lint-staged": {

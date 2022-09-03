@@ -12,6 +12,7 @@ LICENSE @gatsby-uc/stewards
 .prettierrc.js @gatsby-uc/maintainers
 .yarnrc.yml @gatsby-uc/maintainers
 renovate.json @gatsby-uc/maintainers
+turbo.json @gatsby-uc/maintainers
 
 # packages
 

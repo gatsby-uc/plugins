@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "source-s3",
+  "name": "test-source-s3",
   "description": "A simple starter to get started with gatsby-source-s3",
   "version": "1.0.2",
   "license": "MIT",
