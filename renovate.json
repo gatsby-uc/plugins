@@ -1,5 +1,11 @@
 {
-  "extends": ["config:base", "schedule:monthly", ":disablePeerDependencies"],
+  "extends": [
+    "config:base",
+    "schedule:monthly",
+    ":combinePatchMinorReleases",
+    ":disablePeerDependencies",
+    ":label(topic: automation)"
+  ],
   "major": {
     "masterIssueApproval": true
   },
@@ -9,20 +15,19 @@
   "prHourlyLimit": 0,
   "packageRules": [
     {
-      "groupName": "non-major dependency versions",
-      "updateTypes": ["minor", "patch"]
+      "groupName": "non-major dependency versions"
     },
     {
       "matchPackagePatterns": ["^@babel/", "^babel"],
       "groupName": "build tooling updates",
       "groupSlug": "all",
-      "semanticCommitScope": "deps"
+      "semanticCommitScope": "all-build-deps"
     },
     {
       "groupName": "integration test updates",
       "matchPaths": ["integration-tests/**"],
       "groupSlug": "all-tests",
-      "semanticCommitScope": "deps"
+      "semanticCommitScope": "integration-test-deps"
     }
   ],
   "semanticCommits": "enabled",
