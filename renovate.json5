@@ -1,0 +1,40 @@
+{
+  extends: [
+    "config:base",
+    "schedule:monthly",
+    ":disablePeerDependencies",
+    ":label(topic: automation)",
+  ],
+  major: {
+    masterIssueApproval: true,
+  },
+  // "additionalBranchPrefix": "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
+  masterIssue: true,
+  rangeStrategy: "bump",
+  prHourlyLimit: 0,
+  packageRules: [
+    {
+      groupName: "non-major dependency versions",
+      matchUpdateTypes: ["minor", "patch"],
+      groupSlug: "package-major-minor",
+    },
+    {
+      matchPackagePatterns: ["^@babel/", "^babel"],
+      groupName: "build tooling",
+      groupSlug: "all-build-deps",
+      semanticCommitScope: "all-build-deps",
+      matchUpdateTypes: ["minor", "patch"],
+    },
+    {
+      groupName: "integration tests",
+      matchPaths: ["integration-tests/**"],
+      groupSlug: "integration-test-deps",
+      semanticCommitScope: "integration-test-deps",
+      matchUpdateTypes: ["minor", "patch"],
+    },
+  ],
+  semanticCommits: "enabled",
+  semanticCommitType: "chore",
+  semanticCommitScope: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}",
+  ignoreDeps: ["node"],
+}
