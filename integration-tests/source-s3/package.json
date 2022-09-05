@@ -6,11 +6,11 @@
   "license": "MIT",
   "author": "Robin Métral <robin@metral.ch>",
   "dependencies": {
-    "gatsby": "^4.14.1",
-    "gatsby-plugin-image": "^2.14.1",
-    "gatsby-plugin-sharp": "^4.14.1",
+    "gatsby": "^4.22.0",
+    "gatsby-plugin-image": "^2.22.0",
+    "gatsby-plugin-sharp": "^4.22.0",
     "gatsby-source-s3": "workspace:^",
-    "gatsby-transformer-sharp": "^4.14.0",
+    "gatsby-transformer-sharp": "^4.22.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
