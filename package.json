@@ -22,7 +22,7 @@
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
     "all-contributors-cli": "^6.20.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1"
   },
