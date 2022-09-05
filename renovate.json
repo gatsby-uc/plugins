@@ -11,6 +11,14 @@
     {
       "groupName": "non-major dependency versions",
       "updateTypes": ["minor", "patch"]
+    },
+    {
+      "matchPackagePatterns": ["^@babel/", "^babel"],
+      "groupName": "build tooling updates"
+    },
+    {
+      "groupName": "integration test updates",
+      "matchPaths": ["integration-tests/**"]
     }
   ],
   "semanticCommits": "enabled",
