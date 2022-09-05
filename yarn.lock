@@ -13612,12 +13612,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
-    "@babel/cli": ^7.17.10
-    "@babel/core": ^7.18.0
+    "@babel/cli": ^7.18.10
+    "@babel/core": ^7.19.0
     "@octokit/rest": ^17.11.2
-    babel-preset-gatsby-package: ^2.14.0
+    babel-preset-gatsby-package: ^2.22.0
     cross-env: ^7.0.3
-    gatsby-source-filesystem: ^4.14.0
+    gatsby-source-filesystem: ^4.22.0
     mime-types: ^2.1.35
     packagist-api-client: ^2.0.0
   peerDependencies:
