@@ -15,12 +15,14 @@
     {
       "matchPackagePatterns": ["^@babel/", "^babel"],
       "groupName": "build tooling updates",
-      "groupSlug": "all"
+      "groupSlug": "all",
+      "semanticCommitScope": "deps"
     },
     {
       "groupName": "integration test updates",
       "matchPaths": ["integration-tests/**"],
-      "groupSlug": "all-tests"
+      "groupSlug": "all-tests",
+      "semanticCommitScope": "deps"
     }
   ],
   "semanticCommits": "enabled",
