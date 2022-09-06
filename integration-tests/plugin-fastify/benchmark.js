@@ -53,7 +53,16 @@ function expectResp(def, path, code = 200) {
   } = getConfig();
   const server = Fastify({
     ignoreTrailingSlash: true,
-    logger: { level: logLevel, prettyPrint: true },
+    logger: {
+      level: logLevel,
+      transport: {
+        target: "pino-pretty",
+        options: {
+          translateTime: "HH:MM:ss Z",
+          ignore: "pid,hostname",
+        },
+      },
+    },
     disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });
 

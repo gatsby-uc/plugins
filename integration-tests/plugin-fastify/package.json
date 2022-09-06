@@ -16,7 +16,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "fastify": "^3.29.2",
+    "fastify": "^4.5.3",
     "gatsby": "^4.22.0",
     "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^2.22.0",
