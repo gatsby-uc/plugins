@@ -8,28 +8,30 @@
   major: {
     masterIssueApproval: true,
   },
-  // "additionalBranchPrefix": "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
   masterIssue: true,
   rangeStrategy: "bump",
   prHourlyLimit: 0,
   packageRules: [
+    // General Package updates
     {
       groupName: "non-major dependency versions",
       matchUpdateTypes: ["minor", "patch"],
       groupSlug: "package-major-minor",
     },
+    // Role all babel related updates into 1 for a quiter life
     {
       matchPackagePatterns: ["^@babel/", "^babel"],
       groupName: "build tooling",
       groupSlug: "all-build-deps",
-      semanticCommitScope: "all-build-deps",
+      semanticCommitScope: "babel",
       matchUpdateTypes: ["minor", "patch"],
     },
+    // Integration test updates don't require releases, so just role all into 1 to keep things quieter.
     {
       groupName: "integration tests",
       matchPaths: ["integration-tests/**"],
       groupSlug: "integration-test-deps",
-      semanticCommitScope: "integration-test-deps",
+      semanticCommitScope: "integration-tests",
       matchUpdateTypes: ["minor", "patch"],
     },
   ],
