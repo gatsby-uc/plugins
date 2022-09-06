@@ -1,4 +1,4 @@
-import fastifyStatic, { FastifyStaticOptions } from "fastify-static";
+import fastifyStatic, { FastifyStaticOptions } from "@fastify/static";
 import fp from "fastify-plugin";
 import { resolve } from "path";
 import { isMatch } from "picomatch";

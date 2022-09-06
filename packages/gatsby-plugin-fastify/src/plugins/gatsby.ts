@@ -10,8 +10,9 @@ import { handle404 } from "./404";
 import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
-import fastifyAccepts from "fastify-accepts";
-import middiePlugin from "middie";
+import fastifyAccepts from "@fastify/accepts";
+import middiePlugin from "@fastify/middie";
+
 import type { FastifyPluginAsync } from "fastify";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {

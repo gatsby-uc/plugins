@@ -1,4 +1,4 @@
-import pluginHttpProxy from "fastify-http-proxy";
+import pluginHttpProxy from "@fastify/http-proxy";
 
 import type { FastifyPluginAsync, FastifyReply } from "fastify";
 import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
