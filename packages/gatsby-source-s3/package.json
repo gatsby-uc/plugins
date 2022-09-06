@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "aws-sdk": "^2.1209.0",
+    "aws-sdk": "^2.1210.0",
     "gatsby-source-filesystem": "^4.22.0"
   },
   "peerDependencies": {
