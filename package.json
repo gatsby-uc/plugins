@@ -13,7 +13,7 @@
     "build": "yarn workspaces foreach -vpi --no-private run build",
     "cs": "yarn changeset",
     "format": "yarn test:format --write",
-    "test:format": "yarn prettier \"**/*.{js,ts,md,json,yml,json}\" --check",
+    "test:format": "yarn prettier \"**/*.{js,ts,md,json,yml,json,json5}\" --check",
     "publish-ci": "yarn build && yarn changeset publish",
     "postinstall": "yarn husky install",
     "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
