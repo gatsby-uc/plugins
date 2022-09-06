@@ -11,7 +11,19 @@ export async function gatsbyServer() {
   const fastify = Fastify({
     maxParamLength: 500,
     ignoreTrailingSlash: true,
-    logger: { level: logLevel, prettyPrint: true },
+    logger: {
+      level: logLevel,
+      transport:
+        process.env.NODE_ENV === "development"
+          ? {
+              target: "pino-pretty",
+              options: {
+                translateTime: "HH:MM:ss Z",
+                ignore: "pid,hostname",
+              },
+            }
+          : undefined,
+    },
     disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });
 
@@ -21,7 +33,7 @@ export async function gatsbyServer() {
   try {
     await fastify.register(serveGatsby, { prefix });
 
-    await fastify.listen(port, host);
+    await fastify.listen({ port, host });
   } catch (err) {
     console.error(err);
     fastify.log.fatal("Failed to start Fastify");

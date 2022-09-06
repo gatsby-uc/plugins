@@ -101,6 +101,12 @@ export GATSBY_SERVER_LOG_LEVEL=debug
 
 By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
 
+For prettier logging to console set the `NODE_ENV` envrionment variable to `development`. This should not be used in production due to performance concerns. e.g.
+
+```
+NODE_ENV=development yarn start
+```
+
 ## Features
 
 Some features can be disabled through the plugin options. This will not provide increased performance but is probided as an option to control features in certain deploys or to handoff certain features to an edge server or CDN as desired.

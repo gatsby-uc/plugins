@@ -20,7 +20,16 @@ exports.createFastifyInstance = async function createFastifyInstance(plugin) {
   } = getConfig();
   const fastify = Fastify({
     ignoreTrailingSlash: true,
-    logger: { level: logLevel, prettyPrint: true },
+    logger: {
+      level: logLevel,
+      transport: {
+        target: "pino-pretty",
+        options: {
+          translateTime: "HH:MM:ss Z",
+          ignore: "pid,hostname",
+        },
+      },
+    },
     disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });
 
