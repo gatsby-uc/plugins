@@ -30,7 +30,7 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.9",
+    "@babel/runtime": "^7.19.0",
     "fastify-accepts": "^2.2.0",
     "fastify-http-proxy": "^6.2.2",
     "fastify-plugin": "^3.0.1",
@@ -47,14 +47,14 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.9",
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.0",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
     "@types/mime": "^2.0.3",
     "@types/node": "^14.18.12",
     "babel-jest": "^27.5.1",
-    "babel-preset-gatsby-package": "^2.12.1",
+    "babel-preset-gatsby-package": "^2.22.0",
     "cross-env": "^7.0.3",
     "jest": "^27.5.1"
   },
