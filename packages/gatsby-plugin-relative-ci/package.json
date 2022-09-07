@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-relative-ci",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Integrate your Gatsby site with Relative CI",
   "keywords": [
     "gatsby",
