@@ -28,6 +28,6 @@
   },
   "packageManager": "yarn@3.2.3",
   "lint-staged": {
-    "**/*.{js,ts,md,json,yml,json}": "prettier --write"
+    "**/*.{js,ts,md,json,yml,json5}": "prettier --write"
   }
 }
