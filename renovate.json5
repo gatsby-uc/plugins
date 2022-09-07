@@ -16,8 +16,7 @@
     {
       groupName: "non-major dependency versions",
       matchUpdateTypes: ["minor", "patch"],
-      "additionalBranchPrefix": "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
-
+      additionalBranchPrefix: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
     },
     // Role all babel related updates into 1 for a quiter life
     {
