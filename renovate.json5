@@ -16,16 +16,28 @@
     {
       groupName: "non-major dependency versions",
       matchUpdateTypes: ["minor", "patch"],
-      groupSlug: "package-major-minor",
     },
     // Role all babel related updates into 1 for a quiter life
     {
       matchPackagePatterns: ["^@babel/", "^babel"],
       groupName: "build tooling",
-      groupSlug: "all-build-deps",
+      groupSlug: "build-deps",
       semanticCommitScope: "babel",
       matchUpdateTypes: ["minor", "patch"],
     },
+    //Group Jest updates together
+    {
+      "matchPackageNames": [
+        "@types/jest"
+      ],
+      "matchUpdateTypes": [
+        "digest",
+        "patch",
+        "minor",
+        "major"
+      ],
+      "groupName": "jest monorepo"
+    }
     // Integration test updates don't require releases, so just role all into 1 to keep things quieter.
     {
       groupName: "integration tests",
