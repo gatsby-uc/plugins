@@ -1,5 +1,25 @@
 # gatsby-plugin-fastify
 
+## 0.9.0
+
+### Minor Changes
+
+- [#245](https://github.com/gatsby-uc/plugins/pull/245) [`5f4decc`](https://github.com/gatsby-uc/plugins/commit/5f4decc6554ad6755e51daf01a4192307158956d) Thanks [@moonmeister](https://github.com/moonmeister)! - Upgraded fastify to v4 and bumped majors on related and unrelated packages.
+
+  ## Breaking Changes
+
+  - Logging no longer defaults to "pretty print" unless the environment variable`NODE_ENV` equals `development`.
+
+  - Changes were made to the static file servers config. This fixed issues introduced by fastify updates. While this didn't break tests or knowingly intoduce bugs please let us know if you see any behavior changes.
+
+### Patch Changes
+
+- [#243](https://github.com/gatsby-uc/plugins/pull/243) [`8116411`](https://github.com/gatsby-uc/plugins/commit/8116411db4130b8c33ad27da9994095f4323e2eb) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update non-major dependency versions
+
+- [#241](https://github.com/gatsby-uc/plugins/pull/241) [`35ba22d`](https://github.com/gatsby-uc/plugins/commit/35ba22de4d10f1402b113880567f561aff4056ab) Thanks [@renovate](https://github.com/apps/renovate)! - chore(all-build-deps): update build tooling
+
+- [#227](https://github.com/gatsby-uc/plugins/pull/227) [`a08f176`](https://github.com/gatsby-uc/plugins/commit/a08f176070950d0bc63b00ec74c173f14c50b4bf) Thanks [@tsdexter](https://github.com/tsdexter)! - chore(gatsby-plugin-fastify): Update README.md
+
 ## 0.8.1
 
 ### Patch Changes

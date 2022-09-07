@@ -1,5 +1,15 @@
 # gatsby-plugin-github-ribbon
 
+## 1.4.0
+
+### Minor Changes
+
+- [#250](https://github.com/gatsby-uc/plugins/pull/250) [`8e259eb`](https://github.com/gatsby-uc/plugins/commit/8e259eb1b9d622f593ce867f8e5b518533c7fb1d) Thanks [@moonmeister](https://github.com/moonmeister)! - `react` and `react-dom` are moved to peerdeps as they should have been. Non-breaking cause all gatsby projects will already have these deps.
+
+### Patch Changes
+
+- [#241](https://github.com/gatsby-uc/plugins/pull/241) [`35ba22d`](https://github.com/gatsby-uc/plugins/commit/35ba22de4d10f1402b113880567f561aff4056ab) Thanks [@renovate](https://github.com/apps/renovate)! - chore(all-build-deps): update build tooling
+
 ## 1.3.5
 
 ### Patch Changes

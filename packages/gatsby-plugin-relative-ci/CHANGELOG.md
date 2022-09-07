@@ -1,5 +1,15 @@
 # gatsby-plugin-relative-ci
 
+## 1.4.2
+
+### Patch Changes
+
+- [#244](https://github.com/gatsby-uc/plugins/pull/244) [`f877aa0`](https://github.com/gatsby-uc/plugins/commit/f877aa08333dfae5cf5f9e5918bc2f0948b6a762) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-relative-ci): update dependency @relative-ci/agent to v4
+
+- [#207](https://github.com/gatsby-uc/plugins/pull/207) [`0d33a5a`](https://github.com/gatsby-uc/plugins/commit/0d33a5a741c8890553269799589470c6ed0b3646) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-relative-ci): update non-major dependency versions
+
+- [#241](https://github.com/gatsby-uc/plugins/pull/241) [`35ba22d`](https://github.com/gatsby-uc/plugins/commit/35ba22de4d10f1402b113880567f561aff4056ab) Thanks [@renovate](https://github.com/apps/renovate)! - chore(all-build-deps): update build tooling
+
 ## 1.4.1
 
 ### Patch Changes
