@@ -27,17 +27,10 @@
     },
     //Group Jest updates together
     {
-      "matchPackageNames": [
-        "@types/jest"
-      ],
-      "matchUpdateTypes": [
-        "digest",
-        "patch",
-        "minor",
-        "major"
-      ],
-      "groupName": "jest monorepo"
-    }
+      matchPackageNames: ["@types/jest"],
+      matchUpdateTypes: ["digest", "patch", "minor", "major"],
+      groupName: "jest monorepo",
+    },
     // Integration test updates don't require releases, so just role all into 1 to keep things quieter.
     {
       groupName: "integration tests",
