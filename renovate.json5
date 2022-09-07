@@ -1,0 +1,48 @@
+{
+  extends: [
+    "config:base",
+    "schedule:monthly",
+    ":disablePeerDependencies",
+    ":label(topic: automation)",
+  ],
+  major: {
+    masterIssueApproval: true,
+  },
+  masterIssue: true,
+  rangeStrategy: "bump",
+  prHourlyLimit: 0,
+  packageRules: [
+    // General Package updates
+    {
+      groupName: "non-major dependency versions",
+      matchUpdateTypes: ["minor", "patch"],
+      additionalBranchPrefix: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
+    },
+    // Role all babel related updates into 1 for a quiter life
+    {
+      matchPackagePatterns: ["^@babel/", "^babel"],
+      groupName: "build tooling",
+      groupSlug: "build-deps",
+      semanticCommitScope: "babel",
+      matchUpdateTypes: ["minor", "patch"],
+    },
+    //Group Jest updates together
+    {
+      matchPackageNames: ["@types/jest"],
+      matchUpdateTypes: ["digest", "patch", "minor", "major"],
+      groupName: "jest monorepo",
+    },
+    // Integration test updates don't require releases, so just role all into 1 to keep things quieter.
+    {
+      groupName: "integration tests",
+      matchPaths: ["integration-tests/**"],
+      groupSlug: "integration-test-deps",
+      semanticCommitScope: "integration-tests",
+      matchUpdateTypes: ["minor", "patch"],
+    },
+  ],
+  semanticCommits: "enabled",
+  semanticCommitType: "chore",
+  semanticCommitScope: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}",
+  ignoreDeps: ["node"],
+}

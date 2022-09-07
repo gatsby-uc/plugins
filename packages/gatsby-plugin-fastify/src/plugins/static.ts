@@ -1,4 +1,4 @@
-import fastifyStatic, { FastifyStaticOptions } from "fastify-static";
+import fastifyStatic, { FastifyStaticOptions } from "@fastify/static";
 import fp from "fastify-plugin";
 import { resolve } from "path";
 import { isMatch } from "picomatch";
@@ -13,8 +13,9 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
     fastify.log.debug(`Serving Static Assets from ${publicPath}`);
     fastify.register(fastifyStatic, {
       root: publicPath,
-      redirect: true,
-      wildcard: true,
+      // These settings were switched to false with fastify v4, not entirely sure what changed, but tests are still passing.
+      redirect: false,
+      wildcard: false,
       setHeaders: (reply, path, _stat) => {
         if (
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
