@@ -27,6 +27,6 @@ runs:
         path: |
           **/node_modules
           ~/.cache/Cypress
-        key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('node_modules/.cache/turbo/**') }}
+        key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}-turbo
         restore-keys: |
           key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}-
