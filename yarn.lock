@@ -5106,6 +5106,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^14.18.28":
+  version: 14.18.28
+  resolution: "@types/node@npm:14.18.28"
+  checksum: 44225b3d8f13f4aba9a7bffec8dbc9be8fd396d26b8a1f58b1389da83fdc7485edb5642639e23b34f0efa349dafe4df618294122f0b39c8726df2b9e11413768
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^15.0.1":
   version: 15.14.9
   resolution: "@types/node@npm:15.14.9"
@@ -10964,7 +10971,7 @@ __metadata:
     "@types/fs-extra": ^9.0.13
     "@types/jest": ^27.5.2
     "@types/mime": ^3.0.1
-    "@types/node": ^14.18.27
+    "@types/node": ^14.18.28
     babel-jest: ^27.5.1
     babel-preset-gatsby-package: ^2.22.0
     cross-env: ^7.0.3
@@ -10998,11 +11005,11 @@ __metadata:
     cross-env: ^7.0.3
     gatsby: ^4.22.0
     jest: ^27.5.1
-    react: ^17.0.2
-    react-dom: ^17.0.2
     request: ^2.88.2
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0
+    react: "*"
+    react-dom: "*"
   languageName: unknown
   linkType: soft
 
