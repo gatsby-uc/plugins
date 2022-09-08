@@ -13,7 +13,7 @@
     "build": "yarn turbo run build --filter=\"./packages/*\"",
     "cs": "yarn changeset",
     "format": "yarn test:format --write",
-    "test:format": "yarn prettier \"**/*.{js,ts,md,json,yml,json,json5}\" --check",
+    "test:format": "yarn prettier \"**/*.{js,ts,md,yml,json,json5}\" --check",
     "publish-ci": "yarn changeset publish",
     "postinstall": "yarn husky install",
     "test": "yarn turbo run test --filter=\"./packages/*\""

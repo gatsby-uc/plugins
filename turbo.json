@@ -3,11 +3,11 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["package.json", "src/**/*", "!**/__tests__/**/*", "!tests/**/*"],
+      "inputs": ["src/**/*", "!**/__tests__/**/*", "!tests/**/*"],
       "outputs": ["**/*.js", "!src/**/*.js", "!test/*.js"]
     },
     "test:format": {
-      "inputs": ["**/*.{js,ts,md,json,yml,json,json5}"],
+      "inputs": ["**/*.{js,ts,md,json,yml,json5}"],
       "outputs": []
     },
     "test": {
