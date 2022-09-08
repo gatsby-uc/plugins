@@ -26,5 +26,5 @@ runs:
       with:
         path: |
           **/node_modules
-          ~/.cache
+          ~/.cache/Cypress
         key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}

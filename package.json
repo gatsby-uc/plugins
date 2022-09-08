@@ -16,7 +16,7 @@
     "test:format": "yarn prettier \"**/*.{js,ts,md,json,yml,json,json5}\" --check",
     "publish-ci": "yarn changeset publish",
     "postinstall": "yarn husky install",
-    "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
+    "test": "yarn turbo run test --filter=\"./packages/*\""
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.6",

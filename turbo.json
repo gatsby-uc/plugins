@@ -2,19 +2,44 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": [],
-      "outputs": []
+      "dependsOn": ["^build"],
+      "inputs": ["package.json", "src/**/*", "!**/__tests__/**/*", "!tests/**/*"],
+      "outputs": ["**/*.js", "!src/**/*.js", "!test/*.js"]
     },
-    "format": {
+    "test:format": {
+      "inputs": ["**/*.{js,ts,md,json,yml,json,json5}"],
       "outputs": []
     },
     "test": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "outputs": []
     },
     "publish-ci": {
+      "dependsOn": ["build", "test"],
+      "cache": false
+    },
+    "gatsby-plugin-fastify#test": {
+      "dependsOn": ["test-plugin-fastify#build"]
+    },
+    "test-plugin-fastify#build": {
       "dependsOn": ["^build"],
-      "outputs": []
+      "outputs": [".cache", "public"],
+      "outputMode": "new-only"
+    },
+    "gatsby-source-s3#start": {
+      "dependsOn": ["test-source-s3#build"],
+      "cache": false
+    },
+    "gatsby-source-s3#test": {
+      "dependsOn": ["start"]
+    },
+    "test-source-s3#build": {
+      "dependsOn": ["^build", "docker:start"],
+      "outputs": [".cache", "public"],
+      "outputMode": "new-only"
+    },
+    "test-source-s3#docker:start": {
+      "cache": false
     }
   }
 }

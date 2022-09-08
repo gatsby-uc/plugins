@@ -54,11 +54,5 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Build packages
-        run: yarn build
-
-      - name: Set up S3 Server
-        uses: ./.github/actions/s3-test-server
-
       - name: Execute tests
         run: yarn test
