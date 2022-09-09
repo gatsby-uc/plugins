@@ -27,7 +27,4 @@ runs:
         path: |
           **/node_modules
           ~/.cache/Cypress
-        key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}-${{ github.run_id }}-${{ job.container.id }}
-        restore-keys: |
-          key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}-${{ github.run_id }}-
-          key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}-
+        key: ${{ runner.os }}-yarn-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}
