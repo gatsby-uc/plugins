@@ -140,6 +140,12 @@ const IndexPage = () => {
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/ssr403")}>Unauthorized SSR Page</a>
         </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/ssr/43")}>Dynamicly routed SSR page (slug is 43)</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/ssr/42")}>Dynamicly routed SSR page (slug is 42)</a>
+        </li>
       </ul>
     </main>
   );

@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -56,6 +56,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/alan2207"><img src="https://avatars.githubusercontent.com/u/12713315?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alan Alickovic</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=alan2207" title="Documentation">📖</a> <a href="#plugin-alan2207" title="Plugin/utility libraries">🔌</a></td>
     <td align="center"><a href="https://github.com/mattcompiles"><img src="https://avatars.githubusercontent.com/u/8802980?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mattcompiles</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=mattcompiles" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/klyngen"><img src="https://avatars.githubusercontent.com/u/14232560?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Martin Klingenberg</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=klyngen" title="Code">💻</a></td>
   </tr>
 </table>
 

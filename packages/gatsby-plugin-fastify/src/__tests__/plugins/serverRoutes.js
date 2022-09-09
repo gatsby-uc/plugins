@@ -141,6 +141,26 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       expect(response.headers["x-test"]).toEqual("Custom Headers Work!");
       expect(response.payload).toContain("SSR Page with Dogs");
     });
+
+    it(`Should serve SSR page from a fallbackRoute`, async () => {
+      const meaningfulResponse = await globalFastify.inject({
+        url: "/ssr/42",
+        method: "GET",
+      });
+
+      expect(meaningfulResponse.statusCode).toEqual(200);
+      expect(meaningfulResponse.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(meaningfulResponse.payload).toContain("meaning of life");
+
+      const meaninglessResponse = await globalFastify.inject({
+        url: "/ssr/43",
+        method: "GET",
+      });
+
+      expect(meaninglessResponse.statusCode).toEqual(200);
+      expect(meaninglessResponse.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(meaninglessResponse.payload).toContain("try again");
+    });
   });
 
   it(`Should 400 if request does not accept "text/html" on DSG/SSR route`, async () => {
