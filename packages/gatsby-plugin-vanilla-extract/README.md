@@ -5,7 +5,7 @@ Gatsby plugin which wraps the [vanilla-extract](https://vanilla-extract.style/) 
 ## Setup
 
 ```shell
-npm install --save-dev gatsby-plugin-vanilla-extract @vanilla-extract/css @vanilla-extract/webpack-plugin
+npm install gatsby-plugin-vanilla-extract @vanilla-extract/css @vanilla-extract/webpack-plugin
 ```
 
 Add to your site's `gatsby-config.js`.
