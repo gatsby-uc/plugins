@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.9.1
+
+### Patch Changes
+
+- [#217](https://github.com/gatsby-uc/plugins/pull/217) [`029cab4`](https://github.com/gatsby-uc/plugins/commit/029cab4ede52db8c7ac315a124d73536c2155bfd) Thanks [@renovate](https://github.com/apps/renovate)! - chore(gatsby-plugin-fastify): update dependency @types/node to ^14.18.28
+
 ## 0.9.0
 
 ### Minor Changes

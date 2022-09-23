@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-vanilla-extract",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Gatsby plugin which wraps the vanilla-extract package for easy use",
   "main": "index.js",
   "repository": {

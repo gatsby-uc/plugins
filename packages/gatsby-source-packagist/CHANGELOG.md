@@ -1,5 +1,11 @@
 # gatsby-source-packagist
 
+## 2.0.2
+
+### Patch Changes
+
+- [#246](https://github.com/gatsby-uc/plugins/pull/246) [`ddb7317`](https://github.com/gatsby-uc/plugins/commit/ddb7317c4a9639f704e43c1046bb4bada30bdc33) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-source-packagist): update dependency @octokit/rest to v19
+
 ## 2.0.1
 
 ### Patch Changes
