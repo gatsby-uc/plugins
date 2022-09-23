@@ -11220,9 +11220,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-plugin-vanilla-extract@workspace:packages/gatsby-plugin-vanilla-extract"
   peerDependencies:
-    "@vanilla-extract/babel-plugin": ^1.0.0
     "@vanilla-extract/css": ^1.0.0
-    "@vanilla-extract/webpack-plugin": ^2.0.0
+    "@vanilla-extract/webpack-plugin": ^2.2.0
     gatsby: ^3.0.0 || ^4.0.0
   languageName: unknown
   linkType: soft

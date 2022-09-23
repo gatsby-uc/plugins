@@ -90,6 +90,15 @@
         "doc",
         "plugin"
       ]
+    },
+    {
+      "login": "mattcompiles",
+      "name": "mattcompiles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8802980?v=4",
+      "profile": "https://github.com/mattcompiles",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
