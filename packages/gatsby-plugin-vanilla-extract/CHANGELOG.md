@@ -1,5 +1,15 @@
 # gatsby-plugin-vanilla-extract
 
+## 3.0.0
+
+### Major Changes
+
+- [#254](https://github.com/gatsby-uc/plugins/pull/254) [`caf0984`](https://github.com/gatsby-uc/plugins/commit/caf0984985b1c27598ff897bc275bdd5edc959f5) Thanks [@mattcompiles](https://github.com/mattcompiles)! - Remove `@vanilla-extract/babel-plugin` from plugin
+
+  BREAKING CHANGE
+
+  As of `@vanilla-extract/webpack-plugin@v2.2.0` the babel plugin is no longer required. Therefore the peer dependency range has been updated to `^2.2.0`.
+
 ## 2.0.1
 
 ### Patch Changes
