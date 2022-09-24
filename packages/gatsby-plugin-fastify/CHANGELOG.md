@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.9.2
+
+### Patch Changes
+
+- [#253](https://github.com/gatsby-uc/plugins/pull/253) [`d7ace2d`](https://github.com/gatsby-uc/plugins/commit/d7ace2dc1076feb3ef60e5c132cd86c8701c6908) Thanks [@klyngen](https://github.com/klyngen)! - Fallback routes get SSR-support
+
 ## 0.9.1
 
 ### Patch Changes
