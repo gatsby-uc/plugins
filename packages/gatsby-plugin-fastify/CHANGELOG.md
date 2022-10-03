@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.9.3
+
+### Patch Changes
+
+- [#258](https://github.com/gatsby-uc/plugins/pull/258) [`ca806e9`](https://github.com/gatsby-uc/plugins/commit/ca806e94b03d7ecbe3f529d397151096175fa04d) Thanks [@moonmeister](https://github.com/moonmeister)! - fix(gatsby-plugin-fastify): Fix https://github.com/gatsby-uc/plugins/issues/257 where passing query paSR routes was causing 500.
+
 ## 0.9.2
 
 ### Patch Changes
