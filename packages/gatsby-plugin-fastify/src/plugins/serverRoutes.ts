@@ -6,6 +6,7 @@ import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
+import { removeQueryParmsFromUrl } from "../utils/routes";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
@@ -51,18 +52,19 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
       fastify.get(pageDataPath, async (req, reply) => {
         fastify.log.debug(`DSG/SSR for "page-data.json" @ ${path}`);
+        const workingURL = removeQueryParmsFromUrl(req.url);
         const potentialPagePath = reverseFixedPagePath(path);
         const page = graphqlEngine.findPageByPath(potentialPagePath);
         if (!page) {
           //this theoreticall shouldn't happen cause we're creating these routes based on data from build.
-          throw new Error(`No page data found for path: ${req.url}`);
+          throw new Error(`No page data found for path: ${workingURL}`);
         }
         reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
 
         try {
-          // Fetch Page Data adn SSR Data
+          // Fetch Page Data and SSR Data
           const pageQueryData = await getData({
-            pathName: req.url,
+            pathName: workingURL,
             graphqlEngine,
             req,
           });
@@ -93,13 +95,15 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
       fastify.get(path, async (req, reply) => {
         const accept = req.accepts();
+        const workingURL = removeQueryParmsFromUrl(req.url);
+
         if (accept.type(["html"])) {
           fastify.log.debug(`DSG/SSR for "text/html" @  ${req.url}`);
-          const potentialPagePath = reverseFixedPagePath(req.url);
+          const potentialPagePath = reverseFixedPagePath(workingURL);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
 
           if (!page) {
-            throw new Error(`No page found for ${req.url}`);
+            throw new Error(`No page found for ${workingURL}`);
           }
 
           reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);

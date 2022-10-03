@@ -201,4 +201,13 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
     expect(response.statusCode).toEqual(403);
   });
+
+  it(`Should return route correctly when queryparams exist`, async () => {
+    const reqponse = await globalFastify.inject({
+      url: "/ssr?test=test",
+      method: "GET",
+    });
+
+    expect(reqponse.statusCode).toEqual(200);
+  });
 });
