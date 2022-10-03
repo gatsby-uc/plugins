@@ -6,7 +6,7 @@
       "inputs": ["src/**/*", "!**/__tests__/**/*", "!tests/**/*"],
       "outputs": ["**/*.js", "!src/**/*.js", "!test/*.js"]
     },
-    "test:format": {
+    "//#test:format": {
       "inputs": ["**/*.{js,ts,md,json,yml,json5}"],
       "outputs": []
     },

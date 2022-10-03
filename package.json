@@ -12,7 +12,7 @@
     "ac": "all-contributors",
     "build": "turbo run build --filter=\"./packages/*\"",
     "cs": "changeset",
-    "format": "yarn test:format --write",
+    "format": "test:format --write",
     "test:format": "prettier \"**/*.{js,ts,md,yml,json,json5}\" --check",
     "publish-ci": "changeset publish",
     "postinstall": "husky install",
