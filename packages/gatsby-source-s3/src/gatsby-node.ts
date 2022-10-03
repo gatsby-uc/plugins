@@ -1,27 +1,27 @@
 import { createRemoteFileNode } from "gatsby-source-filesystem";
 import AWS from "aws-sdk";
 
-import type { CreateNodeArgs, SourceNodesArgs, CreateSchemaCustomizationArgs } from "gatsby";
+import type { CreateNodeArgs, GatsbyNode, PluginOptions } from "gatsby";
 import type { ClientApiVersions } from "aws-sdk/clients/acm";
 import type { ConfigurationServicePlaceholders } from "aws-sdk/lib/config_service_placeholders";
 import type { ConfigurationOptions } from "aws-sdk";
 
 const isImage = (key: string): boolean => /\.(jpe?g|png|webp|tiff?)$/i.test(key);
 
-type pluginOptionsType = {
+interface PluginOptionsType extends PluginOptions {
   aws: ConfigurationOptions & ConfigurationServicePlaceholders & ClientApiVersions;
   buckets: string[];
   expiration: number;
-};
+}
 
 type ObjectType = AWS.S3.Object & { Bucket: string };
 
 type NodeType = ObjectType & { url: string; [key: string]: string };
 
 // source all objects from s3
-export async function sourceNodes(
-  { actions: { createNode }, createNodeId, createContentDigest, reporter }: SourceNodesArgs,
-  pluginOptions: pluginOptionsType
+export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
+  { actions: { createNode }, createNodeId, createContentDigest, reporter },
+  pluginOptions: PluginOptionsType
 ) {
   const { aws: awsConfig, buckets, expiration = 900 } = pluginOptions;
 
@@ -33,41 +33,44 @@ export async function sourceNodes(
 
   // get objects
   const getS3ListObjects = async (params: { Bucket: string; ContinuationToken?: string }) => {
-    return await s3
-      .listObjectsV2(params)
-      .promise()
-      .catch((error) => {
-        reporter.error(`Error listing S3 objects on bucket "${params.Bucket}": ${error}`);
-      });
+    return await s3.listObjectsV2(params).promise();
   };
 
   const listAllS3Objects = async (bucket: string) => {
     const allS3Objects: ObjectType[] = [];
 
-    const data = await getS3ListObjects({ Bucket: bucket });
-
-    if (data && data.Contents) {
-      data.Contents.forEach((object) => {
-        allS3Objects.push({ ...object, Bucket: bucket });
-      });
-    } else {
-      reporter.error(`Error processing objects from bucket "${bucket}". Is it empty?`);
-    }
-
-    let nextToken = data && data.IsTruncated && data.NextContinuationToken;
-
-    while (nextToken) {
-      const data = await getS3ListObjects({
-        Bucket: bucket,
-        ContinuationToken: nextToken,
-      });
+    try {
+      const data = await getS3ListObjects({ Bucket: bucket });
 
       if (data && data.Contents) {
         data.Contents.forEach((object) => {
           allS3Objects.push({ ...object, Bucket: bucket });
         });
+      } else {
+        reporter.error(
+          `Error processing objects from bucket "${bucket}". Is it empty?`,
+          new Error("No object in Bucket"),
+          "gatsby-source-s3"
+        );
       }
-      nextToken = data && data.IsTruncated && data.NextContinuationToken;
+
+      let nextToken = data && data.IsTruncated && data.NextContinuationToken;
+
+      while (nextToken) {
+        const data = await getS3ListObjects({
+          Bucket: bucket,
+          ContinuationToken: nextToken,
+        });
+
+        if (data && data.Contents) {
+          data.Contents.forEach((object) => {
+            allS3Objects.push({ ...object, Bucket: bucket });
+          });
+        }
+        nextToken = data && data.IsTruncated && data.NextContinuationToken;
+      }
+    } catch (error: unknown) {
+      reporter.panicOnBuild(`Error listing S3 objects on bucket "${bucket}"`, error as Error);
     }
 
     return allS3Objects;
@@ -108,9 +111,9 @@ export async function sourceNodes(
   } catch (error) {
     reporter.error(`Error sourcing nodes: ${error}`);
   }
-}
+};
 
-export async function onCreateNode({
+export const onCreateNode: GatsbyNode["onCreateNode"] = async function ({
   node,
   actions: { createNode, createNodeField },
   cache,
@@ -136,12 +139,18 @@ export async function onCreateNode({
       reporter.error(`Error creating file node for S3 object key "${node.Key}": ${error}`);
     }
   }
-}
+};
 
-export async function createSchemaCustomization({ actions }: CreateSchemaCustomizationArgs) {
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async function ({
+  actions,
+}) {
   actions.createTypes(`
     type S3Object implements Node {
+      Key: String!
+      Bucket: String!
+      LastModified: Date! @dateformat
+      Size: Int!
       localFile: File @link(from: "fields.localFile")
     }
   `);
-}
+};
