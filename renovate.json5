@@ -40,6 +40,12 @@
       semanticCommitScope: "integration-tests",
       matchUpdateTypes: ["minor", "patch"],
     },
+    {
+      groupName: "browserlist/caniuse-lite",
+      packageNames: ["caniuse-lite"],
+      rangeStrategy: "update-lockfile",
+      groupSlug: "caniuse-lite",
+    },
   ],
   semanticCommits: "enabled",
   semanticCommitType: "chore",
