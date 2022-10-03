@@ -1,44 +1,7 @@
-const { serveGatsby } = require("../../plugins/gatsby");
-
-const { ConfigKeyEnum, setConfig, getServerConfig } = require("../../utils/config");
-
-const { createCliConfig, createFastifyInstance } = require("../__utils__/config");
-
-jest.mock("../../utils/constants", () => ({
-  ...jest.requireActual("../../utils/constants"),
-  PATH_TO_FUNCTIONS: "../../integration-tests/plugin-fastify/.cache/functions/",
-  PATH_TO_PUBLIC: "src/__tests__/__files__/public",
-  PATH_TO_CACHE: "../../integration-tests/plugin-fastify/.cache",
-  CONFIG_FILE_PATH: "../../integration-tests/plugin-fastify/.cache",
-}));
-
-jest.setTimeout(10000);
-
-let globalFastify = null;
-
 describe(`Test Gatsby DSG/SSR Routes`, () => {
-  beforeAll(() => {
-    setConfig(
-      ConfigKeyEnum.CLI,
-      createCliConfig({
-        port: 3000,
-        host: "127.0.0.1",
-        logLevel: "fatal",
-        open: false,
-      })
-    );
-
-    setConfig(ConfigKeyEnum.SERVER, getServerConfig());
-
-    return createFastifyInstance(serveGatsby).then((fastify) => {
-      globalFastify = fastify;
-      return Promise.resolve();
-    });
-  });
-
   describe("DSG", () => {
     it(`Should serve DSG route HTML no slash`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/generated/page-6",
         method: "GET",
       });
@@ -50,7 +13,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should serve DSG route HTML with slash`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/generated/page-6/",
         method: "GET",
       });
@@ -62,7 +25,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should serve DSG route "page-data.json"`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/page-data/generated/page-6/page-data.json",
         method: "GET",
       });
@@ -76,7 +39,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
   describe("SSR", () => {
     it(`Should serve SSR route HTML no slash`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/ssr",
         method: "GET",
       });
@@ -88,7 +51,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should serve SSR route HTML with slash`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/ssr/",
         method: "GET",
       });
@@ -100,7 +63,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should serve SSR route "page-data.json"`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/page-data/ssr/page-data.json",
         method: "GET",
       });
@@ -112,7 +75,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should serve SSR route "page-data.json" with custom headers`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/page-data/ssr/page-data.json",
         method: "GET",
       });
@@ -122,7 +85,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should throw 500 error on exception when fetching server data`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/ssrBad",
         method: "GET",
       });
@@ -132,7 +95,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should Add custom headers to SSR routes`, async () => {
-      const response = await globalFastify.inject({
+      const response = await fastify.inject({
         url: "/ssr",
         method: "GET",
       });
@@ -143,7 +106,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     });
 
     it(`Should serve SSR page from a fallbackRoute`, async () => {
-      const meaningfulResponse = await globalFastify.inject({
+      const meaningfulResponse = await fastify.inject({
         url: "/ssr/42",
         method: "GET",
       });
@@ -152,7 +115,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       expect(meaningfulResponse.headers["x-gatsby-fastify"]).toContain("SSR");
       expect(meaningfulResponse.payload).toContain("meaning of life");
 
-      const meaninglessResponse = await globalFastify.inject({
+      const meaninglessResponse = await fastify.inject({
         url: "/ssr/43",
         method: "GET",
       });
@@ -164,7 +127,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   it(`Should 400 if request does not accept "text/html" on DSG/SSR route`, async () => {
-    const response = await globalFastify.inject({
+    const response = await fastify.inject({
       url: "/ssr",
       method: "GET",
       headers: {
@@ -176,7 +139,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   it(`Should throw 404 if bad /page-data/route`, async () => {
-    const response = await globalFastify.inject({
+    const response = await fastify.inject({
       url: "/page-data/fsdfsd/page-data.json",
       method: "GET",
     });
@@ -185,7 +148,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   it(`Should throw returned status code from getServer Data for HTML`, async () => {
-    const response = await globalFastify.inject({
+    const response = await fastify.inject({
       url: "/ssr403",
       method: "GET",
     });
@@ -194,7 +157,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   it(`Should throw returned status code from getServer Data for page-data.json`, async () => {
-    const response = await globalFastify.inject({
+    const response = await fastify.inject({
       url: "/page-data/ssr403/page-data.json",
       method: "GET",
     });
@@ -203,7 +166,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   it(`Should return route correctly when queryparams exist`, async () => {
-    const reqponse = await globalFastify.inject({
+    const reqponse = await fastify.inject({
       url: "/ssr?test=test",
       method: "GET",
     });

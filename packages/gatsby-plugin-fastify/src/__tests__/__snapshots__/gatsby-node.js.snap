@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Gatsby Node API Should Build Config 1`] = `
-Object {
-  "clientSideRoutes": Array [
-    Object {
+{
+  "clientSideRoutes": [
+    {
       "matchPath": "/app/*",
       "path": "/app/[...]/",
     },
   ],
   "fakeOption": "fakeValue",
-  "functions": Array [
-    Object {
+  "functions": [
+    {
       "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/.cache/functions/splat/:splat.js",
       "functionRoute": "splat/:splat",
       "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/src/api/splat/:splat.js",
@@ -18,7 +18,7 @@ Object {
       "pluginName": "default-site-plugin",
       "relativeCompiledFilePath": "splat/:splat.js",
     },
-    Object {
+    {
       "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/.cache/functions/test.js",
       "functionRoute": "test",
       "originalAbsoluteFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/src/api/test.js",
@@ -28,23 +28,23 @@ Object {
     },
   ],
   "prefix": "/test",
-  "proxies": Array [],
-  "redirects": Array [
-    Object {
+  "proxies": [],
+  "redirects": [
+    {
       "fromPath": "/perm-redirect",
       "ignoreCase": true,
       "isPermanent": true,
       "redirectInBrowser": false,
       "toPath": "/posts/page-1",
     },
-    Object {
+    {
       "fromPath": "/temp-redirect",
       "ignoreCase": true,
       "isPermanent": false,
       "redirectInBrowser": false,
       "toPath": "/posts/page-2",
     },
-    Object {
+    {
       "fromPath": "/alt-redirect",
       "ignoreCase": true,
       "isPermanent": false,
@@ -53,12 +53,12 @@ Object {
       "toPath": "/posts/page-3",
     },
   ],
-  "serverSideRoutes": Array [
-    Object {
+  "serverSideRoutes": [
+    {
       "mode": "SSR",
       "path": "/ssr",
     },
-    Object {
+    {
       "mode": "DSG",
       "path": "/my/dsg/path",
     },
