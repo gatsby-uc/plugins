@@ -12,7 +12,7 @@ export async function getServerSideRoutes(pageData: PluginData) {
       const { path, mode, matchPath } = page;
 
       routes.push({
-        path: formatMatchPath(matchPath) ?? path,
+        path: matchPath ? formatMatchPath(matchPath) : path,
         mode,
       });
     }

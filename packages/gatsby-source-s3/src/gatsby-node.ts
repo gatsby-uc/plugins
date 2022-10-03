@@ -116,7 +116,6 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
 export const onCreateNode: GatsbyNode["onCreateNode"] = async function ({
   node,
   actions: { createNode, createNodeField },
-  store,
   cache,
   reporter,
   createNodeId,

@@ -1,9 +1,10 @@
-import { IRedirect } from "gatsby/dist/redux/types";
+import type { Store } from "gatsby";
+import type { IRedirect } from "gatsby/dist/redux/types";
 
 export type GatsbyFastifyProxy = { toPath: string; fromPath: string };
 
-export function getProxiesAndRedirects(store) {
-  const { redirects: proxiesAndRedirects } = store.getState();
+export function getProxiesAndRedirects(store: Store) {
+  const { redirects: proxiesAndRedirects }: { redirects: IRedirect[] } = store.getState();
 
   return proxiesAndRedirects.reduce(
     (acc, curr) => {

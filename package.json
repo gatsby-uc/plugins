@@ -14,6 +14,7 @@
     "cs": "yarn changeset",
     "format": "yarn test:format --write",
     "test:format": "yarn prettier \"**/*.{js,ts,md,json,yml,json,json5}\" --check",
+    "test:types": "yarn tsc",
     "publish-ci": "yarn build && yarn changeset publish",
     "postinstall": "yarn husky install",
     "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
@@ -21,10 +22,12 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
+    "@tsconfig/node16": "^1.0.3",
     "all-contributors-cli": "^6.20.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
   },
   "packageManager": "yarn@3.2.3",
   "lint-staged": {

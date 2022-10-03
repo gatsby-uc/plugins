@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-fastify",
   "description": "Gatsby plugin for integration serving gatsby on Node.js using Fastify.",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -49,10 +49,12 @@
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.0",
+    "@types/connect": "^3.4.35",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.5.2",
     "@types/mime": "^3.0.1",
     "@types/node": "^14.18.28",
+    "@types/picomatch": "^2.3.0",
     "babel-jest": "^27.5.1",
     "babel-preset-gatsby-package": "^2.22.0",
     "cross-env": "^7.0.3",

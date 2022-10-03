@@ -4731,6 +4731,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/node16@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@tsconfig/node16@npm:1.0.3"
+  checksum: 3a8b657dd047495b7ad23437d6afd20297ce90380ff0bdee93fc7d39a900dbd8d9e26e53ff6b465e7967ce2adf0b218782590ce9013285121e6a5928fbd6819f
+  languageName: node
+  linkType: hard
+
 "@turist/fetch@npm:^7.2.0":
   version: 7.2.0
   resolution: "@turist/fetch@npm:7.2.0"
@@ -4820,6 +4827,15 @@ __metadata:
   version: 2.1.1
   resolution: "@types/configstore@npm:2.1.1"
   checksum: 4f2c93072a509ceeda9b5ee7ad445f2f6381ef2293c1d36fe2ba1e93fc11cb645b2437c268dc0a47d35b556557a0cef62870400d4b3cd401c2af121501556805
+  languageName: node
+  linkType: hard
+
+"@types/connect@npm:^3.4.35":
+  version: 3.4.35
+  resolution: "@types/connect@npm:3.4.35"
+  dependencies:
+    "@types/node": "*"
+  checksum: fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
   languageName: node
   linkType: hard
 
@@ -5123,6 +5139,13 @@ __metadata:
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
   checksum: fd6bce2b674b6efc3db4c7c3d336bd70c90838e8439de639b909ce22f3720d21344f52427f1d9e57b265fcb7f6c018699b99e5e0c208a1a4823014269a6bf35b
+  languageName: node
+  linkType: hard
+
+"@types/picomatch@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@types/picomatch@npm:2.3.0"
+  checksum: dde9572b6ca775185bd27a04ab050961f3e59b51863b1883669dcbf010aab394037af201ad9aa89373d9141cf1f5ba1f81266d3af09dfca5879298c128af928d
   languageName: node
   linkType: hard
 
@@ -10975,10 +10998,12 @@ __metadata:
     "@fastify/http-proxy": ^8.2.2
     "@fastify/middie": ^8.0.0
     "@fastify/static": ^6.5.0
+    "@types/connect": ^3.4.35
     "@types/fs-extra": ^9.0.13
     "@types/jest": ^27.5.2
     "@types/mime": ^3.0.1
     "@types/node": ^14.18.28
+    "@types/picomatch": ^2.3.0
     babel-jest: ^27.5.1
     babel-preset-gatsby-package: ^2.22.0
     cross-env: ^7.0.3
@@ -16431,10 +16456,12 @@ __metadata:
   dependencies:
     "@changesets/changelog-github": ^0.4.6
     "@changesets/cli": ^2.24.4
+    "@tsconfig/node16": ^1.0.3
     all-contributors-cli: ^6.20.0
     husky: ^8.0.1
     lint-staged: ^13.0.3
     prettier: ^2.7.1
+    typescript: ^4.8.4
   languageName: unknown
   linkType: soft
 
@@ -19994,6 +20021,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^4.8.4":
+  version: 4.8.4
+  resolution: "typescript@npm:4.8.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 3e4f061658e0c8f36c820802fa809e0fd812b85687a9a2f5430bc3d0368e37d1c9605c3ce9b39df9a05af2ece67b1d844f9f6ea8ff42819f13bcb80f85629af0
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@^3.8.3#~builtin<compat/typescript>":
   version: 3.9.10
   resolution: "typescript@patch:typescript@npm%3A3.9.10#~builtin<compat/typescript>::version=3.9.10&hash=a1c5e5"
@@ -20011,6 +20048,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 5cb0f02f414f5405f4b0e7ee1fd7fa9177b6a8783c9017b6cad85f56ce4c4f93e0e6f2ce37e863cb597d44227cd009474c9fbd85bf7a50004e5557426cb58079
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.8.4#~builtin<compat/typescript>":
+  version: 4.8.4
+  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=a1c5e5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
   languageName: node
   linkType: hard
 
