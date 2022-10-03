@@ -39,6 +39,7 @@
       matchPaths: ["integration-tests/**"],
       groupSlug: "integration-test-deps",
       semanticCommitScope: "integration-tests",
+      additionalBranchPrefix: "",
       matchUpdateTypes: ["minor", "patch"],
     },
   ],
