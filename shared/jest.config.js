@@ -1,5 +1,6 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
+console.log(`is this GitHub Actions? ${process.env.GITHUB_ACTIONS}`);
 
 module.exports = {
   // Automatically clear mock calls and instances between every test
