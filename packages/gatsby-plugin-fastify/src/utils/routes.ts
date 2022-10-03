@@ -8,3 +8,7 @@ export function formatMatchPath(matchPath?: string): string | null {
   }
   return matchPath.replace(/\/\*$/, "*");
 }
+
+export function removeQueryParmsFromUrl(url: string) {
+  return url.split("?", 2)[0];
+}
