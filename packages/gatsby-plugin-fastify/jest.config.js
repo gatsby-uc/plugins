@@ -23,9 +23,4 @@ module.exports = {
   coveragePathIgnorePatterns: ["/query-engine/", "/page-ssr/"],
   // The test environment that will be used for testing
   testEnvironment: `node`,
-  moduleNameMapper: {
-    "^gatsby-page-utils/(.*)$": `gatsby-page-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
-    "^gatsby-core-utils/(.*)$": `gatsby-core-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
-    "^gatsby-plugin-utils/(.*)$": `gatsby-plugin-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
-  },
 };
