@@ -38,6 +38,21 @@ jobs:
 
       - name: Format source code
         run: yarn test:format
+
+  check_types:
+    name: Validate types with TypeScript
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: ./.github/actions/cache-restore
+
+      - name: Format source code
+        run: yarn test:types
+
   run-tests:
     name: Run package tests on (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
