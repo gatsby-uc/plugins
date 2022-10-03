@@ -91,7 +91,6 @@ describe(`Test Gatsby Server`, () => {
         method: "GET",
       });
 
-      console.log(noSlashResponse.statusCode, slashResponse.statusCode);
       expect(noSlashResponse.statusCode).toEqual(200);
       expect(slashResponse.statusCode).toEqual(200);
       expect(noSlashResponse.payload).toEqual(slashResponse.payload);
