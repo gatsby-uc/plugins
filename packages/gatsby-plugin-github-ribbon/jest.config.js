@@ -13,10 +13,6 @@ module.exports = {
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [`node_modules`],
 
-  moduleNameMapper: {
-    "^gatsby-page-utils/(.*)$": `gatsby-page-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
-  },
-
   // The test environment that will be used for testing
   testEnvironment: `node`,
 };
