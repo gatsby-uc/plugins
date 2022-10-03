@@ -113,7 +113,6 @@ export async function sourceNodes(
 export async function onCreateNode({
   node,
   actions: { createNode, createNodeField },
-  store,
   cache,
   reporter,
   createNodeId,
@@ -124,9 +123,7 @@ export async function onCreateNode({
       const imageFile = await createRemoteFileNode({
         url: node.url,
         parentNodeId: node.id,
-        store,
         cache,
-        reporter,
         createNode,
         createNodeId,
       });

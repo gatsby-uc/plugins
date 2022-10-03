@@ -4,5 +4,5 @@ import type { FastifyPluginAsync } from "fastify";
 
 export const handleImageTransforms: FastifyPluginAsync = async (fastify) => {
   fastify.log.debug(`📷  Handling file/image transforms aka "Gatsby Image CDN"`);
-  fastify.use(addImageRoutes);
+  addImageRoutes(fastify);
 };
