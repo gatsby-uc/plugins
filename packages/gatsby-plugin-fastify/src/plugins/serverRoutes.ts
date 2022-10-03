@@ -81,7 +81,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
           reply.header(...NEVER_CACHE_HEADER);
           return reply.send(pageData);
-        } catch (e) {
+        } catch (e: any) {
           throw new Error(`Error fetching page data for ${path}: ${e.message}`);
         }
       });
@@ -128,7 +128,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
 
             return reply.type("text/html").send(results);
-          } catch (e) {
+          } catch (e: any) {
             throw new Error(`Error fetching page HTML for ${path}: ${e.message}`);
           }
         } else {
