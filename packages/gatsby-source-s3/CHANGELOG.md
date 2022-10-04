@@ -1,5 +1,13 @@
 # gatsby-source-s3
 
+## 3.1.3
+
+### Patch Changes
+
+- [#260](https://github.com/gatsby-uc/plugins/pull/260) [`7c07006`](https://github.com/gatsby-uc/plugins/commit/7c07006c0464a4219d89f0885d5811d01d8459ba) Thanks [@moonmeister](https://github.com/moonmeister)! - Adding Type checking for all TS files and fixing type issues.
+
+- [#262](https://github.com/gatsby-uc/plugins/pull/262) [`4cec98e`](https://github.com/gatsby-uc/plugins/commit/4cec98e924efe03fc0c3cc890bcdd281c05c99b9) Thanks [@moonmeister](https://github.com/moonmeister)! - General cleanup of types. Implemented complete types for `createSchemaCustomization` to prevent errors related to querying bucket items even if none excist. Improved error handling, plugin will now break build if it cannot connect to specified buckets.
+
 ## 3.1.2
 
 ### Patch Changes

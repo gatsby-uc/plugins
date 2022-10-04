@@ -1,5 +1,15 @@
 # gatsby-plugin-fastify
 
+## 0.9.4
+
+### Patch Changes
+
+- [#266](https://github.com/gatsby-uc/plugins/pull/266) [`7792f9f`](https://github.com/gatsby-uc/plugins/commit/7792f9f0e6b9aa4148bdbd6fb3513c7843177be6) Thanks [@moonmeister](https://github.com/moonmeister)! - docs: Change docs to correctly direct user to ENV vars for changing host address. Solves #265
+
+- [#260](https://github.com/gatsby-uc/plugins/pull/260) [`7c07006`](https://github.com/gatsby-uc/plugins/commit/7c07006c0464a4219d89f0885d5811d01d8459ba) Thanks [@moonmeister](https://github.com/moonmeister)! - Adding Type checking for all TS files and fixing type issues.
+
+- [#249](https://github.com/gatsby-uc/plugins/pull/249) [`b11a1b0`](https://github.com/gatsby-uc/plugins/commit/b11a1b04ac3cb7b9304545af82f2ff1aae5b04bd) Thanks [@renovate](https://github.com/apps/renovate)! - Update testing configs and implementation for speed and Jest 29 update.
+
 ## 0.9.3
 
 ### Patch Changes
