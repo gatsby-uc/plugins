@@ -1,5 +1,11 @@
 # gatsby-source-s3
 
+## 3.1.4
+
+### Patch Changes
+
+- [`d754500`](https://github.com/gatsby-uc/plugins/commit/d7545002adf961b1d398703cd2a9b2d45a7d2dbd) Thanks [@moonmeister](https://github.com/moonmeister)! - FIX: npm deploy wasn't shipping built code. Opps. Should be all good now.
+
 ## 3.1.3
 
 ### Patch Changes
