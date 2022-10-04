@@ -1,5 +1,11 @@
 # gatsby-plugin-github-ribbon
 
+## 1.4.1
+
+### Patch Changes
+
+- [#249](https://github.com/gatsby-uc/plugins/pull/249) [`b11a1b0`](https://github.com/gatsby-uc/plugins/commit/b11a1b04ac3cb7b9304545af82f2ff1aae5b04bd) Thanks [@renovate](https://github.com/apps/renovate)! - Update testing configs and implementation for speed and Jest 29 update.
+
 ## 1.4.0
 
 ### Minor Changes

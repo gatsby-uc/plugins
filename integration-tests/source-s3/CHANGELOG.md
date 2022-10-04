@@ -1,5 +1,12 @@
 # source-s3
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`7c07006`](https://github.com/gatsby-uc/plugins/commit/7c07006c0464a4219d89f0885d5811d01d8459ba), [`4cec98e`](https://github.com/gatsby-uc/plugins/commit/4cec98e924efe03fc0c3cc890bcdd281c05c99b9)]:
+  - gatsby-source-s3@3.1.3
+
 ## 1.0.3
 
 ### Patch Changes
