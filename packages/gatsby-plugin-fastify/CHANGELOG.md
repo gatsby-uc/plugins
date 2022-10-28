@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.9.5
+
+### Patch Changes
+
+- [#272](https://github.com/gatsby-uc/plugins/pull/272) [`95dcabf`](https://github.com/gatsby-uc/plugins/commit/95dcabf03992ca89382f35c1d4a54938ef3066e7) Thanks [@moonmeister](https://github.com/moonmeister)! - Fix: Correctly handle splat and wildcard routes for redirects as discussed in #271
+
 ## 0.9.4
 
 ### Patch Changes
