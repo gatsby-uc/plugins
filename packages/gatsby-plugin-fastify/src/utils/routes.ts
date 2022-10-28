@@ -9,3 +9,16 @@ export function formatMatchPath(matchPath: string): string {
 export function removeQueryParmsFromUrl(url: string) {
   return url.split("?", 2)[0];
 }
+
+export function buildUrlFromParams(path: string, data: { [s: string]: string } = {}) {
+  return path.replace(/:(\w+)|(\*)/gi, function (_match, p1, p2) {
+    let lookupString = p1 ?? p2;
+    let replacement = data[lookupString];
+
+    if (!replacement) {
+      throw new Error("Could not find url parameter " + lookupString + " in passed data object");
+    }
+
+    return replacement;
+  });
+}

@@ -157,6 +157,62 @@ createRedirect({
 
 > The Gatsby docs note ending the to and from paths with `*`. This is not allowed in this plugin. If included they are stripped for compatibility.
 
+### Gatsby Redirects
+
+Our implementation supports several examples as shown by [Gatsby Docs](https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/).
+
+Basic, splat, wildcard, and Querystring splat redirects should all work. e.g. :
+
+```js
+createRedirect({
+  fromPath: "/perm-redirect",
+  toPath: "/posts/page-1",
+});
+createRedirect({
+  fromPath: "/redirect/:letter", // `/redirect/a`
+  toPath: "/app/:letter", // `/app/a`
+});
+createRedirect({
+  fromPath: "/redirect-query?example=:example", // `/redirect-query?example=test`
+  toPath: "/app/:example", // `/app/test`
+});
+createRedirect({
+  fromPath: "/redirect-query-query?example=:example", // `/redirect-query-query?example=test`
+  fromPath: "/redirect-query-query?example=:example", // `/app?example=test`
+  toPath: "/app?example=:example",
+});
+createRedirect({
+  fromPath: "/redirect-all/*", // `/redirect-all/example`
+  toPath: "/app/*", // `/app/example`
+});
+createRedirect({
+  fromPath: "/redirect-all2/*", // `/redirect-all2/abc/124` | `/redirect-all2/abc/152`
+  toPath: "/app/", // `/app/`
+});
+```
+
+Due to router diferences we have to handle non-splat style query string redirects specially. But they cannot be combined with splat or wildcard routes e.g.
+
+```js
+// This works
+createRedirect({
+  fromPath: "/redirect-query-specific?id=2",
+  toPath: "/file.pdf",
+});
+
+// These worn't work
+createRedirect({
+  fromPath: "/redirect-query-specific?id=2&example=:example",
+  toPath: "/:example/file.pdf",
+});
+createRedirect({
+  fromPath: "/redirect-query-specific/*?id=2",
+  toPath: "/*file.pdf",
+});
+```
+
+> **Note:** While These combos don't currently work it's not imposible to implement such a feature. If you need this feature please consider contributing.
+
 ### Gatsby Functions
 
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
