@@ -4170,21 +4170,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bundle-stats/plugin-webpack-filter@npm:4.0.6":
-  version: 4.0.6
-  resolution: "@bundle-stats/plugin-webpack-filter@npm:4.0.6"
+"@bundle-stats/plugin-webpack-filter@npm:4.1.0":
+  version: 4.1.0
+  resolution: "@bundle-stats/plugin-webpack-filter@npm:4.1.0"
   peerDependencies:
     core-js: ^3.0.0
-  checksum: 12ce87ec393674d115e7c64778ecb807e2e79daf0c98bdce886c02ec32c3e065baf699177d728600cc1966a9c4dc75fece7ace66d3d693706fbd822c4917edd7
+  checksum: 397d4fbd4e0e2d8dc8e2657dd17de9ebb1111413284dee525a18825684ba5b63668118d23eb9fa0318634e65e5042b996bc5fcc3abc785b6166f42bd4968b1b4
   languageName: node
   linkType: hard
 
-"@bundle-stats/plugin-webpack-validate@npm:4.0.6":
-  version: 4.0.6
-  resolution: "@bundle-stats/plugin-webpack-validate@npm:4.0.6"
+"@bundle-stats/plugin-webpack-validate@npm:4.1.0":
+  version: 4.1.0
+  resolution: "@bundle-stats/plugin-webpack-validate@npm:4.1.0"
   dependencies:
-    superstruct: 0.16.0
-  checksum: 9f5e83402e23708639a2856bab5c77bc7194a5a949cb8dc94748122a4cea1899e431dbb3c81245b6ac46e77ae8e5ae8f69aefe314b144093ca51b4e76bf76f57
+    lodash: 4.17.21
+    superstruct: 0.16.5
+  checksum: 90495083154ab55be5ed54ee8a3ef2725f7edcd9d55e8da4199bc7018f64bfe47411ad502f76f63c92b41876cfa92f331b42882a0f006a961fa85b2ed0017a20
   languageName: node
   linkType: hard
 
@@ -6820,26 +6821,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@relative-ci/agent@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@relative-ci/agent@npm:4.1.0"
+"@relative-ci/agent@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@relative-ci/agent@npm:4.1.1"
   dependencies:
-    "@bundle-stats/plugin-webpack-filter": 4.0.6
-    "@bundle-stats/plugin-webpack-validate": 4.0.6
-    core-js: 3.25.0
+    "@bundle-stats/plugin-webpack-filter": 4.1.0
+    "@bundle-stats/plugin-webpack-validate": 4.1.0
+    core-js: 3.25.5
     cosmiconfig: 7.0.1
     debug: 4.3.4
-    dotenv: 16.0.2
+    dotenv: 16.0.3
     env-ci: 7.3.0
     fs-extra: 10.1.0
     isomorphic-fetch: 3.0.0
     lodash: 4.17.21
-    yargs: 17.5.1
+    yargs: 17.6.0
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0-rc.1
   bin:
     relative-ci-agent: bin/index.js
-  checksum: 7a20710948370e0509643333f902321a64a9da916e51ba80fbb7c0425865d66c340e8f2ab780c1a74be1a136e09c173ba4faa46e16b66425b3836e02fee11584
+  checksum: 77de224a2da8cc05ae3a03434f1584868beb2c4297c05c7269c5223ef2179932f6af7f41e79d594a449e3658fec2ff7b89a83051d04d69ab8501a6377bbb63bb
   languageName: node
   linkType: hard
 
@@ -11049,10 +11050,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.25.0":
-  version: 3.25.0
-  resolution: "core-js@npm:3.25.0"
-  checksum: 5a72740bf5babaf2e6203da4c0e831a0b97c3fe6f21b4c1aa8601d3a927660a22128dd8f0e86ce84778c4e5372ab0fc03c7944afa7e215c7fb13b2c79d5d5504
+"core-js@npm:3.25.5":
+  version: 3.25.5
+  resolution: "core-js@npm:3.25.5"
+  checksum: 208b308c49bc022f90d4349d4c99802a73c9d55053976b3c529f10014c1e37845926defad8c519f2c7f71ea0acf18d2b323ab6aaee34dc85b4c4b3ced0623f3f
   languageName: node
   linkType: hard
 
@@ -12144,10 +12145,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:16.0.2":
-  version: 16.0.2
-  resolution: "dotenv@npm:16.0.2"
-  checksum: ca8f9ca2d67929c7771069f4c31b4e46b9932621009e658e5afd655dde2d69b77642bf36dbc9e72bc170523dfd908a9ee41c26f034c1fdc605ace3b1b4b10faf
+"dotenv@npm:16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
   languageName: node
   linkType: hard
 
@@ -14722,7 +14723,7 @@ __metadata:
   dependencies:
     "@babel/cli": ^7.19.3
     "@babel/core": ^7.19.6
-    "@relative-ci/agent": ^4.1.0
+    "@relative-ci/agent": ^4.1.1
     babel-preset-gatsby-package: ^2.24.0
     cross-env: ^7.0.3
   peerDependencies:
@@ -25225,10 +25226,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superstruct@npm:0.16.0":
-  version: 0.16.0
-  resolution: "superstruct@npm:0.16.0"
-  checksum: 1979c287f95f2a9dece537f74f5330b0b831965030fe025e2d52dfb3ecdf8974251371cc22d5cdf36960639b039687e5a236881f6ec7cf33d5c8fdc348f13a46
+"superstruct@npm:0.16.5":
+  version: 0.16.5
+  resolution: "superstruct@npm:0.16.5"
+  checksum: 9f843c38695b584a605ae9b028629de18a85bd0dca0e9449b4ab98bb7b9ac3d82599870acbab9fbd2ee454c6b187af7e61562e252dfadabd974191ab4ab2e3ce
   languageName: node
   linkType: hard
 
@@ -27125,18 +27126,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:17.5.1, yargs@npm:^17.1.1":
-  version: 17.5.1
-  resolution: "yargs@npm:17.5.1"
+"yargs@npm:17.6.0, yargs@npm:^17.3.1, yargs@npm:^17.6.0":
+  version: 17.6.0
+  resolution: "yargs@npm:17.6.0"
   dependencies:
-    cliui: ^7.0.2
+    cliui: ^8.0.1
     escalade: ^3.1.1
     get-caller-file: ^2.0.5
     require-directory: ^2.1.1
     string-width: ^4.2.3
     y18n: ^5.0.5
     yargs-parser: ^21.0.0
-  checksum: 00d58a2c052937fa044834313f07910fd0a115dec5ee35919e857eeee3736b21a4eafa8264535800ba8bac312991ce785ecb8a51f4d2cc8c4676d865af1cfbde
+  checksum: 604bdb4a6395a870540d2f3fea083c8e28441f12da8fd05b172b1e68480f00ed73d76be4a05fac19de9bf55ec7729b41e81cf555cccaed700aa192e4fff64872
   languageName: node
   linkType: hard
 
@@ -27159,18 +27160,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.3.1, yargs@npm:^17.6.0":
-  version: 17.6.0
-  resolution: "yargs@npm:17.6.0"
+"yargs@npm:^17.1.1":
+  version: 17.5.1
+  resolution: "yargs@npm:17.5.1"
   dependencies:
-    cliui: ^8.0.1
+    cliui: ^7.0.2
     escalade: ^3.1.1
     get-caller-file: ^2.0.5
     require-directory: ^2.1.1
     string-width: ^4.2.3
     y18n: ^5.0.5
     yargs-parser: ^21.0.0
-  checksum: 604bdb4a6395a870540d2f3fea083c8e28441f12da8fd05b172b1e68480f00ed73d76be4a05fac19de9bf55ec7729b41e81cf555cccaed700aa192e4fff64872
+  checksum: 00d58a2c052937fa044834313f07910fd0a115dec5ee35919e857eeee3736b21a4eafa8264535800ba8bac312991ce785ecb8a51f4d2cc8c4676d865af1cfbde
   languageName: node
   linkType: hard
 
