@@ -29,7 +29,8 @@
     },
     //Group Jest updates together
     {
-      matchPackageNames: ["@types/jest", "^jest"],
+      matchPackageNames: ["@types/jest"],
+      matchPackagePatterns: ["^jest"],
       matchUpdateTypes: ["digest", "patch", "minor", "major"],
       groupName: "jest monorepo",
       additionalBranchPrefix: "jest",
