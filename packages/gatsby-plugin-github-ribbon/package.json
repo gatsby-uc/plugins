@@ -31,10 +31,10 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.19.0",
-    "babel-jest": "^29.1.2",
-    "babel-preset-gatsby-package": "^2.22.0",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "babel-jest": "^29.2.2",
+    "babel-preset-gatsby-package": "^2.24.0",
     "cross-env": "^7.0.3",
     "gatsby": "^4.22.0",
     "jest": "^29.1.2"
