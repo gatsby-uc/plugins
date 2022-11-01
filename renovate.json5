@@ -16,7 +16,7 @@
     {
       groupName: "non-major dependency versions",
       matchUpdateTypes: ["minor", "patch"],
-      additionalBranchPrefix: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
+      additionalBranchPrefix: "{{#if parentDir}}packages{{else}}repo{{/if}}-",
     },
     // Role all babel related updates into 1 for a quiter life
     {
@@ -29,7 +29,7 @@
     },
     //Group Jest updates together
     {
-      matchPackageNames: ["@types/jest"],
+      matchPackageNames: ["@types/jest", "^jest"],
       matchUpdateTypes: ["digest", "patch", "minor", "major"],
       groupName: "jest monorepo",
     },
@@ -45,6 +45,6 @@
   ],
   semanticCommits: "enabled",
   semanticCommitType: "chore",
-  semanticCommitScope: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}",
+  semanticCommitScope: "{{#if parentDir}}packages{{else}}repo{{/if}}",
   ignoreDeps: ["node"],
 }
