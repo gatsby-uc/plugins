@@ -21,7 +21,7 @@
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "^19.0.4",
+    "@octokit/rest": "^19.0.5",
     "mime-types": "^2.1.35",
     "packagist-api-client": "^2.0.0"
   },
@@ -35,7 +35,7 @@
     "@babel/core": "^7.19.6",
     "babel-preset-gatsby-package": "^2.24.0",
     "cross-env": "^7.0.3",
-    "gatsby-source-filesystem": "^4.22.0"
+    "gatsby-source-filesystem": "^4.24.0"
   },
   "peerDependencies": {
     "gatsby": "^2.4.0 || ^3.0.0",
