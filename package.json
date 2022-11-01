@@ -42,7 +42,8 @@
   },
   "packageManager": "yarn@3.2.4",
   "lint-staged": {
-    "**/*.{js,ts,md,json,yml,json5}": "prettier --write"
+    "**/*.{js,ts,md,json,yml,json5}": "prettier --write",
+    "packages/**/*.{js,ts}": "eslint --fix"
   },
   "run-if-changed": {
     "renovate.json5": "yarn renovate-config-validator"
