@@ -32,6 +32,7 @@
       matchPackageNames: ["@types/jest", "^jest"],
       matchUpdateTypes: ["digest", "patch", "minor", "major"],
       groupName: "jest monorepo",
+      additionalBranchPrefix: "jest",
     },
     // Integration test updates don't require releases, so just role all into 1 to keep things quieter.
     {
