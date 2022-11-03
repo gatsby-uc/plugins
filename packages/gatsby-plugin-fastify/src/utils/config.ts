@@ -16,7 +16,7 @@ const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 
 export interface GatsbyFastifyPluginOptions extends PluginOptions {
   features: {
-    preloadLinks: { [key: string]: string[] };
+    earlyHints: boolean;
     reverseProxy: boolean | {};
     redirects: boolean;
     imageCdn: boolean;
@@ -28,6 +28,7 @@ export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];
+  preloadLinks: { [key: string]: string[] };
   proxies: GatsbyFastifyProxy[];
 }
 

@@ -6,11 +6,12 @@ import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
 import { handleReverseProxy } from "./reverseProxy";
 import { handleStatic } from "./static";
+import { handleEarlyHints } from "./earlyHintsHook";
 import { handle404 } from "./404";
 import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
-import fastifyEarlyHints from "fastify-early-hints";
+import fastifyEarlyHints from "@fastify/early-hints";
 import fastifyAccepts from "@fastify/accepts";
 import middiePlugin from "@fastify/middie";
 
@@ -19,23 +20,29 @@ import type { FastifyPluginAsync } from "fastify";
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
 
-  const { clientSideRoutes, serverSideRoutes, redirects, functions, proxies, features } =
-    serverConfig;
+  const {
+    clientSideRoutes,
+    serverSideRoutes,
+    redirects,
+    functions,
+    proxies,
+    features,
+    preloadLinks,
+  } = serverConfig;
 
   // Utils
   await fastify.register(fastifyAccepts);
   await fastify.register(implementUtilDecorators);
 
+  if (features?.earlyHints) {
+    await fastify.register(fastifyEarlyHints);
+    await fastify.register(handleEarlyHints, { preloadLinks });
+  }
   // Gatsby 500 - This must be registered before anything that wants to use it
   await fastify.register(handle500, {});
 
   // Gatsby Image CDN
   await fastify.register(middiePlugin).register(handleImageTransforms, {});
-
-  if (features?.preloadLinks) {
-    console.info(`Early hints enabled.`);
-    await fastify.register(fastifyEarlyHints);
-  }
 
   // Gatsby Functions
   await fastify.register(handleFunctions, {

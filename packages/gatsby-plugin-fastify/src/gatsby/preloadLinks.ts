@@ -6,16 +6,17 @@ import kebabHash from "kebab-hash";
 import { fixedPagePath } from "gatsby-core-utils";
 
 import type { IGatsbyState } from "gatsby/dist/redux/types";
-import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
 import type { AssetManifest, PluginData } from "../utils/plugin-data";
 import { COMMON_BUNDLES, PAGE_DATA_DIR } from "../utils/constants";
+import { GatsbyFastifyPluginOptions, GatsbyNodeServerConfig } from "../utils/config";
 
 export async function getPreloadLinks(
   pluginData: PluginData,
-  pluginOptions: GatsbyServerFeatureOptions,
-) {
-  const { earlyHints } = pluginOptions;
-  if (!earlyHints) {
+  pluginOptions: GatsbyFastifyPluginOptions
+): Promise<GatsbyNodeServerConfig["preloadLinks"]> {
+  const { features } = pluginOptions;
+
+  if (!features?.earlyHints) {
     return {};
   }
 
