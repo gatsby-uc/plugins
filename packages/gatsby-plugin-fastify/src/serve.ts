@@ -1,28 +1,44 @@
 import { serveGatsby } from "./plugins/gatsby";
 import Fastify from "fastify";
 import { getConfig } from "./utils/config";
-import open from "open";
 
-export function gatsbyServer() {
+export async function gatsbyServer() {
   const {
-    cli: { port, host, open: openBrowser },
+    cli: { port, host, logLevel },
     server: { prefix },
   } = getConfig();
 
-  const fastify = Fastify({ ignoreTrailingSlash: true });
-
-  console.info("Registered Gatsby @ ", prefix || "/");
-
-  fastify.register(serveGatsby);
-
-  fastify.listen(port, host, (err, listeningOn) => {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-
-    console.log(`listening @ ${listeningOn}`);
-
-    if (openBrowser) open(listeningOn);
+  const fastify = Fastify({
+    maxParamLength: 500,
+    ignoreTrailingSlash: true,
+    logger: {
+      level: logLevel,
+      transport:
+        process.env.NODE_ENV === "development"
+          ? {
+              target: "pino-pretty",
+              options: {
+                translateTime: "HH:MM:ss Z",
+                ignore: "pid,hostname",
+              },
+            }
+          : undefined,
+    },
+    disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });
+
+  fastify.log.info(`Logging Level set @ ${logLevel}`);
+  fastify.log.info(`Mounting Gatsby @ ${prefix || "/"}`);
+
+  try {
+    await fastify.register(serveGatsby, { prefix });
+
+    await fastify.listen({ port, host });
+  } catch (err) {
+    console.error(err);
+    fastify.log.fatal("Failed to start Fastify");
+    process.exit(1);
+  }
+
+  return fastify;
 }

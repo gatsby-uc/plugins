@@ -4,43 +4,76 @@ on:
     branches: [main]
 
 jobs:
+  setup:
+    name: Setup Dependencies
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14, 16]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: ./.github/actions/cache-restore
+        id: cache-node-modules
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+
   check_format:
-    if: ${{ !contains(github.actor, 'bot') }}
     name: Validate formating with Prettier
     runs-on: ubuntu-latest
+    needs: [setup]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: "yarn"
-
-      - name: Install dependencies
-        run: yarn install --immutable
+        uses: ./.github/actions/cache-restore
 
       - name: Format source code
-        run: yarn lint
-  test:
-    name: Run package tests
+        run: yarn test:format
+
+  check_types:
+    name: Validate types with TypeScript
     runs-on: ubuntu-latest
+    needs: [setup]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: "yarn"
+        uses: ./.github/actions/cache-restore
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Check Types
+        run: yarn test:types
+
+  run-tests:
+    name: Run package tests on (Node.js v${{ matrix.node }})
+    runs-on: ubuntu-latest
+    needs: [setup]
+    strategy:
+      matrix:
+        node: ["14", "16"]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js v${{ matrix.node }}
+        uses: ./.github/actions/cache-restore
+        with:
+          node-version: ${{ matrix.node }}
 
       - name: Build packages
         run: yarn build
+
+      - name: Set up S3 Server
+        uses: ./.github/actions/s3-test-server
 
       - name: Execute tests
         run: yarn test

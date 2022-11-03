@@ -1,0 +1,26 @@
+{
+  "name": "gatsby-source-supabase",
+  "version": "2.0.0",
+  "description": "Gatsby source plugin for building websites using Supabase as a data source",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "supabase"
+  ],
+  "contributors": [
+    "Alan Alickovic",
+    "Alex Moon <alex.jared.moon@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-source-supabase"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@supabase/supabase-js": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  }
+}

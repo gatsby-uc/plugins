@@ -1,40 +1,38 @@
-import { handle404 } from "./404";
-import { handleClientOnlyPaths } from "./clientPaths";
+import { handleClientOnlyRoutes } from "./clientRoutes";
+import { implementUtilDecorators } from "./decorators";
+import { handleServerRoutes } from "./serverRoutes";
+import { handleImageTransforms } from "./imageTransform";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
+import { handleReverseProxy } from "./reverseProxy";
 import { handleStatic } from "./static";
+import { handle404 } from "./404";
+import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
-import fastifyCompress from "fastify-compress";
 import fastifyEarlyHints from "fastify-early-hints";
+import fastifyAccepts from "@fastify/accepts";
+import middiePlugin from "@fastify/middie";
+
 import type { FastifyPluginAsync } from "fastify";
-import type { PluginOptions } from "gatsby";
 
-export interface GatsbyServerFeatureOptions extends PluginOptions {
-  compression: boolean;
-  earlyHints: boolean;
-}
+export const serveGatsby: FastifyPluginAsync = async (fastify) => {
+  const { server: serverConfig } = getConfig();
 
-export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async (fastify) => {
-  //@ts-ignore
-  const {
-    cli: { verbose },
-    server: serverConfig,
-  } = getConfig();
+  const { clientSideRoutes, serverSideRoutes, redirects, functions, proxies, features } =
+    serverConfig;
 
-  if (verbose) {
-    console.info("Starting server with config: ", serverConfig);
-  }
+  // Utils
+  await fastify.register(fastifyAccepts);
+  await fastify.register(implementUtilDecorators);
 
-  const { clientSideRoutes, redirects, compression, functions, earlyHints } = serverConfig;
+  // Gatsby 500 - This must be registered before anything that wants to use it
+  await fastify.register(handle500, {});
 
-  // Optimizations
-  if (compression) {
-    console.info(`Compression enabled.`);
-    await fastify.register(fastifyCompress, {});
-  }
+  // Gatsby Image CDN
+  await fastify.register(middiePlugin).register(handleImageTransforms, {});
 
-  if (earlyHints) {
+  if (features?.preloadLinks) {
     console.info(`Early hints enabled.`);
     await fastify.register(fastifyEarlyHints);
   }
@@ -44,18 +42,31 @@ export const serveGatsby: FastifyPluginAsync<GatsbyServerFeatureOptions> = async
     prefix: "/api/",
     functions,
   });
-  // Gatsby Static
 
+  // Gatsby Static
   await fastify.register(handleStatic, {});
 
   // Gatsby Client Only Routes
-
-  await fastify.register(handleClientOnlyPaths, {
+  await fastify.register(handleClientOnlyRoutes, {
     paths: clientSideRoutes,
   });
 
   // Gatsby Redirects
-  await fastify.register(handleRedirects, { redirects });
+  if (features?.redirects) {
+    await fastify.register(handleRedirects, { redirects });
+  } else {
+    fastify.log.warn("Redirects disabled.");
+  }
+
+  // Gatsby Reverse Proxy
+  if (features?.reverseProxy) {
+    await fastify.register(handleReverseProxy, { proxies });
+  } else {
+    fastify.log.warn("Reverse proxy disabled.");
+  }
+
+  // Gatsby DSG & SSR
+  await fastify.register(handleServerRoutes, { paths: serverSideRoutes });
 
   // Gatsby 404
   await fastify.register(handle404, {});

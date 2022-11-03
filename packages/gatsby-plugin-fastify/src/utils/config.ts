@@ -2,9 +2,11 @@ import { readJSONSync, existsSync } from "fs-extra";
 
 import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
 import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
-import type { GatsbyServerFeatureOptions } from "../plugins/gatsby";
+import type { PluginOptions } from "gatsby";
+import type { ServerSideRoute } from "../gatsby/serverRoutes";
+import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
 
-import { PathConfig } from "../plugins/clientPaths";
+import { PathConfig } from "../plugins/clientRoutes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
 import { buildPrefixer } from "./plugin-data";
 
@@ -12,12 +14,21 @@ let config: Partial<GfConfig> = {};
 
 const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 
-export interface GatsbyNodeServerConfig extends GatsbyServerFeatureOptions {
+export interface GatsbyFastifyPluginOptions extends PluginOptions {
+  features: {
+    preloadLinks: { [key: string]: string[] };
+    reverseProxy: boolean | {};
+    redirects: boolean;
+    imageCdn: boolean;
+  };
+}
+export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
+  serverSideRoutes: ServerSideRoute[];
   redirects: IRedirect[];
   prefix: string | undefined;
   functions: IGatsbyFunction[];
-  preloadLinks: { [key: string]: string[] };
+  proxies: GatsbyFastifyProxy[];
 }
 
 export type GfCliOptions = {
@@ -27,8 +38,8 @@ export type GfCliOptions = {
   h: string;
   open: boolean;
   o: boolean;
-  verbose: boolean;
-  v: boolean;
+  logLevel: string;
+  l: string;
 };
 
 export enum ConfigKeyEnum {
@@ -63,8 +74,7 @@ export function setConfig(key: ConfigKeyEnum, incomingConfig: GetConfigOptions<C
 export function getServerConfig(): GatsbyNodeServerConfig {
   const configPath = configPrefixer(CONFIG_FILE_NAME);
   if (!existsSync(configPath)) {
-    console.error("Unable to find config @ ", configPath);
-    throw Error("No Server config found, did you do a production Gatsby Build?");
+    throw Error(`No Server config found @ ${configPath}, did you do a production Gatsby Build?`);
   }
   return readJSONSync(configPath, { encoding: "utf8" });
 }

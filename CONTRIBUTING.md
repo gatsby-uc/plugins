@@ -1,6 +1,8 @@
 # Contributing
 
-Welcome! Submit a PR, answer questions, join the [Discord](discord.gg/wr9xhj9v).
+Welcome! Submit a PR, answer questions, join the [Discord](https://discord.gg/Qy2rwbHbwN).
+
+We have a monthly community meeting that is listed in the [Discord](https://discord.gg/Qy2rwbHbwN) server under events. The meeting is handled there in a voice channel. Anyone is welcome to come, listen, and join the conversation. The meeting is usually held on the last Tuesday of the month.
 
 ## Contributing a plugin
 
@@ -22,7 +24,7 @@ The reality is we'll solve these problems as they come up. This is a community, 
 
 ### Your Access
 
-When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit your on plugin.
+When you contribute a plugin you will be added to the `gatsby-uc/maintainers` team so you'll retain permissions to merge PRs and edit your plugin.
 
 ### Licence
 
@@ -64,7 +66,7 @@ Maybe this will get automated so all PR authors/contributors get added per plugi
 
 ### To build or not to build
 
-Not all packages NEED to be run through Babel. Any project with a non-insignificant amount of code should most likely be transpiled for compatability reasons. `babel-preset-gatsby-package` makes this easy but this does add a slight bit of maintenance over head. I'd default to adding transpilation to a package over not. Here is the minimal config for transpiling that a package will need.
+Not all packages **need** to be run through Babel. Any project with a non-insignificant amount of code should most likely be transpiled for compatability reasons. `babel-preset-gatsby-package` makes this easy but this does add a slight bit of maintenance overhead. Here is the minimal config for transpiling that a package will need.
 
 ```json
 {
@@ -106,3 +108,9 @@ Remove package specific prettier configs so the repository config is used.
 ### Eslint
 
 At this time the Repo doesn't have an opinion on this. We're open to it if someone has a suggestion on what this should be.
+
+## Code Owners
+
+We are experimenting with using [Github's CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) tooling to notify contributors when certain files are editted. (E.g. Stewards are required to approve any changes in community docs.) You can see our [CODEOWNERS file](https://github.com/gatsby-uc/plugins/blob/main/.github/CODEOWNERS) for more info.
+
+If you would like to help own maintaining a plugin long term, please submit a PR adding yourself as a code owner.

@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 
-import { setConfig, ConfigKeyEnum, getServerConfig } from "./utils/config";
+import { setConfig, ConfigKeyEnum, getServerConfig, getConfig } from "./utils/config";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { gatsbyServer } from "./serve";
+import open from "open";
 
 yargs(hideBin(process.argv))
   .options({
-    v: {
-      alias: "verbose",
-      default: false,
-      type: "boolean",
-      describe: "Show verbose output",
+    l: {
+      alias: "logLevel",
+      default: "info",
+      choices: ["trace", "debug", "info", "warn", "error", "fatal"],
+      type: "string",
+      describe: "set logging level",
       global: true,
     },
     p: {
@@ -41,10 +43,20 @@ yargs(hideBin(process.argv))
     "$0",
     "Serve the Gatsby Site",
     (_yargs) => {},
-    (argv) => {
+    async (argv) => {
       setConfig(ConfigKeyEnum.CLI, argv as any);
       setConfig(ConfigKeyEnum.SERVER, getServerConfig());
 
-      gatsbyServer();
-    },
+      const {
+        server: { prefix },
+      } = getConfig();
+
+      await gatsbyServer();
+
+      if (argv.open) {
+        const url = `http://${argv.host}:${argv.port}${prefix}`;
+
+        open(url);
+      }
+    }
   ).argv;

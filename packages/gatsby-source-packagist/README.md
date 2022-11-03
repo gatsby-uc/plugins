@@ -1,6 +1,6 @@
 # gatsby-source-packagist
 
-Integrate Packagist(PHP package repository) with gatsby GraphQL data schema. Configure your search query in the plugin config and access the reults in GraphQL!
+Integrate Packagist(PHP package repository) with the Gatsby GraphQL data layer. Configure your search query in the plugin config and access the results in GraphQL!
 
 ## Config
 
@@ -13,7 +13,7 @@ Integrate Packagist(PHP package repository) with gatsby GraphQL data schema. Con
           // https://moonmeister.github.io/packagist-api-client/modules/_search_.html#search
           name: 'wp-graphql'
         },
-        // This objec tis passed to the Github Rest API client when it's created.
+        // This object is passed to the Github Rest API client when it's created.
         // More Info: https://octokit.github.io/rest.js/v17#usage
         githubApi: {
           auth: 'GitHubToken'
@@ -51,7 +51,3 @@ Example query:
 }
 
 ```
-
-## Contibutions
-
-There's lots of features that could be added to this and bugs to be found, please open issues and PRs as you see fit.

@@ -1,0 +1,19 @@
+# Community Files
+CODE_OF_CONDUCT.md @gatsby-uc/stewards
+CONTRIBUTING.md @gatsby-uc/stewards
+GOVERNANCE.md @gatsby-uc/stewards
+LICENSE @gatsby-uc/stewards
+
+# Repo Configs
+.changeset/* @gatsby-uc/maintainers
+.github/* @gatsby-uc/maintainers
+.husky/* @gatsby-uc/maintainers
+.yarn/* @gatsby-uc/maintainers
+.prettierrc.js @gatsby-uc/maintainers
+.yarnrc.yml @gatsby-uc/maintainers
+renovate.json @gatsby-uc/maintainers
+
+# packages
+
+## gatsby-plugin-fastify
+packages/gatsby-plugin-fastify/* @moonmeister

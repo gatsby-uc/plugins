@@ -1,31 +1,68 @@
-import { IRedirect } from "gatsby/dist/redux/types";
-import { FastifyPluginAsync } from "fastify";
+import { StatusCodes } from "http-status-codes";
 
-export function getResponseCode(redirect: IRedirect): HttpRedirectCodes {
+import { removeQueryParmsFromUrl, buildUrlFromParams } from "../utils/routes";
+
+import type { FastifyPluginAsync } from "fastify";
+import type { IRedirect } from "gatsby/dist/redux/types";
+
+function getResponseCode(redirect: IRedirect): StatusCodes {
   return (
     redirect.statusCode ||
-    (redirect.isPermanent ? HttpRedirectCodes.MovedPermanently : HttpRedirectCodes.Found)
+    (redirect.isPermanent ? StatusCodes.MOVED_PERMANENTLY : StatusCodes.MOVED_TEMPORARILY)
   );
 }
 
 export const handleRedirects: FastifyPluginAsync<{
   redirects: IRedirect[];
 }> = async (fastify, { redirects }) => {
-  for (const redirect of redirects) {
-    const responseCode = getResponseCode(redirect);
-    fastify.get(redirect.fromPath, (_req, reply) => {
-      reply.code(responseCode).redirect(redirect.toPath);
-    });
+  fastify.log.info(`Registering ${redirects.length} redirect(s)`);
+
+  const queryStringHandlers: {
+    [s: string]: IRedirect;
+  } = {};
+
+  const alreadyRegisterd = new Set();
+
+  for (let redirect of redirects) {
+    let responseCode = getResponseCode(redirect);
+    fastify.log.debug(
+      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`
+    );
+
+    /* Fastify can't register routes currently with the query stirngs in the path.
+     *  We must strip these out and only register the path once.
+     *  We can then check, in that single route, whether the entire url(including the query params) matches a redirect path, if it does
+     *
+     */
+    const cleanFromPath = removeQueryParmsFromUrl(redirect.fromPath);
+    const isCleanedPath = cleanFromPath != redirect.fromPath;
+
+    if (isCleanedPath) {
+      queryStringHandlers[redirect.fromPath] = redirect;
+    }
+
+    if (!alreadyRegisterd.has(cleanFromPath)) {
+      isCleanedPath && alreadyRegisterd.add(cleanFromPath);
+
+      fastify.get<{
+        Params: {
+          [s: string]: any;
+        };
+        Querystring: {
+          [s: string]: any;
+        };
+      }>(cleanFromPath, { config: {} }, (req, reply) => {
+        reply.appendModuleHeader("Redirects");
+
+        if (isCleanedPath && queryStringHandlers[req.url]) {
+          redirect = queryStringHandlers[req.url];
+          responseCode = getResponseCode(redirect);
+        }
+
+        const toUrl = buildUrlFromParams(redirect.toPath, { ...req.params, ...req.query });
+
+        reply.code(responseCode).redirect(toUrl);
+      });
+    }
   }
 };
-enum HttpRedirectCodes {
-  MultipleChoices = 300,
-  MovedPermanently = 301,
-  Found = 302,
-  SeeOther = 303,
-  NotModified = 304,
-  UseProxy = 305,
-  SwitchProxy = 306,
-  TemporaryRedirect = 307,
-  PermanentRedirect = 308,
-}

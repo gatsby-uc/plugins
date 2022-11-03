@@ -41,7 +41,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/71047?v=4",
       "profile": "https://www.bricolage.io/",
       "contributions": [
-        "doc"
+        "doc",
+        "plugin"
       ]
     },
     {
@@ -51,6 +52,61 @@
       "profile": "http://www.davejudd.com/",
       "contributions": [
         "doc"
+      ]
+    },
+    {
+      "login": "marvinjude",
+      "name": "Jude Agboola",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17142206?v=4",
+      "profile": "https://marvinjude.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "robinmetral",
+      "name": "Robin Métral",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35560568?v=4",
+      "profile": "https://robinmetral.com/",
+      "contributions": [
+        "plugin"
+      ]
+    },
+    {
+      "login": "jrotering",
+      "name": "James Rotering",
+      "avatar_url": "https://avatars.githubusercontent.com/u/311128?v=4",
+      "profile": "https://github.com/jrotering",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "alan2207",
+      "name": "Alan Alickovic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12713315?v=4",
+      "profile": "https://github.com/alan2207",
+      "contributions": [
+        "doc",
+        "plugin"
+      ]
+    },
+    {
+      "login": "mattcompiles",
+      "name": "mattcompiles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8802980?v=4",
+      "profile": "https://github.com/mattcompiles",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "klyngen",
+      "name": "Martin Klingenberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14232560?v=4",
+      "profile": "https://github.com/klyngen",
+      "contributions": [
+        "code"
       ]
     }
   ],

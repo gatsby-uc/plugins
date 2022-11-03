@@ -1,14 +1,14 @@
 //This file was initially coppied from `gatsby-plugin-gatsby-cloud`
 
-import path from "path";
 import { readJSON } from "fs-extra";
+import { join } from "path";
 import { PATH_TO_CACHE, PATH_TO_FUNCTIONS, PATH_TO_PUBLIC } from "./constants";
 import type { Store } from "gatsby";
 import type WebpackAssetsManifest from "webpack-assets-manifest";
 import { IGatsbyState } from "gatsby/dist/redux/types";
 
 export function buildPrefixer(prefix: string, ...paths: string[]) {
-  return (...subpaths: string[]) => path.join(prefix, ...paths, ...subpaths);
+  return (...subpaths: string[]) => join(prefix, ...paths, ...subpaths);
 }
 
 // This function assembles data across the manifests and store to match a similar
@@ -17,7 +17,7 @@ export function buildPrefixer(prefix: string, ...paths: string[]) {
 export async function makePluginData(
   store: Store,
   assetsManifest: WebpackAssetsManifest.Assets,
-  pathPrefix: string,
+  pathPrefix: string
 ): Promise<PluginData> {
   const { program, pages, components } = store.getState() as IGatsbyState;
   const publicFolder = buildPrefixer(program.directory, PATH_TO_PUBLIC);
