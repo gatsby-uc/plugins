@@ -124,6 +124,22 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
     fromPath: "/redirect-query-specific?id=2&letter=:letter",
     toPath: "/app/:letter/file2.pdf",
   });
+  createRedirect({
+    fromPath: "/wiki/category/url",
+    toPath: "https://en.wikipedia.org/wiki/Category:URL",
+  });
+  createRedirect({
+    fromPath: "/wiki/category/:category",
+    toPath: "https://en.wikipedia.org/wiki/Category::category",
+  });
+  createRedirect({
+    fromPath: "/wiki/:namespace/:value",
+    toPath: "https://en.wikipedia.org/wiki/:namespace::value",
+  });
+  createRedirect({
+    fromPath: "/Category::URL",
+    toPath: "/wiki/Category:URL",
+  });
 };
 
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({
