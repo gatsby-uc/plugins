@@ -140,6 +140,10 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
     fromPath: "/Category::URL",
     toPath: "/wiki/Category:URL",
   });
+  createRedirect({
+    fromPath: "/some/:thing/all",
+    toPath: "/something::thing/*",
+  });
 };
 
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({

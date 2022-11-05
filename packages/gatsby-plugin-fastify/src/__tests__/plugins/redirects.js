@@ -140,4 +140,13 @@ describe(`Gatsby Redirects`, () => {
     expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
     expect(response.headers.location).toEqual("/wiki/Category:URL");
   });
+
+  it(`Should error when including an asterisk in toPath without a wildcard in fromPath, even if there is a splat or colon`, async () => {
+    const response = await fastify.inject({
+      url: "/some/thing/all",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
+  });
 });
