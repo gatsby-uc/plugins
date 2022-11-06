@@ -13917,7 +13917,7 @@ __metadata:
     cross-env: ^7.0.3
     eslint: 7.32.0
   peerDependencies:
-    gatsby: ^3.0.0 || ^4.0.0
+    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -13954,7 +13954,7 @@ __metadata:
     yargs: ^17.6.0
   peerDependencies:
     fastify: ^4.5.3
-    gatsby: ^4.2.0
+    gatsby: ^4.0.0 || ^5.0.0
   bin:
     gserve: ./cli.js
   languageName: unknown
@@ -13973,7 +13973,7 @@ __metadata:
     jest: ^29.2.2
     request: ^2.88.2
   peerDependencies:
-    gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0
+    gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
     react: "*"
     react-dom: "*"
   languageName: unknown
@@ -14076,7 +14076,7 @@ __metadata:
   dependencies:
     reading-time: ^1.5.0
   peerDependencies:
-    gatsby: ^3.0.0 || ^4.0.0
+    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14090,7 +14090,7 @@ __metadata:
     babel-preset-gatsby-package: ^2.24.0
     cross-env: ^7.0.3
   peerDependencies:
-    gatsby: ^3.0.0 || ^4.0.0
+    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14181,7 +14181,7 @@ __metadata:
   peerDependencies:
     "@vanilla-extract/css": ^1.0.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
-    gatsby: ^3.0.0 || ^4.0.0
+    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14265,8 +14265,8 @@ __metadata:
     mime-types: ^2.1.35
     packagist-api-client: ^2.0.0
   peerDependencies:
-    gatsby: ^2.4.0 || ^3.0.0
-    gatsby-source-filesystem: ^2.2.4
+    gatsby: ^4.0.0 || ^5.0.0
+    gatsby-source-filesystem: ^4.24.0
   languageName: unknown
   linkType: soft
 
@@ -14289,7 +14289,7 @@ __metadata:
     start-server-and-test: ^1.14.0
     typescript: ^4.8.4
   peerDependencies:
-    gatsby: ^4.5.2
+    gatsby: ^4.5.2 || ^5.0.0
   languageName: unknown
   linkType: soft
 

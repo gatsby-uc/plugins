@@ -44,7 +44,7 @@
     "gatsby-source-filesystem": "^4.24.0"
   },
   "peerDependencies": {
-    "gatsby": "^4.5.2"
+    "gatsby": "^4.5.2 || ^5.0.0"
   },
   "engines": {
     "node": ">=14.15.0"
