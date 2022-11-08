@@ -1,5 +1,11 @@
 # gatsby-source-s3
 
+## 3.1.6
+
+### Patch Changes
+
+- [#294](https://github.com/gatsby-uc/plugins/pull/294) [`f830e3a`](https://github.com/gatsby-uc/plugins/commit/f830e3ab2cf9dc4b6daf474ed717cd02179fd556) Thanks [@LekoArts](https://github.com/LekoArts)! - Change peerDependencies to allow Gatsby 5
+
 ## 3.1.5
 
 ### Patch Changes
