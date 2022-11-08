@@ -57,7 +57,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/alan2207"><img src="https://avatars.githubusercontent.com/u/12713315?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alan Alickovic</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=alan2207" title="Documentation">📖</a> <a href="#plugin-alan2207" title="Plugin/utility libraries">🔌</a></td>
     <td align="center"><a href="https://github.com/mattcompiles"><img src="https://avatars.githubusercontent.com/u/8802980?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mattcompiles</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=mattcompiles" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/klyngen"><img src="https://avatars.githubusercontent.com/u/14232560?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Martin Klingenberg</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=klyngen" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/codercatdev"><img src="https://avatars.githubusercontent.com/u/3102249?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Patterson</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=codercatdev" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/codercatdev"><img src="https://avatars.githubusercontent.com/u/3102249?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Patterson</b></sub></a><br /><a href="#plugin-moonmeister" title="Plugin/utility libraries">🔌</a><a href="https://github.com/gatsby-uc/plugins/commits?author=codercatdev" title="Code">💻</a></td>
   </tr>
 </table>
 
