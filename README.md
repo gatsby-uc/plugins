@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -44,20 +44,23 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/moonmeister"><img src="https://avatars.githubusercontent.com/u/2730871?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Moon</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Documentation">📖</a> <a href="#ideas-moonmeister" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-moonmeister" title="Maintenance">🚧</a> <a href="#plugin-moonmeister" title="Plugin/utility libraries">🔌</a> <a href="#projectManagement-moonmeister" title="Project Management">📆</a> <a href="#tool-moonmeister" title="Tools">🔧</a></td>
-    <td align="center"><a href="http://everfund.co.uk/"><img src="https://avatars.githubusercontent.com/u/15834048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Burns</b></sub></a><br /><a href="#plugin-Burnsy" title="Plugin/utility libraries">🔌</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=Burnsy" title="Code">💻</a></td>
-    <td align="center"><a href="https://www.bricolage.io/"><img src="https://avatars.githubusercontent.com/u/71047?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Mathews</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=KyleAMathews" title="Documentation">📖</a> <a href="#plugin-KyleAMathews" title="Plugin/utility libraries">🔌</a></td>
-    <td align="center"><a href="http://www.davejudd.com/"><img src="https://avatars.githubusercontent.com/u/12941979?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dave Judd</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=SirDaev" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://marvinjude.dev/"><img src="https://avatars.githubusercontent.com/u/17142206?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jude Agboola</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=marvinjude" title="Code">💻</a></td>
-    <td align="center"><a href="https://robinmetral.com/"><img src="https://avatars.githubusercontent.com/u/35560568?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Robin Métral</b></sub></a><br /><a href="#plugin-robinmetral" title="Plugin/utility libraries">🔌</a></td>
-    <td align="center"><a href="https://github.com/jrotering"><img src="https://avatars.githubusercontent.com/u/311128?v=4?s=100" width="100px;" alt=""/><br /><sub><b>James Rotering</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=jrotering" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/alan2207"><img src="https://avatars.githubusercontent.com/u/12713315?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alan Alickovic</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=alan2207" title="Documentation">📖</a> <a href="#plugin-alan2207" title="Plugin/utility libraries">🔌</a></td>
-    <td align="center"><a href="https://github.com/mattcompiles"><img src="https://avatars.githubusercontent.com/u/8802980?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mattcompiles</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=mattcompiles" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/klyngen"><img src="https://avatars.githubusercontent.com/u/14232560?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Martin Klingenberg</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=klyngen" title="Code">💻</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/moonmeister"><img src="https://avatars.githubusercontent.com/u/2730871?v=4?s=100" width="100px;" alt="Alex Moon"/><br /><sub><b>Alex Moon</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=moonmeister" title="Documentation">📖</a> <a href="#ideas-moonmeister" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-moonmeister" title="Maintenance">🚧</a> <a href="#plugin-moonmeister" title="Plugin/utility libraries">🔌</a> <a href="#projectManagement-moonmeister" title="Project Management">📆</a> <a href="#tool-moonmeister" title="Tools">🔧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://everfund.co.uk/"><img src="https://avatars.githubusercontent.com/u/15834048?v=4?s=100" width="100px;" alt="Christopher Burns"/><br /><sub><b>Christopher Burns</b></sub></a><br /><a href="#plugin-Burnsy" title="Plugin/utility libraries">🔌</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=Burnsy" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.bricolage.io/"><img src="https://avatars.githubusercontent.com/u/71047?v=4?s=100" width="100px;" alt="Kyle Mathews"/><br /><sub><b>Kyle Mathews</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=KyleAMathews" title="Documentation">📖</a> <a href="#plugin-KyleAMathews" title="Plugin/utility libraries">🔌</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.davejudd.com/"><img src="https://avatars.githubusercontent.com/u/12941979?v=4?s=100" width="100px;" alt="Dave Judd"/><br /><sub><b>Dave Judd</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=SirDaev" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://marvinjude.dev/"><img src="https://avatars.githubusercontent.com/u/17142206?v=4?s=100" width="100px;" alt="Jude Agboola"/><br /><sub><b>Jude Agboola</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=marvinjude" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://robinmetral.com/"><img src="https://avatars.githubusercontent.com/u/35560568?v=4?s=100" width="100px;" alt="Robin Métral"/><br /><sub><b>Robin Métral</b></sub></a><br /><a href="#plugin-robinmetral" title="Plugin/utility libraries">🔌</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jrotering"><img src="https://avatars.githubusercontent.com/u/311128?v=4?s=100" width="100px;" alt="James Rotering"/><br /><sub><b>James Rotering</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=jrotering" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alan2207"><img src="https://avatars.githubusercontent.com/u/12713315?v=4?s=100" width="100px;" alt="Alan Alickovic"/><br /><sub><b>Alan Alickovic</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=alan2207" title="Documentation">📖</a> <a href="#plugin-alan2207" title="Plugin/utility libraries">🔌</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mattcompiles"><img src="https://avatars.githubusercontent.com/u/8802980?v=4?s=100" width="100px;" alt="mattcompiles"/><br /><sub><b>mattcompiles</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=mattcompiles" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/klyngen"><img src="https://avatars.githubusercontent.com/u/14232560?v=4?s=100" width="100px;" alt="Martin Klingenberg"/><br /><sub><b>Martin Klingenberg</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=klyngen" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://alexpatterson.dev/"><img src="https://avatars.githubusercontent.com/u/3102249?v=4?s=100" width="100px;" alt="Alex Patterson"/><br /><sub><b>Alex Patterson</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=codercatdev" title="Code">💻</a> <a href="#plugin-codercatdev" title="Plugin/utility libraries">🔌</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->

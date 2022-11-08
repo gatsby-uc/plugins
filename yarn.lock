@@ -14208,6 +14208,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-source-appwrite@workspace:packages/gatsby-source-appwrite":
+  version: 0.0.0-use.local
+  resolution: "gatsby-source-appwrite@workspace:packages/gatsby-source-appwrite"
+  peerDependencies:
+    node-appwrite: ^8.1.0
+  languageName: unknown
+  linkType: soft
+
 "gatsby-source-faker@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-source-faker@npm:4.24.0"
