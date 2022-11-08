@@ -20,6 +20,7 @@
     "gatsby": "^4.24.6",
     "gatsby-plugin-fastify": "*",
     "gatsby-plugin-image": "^2.24.0",
+    "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-postcss": "^5.24.0",
     "gatsby-plugin-sharp": "^4.24.0",
     "gatsby-plugin-sitemap": "^5.24.0",
