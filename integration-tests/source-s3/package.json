@@ -11,8 +11,8 @@
     "gatsby-plugin-sharp": "^4.24.0",
     "gatsby-source-s3": "workspace:^",
     "gatsby-transformer-sharp": "^4.24.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "develop": "gatsby develop",
