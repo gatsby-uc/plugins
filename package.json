@@ -20,18 +20,18 @@
     "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.6",
-    "@changesets/cli": "^2.24.4",
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.25.2",
     "@hkdobrev/run-if-changed": "^0.3.1",
     "@tsconfig/node16": "^1.0.3",
-    "all-contributors-cli": "^6.20.0",
+    "all-contributors-cli": "^6.24.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "renovate": "^32.213.2",
+    "renovate": "^34.10.0",
     "typescript": "^4.8.4"
   },
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@3.2.4",
   "lint-staged": {
     "**/*.{js,ts,md,json,yml,json5}": "prettier --write"
   },

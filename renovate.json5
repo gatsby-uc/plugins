@@ -16,7 +16,7 @@
     {
       groupName: "non-major dependency versions",
       matchUpdateTypes: ["minor", "patch"],
-      additionalBranchPrefix: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}-",
+      additionalBranchPrefix: "{{#if parentDir}}packages{{else}}repo{{/if}}-",
     },
     // Role all babel related updates into 1 for a quiter life
     {
@@ -30,8 +30,10 @@
     //Group Jest updates together
     {
       matchPackageNames: ["@types/jest"],
+      matchPackagePatterns: ["^jest"],
       matchUpdateTypes: ["digest", "patch", "minor", "major"],
       groupName: "jest monorepo",
+      additionalBranchPrefix: "jest",
     },
     // Integration test updates don't require releases, so just role all into 1 to keep things quieter.
     {
@@ -45,6 +47,6 @@
   ],
   semanticCommits: "enabled",
   semanticCommitType: "chore",
-  semanticCommitScope: "{{#if parentDir}}{{parentDir}}{{else}}repo{{/if}}",
+  semanticCommitScope: "{{#if parentDir}}packages{{else}}repo{{/if}}",
   ignoreDeps: ["node"],
 }

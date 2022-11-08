@@ -1,5 +1,11 @@
 # gatsby-source-packagist
 
+## 2.0.3
+
+### Patch Changes
+
+- [#285](https://github.com/gatsby-uc/plugins/pull/285) [`feb27fc`](https://github.com/gatsby-uc/plugins/commit/feb27fc903253ad2d9815bc1f37b0132a7f3f89f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
 ## 2.0.2
 
 ### Patch Changes

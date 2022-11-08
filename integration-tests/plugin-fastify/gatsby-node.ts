@@ -87,6 +87,63 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
     toPath: "http://example.com/*",
     statusCode: 200,
   });
+
+  createRedirect({
+    fromPath: "/redirect/:letter",
+    toPath: "/app/:letter",
+  });
+  createRedirect({
+    fromPath: "/redirect-query?letter=:letter",
+    toPath: "/app/:letter",
+  });
+  createRedirect({
+    fromPath: "/redirect-query-query?letter=:letter",
+    toPath: "/app?letter=:letter",
+  });
+  createRedirect({
+    fromPath: "/redirect-all/*",
+    toPath: "/app/*",
+  });
+  createRedirect({
+    fromPath: "/redirect-all2/*",
+    toPath: "/app/",
+  });
+  createRedirect({
+    fromPath: "/redirect-weird/:path/*",
+    toPath: "/app/:path/*",
+  });
+  createRedirect({
+    fromPath: "/redirect-query-specific?id=1",
+    toPath: "file1.pdf",
+  });
+  createRedirect({
+    fromPath: "/redirect-query-specific?id=2",
+    toPath: "/file2.pdf",
+  });
+  createRedirect({
+    fromPath: "/redirect-query-specific?id=2&letter=:letter",
+    toPath: "/app/:letter/file2.pdf",
+  });
+  createRedirect({
+    fromPath: "/wiki/category/url",
+    toPath: "https://en.wikipedia.org/wiki/Category:URL",
+  });
+  createRedirect({
+    fromPath: "/wiki/category/:category",
+    toPath: "https://en.wikipedia.org/wiki/Category::category",
+  });
+  createRedirect({
+    fromPath: "/wiki/:namespace/:value",
+    toPath: "https://en.wikipedia.org/wiki/:namespace::value",
+  });
+  createRedirect({
+    fromPath: "/Category::URL",
+    toPath: "/wiki/Category:URL",
+  });
+  createRedirect({
+    fromPath: "/some/:thing/all",
+    toPath: "/something::thing/*",
+  });
 };
 
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({

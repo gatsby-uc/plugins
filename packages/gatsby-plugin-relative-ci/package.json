@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-relative-ci",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Integrate your Gatsby site with Relative CI",
   "keywords": [
     "gatsby",
@@ -12,7 +12,7 @@
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@relative-ci/agent": "^4.1.0"
+    "@relative-ci/agent": "^4.1.1"
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore \"**/__tests__\"",
@@ -20,9 +20,9 @@
     "watch": "yarn build --watch"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.19.0",
-    "babel-preset-gatsby-package": "^2.22.0",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "babel-preset-gatsby-package": "^2.24.0",
     "cross-env": "^7.0.3"
   },
   "peerDependencies": {
