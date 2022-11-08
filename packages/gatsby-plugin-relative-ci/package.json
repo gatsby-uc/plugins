@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-relative-ci",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "description": "Integrate your Gatsby site with Relative CI",
   "keywords": [
     "gatsby",
@@ -26,7 +26,7 @@
     "cross-env": "^7.0.3"
   },
   "peerDependencies": {
-    "gatsby": "^3.0.0 || ^4.0.0"
+    "gatsby": "^3.0.0 || ^4.0.0 || ^5.0.0"
   },
   "repository": {
     "type": "git",

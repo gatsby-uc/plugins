@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-s3",
   "description": "A Gatsby plugin to source objects and images from AWS S3",
-  "version": "3.1.4",
+  "version": "3.1.6",
   "contributors": [
     "Robin Métral <robin@metral.ch>",
     "Alex Moon <alex.jared.moon@gmail.com>"
@@ -43,7 +43,7 @@
     "gatsby-source-filesystem": "^4.24.0"
   },
   "peerDependencies": {
-    "gatsby": "^4.5.2"
+    "gatsby": "^4.5.2 || ^5.0.0"
   },
   "engines": {
     "node": ">=14.15.0"

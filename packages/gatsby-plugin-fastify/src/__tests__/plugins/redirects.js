@@ -100,4 +100,53 @@ describe(`Gatsby Redirects`, () => {
     expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
     expect(response.headers.location).toEqual("/file2.pdf");
   });
+
+  it(`Should handle colons in toPaths without splat in fromPath`, async () => {
+    const response = await fastify.inject({
+      url: "/wiki/category/url",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.headers.location).toEqual("https://en.wikipedia.org/wiki/Category:URL");
+  });
+
+  it(`Should handle splats in fromPaths with colons in toPaths`, async () => {
+    const response = await fastify.inject({
+      url: "/wiki/category/URL",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.headers.location).toEqual("https://en.wikipedia.org/wiki/Category:URL");
+  });
+
+  it(`Should handle multiple splats in fromPaths with colons in toPaths`, async () => {
+    const response = await fastify.inject({
+      url: "/wiki/Category/URL",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.headers.location).toEqual("https://en.wikipedia.org/wiki/Category:URL");
+  });
+
+  it(`Should handle colons in fromPaths that are not splats via double colon`, async () => {
+    const response = await fastify.inject({
+      url: "/Category:URL",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.headers.location).toEqual("/wiki/Category:URL");
+  });
+
+  it(`Should error when including an asterisk in toPath without a wildcard in fromPath, even if there is a splat or colon`, async () => {
+    const response = await fastify.inject({
+      url: "/some/thing/all",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
+  });
 });

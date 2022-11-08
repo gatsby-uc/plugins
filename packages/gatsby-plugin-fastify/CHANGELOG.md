@@ -1,5 +1,17 @@
 # gatsby-plugin-fastify
 
+## 0.9.7
+
+### Patch Changes
+
+- [#292](https://github.com/gatsby-uc/plugins/pull/292) [`4ca97f9`](https://github.com/gatsby-uc/plugins/commit/4ca97f9ae833b719d67f02ae2af0c9313549fea8) Thanks [@tsdexter](https://github.com/tsdexter)! - support colons in redirect `toPath`s
+
+## 0.9.6
+
+### Patch Changes
+
+- [#277](https://github.com/gatsby-uc/plugins/pull/277) [`a07a56c`](https://github.com/gatsby-uc/plugins/commit/a07a56c6f670ef3606a95ea3dccedbecec1e724e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(gatsby-plugin-fastify): update non-major dependency versions
+
 ## 0.9.5
 
 ### Patch Changes

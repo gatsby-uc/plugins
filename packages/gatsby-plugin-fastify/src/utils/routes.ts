@@ -11,7 +11,8 @@ export function removeQueryParmsFromUrl(url: string) {
 }
 
 export function buildUrlFromParams(path: string, data: { [s: string]: string } = {}) {
-  return path.replace(/:(\w+)|(\*)/gi, function (_match, p1, p2) {
+  return path.replace(/:(\w+)|(\*)/gi, function (match, p1, p2) {
+    if (p1 && !data[p1]) return match; // :Something in toPath does not have a splat in fromPath pass it through colon intact
     let lookupString = p1 ?? p2;
     let replacement = data[lookupString];
 
