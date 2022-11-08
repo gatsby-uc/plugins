@@ -12,7 +12,7 @@ Gatsby source plugin for building websites using Appwrite as a data source
 ## How to install
 
 ```
-npm install gatsby-source-appwrite appwrite
+npm install gatsby-source-appwrite node-appwrite
 ```
 
 ## Available options
