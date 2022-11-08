@@ -1,5 +1,11 @@
 # gatsby-plugin-github-ribbon
 
+## 2.0.0
+
+### Major Changes
+
+- [#294](https://github.com/gatsby-uc/plugins/pull/294) [`f830e3a`](https://github.com/gatsby-uc/plugins/commit/f830e3ab2cf9dc4b6daf474ed717cd02179fd556) Thanks [@LekoArts](https://github.com/LekoArts)! - Change peerDependencies to only allow Gatsby 4 and Gatsby 5. Gatsby 2 / 3 are unsupported by Gatsby: https://www.gatsbyjs.com/docs/reference/release-notes/gatsby-version-support/
+
 ## 1.4.2
 
 ### Patch Changes
