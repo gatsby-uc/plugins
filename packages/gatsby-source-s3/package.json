@@ -41,7 +41,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.0",
     "aws-sdk": "^2.1244.0",
-    "gatsby-source-filesystem": "^4.24.0"
+    "gatsby-source-filesystem": "^5.0.0"
   },
   "peerDependencies": {
     "gatsby": "^4.5.2 || ^5.0.0"
