@@ -78,10 +78,10 @@ export const handleServerRoutes: FastifyPluginAsync<{
     }
 
     //Handle HTML for DSG/SSR
-    for (const { path, mode } of paths) {
+    for (const { path, mode, matchPath } of paths) {
       fastify.log.debug(`Registering "${path}" as "${mode}" route.`);
 
-      fastify.get(path, async (req, reply) => {
+      fastify.get(matchPath, async (req, reply) => {
         const accept = req.accepts();
         const workingURL = removeQueryParmsFromUrl(req.url);
 
