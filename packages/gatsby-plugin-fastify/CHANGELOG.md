@@ -1,5 +1,12 @@
 # gatsby-plugin-fastify
 
+## 0.9.8
+
+### Patch Changes
+
+- [#300](https://github.com/gatsby-uc/plugins/pull/300) [`2eacee4`](https://github.com/gatsby-uc/plugins/commit/2eacee4914a036372fcb8751be0d1b40fac6a5e2) Thanks [@moonmeister](https://github.com/moonmeister)! - Fix: bugs arround matching certain paths related to wildcard and parametric SSR routes. #289.
+  Fix: implemented some more consistent use and parsing of matchPaths to support native gatsby naming that is window ssompatible. #270
+
 ## 0.9.7
 
 ### Patch Changes
