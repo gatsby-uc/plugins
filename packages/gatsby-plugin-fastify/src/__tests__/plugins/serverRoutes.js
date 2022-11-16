@@ -105,7 +105,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       expect(response.payload).toContain("SSR Page with Dogs");
     });
 
-    it(`Should serve SSR page from a fallbackRoute`, async () => {
+    it(`Should serve SSR page from a parametric route`, async () => {
       const meaningfulResponse = await fastify.inject({
         url: "/ssr/42",
         method: "GET",
@@ -166,11 +166,55 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   it(`Should return route correctly when queryparams exist`, async () => {
-    const reqponse = await fastify.inject({
+    const response = await fastify.inject({
       url: "/ssr?test=test",
       method: "GET",
     });
 
-    expect(reqponse.statusCode).toEqual(200);
+    expect(response.statusCode).toEqual(200);
+  });
+
+  it(`Should return route html correctly when splat route`, async () => {
+    const response = await fastify.inject({
+      url: "/ssr_splat/example/test",
+      method: "GET",
+    });
+
+    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.statusCode).toEqual(200);
+    expect(response.body).toContain("&quot;*&quot;: &quot;example/test&quot;");
+  });
+
+  it(`Should return route page-data.json correctly when splat route`, async () => {
+    const response = await fastify.inject({
+      url: "/page-data/ssr_splat/[...]/page-data.json",
+      method: "GET",
+    });
+
+    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.headers["content-type"]).toContain("json");
+    expect(response.statusCode).toEqual(200);
+  });
+
+  it(`Should return route html correctly when named splat route`, async () => {
+    const response = await fastify.inject({
+      url: "/ssr_named_splat/example/test",
+      method: "GET",
+    });
+
+    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.statusCode).toEqual(200);
+    expect(response.body).toContain("&quot;test&quot;: &quot;example/test&quot;");
+  });
+
+  it(`Should return route page-data.json correctly when named splat route`, async () => {
+    const response = await fastify.inject({
+      url: "/page-data/ssr_named_splat/[...test]/page-data.json",
+      method: "GET",
+    });
+
+    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.headers["content-type"]).toContain("json");
+    expect(response.statusCode).toEqual(200);
   });
 });

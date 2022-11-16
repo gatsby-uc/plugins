@@ -7,25 +7,13 @@ import type { ServerSideRoute } from "../gatsby/serverRoutes";
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
 import { removeQueryParmsFromUrl } from "../utils/routes";
+import { countPaths } from "../utils/log";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
 }> = async (fastify, { paths }) => {
   if (paths?.length > 0) {
-    const { dsgCount, ssrCount } = paths.reduce(
-      (acc, path) => {
-        switch (path.mode) {
-          case "SSR":
-            acc.ssrCount++;
-            break;
-          case "DSG":
-            acc.dsgCount++;
-            break;
-        }
-        return acc;
-      },
-      { dsgCount: 0, ssrCount: 0 }
-    );
+    const { dsgCount, ssrCount } = countPaths(paths);
 
     fastify.log.info(`Registering ${dsgCount} DSG route(s)`);
     fastify.log.info(`Registering ${ssrCount} SSR route(s)`);
@@ -90,10 +78,10 @@ export const handleServerRoutes: FastifyPluginAsync<{
     }
 
     //Handle HTML for DSG/SSR
-    for (const { path, mode } of paths) {
+    for (const { path, mode, matchPath } of paths) {
       fastify.log.debug(`Registering "${path}" as "${mode}" route.`);
 
-      fastify.get(path, async (req, reply) => {
+      fastify.get(matchPath, async (req, reply) => {
         const accept = req.accepts();
         const workingURL = removeQueryParmsFromUrl(req.url);
 

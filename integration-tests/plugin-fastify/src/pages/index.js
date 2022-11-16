@@ -146,6 +146,12 @@ const IndexPage = () => {
         <li style={{ ...listItemStyles }}>
           <a href={withPrefix("/ssr/42")}>Dynamicly routed SSR page (slug is 42)</a>
         </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/ssr_splat/test/path")}>Splat routed SSR page</a>
+        </li>
+        <li style={{ ...listItemStyles }}>
+          <a href={withPrefix("/ssr_named_splat/test/path")}>Named Splat routed SSR page</a>
+        </li>
       </ul>
     </main>
   );
