@@ -4,7 +4,6 @@ import { PATH_TO_PUBLIC } from "../utils/constants";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
-import { formatMatchPath } from "../utils/routes";
 
 export type PathConfig = {
   matchPath: string | undefined;
@@ -20,7 +19,7 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
     for (const p of paths) {
       fastify.log.debug(`Registering client-only route: ${p.path}`);
 
-      fastify.get(formatMatchPath(p.matchPath), (_req, reply) => {
+      fastify.get(p.matchPath, (_req, reply) => {
         reply.appendModuleHeader("Client Route");
 
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));

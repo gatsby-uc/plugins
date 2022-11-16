@@ -1,4 +1,5 @@
 import { PathConfig } from "../plugins/clientRoutes";
+import { formatMatchPath } from "../utils/routes";
 import type { PluginData } from "../utils/plugin-data";
 
 export type NoUndefinedField<T> = { [P in keyof T]-?: NoUndefinedField<NonNullable<T[P]>> };
@@ -11,7 +12,7 @@ export async function getClientSideRoutes(pageData: PluginData) {
   for (const page of pages.values()) {
     if (page?.matchPath && page?.mode !== "SSR" && page?.mode !== "DSG") {
       routes.push({
-        matchPath: page.matchPath,
+        matchPath: formatMatchPath(page.matchPath),
         path: page.path,
       });
     }
