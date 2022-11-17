@@ -46,8 +46,9 @@ export const handleFunctions: FastifyPluginAsync<{
         const fnToExecute = await getFunctionHandler(funcConfig);
 
         if (fnToExecute) {
-          fastify.log.debug(`Registering function:  ${prefix + funcConfig.functionRoute}`);
-          fastify.all(funcConfig.functionRoute, {
+          const path = funcConfig?.matchPath || funcConfig.functionRoute;
+          fastify.log.debug(`Registering function:  ${prefix + path}`);
+          fastify.all(path, {
             handler: async function (req, reply) {
               try {
                 reply.appendModuleHeader("Functions");

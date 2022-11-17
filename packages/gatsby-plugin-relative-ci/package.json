@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-relative-ci",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "description": "Integrate your Gatsby site with Relative CI",
   "keywords": [
     "gatsby",
@@ -22,11 +22,11 @@
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
-    "babel-preset-gatsby-package": "^2.24.0",
+    "babel-preset-gatsby-package": "^3.0.0",
     "cross-env": "^7.0.3"
   },
   "peerDependencies": {
-    "gatsby": "^3.0.0 || ^4.0.0"
+    "gatsby": "^4.0.0 || ^5.0.0"
   },
   "repository": {
     "type": "git",

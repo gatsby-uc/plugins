@@ -58,7 +58,7 @@ module.exports = {
 
 # Serving your site
 
-Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to the Node server. This edge server may handle caching, TLS/SSL, load balancing, compression, etc. Then the Node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability and may be use in place of the edge server, though this may be less secure.
+Node and Fastify are great for building application specific web servers but generally should not be used on the edge. Meaning, most folks will use a fully fledged web server (e.g. [Nginx](https://www.nginx.com/) or [Caddy](https://caddyserver.com/) that handles traffic before passing it back to the Node server. This edge server may handle caching, TLS/SSL, load balancing, compression, etc. Then the Node server only worries about the application. A CDN (e.g. Fastly or CloudFlare ) is also often used for performance and scalability.
 
 ## Server CLI (expected)
 
@@ -200,7 +200,7 @@ createRedirect({
   toPath: "/file.pdf",
 });
 
-// These worn't work
+// These will not work
 createRedirect({
   fromPath: "/redirect-query-specific?id=2&example=:example",
   toPath: "/:example/file.pdf",
@@ -221,8 +221,6 @@ Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getti
 
 Because we're not using Express or Gatsby's own cloud offering functions will need to use Fastify's own [`Request`](https://www.fastify.io/docs/latest/Reference/Request/) and [`Reply`](https://www.fastify.io/docs/latest/Reference/Reply/) API.
 
-### TypeScript
-
 ```ts
 import type { FastifyRequest, FastifyReply } from "fastify";
 
@@ -230,3 +228,7 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
   res.send(`I am TYPESCRIPT`);
 }
 ```
+
+### Gatsby Routing
+
+We have implemented a compatability layer to support the Gatsby flavor of routing for [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/routing/) and [File System Routing API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-client-only-routes). This should be transparent and if you follow the Gatsby docs for routing we should now support all those modes. This very well might not beperfect, if you have issues with routing please file a bug with a reproduction.

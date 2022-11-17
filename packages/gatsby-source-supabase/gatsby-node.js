@@ -53,8 +53,8 @@ exports.sourceNodes = async (
           },
         });
       }
-    } catch (e) {
-      reporter.panic("Error sourcing nodes data for type '" + typeName + "'", e);
+    } catch (error) {
+      reporter.panic("Error sourcing nodes data for type '" + typeName + "'", error);
     }
   }
 };

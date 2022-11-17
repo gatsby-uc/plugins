@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-packagist",
-  "version": "2.0.2",
-  "description": "Search the Packagist(PHP package repository) with gatsby GraphQL data schema.",
+  "version": "3.0.0",
+  "description": "Search the Packagist (PHP package repository) with gatsby GraphQL data schema.",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -33,12 +33,12 @@
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
-    "babel-preset-gatsby-package": "^2.24.0",
+    "babel-preset-gatsby-package": "^3.0.0",
     "cross-env": "^7.0.3",
-    "gatsby-source-filesystem": "^4.24.0"
+    "gatsby-source-filesystem": "^5.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^2.4.0 || ^3.0.0",
-    "gatsby-source-filesystem": "^2.2.4"
+    "gatsby": "^4.0.0 || ^5.0.0",
+    "gatsby-source-filesystem": "^4.24.0 || ^5.0.0"
   }
 }

@@ -1,8 +1,0 @@
-{
-  "integrationFolder": "tests/e2e",
-  "screenshotsFolder": "tests/screenshots",
-  "fixturesFolder": false,
-  "supportFile": false,
-  "video": false,
-  "pluginsFile": false
-}
