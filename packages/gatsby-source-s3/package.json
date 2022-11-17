@@ -24,7 +24,7 @@
     "@types/node": "^18.11.8",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "babel-preset-gatsby-package": "^2.24.0",
+    "babel-preset-gatsby-package": "^3.0.0",
     "cypress": "^10.11.0",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
@@ -40,7 +40,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.0",
     "aws-sdk": "^2.1244.0",
-    "gatsby-source-filesystem": "^4.24.0"
+    "gatsby-source-filesystem": "^5.0.0"
   },
   "peerDependencies": {
     "gatsby": "^4.5.2 || ^5.0.0"

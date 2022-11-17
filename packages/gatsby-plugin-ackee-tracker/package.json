@@ -36,13 +36,13 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
     "ackee-tracker": "^5",
-    "babel-preset-gatsby-package": "^2.24.0",
+    "babel-preset-gatsby-package": "^3.0.0",
     "cross-env": "^7.0.3"
   },
   "devDependencies": {
     "eslint": "7.32.0"
   },
   "peerDependencies": {
-    "gatsby": "^3.0.0 || ^4.0.0 || ^5.0.0"
+    "gatsby": "^4.0.0 || ^5.0.0"
   }
 }
