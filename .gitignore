@@ -114,3 +114,9 @@ dist
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+## Build files
+dist
+
+# Cypress
+**/tests/screenshots

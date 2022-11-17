@@ -8,14 +8,13 @@
     "relative",
     "ci"
   ],
-  "main": "index.js",
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@relative-ci/agent": "^4.1.1"
   },
   "scripts": {
-    "build": "babel src --out-dir . --ignore \"**/__tests__\"",
+    "build": "babel src --out-dir ./dist --ignore \"**/__tests__\"",
     "format": "yarn run -T format",
     "watch": "yarn build --watch"
   },
