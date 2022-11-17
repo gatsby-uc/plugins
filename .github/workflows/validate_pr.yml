@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14, 16]
+        node-version: [14, 16, 18]
 
     steps:
       - uses: actions/checkout@v3
@@ -57,9 +57,11 @@ jobs:
     name: Run package tests on (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
     needs: [setup]
+    env:
+      NODE_OPTIONS: --max-old-space-size=6144
     strategy:
       matrix:
-        node: ["14", "16"]
+        node: [14, 16, 18]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
