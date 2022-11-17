@@ -11087,9 +11087,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^10.11.0":
-  version: 10.11.0
-  resolution: "cypress@npm:10.11.0"
+"cypress@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "cypress@npm:11.1.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -11135,7 +11135,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 938cc6a20f7eeace5c8e850d234904ee1651cbb36d94666fe600cf17ce964e73d4f7d8d944aab677491702a57364e6aceeb4fe8bcbd96147ff5e2b575a956fb2
+  checksum: ee0097778cf3cdf3854325cabf19a60a7486d46ae70082034c05b22b203f21ff85a4871c08dadc6641be649a64c739a443dd3f2d6a5ab112fc9ead703e1f1be3
   languageName: node
   linkType: hard
 
@@ -13919,7 +13919,7 @@ __metadata:
     cross-env: ^7.0.3
     eslint: 7.32.0
   peerDependencies:
-    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
+    gatsby: ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -13956,7 +13956,7 @@ __metadata:
     yargs: ^17.6.0
   peerDependencies:
     fastify: ^4.5.3
-    gatsby: ^4.2.0
+    gatsby: ^4.2.0 || ^5.0.0
   bin:
     gserve: ./cli.js
   languageName: unknown
@@ -14066,7 +14066,7 @@ __metadata:
   dependencies:
     reading-time: ^1.5.0
   peerDependencies:
-    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
+    gatsby: ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14080,7 +14080,7 @@ __metadata:
     babel-preset-gatsby-package: ^3.0.0
     cross-env: ^7.0.3
   peerDependencies:
-    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
+    gatsby: ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14171,7 +14171,7 @@ __metadata:
   peerDependencies:
     "@vanilla-extract/css": ^1.0.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
-    gatsby: ^3.0.0 || ^4.0.0 || ^5.0.0
+    gatsby: ^4.0.0 || ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14214,6 +14214,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-source-appwrite@workspace:packages/gatsby-source-appwrite"
   peerDependencies:
+    gatsby: ^4.0.0 || ^5.0.1
     node-appwrite: ^8.1.0
   languageName: unknown
   linkType: soft
@@ -14280,7 +14281,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.42.0
     aws-sdk: ^2.1244.0
     babel-preset-gatsby-package: ^3.0.0
-    cypress: ^10.11.0
+    cypress: ^11.1.0
     eslint: ^8.26.0
     eslint-config-prettier: ^8.5.0
     gatsby-source-filesystem: ^5.0.0
@@ -14295,6 +14296,7 @@ __metadata:
   resolution: "gatsby-source-supabase@workspace:packages/gatsby-source-supabase"
   peerDependencies:
     "@supabase/supabase-js": ^1.0.0
+    gatsby: ^4.0.0 || ^5.0.1
   languageName: unknown
   linkType: soft
 
