@@ -7,7 +7,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_PERMANENTLY);
+    expect(response.statusCode).toEqual(StatusCodes.PERMANENT_REDIRECT);
     expect(response.headers.location).toEqual("/posts/page-1");
   });
 
@@ -17,7 +17,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/posts/page-2");
   });
 
@@ -27,7 +27,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
+    expect(response.statusCode).toEqual(StatusCodes.MOVED_PERMANENTLY);
     expect(response.headers.location).toEqual("/posts/page-3");
   });
 
@@ -37,7 +37,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/app/a");
   });
 
@@ -47,7 +47,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/app/a");
   });
 
@@ -57,7 +57,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/app?letter=a");
   });
 
@@ -67,7 +67,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/app/a");
   });
 
@@ -77,7 +77,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/app/");
   });
 
@@ -87,7 +87,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/app/test/more-stuff");
   });
 
@@ -97,7 +97,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/file2.pdf");
   });
 
@@ -107,7 +107,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("https://en.wikipedia.org/wiki/Category:URL");
   });
 
@@ -117,7 +117,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("https://en.wikipedia.org/wiki/Category:URL");
   });
 
@@ -127,7 +127,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("https://en.wikipedia.org/wiki/Category:URL");
   });
 
@@ -137,7 +137,7 @@ describe(`Gatsby Redirects`, () => {
       method: "GET",
     });
 
-    expect(response.statusCode).toEqual(StatusCodes.MOVED_TEMPORARILY);
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
     expect(response.headers.location).toEqual("/wiki/Category:URL");
   });
 
