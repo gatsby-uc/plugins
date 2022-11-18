@@ -23,7 +23,7 @@
     "@babel/core": "^7.19.6",
     "@types/node": "^18.11.8",
     "babel-preset-gatsby-package": "^3.0.0",
-    "cypress": "^10.11.0",
+    "cypress": "^11.1.0",
     "start-server-and-test": "^1.14.0"
   },
   "scripts": {
