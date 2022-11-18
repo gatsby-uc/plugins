@@ -1,7 +1,7 @@
 import pluginHttpProxy from "@fastify/http-proxy";
 
 import type { FastifyPluginAsync, FastifyReply } from "fastify";
-import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
+import type { GatsbyFastifyProxy } from "../gatsby/proxies-and-redirects";
 
 // Implements https://support.gatsbsyjs.com/hc/en-us/articles/1500003051241-Working-with-Redirects-and-Rewrites
 export const handleReverseProxy: FastifyPluginAsync<{
@@ -23,9 +23,9 @@ export const handleReverseProxy: FastifyPluginAsync<{
         upstream: proxyTo.href,
         prefix: cleanFrom,
         replyOptions: {
-          onResponse: (_request, reply, res) => {
+          onResponse: (_request, reply, response) => {
             (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
-            reply.send(res);
+            reply.send(response);
           },
         },
       });

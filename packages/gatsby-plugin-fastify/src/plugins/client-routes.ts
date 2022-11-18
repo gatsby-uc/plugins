@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { PATH_TO_PUBLIC } from "../utils/constants";
 
 import type { FastifyPluginAsync } from "fastify";
-import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
+import type { NoUndefinedField } from "../gatsby/client-side-route";
 
 export type PathConfig = {
   matchPath: string | undefined;

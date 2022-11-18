@@ -1,10 +1,10 @@
 import { readJSONSync, existsSync } from "fs-extra";
 
-import type { NoUndefinedField } from "../gatsby/clientSideRoutes";
+import type { NoUndefinedField } from "../gatsby/client-side-route";
 import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
 import type { PluginOptions } from "gatsby";
-import type { ServerSideRoute } from "../gatsby/serverRoutes";
-import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
+import type { ServerSideRoute } from "../gatsby/server-routes";
+import type { GatsbyFastifyProxy } from "../gatsby/proxies-and-redirects";
 
 import { PathConfig } from "../plugins/client-routes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -16,7 +16,7 @@ const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 
 export interface GatsbyFastifyPluginOptions extends PluginOptions {
   features: {
-    reverseProxy: boolean | {};
+    reverseProxy: boolean | Record<string, unknown>;
     redirects: boolean;
     imageCdn: boolean;
   };
@@ -51,12 +51,6 @@ export type GfConfig = {
   [ConfigKeyEnum.SERVER]: GatsbyNodeServerConfig;
 };
 
-type GetConfigOptions<T> = T extends ConfigKeyEnum.SERVER
-  ? GatsbyNodeServerConfig
-  : T extends ConfigKeyEnum.CLI
-  ? GfCliOptions
-  : never;
-
 export function getConfig(): GfConfig {
   if (config.hasOwnProperty(ConfigKeyEnum.SERVER) && config.hasOwnProperty(ConfigKeyEnum.CLI)) {
     return config as GfConfig;
@@ -65,8 +59,7 @@ export function getConfig(): GfConfig {
   throw new Error("Must set config before getting Config.");
 }
 
-export function setConfig(key: ConfigKeyEnum, incomingConfig: GetConfigOptions<ConfigKeyEnum>) {
-  //@ts-ignore
+export function setConfig<Key extends ConfigKeyEnum>(key: Key, incomingConfig: GfConfig[Key]) {
   config[key] = incomingConfig;
 }
 

@@ -9,12 +9,12 @@ import type { IGatsbyFunction } from "gatsby/dist/redux/types";
 
 export type GatsbyFunctionHandler = (
   request: FastifyRequest,
-  res: FastifyReply
+  reply: FastifyReply
 ) => void | Promise<void>;
 
 async function getFunctionToExec({
   relativeCompiledFilePath,
-}: IGatsbyFunction): Promise<GatsbyFunctionHandler | null> {
+}: IGatsbyFunction): Promise<GatsbyFunctionHandler | undefined> {
   const functionImportAbsPath = resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
 
   if (!existsSync(functionImportAbsPath)) {
@@ -28,9 +28,6 @@ async function getFunctionToExec({
 async function getFunctionHandler(routeConfig: IGatsbyFunction) {
   const execFunction = await getFunctionToExec(routeConfig);
 
-  if (!execFunction) {
-    return null;
-  }
   return execFunction;
 }
 

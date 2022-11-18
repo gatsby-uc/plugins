@@ -2,7 +2,7 @@ import { join, posix, resolve } from "node:path";
 import { StatusCodes } from "http-status-codes";
 
 import type { FastifyPluginAsync } from "fastify";
-import type { ServerSideRoute } from "../gatsby/serverRoutes";
+import type { ServerSideRoute } from "../gatsby/server-routes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
@@ -57,7 +57,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             req: request,
           });
 
-          const pageData = (await renderPageData({ data: pageQueryData })) as any;
+          const pageData = (await renderPageData({ data: pageQueryData })) as unknown;
 
           if (page.mode === `SSR`) {
             if (pageQueryData?.serverDataHeaders) {
@@ -71,8 +71,10 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
           reply.header(...NEVER_CACHE_HEADER);
           return reply.send(pageData);
-        } catch (error: any) {
-          throw new Error(`Error fetching page data for ${path}: ${error.message}`);
+        } catch (error) {
+          if (error instanceof Error) {
+            throw new TypeError(`Error fetching page data for ${path}: ${error.message}`);
+          }
         }
       });
     }
@@ -120,8 +122,10 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
 
             return reply.type("text/html").send(results);
-          } catch (error: any) {
-            throw new Error(`Error fetching page HTML for ${path}: ${error.message}`);
+          } catch (error) {
+            if (error instanceof Error) {
+              throw new TypeError(`Error fetching page HTML for ${path}: ${error?.message}`);
+            }
           }
         } else {
           fastify.log.warn(`Request for route ${request.url} does not support "text/html"`);

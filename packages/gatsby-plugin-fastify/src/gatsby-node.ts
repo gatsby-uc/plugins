@@ -6,11 +6,11 @@ import type { GatsbyFastifyPluginOptions, GatsbyNodeServerConfig } from "./utils
 import type { GatsbyNode } from "gatsby";
 
 import { makePluginData } from "./utils/plugin-data";
-import { getFunctionManifest } from "./gatsby/functionsManifest";
+import { getFunctionManifest } from "./gatsby/funcitons-manifest";
 import { CONFIG_FILE_NAME } from "./utils/constants";
-import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
-import { getServerSideRoutes } from "./gatsby/serverRoutes";
-import { getProxiesAndRedirects } from "./gatsby/proxiesAndRedirects";
+import { getClientSideRoutes } from "./gatsby/client-side-route";
+import { getServerSideRoutes } from "./gatsby/server-routes";
+import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
@@ -24,7 +24,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     const clientSideRoutes = await getClientSideRoutes(pluginData);
     const serverSideRoutes = await getServerSideRoutes(pluginData);
 
-    // @ts-ignore
+    // @ts-expect-error This can't exist and making TS happy another way got complicated
     delete pluginOptions.plugins;
 
     const config: GatsbyNodeServerConfig = {
@@ -38,8 +38,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
-  } catch (error: any) {
-    reporter.error("Error building config for Fastify Server", error, "gatsby-plugin-fastify");
+  } catch (error) {
+    if (error instanceof Error) {
+      reporter.error("Error building config for Fastify Server", error, "gatsby-plugin-fastify");
+    }
   }
 };
 

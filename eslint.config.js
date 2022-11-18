@@ -57,19 +57,19 @@ module.exports = [
       react,
     },
   },
-  // {
-  //   files: ["packages/**/*.ts"],
-  //   languageOptions: {
-  //     parser: ts_parser,
-  //   },
-  //   plugins: {
-  //     "@typescript-eslint": typescript
-  //   },
-  //   rules: {
-  //     ...typescript.configs.recommended.rules,
-  //     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
-  //     // "@typescript-eslint/explicit-function-return-type": ["off"],
-  //     // "@typescript-eslint/explicit-module-boundary-types": ["off"],
-  //   },
-  // },
+  {
+    files: ["packages/**/*.ts"],
+    languageOptions: {
+      parser: ts_parser,
+    },
+    plugins: {
+      "@typescript-eslint": typescript,
+    },
+    rules: {
+      ...typescript.configs.recommended.rules,
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      // "@typescript-eslint/explicit-function-return-type": ["off"],
+      // "@typescript-eslint/explicit-module-boundary-types": ["off"],
+    },
+  },
 ];

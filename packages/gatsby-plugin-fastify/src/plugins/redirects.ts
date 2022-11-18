@@ -46,10 +46,10 @@ export const handleRedirects: FastifyPluginAsync<{
 
       fastify.get<{
         Params: {
-          [s: string]: any;
+          [s: string]: string;
         };
         Querystring: {
-          [s: string]: any;
+          [s: string]: string;
         };
       }>(cleanFromPath, { config: {} }, (request, reply) => {
         reply.appendModuleHeader("Redirects");
