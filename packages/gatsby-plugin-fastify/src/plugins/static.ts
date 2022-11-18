@@ -16,7 +16,7 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
       // These settings were switched to false with fastify v4, not entirely sure what changed, but tests are still passing.
       redirect: false,
       wildcard: false,
-      setHeaders: (reply, path, _stat) => {
+      setHeaders: (reply, path) => {
         if (
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
           isMatch(path, "!**/sw.js")

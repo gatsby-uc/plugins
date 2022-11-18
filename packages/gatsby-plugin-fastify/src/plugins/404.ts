@@ -5,7 +5,7 @@ import { PATH_TO_PUBLIC } from "../utils/constants";
 
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
-export const handle404: FastifyPluginAsync = async (fastify, _options) => {
+export const handle404: FastifyPluginAsync = async (fastify) => {
   const gatsby404ErrorFileExists = existsSync(resolve(PATH_TO_PUBLIC, "404.html"));
   fastify.log.info(
     `Gatsby 404 error page ${

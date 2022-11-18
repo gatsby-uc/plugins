@@ -7,7 +7,7 @@ import { PATH_TO_PUBLIC } from "../utils/constants";
 
 import type { FastifyPluginAsync } from "fastify";
 
-export const handle500: FastifyPluginAsync = fp(async (fastify, _options) => {
+export const handle500: FastifyPluginAsync = fp(async (fastify) => {
   const gatsby500ErrorFileExists = existsSync(resolve(PATH_TO_PUBLIC, "500.html"));
   fastify.log.info(
     `Gatsby 500 error page ${
