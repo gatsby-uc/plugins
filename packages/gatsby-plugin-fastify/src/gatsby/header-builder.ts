@@ -69,6 +69,6 @@ const applyCachingHeaders =
 export function buildHeadersProgram(pluginData, pluginOptions) {
   return compose(
     applySecurityHeaders(pluginOptions),
-    applyCachingHeaders(pluginData, pluginOptions),
+    applyCachingHeaders(pluginData, pluginOptions)
   )(pluginOptions.headers);
 }

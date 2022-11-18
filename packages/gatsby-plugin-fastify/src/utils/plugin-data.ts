@@ -18,7 +18,7 @@ export function buildPrefixer(prefix: string, ...paths: string[]) {
 export async function makePluginData(
   store: Store,
   assetsManifest: WebpackAssetsManifest.Assets,
-  pathPrefix: string,
+  pathPrefix: string
 ): Promise<PluginData> {
   const { program, pages, components } = store.getState() as IGatsbyState;
   const publicFolder = buildPrefixer(program.directory, PATH_TO_PUBLIC);

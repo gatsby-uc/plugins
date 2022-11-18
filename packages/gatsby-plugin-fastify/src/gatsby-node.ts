@@ -11,18 +11,14 @@ import { getFunctionManifest } from "./gatsby/funcitons-manifest";
 import { getClientSideRoutes } from "./gatsby/client-side-route";
 import { getServerSideRoutes } from "./gatsby/server-routes";
 import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
-import {
-  CONFIG_FILE_NAME,
-  BUILD_HTML_STAGE,
-  BUILD_CSS_STAGE,
-} from "./utils/constants";
-import { buildHeadersProgram } from "./gatsby/headerBuilder";
+import { CONFIG_FILE_NAME, BUILD_HTML_STAGE, BUILD_CSS_STAGE } from "./utils/constants";
+import { buildHeadersProgram } from "./gatsby/header-builder";
 
 const assetsManifest: WebpackAssetsManifest.Assets = {};
 
 // Inject a webpack plugin to get the file manifests so we can translate all link headers
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions, stage }) => {
-  //@ts-expect-error
+  //@ts-expect-error Gatsby seems to be miss typed
   if (stage !== BUILD_HTML_STAGE && stage !== BUILD_CSS_STAGE) {
     return;
   }
@@ -62,7 +58,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
       prefix: pathPrefix,
       functions,
       headers,
-  };
+    };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
   } catch (error) {
