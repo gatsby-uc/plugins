@@ -21,9 +21,9 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
           isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
           isMatch(path, "!**/sw.js")
         ) {
-          reply.setHeaders(IMMUTABLE_CACHING_HEADER);
+          reply.setHeaders(...IMMUTABLE_CACHING_HEADER);
         } else {
-          reply.setHeaders(NEVER_CACHE_HEADER);
+          reply.setHeaders(...NEVER_CACHE_HEADER);
         }
         appendModuleHeader("Static", reply);
       },
