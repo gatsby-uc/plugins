@@ -73,7 +73,7 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
   createRedirect({
     fromPath: "/alt-redirect",
     toPath: "/posts/page-3",
-    statusCode: 307,
+    statusCode: 301,
   });
 
   createRedirect({

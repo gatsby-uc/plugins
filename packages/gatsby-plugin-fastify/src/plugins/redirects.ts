@@ -8,7 +8,7 @@ import type { IRedirect } from "gatsby/dist/redux/types";
 function getResponseCode(redirect: IRedirect): StatusCodes {
   return (
     redirect.statusCode ||
-    (redirect.isPermanent ? StatusCodes.MOVED_PERMANENTLY : StatusCodes.MOVED_TEMPORARILY)
+    (redirect.isPermanent ? StatusCodes.PERMANENT_REDIRECT : StatusCodes.TEMPORARY_REDIRECT)
   );
 }
 
@@ -44,7 +44,7 @@ export const handleRedirects: FastifyPluginAsync<{
     if (!alreadyRegisterd.has(cleanFromPath)) {
       isCleanedPath && alreadyRegisterd.add(cleanFromPath);
 
-      fastify.get<{
+      fastify.all<{
         Params: {
           [s: string]: string;
         };
