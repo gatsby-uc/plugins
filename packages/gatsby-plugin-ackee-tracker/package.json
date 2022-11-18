@@ -26,10 +26,8 @@
     "Christopher Burns <christopher@tapstudio.co.uk>",
     "Alex Moon <alex.jared.moon@gmail.com>"
   ],
-  "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir . --ignore \"**/__tests__\"",
-    "lint": "eslint . --ext .js --cache",
+    "build": "babel src --out-dir ./dist --ignore \"**/__tests__\"",
     "watch": "yarn build --watch"
   },
   "dependencies": {
@@ -38,9 +36,6 @@
     "ackee-tracker": "^5",
     "babel-preset-gatsby-package": "^3.0.0",
     "cross-env": "^7.0.3"
-  },
-  "devDependencies": {
-    "eslint": "7.32.0"
   },
   "peerDependencies": {
     "gatsby": "^4.0.0 || ^5.0.0"

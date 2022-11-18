@@ -50,7 +50,7 @@ exports.sourceNodes = async (
           ...item,
           databaseId: item.$id,
           id: createNodeId(`appwrite-${typeName}-${item.$id}`),
-          parent: null,
+          parent: undefined,
           children: [],
           internal: {
             type: `Appwrite${typeName}`,
@@ -59,8 +59,8 @@ exports.sourceNodes = async (
           },
         });
       }
-    } catch (e) {
-      reporter.panic("Error sourcing nodes data for type '" + typeName + "'", e);
+    } catch (error) {
+      reporter.panic("Error sourcing nodes data for type '" + typeName + "'", error);
     }
   }
 };

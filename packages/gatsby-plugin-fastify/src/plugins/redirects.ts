@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
-import { removeQueryParmsFromUrl, buildUrlFromParams } from "../utils/routes";
+import { removeQueryParmsFromUrl, buildRedirectUrlFromParameters } from "../utils/routes";
 
 import type { FastifyPluginAsync } from "fastify";
 import type { IRedirect } from "gatsby/dist/redux/types";
@@ -46,20 +46,23 @@ export const handleRedirects: FastifyPluginAsync<{
 
       fastify.get<{
         Params: {
-          [s: string]: any;
+          [s: string]: string;
         };
         Querystring: {
-          [s: string]: any;
+          [s: string]: string;
         };
-      }>(cleanFromPath, { config: {} }, (req, reply) => {
+      }>(cleanFromPath, { config: {} }, (request, reply) => {
         reply.appendModuleHeader("Redirects");
 
-        if (isCleanedPath && queryStringHandlers[req.url]) {
-          redirect = queryStringHandlers[req.url];
+        if (isCleanedPath && queryStringHandlers[request.url]) {
+          redirect = queryStringHandlers[request.url];
           responseCode = getResponseCode(redirect);
         }
 
-        const toUrl = buildUrlFromParams(redirect.toPath, { ...req.params, ...req.query });
+        const toUrl = buildRedirectUrlFromParameters(redirect.toPath, {
+          ...request.params,
+          ...request.query,
+        });
 
         reply.code(responseCode).redirect(toUrl);
       });

@@ -19,7 +19,7 @@ export const onRouteUpdate = (
   /**
    * If there is no tracker instance, instantiate one with the plugin options.
    */
-  if (trackerInstance == null) {
+  if (trackerInstance == undefined) {
     trackerInstance = ackeeTracker.create(server, {
       ignoreLocalhost,
       ignoreOwnVisits,

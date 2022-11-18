@@ -11,9 +11,7 @@ declare module "fastify" {
   }
 }
 
-export const implementUtilDecorators: FastifyPluginAsync<{}> = fp(
-  async (fastify: FastifyInstance) => {
-    fastify.decorateReply("setHeader", setHeaderDecorator);
-    fastify.decorateReply("appendModuleHeader", moduleHeaderDecorator, ["setHeader"]);
-  }
-);
+export const implementUtilDecorators: FastifyPluginAsync = fp(async (fastify: FastifyInstance) => {
+  fastify.decorateReply("setHeader", setHeaderDecorator);
+  fastify.decorateReply("appendModuleHeader", moduleHeaderDecorator, ["setHeader"]);
+});

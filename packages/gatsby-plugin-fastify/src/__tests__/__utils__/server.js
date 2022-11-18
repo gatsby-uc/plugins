@@ -1,6 +1,6 @@
-const { serveGatsby } = require("../../plugins/gatsby");
-const { setConfig, getServerConfig, ConfigKeyEnum } = require("../../utils/config");
-const { createCliConfig, createFastifyInstance } = require("./config");
+import { serveGatsby } from "../../plugins/gatsby";
+import { setConfig, getServerConfig, ConfigKeyEnum } from "../../utils/config";
+import { createCliConfig, createFastifyInstance } from "./config";
 
 jest.mock("../../utils/constants", () => ({
   ...jest.requireActual("../../utils/constants"),
@@ -10,7 +10,8 @@ jest.mock("../../utils/constants", () => ({
   CONFIG_FILE_PATH: "../../integration-tests/plugin-fastify/.cache",
 }));
 
-async function setupFastify({ overrideServerConfig } = { overrideServerConfig: {} }) {
+export async function setupFastify(options) {
+  const overrideServerConfig = options?.overrideServerConfig ?? {};
   setConfig(
     ConfigKeyEnum.CLI,
     createCliConfig({
@@ -26,8 +27,6 @@ async function setupFastify({ overrideServerConfig } = { overrideServerConfig: {
   return createFastifyInstance(serveGatsby);
 }
 
-async function shutdownFastify(fastify) {
+export async function shutdownFastify(fastify) {
   return fastify.close();
 }
-
-module.exports = { setupFastify, shutdownFastify };

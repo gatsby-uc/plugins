@@ -9,7 +9,7 @@ const ribbonColors = new Map([
 ]);
 
 //function to create URL
-exports.buildImgUrl = (color, position) =>
+export const buildImgUrl = (color, position) =>
   `https://s3.amazonaws.com/github/ribbons/forkme_${position}_${color}_${ribbonColors.get(
     color
   )}.png`;

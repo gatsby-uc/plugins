@@ -1,10 +1,10 @@
-import { handleClientOnlyRoutes } from "./clientRoutes";
+import { handleClientOnlyRoutes } from "./client-routes";
 import { implementUtilDecorators } from "./decorators";
-import { handleServerRoutes } from "./serverRoutes";
-import { handleImageTransforms } from "./imageTransform";
+import { handleServerRoutes } from "./server-routes";
+import { handleImageTransforms } from "./image-transform";
 import { handleFunctions } from "./functions";
 import { handleRedirects } from "./redirects";
-import { handleReverseProxy } from "./reverseProxy";
+import { handleReverseProxy } from "./reverse-proxy";
 import { handleStatic } from "./static";
 import { handle404 } from "./404";
 import { handle500 } from "./500";

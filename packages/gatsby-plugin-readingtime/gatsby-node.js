@@ -20,7 +20,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
 
   const { types, config } = options;
 
-  Object.entries(types).forEach(([type, contentResolver]) => {
+  for (const [type, contentResolver] of Object.entries(types)) {
     resolvers[type] = {
       readingTime: {
         type: "ReadingTime",
@@ -30,7 +30,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
         },
       },
     };
-  });
+  }
 
   createResolvers(resolvers);
 };

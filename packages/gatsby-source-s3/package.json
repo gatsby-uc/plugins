@@ -22,17 +22,12 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
     "@types/node": "^18.11.8",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
     "babel-preset-gatsby-package": "^3.0.0",
     "cypress": "^11.1.0",
-    "eslint": "^8.26.0",
-    "eslint-config-prettier": "^8.5.0",
     "start-server-and-test": "^1.14.0"
   },
   "scripts": {
-    "build": "babel src --out-dir . --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
-    "lint": "eslint '*/**/*.{ts,tsx}'",
+    "build": "babel src --out-dir ./dist --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
     "start": "(cd ../../integration-tests/source-s3 && yarn build && yarn serve)",
     "test:e2e": "cypress run",
     "test": "start-server-and-test 'yarn start' http://localhost:9000 'yarn test:e2e'"

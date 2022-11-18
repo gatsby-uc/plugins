@@ -32,11 +32,9 @@ export function appendModuleHeader(module: Modules, reply: FastifyReply): void {
 }
 
 export function moduleHeaderDecorator(this: FastifyReply, module: Modules): void {
-  const reply = this;
-  appendModuleHeader(module, reply);
+  appendModuleHeader(module, this);
 }
 
 export function setHeaderDecorator(this: FastifyReply, key: string, value: string) {
-  const reply = this;
-  reply.header(key, value);
+  this.header(key, value);
 }
