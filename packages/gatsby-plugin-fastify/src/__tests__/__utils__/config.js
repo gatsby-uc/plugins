@@ -1,7 +1,7 @@
 import Fastify from "fastify";
 import { getConfig } from "../../utils/config";
 
-exports.createCliConfig = function createCliConfig({ host, port, logLevel, open }) {
+export function createCliConfig({ host, port, logLevel, open }) {
   return {
     host,
     h: host,
@@ -12,9 +12,9 @@ exports.createCliConfig = function createCliConfig({ host, port, logLevel, open 
     open,
     o: open,
   };
-};
+}
 
-exports.createFastifyInstance = async function createFastifyInstance(plugin) {
+export async function createFastifyInstance(plugin) {
   const {
     cli: { logLevel },
   } = getConfig();
@@ -40,4 +40,4 @@ exports.createFastifyInstance = async function createFastifyInstance(plugin) {
   await fastify.ready();
 
   return fastify;
-};
+}

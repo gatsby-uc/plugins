@@ -1,7 +1,11 @@
 import type { PluginData } from "../utils/plugin-data";
 import { formatMatchPath } from "../utils/routes";
 
-export type ServerSideRoute = { path: string; mode: "DSG" | "SSR" };
+export type ServerSideRoute = {
+  path: string;
+  mode: "DSG" | "SSR";
+  matchPath: string;
+};
 
 export async function getServerSideRoutes(pageData: PluginData) {
   const { pages } = pageData;
@@ -9,11 +13,10 @@ export async function getServerSideRoutes(pageData: PluginData) {
 
   for (const page of pages.values()) {
     if (page?.mode === "DSG" || page?.mode === "SSR") {
-      const { path, mode, matchPath } = page;
-
       routes.push({
-        path: matchPath ? formatMatchPath(matchPath) : path,
-        mode,
+        path: page.path,
+        mode: page.mode,
+        matchPath: page?.matchPath ? formatMatchPath(page.matchPath) : page.path,
       });
     }
   }

@@ -1,8 +1,8 @@
-import fs from "fs";
+import fs from "node:fs";
 import request from "request";
 import { buildImgUrl } from "./common";
 
-exports.onPostBootstrap = (args, pluginOptions) =>
+export const onPostBootstrap = (_apis, pluginOptions) =>
   new Promise((resolve, reject) => {
     const { color, position } = pluginOptions;
 
@@ -15,8 +15,8 @@ exports.onPostBootstrap = (args, pluginOptions) =>
     //download image to file
     request
       .get(url)
-      .on(`error`, function (err) {
-        reject(`Error retrieving github-ribbon: ${err}`);
+      .on(`error`, function (error) {
+        reject(`Error retrieving github-ribbon: ${error}`);
       })
       .pipe(file);
 

@@ -1,0 +1,26 @@
+{
+  "name": "gatsby-source-appwrite",
+  "version": "1.1.0",
+  "description": "Appwrite source plugin for building websites using Appwrite as a data source",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "appwrite"
+  ],
+  "contributors": [
+    "Alex Patterson <alex@codingcat.dev>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-source-appwrite"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^4.0.0 || ^5.0.1",
+    "node-appwrite": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  }
+}

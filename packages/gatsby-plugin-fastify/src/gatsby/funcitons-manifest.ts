@@ -4,13 +4,13 @@ import { PluginData } from "../utils/plugin-data";
 
 export async function getFunctionManifest(pluginData: PluginData): Promise<IGatsbyFunction[]> {
   const { functionsFolder } = pluginData;
-  const compiledFunctionsDir = functionsFolder();
+  const compiledFunctionsDirectory = functionsFolder();
 
-  if (!existsSync(compiledFunctionsDir)) {
-    throw new Error(`Unable to find function mainfest @ ${compiledFunctionsDir}`);
+  if (!existsSync(compiledFunctionsDirectory)) {
+    throw new Error(`Unable to find function mainfest @ ${compiledFunctionsDirectory}`);
   }
 
-  const functions = await readJSON(functionsFolder(`manifest.json`), `utf-8`);
+  const functions: IGatsbyFunction[] = await readJSON(functionsFolder(`manifest.json`), `utf-8`);
 
   return functions;
 }

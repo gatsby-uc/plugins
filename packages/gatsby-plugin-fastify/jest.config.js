@@ -7,5 +7,5 @@ module.exports = {
   ...sharedConfig,
   transformIgnorePatterns: ["/query-engine/", "/page-ssr/"],
   coveragePathIgnorePatterns: ["/query-engine/", "/page-ssr/"],
-  setupFilesAfterEnv: ["<rootDir>/src/__tests__/__utils__/setupFile.js"],
+  setupFilesAfterEnv: ["<rootDir>/src/__tests__/__utils__/setup-file.js"],
 };

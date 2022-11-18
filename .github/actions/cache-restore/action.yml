@@ -3,9 +3,9 @@ description: "Setup a NodeJS environment and restore cache if any, given a node 
 
 inputs:
   node-version:
-    description: "Node version to use, default to LTS Gallium (16.x)"
+    description: "Node version to use, default to LTS"
     required: true
-    default: 16
+    default: 18
 outputs:
   cache-hit:
     description: "Forward actions/cache cache-hit output"

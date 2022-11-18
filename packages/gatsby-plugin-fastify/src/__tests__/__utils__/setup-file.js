@@ -1,4 +1,4 @@
-const { setupFastify, shutdownFastify } = require("./server");
+import { setupFastify, shutdownFastify } from "./server";
 
 beforeAll(async () => {
   globalThis.fastify = await setupFastify();

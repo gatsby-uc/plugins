@@ -1,23 +1,23 @@
 import { writeJSON } from "fs-extra";
 import WebpackAssetsManifest from "webpack-assets-manifest";
+import { hasFeature } from "gatsby-plugin-utils";
+
 import type { GatsbyNode } from "gatsby";
 import type { GatsbyFastifyPluginOptions, GatsbyNodeServerConfig } from "./utils/config";
 
 import { BUILD_CSS_STAGE, BUILD_HTML_STAGE, CONFIG_FILE_NAME } from "./utils/constants";
 import { getPreloadLinks } from "./gatsby/preloadLinks";
-import { getFunctionManifest } from "./gatsby/functionsManifest";
-import { hasFeature } from "gatsby-plugin-utils";
-
 import { makePluginData } from "./utils/plugin-data";
-import { getClientSideRoutes } from "./gatsby/clientSideRoutes";
-import { getServerSideRoutes } from "./gatsby/serverRoutes";
-import { getProxiesAndRedirects } from "./gatsby/proxiesAndRedirects";
+import { getFunctionManifest } from "./gatsby/funcitons-manifest";
+import { getClientSideRoutes } from "./gatsby/client-side-route";
+import { getServerSideRoutes } from "./gatsby/server-routes";
+import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
 
 const assetsManifest: WebpackAssetsManifest.Assets = {};
 
 // Inject a webpack plugin to get the file manifests so we can translate all link headers
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions, stage }) => {
-  //@ts-expect-error
+  //@ts-expect-error Gatsby Types apear to be incorrect
   if (stage !== BUILD_HTML_STAGE && stage !== BUILD_CSS_STAGE) {
     return;
   }
@@ -45,7 +45,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     const serverSideRoutes = await getServerSideRoutes(pluginData);
     const preloadLinkList = await getPreloadLinks(pluginData, pluginOptions);
 
-    // @ts-ignore
+    // @ts-expect-error This can't exist and making TS happy another way got complicated
     delete pluginOptions.plugins;
 
     const config: GatsbyNodeServerConfig = {
@@ -60,8 +60,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
-  } catch (e: any) {
-    reporter.error("Error building config for Fastify Server", e, "gatsby-plugin-fastify");
+  } catch (error) {
+    if (error instanceof Error) {
+      reporter.error("Error building config for Fastify Server", error, "gatsby-plugin-fastify");
+    }
   }
 };
 

@@ -1,7 +1,0 @@
-#build files
-/plugins
-/gatsby
-/utils
-/serve.js
-/gatsby-*.js
-/cli.js

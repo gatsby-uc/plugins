@@ -1,5 +1,19 @@
 # source-s3
 
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies [[`bae3266`](https://github.com/gatsby-uc/plugins/commit/bae326612720b00116aea0928fc84a01a328fbb7), [`7bfdd1c`](https://github.com/gatsby-uc/plugins/commit/7bfdd1c2ea6c4cff5c1b8ed82c4257c606a1ee77), [`97af0d6`](https://github.com/gatsby-uc/plugins/commit/97af0d667d8f6e5265773f9cdb8eb0a184b9a6fa), [`0a047a8`](https://github.com/gatsby-uc/plugins/commit/0a047a8a241c82205b7ac43abcb7f3b9ca5b97a0)]:
+  - gatsby-source-s3@3.2.0
+
+## 1.0.7
+
+### Patch Changes
+
+- Updated dependencies [[`f830e3a`](https://github.com/gatsby-uc/plugins/commit/f830e3ab2cf9dc4b6daf474ed717cd02179fd556)]:
+  - gatsby-source-s3@3.1.6
+
 ## 1.0.6
 
 ### Patch Changes

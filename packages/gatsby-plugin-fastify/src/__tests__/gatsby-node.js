@@ -1,10 +1,10 @@
-const { onPostBuild } = require("../gatsby-node");
-const fs = require("fs-extra");
+import { onPostBuild } from "../gatsby-node";
+import fs from "fs-extra";
 
 jest.mock("../utils/constants", () => ({
   ...jest.requireActual("../utils/constants"),
   PATH_TO_FUNCTIONS: "../../integration-tests/plugin-fastify/.cache/functions/",
-  PATH_TO_PUBLIC: __dirname + "/__files__/public/",
+  PATH_TO_PUBLIC: process.cwd() + "/__files__/public/",
   PATH_TO_CACHE: "../../integration-tests/plugin-fastify/.cache/",
   CONFIG_FILE_PATH: "../../integration-tests/plugin-fastify/.cache/",
 }));
@@ -52,7 +52,7 @@ const pathPrefix = "/test";
 const store = {
   getState: jest.fn(() => ({
     program: {
-      directory: __dirname + "/__files__/",
+      directory: process.cwd() + "/__files__/",
     },
     pages: [
       {
@@ -100,8 +100,8 @@ const store = {
 };
 
 const reporter = {
-  error: jest.fn((_message, e) => {
-    throw new Error(e);
+  error: jest.fn((_message, error) => {
+    throw new Error(error);
   }),
 };
 

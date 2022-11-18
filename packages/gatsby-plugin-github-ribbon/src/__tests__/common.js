@@ -1,4 +1,4 @@
-const { buildImgUrl } = require(`../common`);
+import { buildImgUrl } from "../common";
 
 describe(`gatsby-plugin-github-ribbon`, () => {
   describe(`buildImgUrl`, () => {

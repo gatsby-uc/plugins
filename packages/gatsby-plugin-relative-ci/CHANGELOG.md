@@ -1,5 +1,25 @@
 # gatsby-plugin-relative-ci
 
+## 2.0.0
+
+### Major Changes
+
+- [#303](https://github.com/gatsby-uc/plugins/pull/303) [`bae3266`](https://github.com/gatsby-uc/plugins/commit/bae326612720b00116aea0928fc84a01a328fbb7) Thanks [@renovate](https://github.com/apps/renovate)! - Dropping Gatsby v2/v3 peer dependency support as these versions of Gatsby are EOL. Please update to a supported version of Gatsby, v4 or v5.
+
+### Minor Changes
+
+- [#303](https://github.com/gatsby-uc/plugins/pull/303) [`bae3266`](https://github.com/gatsby-uc/plugins/commit/bae326612720b00116aea0928fc84a01a328fbb7) Thanks [@renovate](https://github.com/apps/renovate)! - Bumping dependencies to match Gatsby v5 related changes. We will only be testing against Gatsby v5, so there's no promisses for Gatsby v4, though there's no known breaking changes.
+
+### Patch Changes
+
+- [#305](https://github.com/gatsby-uc/plugins/pull/305) [`97af0d6`](https://github.com/gatsby-uc/plugins/commit/97af0d667d8f6e5265773f9cdb8eb0a184b9a6fa) Thanks [@moonmeister](https://github.com/moonmeister)! - ADded ESLint configs and updated packages to lint rules. Don't expect any functional changes but code was changed. Please open an issue if you notice any change in behavior.
+
+## 1.4.4
+
+### Patch Changes
+
+- [#294](https://github.com/gatsby-uc/plugins/pull/294) [`f830e3a`](https://github.com/gatsby-uc/plugins/commit/f830e3ab2cf9dc4b6daf474ed717cd02179fd556) Thanks [@LekoArts](https://github.com/LekoArts)! - Change peerDependencies to allow Gatsby 5
+
 ## 1.4.3
 
 ### Patch Changes

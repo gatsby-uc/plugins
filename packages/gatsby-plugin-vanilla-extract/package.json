@@ -1,8 +1,7 @@
 {
   "name": "gatsby-plugin-vanilla-extract",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Gatsby plugin which wraps the vanilla-extract package for easy use",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gatsby-uc/plugins.git",
@@ -21,6 +20,6 @@
   "peerDependencies": {
     "@vanilla-extract/css": "^1.0.0",
     "@vanilla-extract/webpack-plugin": "^2.2.0",
-    "gatsby": "^3.0.0 || ^4.0.0"
+    "gatsby": "^4.0.0 || ^5.0.0"
   }
 }

@@ -108,6 +108,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "codercatdev",
+      "name": "Alex Patterson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3102249?v=4",
+      "profile": "http://alexpatterson.dev/",
+      "contributions": [
+        "code",
+        "plugin"
+      ]
     }
   ],
   "contributorsPerLine": 7

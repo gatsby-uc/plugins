@@ -1,4 +1,4 @@
-const { RelativeCiAgentWebpackPlugin } = require("@relative-ci/agent");
+import { RelativeCiAgentWebpackPlugin } from "@relative-ci/agent";
 
 export const onCreateWebpackConfig = ({ stage, actions }, pluginOptions) => {
   if (stage === "build-javascript") {

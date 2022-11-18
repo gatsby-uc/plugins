@@ -16,22 +16,22 @@ export async function sourceNodes(
 
       reporter.info(`Got results for ${total} Packagist packages!`);
 
-      for (const pkg of packages) {
+      for (const package_ of packages) {
         actions.createNode({
-          ...pkg,
-          id: createNodeId(pkg.name),
+          ...package_,
+          id: createNodeId(package_.name),
           internal: {
             type: "packagistPackage",
-            contentDigest: createContentDigest(pkg),
-            content: JSON.stringify(pkg),
+            contentDigest: createContentDigest(package_),
+            content: JSON.stringify(package_),
           },
         });
       }
-    } catch (e) {
-      if (e.response) {
-        reporter.error("Error searching for packages: ", e);
+    } catch (error) {
+      if (error.response) {
+        reporter.error("Error searching for packages: ", error);
       }
-      reporter.panic("unknown error", e);
+      reporter.panic("unknown error", error);
     }
   }
 }
@@ -51,8 +51,8 @@ export async function createResolvers(
     README_DOMAINS["github.com"] = async (path) => {
       const lastSlash = path.lastIndexOf("/");
       const repo = {
-        owner: path.substring(path.indexOf("/") + 1, lastSlash),
-        repo: path.substring(lastSlash + 1),
+        owner: path.slice(path.indexOf("/") + 1, lastSlash),
+        repo: path.slice(Math.max(0, lastSlash + 1)),
       };
 
       try {
@@ -61,12 +61,12 @@ export async function createResolvers(
         } = await octokit.repos.getReadme(repo);
 
         return url;
-      } catch (e) {
-        if (e.status === 403) {
-          const errorText = `Github: ${e}`;
+      } catch (error) {
+        if (error.status === 403) {
+          const errorText = `Github: ${error}`;
           reporter.panicOnBuild(errorText);
         } else {
-          reporter.warn("Error Fetching Readme from Github", e);
+          reporter.warn("Error Fetching Readme from Github", error);
         }
       }
     };
@@ -95,8 +95,8 @@ export async function createResolvers(
                 createNodeId,
                 reporter,
               });
-            } catch (e) {
-              reporter.error("Well that was unexpected", e);
+            } catch (error) {
+              reporter.error("Well that was unexpected", error);
             }
           } else {
             reporter.warn(

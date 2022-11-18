@@ -1,31 +1,19 @@
-import { join, posix, resolve } from "path";
+import { join, posix, resolve } from "node:path";
 import { StatusCodes } from "http-status-codes";
 
 import type { FastifyPluginAsync } from "fastify";
-import type { ServerSideRoute } from "../gatsby/serverRoutes";
+import type { ServerSideRoute } from "../gatsby/server-routes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
 import { removeQueryParmsFromUrl } from "../utils/routes";
+import { countPaths } from "../utils/log";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
 }> = async (fastify, { paths }) => {
   if (paths?.length > 0) {
-    const { dsgCount, ssrCount } = paths.reduce(
-      (acc, path) => {
-        switch (path.mode) {
-          case "SSR":
-            acc.ssrCount++;
-            break;
-          case "DSG":
-            acc.dsgCount++;
-            break;
-        }
-        return acc;
-      },
-      { dsgCount: 0, ssrCount: 0 }
-    );
+    const { dsgCount, ssrCount } = countPaths(paths);
 
     fastify.log.info(`Registering ${dsgCount} DSG route(s)`);
     fastify.log.info(`Registering ${ssrCount} SSR route(s)`);
@@ -50,9 +38,9 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
       fastify.log.debug(`Registering "${pageDataPath}" as "${mode}" route.`);
 
-      fastify.get(pageDataPath, async (req, reply) => {
+      fastify.get(pageDataPath, async (request, reply) => {
         fastify.log.debug(`DSG/SSR for "page-data.json" @ ${path}`);
-        const workingURL = removeQueryParmsFromUrl(req.url);
+        const workingURL = removeQueryParmsFromUrl(request.url);
         const potentialPagePath = reverseFixedPagePath(path);
         const page = graphqlEngine.findPageByPath(potentialPagePath);
         if (!page) {
@@ -66,10 +54,10 @@ export const handleServerRoutes: FastifyPluginAsync<{
           const pageQueryData = await getData({
             pathName: workingURL,
             graphqlEngine,
-            req,
+            req: request,
           });
 
-          const pageData = (await renderPageData({ data: pageQueryData })) as any;
+          const pageData = (await renderPageData({ data: pageQueryData })) as unknown;
 
           if (page.mode === `SSR`) {
             if (pageQueryData?.serverDataHeaders) {
@@ -83,22 +71,24 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
           reply.header(...NEVER_CACHE_HEADER);
           return reply.send(pageData);
-        } catch (e: any) {
-          throw new Error(`Error fetching page data for ${path}: ${e.message}`);
+        } catch (error) {
+          if (error instanceof Error) {
+            throw new TypeError(`Error fetching page data for ${path}: ${error.message}`);
+          }
         }
       });
     }
 
     //Handle HTML for DSG/SSR
-    for (const { path, mode } of paths) {
+    for (const { path, mode, matchPath } of paths) {
       fastify.log.debug(`Registering "${path}" as "${mode}" route.`);
 
-      fastify.get(path, async (req, reply) => {
-        const accept = req.accepts();
-        const workingURL = removeQueryParmsFromUrl(req.url);
+      fastify.get(matchPath, async (request, reply) => {
+        const accept = request.accepts();
+        const workingURL = removeQueryParmsFromUrl(request.url);
 
         if (accept.type(["html"])) {
-          fastify.log.debug(`DSG/SSR for "text/html" @  ${req.url}`);
+          fastify.log.debug(`DSG/SSR for "text/html" @  ${request.url}`);
           const potentialPagePath = reverseFixedPagePath(workingURL);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
 
@@ -112,7 +102,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             const pageQueryData = await getData({
               pathName: potentialPagePath,
               graphqlEngine,
-              req,
+              req: request,
             });
 
             const results = await renderHTML({ data: pageQueryData });
@@ -132,11 +122,13 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
 
             return reply.type("text/html").send(results);
-          } catch (e: any) {
-            throw new Error(`Error fetching page HTML for ${path}: ${e.message}`);
+          } catch (error) {
+            if (error instanceof Error) {
+              throw new TypeError(`Error fetching page HTML for ${path}: ${error?.message}`);
+            }
           }
         } else {
-          fastify.log.warn(`Request for route ${req.url} does not support "text/html"`);
+          fastify.log.warn(`Request for route ${request.url} does not support "text/html"`);
           return reply
             .code(StatusCodes.BAD_REQUEST)
             .send("Request must support html via the `accept` header.");

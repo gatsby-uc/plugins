@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import { resolve } from "node:path";
 import { existsSync } from "fs-extra";
 import { StatusCodes } from "http-status-codes";
 
@@ -8,29 +8,26 @@ import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
 import type { IGatsbyFunction } from "gatsby/dist/redux/types";
 
 export type GatsbyFunctionHandler = (
-  req: FastifyRequest,
-  res: FastifyReply
+  request: FastifyRequest,
+  reply: FastifyReply
 ) => void | Promise<void>;
 
 async function getFunctionToExec({
   relativeCompiledFilePath,
-}: IGatsbyFunction): Promise<GatsbyFunctionHandler | null> {
-  const funcImportAbsPath = resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
+}: IGatsbyFunction): Promise<GatsbyFunctionHandler | undefined> {
+  const functionImportAbsPath = resolve(PATH_TO_FUNCTIONS, relativeCompiledFilePath);
 
-  if (!existsSync(funcImportAbsPath)) {
-    throw new Error(`Unable to find function to import @ ${funcImportAbsPath}`);
+  if (!existsSync(functionImportAbsPath)) {
+    throw new Error(`Unable to find function to import @ ${functionImportAbsPath}`);
   }
 
-  const func = await import(funcImportAbsPath);
-  return func?.default ?? func;
+  const function_ = await import(functionImportAbsPath);
+  return function_?.default ?? function_;
 }
 
 async function getFunctionHandler(routeConfig: IGatsbyFunction) {
   const execFunction = await getFunctionToExec(routeConfig);
 
-  if (!execFunction) {
-    return null;
-  }
   return execFunction;
 }
 
@@ -41,19 +38,20 @@ export const handleFunctions: FastifyPluginAsync<{
   if (functions?.length > 0) {
     fastify.log.info(`Registering ${functions.length} function(s)`);
 
-    for (const funcConfig of functions) {
+    for (const functionConfig of functions) {
       try {
-        const fnToExecute = await getFunctionHandler(funcConfig);
+        const functionToExecute = await getFunctionHandler(functionConfig);
 
-        if (fnToExecute) {
-          fastify.log.debug(`Registering function:  ${prefix + funcConfig.functionRoute}`);
-          fastify.all(funcConfig.functionRoute, {
-            handler: async function (req, reply) {
+        if (functionToExecute) {
+          const path = functionConfig?.matchPath || functionConfig.functionRoute;
+          fastify.log.debug(`Registering function:  ${prefix + path}`);
+          fastify.all(path, {
+            handler: async function (request, reply) {
               try {
                 reply.appendModuleHeader("Functions");
-                await Promise.resolve(fnToExecute(req, reply));
-              } catch (e) {
-                fastify.log.error(e);
+                await Promise.resolve(functionToExecute(request, reply));
+              } catch (error) {
+                fastify.log.error(error);
                 // Don't send the error if that would cause another error.
                 if (!reply.sent) {
                   reply
@@ -64,13 +62,13 @@ export const handleFunctions: FastifyPluginAsync<{
             },
           });
         }
-      } catch (e) {
-        fastify.log.error(e);
+      } catch (error) {
+        fastify.log.error(error);
       }
     }
   }
 
-  fastify.all("/*", async (_req, reply) => {
+  fastify.all("/*", async (_request, reply) => {
     reply.code(StatusCodes.NOT_FOUND).send("Function not found.");
   });
 };

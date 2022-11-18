@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-supabase",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Gatsby source plugin for building websites using Supabase as a data source",
   "keywords": [
     "gatsby",
@@ -18,7 +18,8 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@supabase/supabase-js": "^1.0.0"
+    "@supabase/supabase-js": "^1.0.0",
+    "gatsby": "^4.0.0 || ^5.0.1"
   },
   "engines": {
     "node": ">=14.15.0"

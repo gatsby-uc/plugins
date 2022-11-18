@@ -1,7 +1,7 @@
 //This file was initially coppied from `gatsby-plugin-gatsby-cloud`
 
 import { readJSON } from "fs-extra";
-import { join } from "path";
+import { join } from "node:path";
 import { PATH_TO_CACHE, PATH_TO_FUNCTIONS, PATH_TO_PUBLIC } from "./constants";
 import type { Store } from "gatsby";
 import type WebpackAssetsManifest from "webpack-assets-manifest";

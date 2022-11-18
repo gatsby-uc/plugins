@@ -1,5 +1,32 @@
 # gatsby-plugin-fastify
 
+## 0.10.0
+
+### Minor Changes
+
+- [#303](https://github.com/gatsby-uc/plugins/pull/303) [`bae3266`](https://github.com/gatsby-uc/plugins/commit/bae326612720b00116aea0928fc84a01a328fbb7) Thanks [@renovate](https://github.com/apps/renovate)! - Bumping dependencies to match Gatsby v5 related changes. We will only be testing against Gatsby v5, so there's no promisses for Gatsby v4, though there's no known breaking changes.
+
+### Patch Changes
+
+- [#305](https://github.com/gatsby-uc/plugins/pull/305) [`97af0d6`](https://github.com/gatsby-uc/plugins/commit/97af0d667d8f6e5265773f9cdb8eb0a184b9a6fa) Thanks [@moonmeister](https://github.com/moonmeister)! - ADded ESLint configs and updated packages to lint rules. Don't expect any functional changes but code was changed. Please open an issue if you notice any change in behavior.
+
+- [#303](https://github.com/gatsby-uc/plugins/pull/303) [`bae3266`](https://github.com/gatsby-uc/plugins/commit/bae326612720b00116aea0928fc84a01a328fbb7) Thanks [@renovate](https://github.com/apps/renovate)! - Adding Gatsby v5 to peer dependencies now that testing has been done.
+
+- [#288](https://github.com/gatsby-uc/plugins/pull/288) [`0a047a8`](https://github.com/gatsby-uc/plugins/commit/0a047a8a241c82205b7ac43abcb7f3b9ca5b97a0) Thanks [@moonmeister](https://github.com/moonmeister)! - chore(repo): node 18 version bumps and testing
+
+## 0.9.8
+
+### Patch Changes
+
+- [#300](https://github.com/gatsby-uc/plugins/pull/300) [`2eacee4`](https://github.com/gatsby-uc/plugins/commit/2eacee4914a036372fcb8751be0d1b40fac6a5e2) Thanks [@moonmeister](https://github.com/moonmeister)! - Fix: bugs arround matching certain paths related to wildcard and parametric SSR routes. #289.
+  Fix: implemented some more consistent use and parsing of matchPaths to support native gatsby naming that is window ssompatible. #270
+
+## 0.9.7
+
+### Patch Changes
+
+- [#292](https://github.com/gatsby-uc/plugins/pull/292) [`4ca97f9`](https://github.com/gatsby-uc/plugins/commit/4ca97f9ae833b719d67f02ae2af0c9313549fea8) Thanks [@tsdexter](https://github.com/tsdexter)! - support colons in redirect `toPath`s
+
 ## 0.9.6
 
 ### Patch Changes
