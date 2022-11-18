@@ -2,18 +2,22 @@ const ts_parser = require("@typescript-eslint/parser");
 const babel_parser = require("@babel/eslint-parser");
 const unicorn = require("eslint-plugin-unicorn");
 const prettier = require("eslint-config-prettier");
+const react = require("eslint-plugin-react");
+const typescript = require("@typescript-eslint/eslint-plugin");
 
 module.exports = [
   // "eslint:recomended",
   {
+    ignores: ["**/dist", "**/*.config.js", "**/coverage"],
+  },
+  {
     plugins: {
       unicorn,
-      prettier: {},
+      prettier,
     },
     rules: {
       ...prettier.rules,
-      "unicorn/prefer-node-protocol": "error",
-      // ...unicorn.configs.recommended.rules,
+      ...unicorn.configs.recommended.rules,
     },
   },
   {
@@ -21,35 +25,51 @@ module.exports = [
     languageOptions: {
       sourceType: "commonjs",
     },
+    rules: {
+      "unicorn/prefer-module": "off",
+    },
   },
   {
-    files: ["packages/**/src/**"],
+    files: ["packages/**/*.js"],
+    settings: {
+      react: {
+        version: "18",
+      },
+    },
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
       parser: babel_parser,
       parserOptions: {
         requireConfigFile: false,
+        ecmaFeatures: {
+          jsx: true,
+        },
         babelOptions: {
-          presets: ["babel-preset-gatsby-package"],
+          presets: ["@babel/preset-react"],
         },
       },
     },
-
+    rules: {
+      ...react.configs.recommended.rules,
+    },
     plugins: {
-      react: {},
+      react,
     },
   },
   // {
+  //   files: ["packages/**/*.ts"],
   //   languageOptions: {
   //     parser: ts_parser,
   //   },
   //   plugins: {
-  //     "plugin:@typescript-eslint/recommended": {},
+  //     "@typescript-eslint": typescript
   //   },
   //   rules: {
-  //     "@typescript-eslint/explicit-function-return-type": ["off"],
-  //     "@typescript-eslint/explicit-module-boundary-types": ["off"],
+  //     ...typescript.configs.recommended.rules,
+  //     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  //     // "@typescript-eslint/explicit-function-return-type": ["off"],
+  //     // "@typescript-eslint/explicit-module-boundary-types": ["off"],
   //   },
   // },
 ];
