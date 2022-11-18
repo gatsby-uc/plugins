@@ -2,7 +2,7 @@ import fs from "node:fs";
 import request from "request";
 import { buildImgUrl } from "./common";
 
-exports.onPostBootstrap = (arguments_, pluginOptions) =>
+export const onPostBootstrap = (_apis, pluginOptions) =>
   new Promise((resolve, reject) => {
     const { color, position } = pluginOptions;
 

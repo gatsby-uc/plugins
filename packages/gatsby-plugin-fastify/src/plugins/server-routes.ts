@@ -1,4 +1,4 @@
-import { join, posix, resolve } from "path";
+import { join, posix, resolve } from "node:path";
 import { StatusCodes } from "http-status-codes";
 
 import type { FastifyPluginAsync } from "fastify";
@@ -38,9 +38,9 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
       fastify.log.debug(`Registering "${pageDataPath}" as "${mode}" route.`);
 
-      fastify.get(pageDataPath, async (req, reply) => {
+      fastify.get(pageDataPath, async (request, reply) => {
         fastify.log.debug(`DSG/SSR for "page-data.json" @ ${path}`);
-        const workingURL = removeQueryParmsFromUrl(req.url);
+        const workingURL = removeQueryParmsFromUrl(request.url);
         const potentialPagePath = reverseFixedPagePath(path);
         const page = graphqlEngine.findPageByPath(potentialPagePath);
         if (!page) {
@@ -54,7 +54,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
           const pageQueryData = await getData({
             pathName: workingURL,
             graphqlEngine,
-            req,
+            req: request,
           });
 
           const pageData = (await renderPageData({ data: pageQueryData })) as any;
@@ -71,8 +71,8 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
           reply.header(...NEVER_CACHE_HEADER);
           return reply.send(pageData);
-        } catch (e: any) {
-          throw new Error(`Error fetching page data for ${path}: ${e.message}`);
+        } catch (error: any) {
+          throw new Error(`Error fetching page data for ${path}: ${error.message}`);
         }
       });
     }
@@ -81,12 +81,12 @@ export const handleServerRoutes: FastifyPluginAsync<{
     for (const { path, mode, matchPath } of paths) {
       fastify.log.debug(`Registering "${path}" as "${mode}" route.`);
 
-      fastify.get(matchPath, async (req, reply) => {
-        const accept = req.accepts();
-        const workingURL = removeQueryParmsFromUrl(req.url);
+      fastify.get(matchPath, async (request, reply) => {
+        const accept = request.accepts();
+        const workingURL = removeQueryParmsFromUrl(request.url);
 
         if (accept.type(["html"])) {
-          fastify.log.debug(`DSG/SSR for "text/html" @  ${req.url}`);
+          fastify.log.debug(`DSG/SSR for "text/html" @  ${request.url}`);
           const potentialPagePath = reverseFixedPagePath(workingURL);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
 
@@ -100,7 +100,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             const pageQueryData = await getData({
               pathName: potentialPagePath,
               graphqlEngine,
-              req,
+              req: request,
             });
 
             const results = await renderHTML({ data: pageQueryData });
@@ -120,11 +120,11 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
 
             return reply.type("text/html").send(results);
-          } catch (e: any) {
-            throw new Error(`Error fetching page HTML for ${path}: ${e.message}`);
+          } catch (error: any) {
+            throw new Error(`Error fetching page HTML for ${path}: ${error.message}`);
           }
         } else {
-          fastify.log.warn(`Request for route ${req.url} does not support "text/html"`);
+          fastify.log.warn(`Request for route ${request.url} does not support "text/html"`);
           return reply
             .code(StatusCodes.BAD_REQUEST)
             .send("Request must support html via the `accept` header.");

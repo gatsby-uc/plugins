@@ -13,7 +13,7 @@ export function removeQueryParmsFromUrl(url: string) {
   return url.split("?", 2)[0];
 }
 
-export function buildUrlFromParams(path: string, data: { [s: string]: string } = {}) {
+export function buildRedirectUrlFromParameters(path: string, data: { [s: string]: string } = {}) {
   return path.replace(/:(\w+)|(\*)/gi, function (match, p1, p2) {
     if (p1 && !data[p1]) return match; // :Something in toPath does not have a splat in fromPath pass it through colon intact
     let lookupString = p1 ?? p2;

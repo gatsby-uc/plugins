@@ -1,4 +1,4 @@
-import { PathConfig } from "../plugins/clientRoutes";
+import { PathConfig } from "../plugins/client-routes";
 import { formatMatchPath } from "../utils/routes";
 import type { PluginData } from "../utils/plugin-data";
 

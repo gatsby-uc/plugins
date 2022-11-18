@@ -51,7 +51,7 @@ export async function createResolvers(
     README_DOMAINS["github.com"] = async (path) => {
       const lastSlash = path.lastIndexOf("/");
       const repo = {
-        owner: path.substring(path.indexOf("/") + 1, lastSlash),
+        owner: path.slice(path.indexOf("/") + 1, lastSlash),
         repo: path.slice(Math.max(0, lastSlash + 1)),
       };
 

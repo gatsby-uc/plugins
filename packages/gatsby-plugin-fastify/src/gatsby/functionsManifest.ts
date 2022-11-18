@@ -1,4 +1,4 @@
-import { fsync } from "fs";
+import { fsync } from "node:fs";
 import { existsSync, readJSON } from "fs-extra";
 import { IGatsbyFunction } from "gatsby/dist/redux/types";
 import { PluginData } from "../utils/plugin-data";

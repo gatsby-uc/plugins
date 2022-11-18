@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import { resolve } from "node:path";
 
 import { PATH_TO_PUBLIC } from "../utils/constants";
 
@@ -19,7 +19,7 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
     for (const p of paths) {
       fastify.log.debug(`Registering client-only route: ${p.path}`);
 
-      fastify.get(p.matchPath, (_req, reply) => {
+      fastify.get(p.matchPath, (_request, reply) => {
         reply.appendModuleHeader("Client Route");
 
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
@@ -27,3 +27,5 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
     }
   }
 };
+
+export default { handleClientOnlyRoutes };

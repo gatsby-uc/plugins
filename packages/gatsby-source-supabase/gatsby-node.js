@@ -44,7 +44,7 @@ exports.sourceNodes = async (
           ...item,
           databaseId: item.id,
           id: createNodeId(`supabase-${typeName}-${item.id}`),
-          parent: null,
+          parent: undefined,
           children: [],
           internal: {
             type: `Supabase${typeName}`,

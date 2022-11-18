@@ -29,11 +29,11 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
   AWS.config.update(awsConfig);
   const s3 = new AWS.S3();
 
-  reporter.verbose(`AWS S3 Config: ${JSON.stringify(s3.config, null, 2)}`);
+  reporter.verbose(`AWS S3 Config: ${JSON.stringify(s3.config, undefined, 2)}`);
 
   // get objects
-  const getS3ListObjects = async (params: { Bucket: string; ContinuationToken?: string }) => {
-    return await s3.listObjectsV2(params).promise();
+  const getS3ListObjects = async (parameters: { Bucket: string; ContinuationToken?: string }) => {
+    return await s3.listObjectsV2(parameters).promise();
   };
 
   const listAllS3Objects = async (bucket: string) => {
@@ -43,9 +43,9 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
       const data = await getS3ListObjects({ Bucket: bucket });
 
       if (data && data.Contents) {
-        data.Contents.forEach((object) => {
+        for (const object of data.Contents) {
           allS3Objects.push({ ...object, Bucket: bucket });
-        });
+        }
       } else {
         reporter.error(
           `Error processing objects from bucket "${bucket}". Is it empty?`,
@@ -63,9 +63,9 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
         });
 
         if (data && data.Contents) {
-          data.Contents.forEach((object) => {
+          for (const object of data.Contents) {
             allS3Objects.push({ ...object, Bucket: bucket });
-          });
+          }
         }
         nextToken = data && data.IsTruncated && data.NextContinuationToken;
       }
@@ -85,7 +85,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
     const objects = allBucketsObjects.flat();
 
     // create file nodes
-    objects?.forEach(async (object) => {
+    for (const object of objects) {
       const { Bucket, Key } = object;
       // get pre-signed URL
       const url = s3.getSignedUrl("getObject", {
@@ -99,7 +99,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
         url,
         // node meta
         id: createNodeId(`s3-object-${Key}`),
-        parent: null,
+        parent: undefined,
         children: [],
         internal: {
           type: "S3Object",
@@ -107,7 +107,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
           contentDigest: createContentDigest(object),
         },
       });
-    });
+    }
   } catch (error) {
     reporter.error(`Error sourcing nodes: ${error}`);
   }

@@ -23,14 +23,14 @@ export const handleReverseProxy: FastifyPluginAsync<{
         upstream: proxyTo.href,
         prefix: cleanFrom,
         replyOptions: {
-          onResponse: (_req, reply, res) => {
+          onResponse: (_request, reply, res) => {
             (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
             reply.send(res);
           },
         },
       });
-    } catch (e) {
-      fastify.log.error(e);
+    } catch (error) {
+      fastify.log.error(error);
     }
   }
 };

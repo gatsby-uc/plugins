@@ -2,16 +2,18 @@ import type { ServerSideRoute } from "../gatsby/serverRoutes";
 
 export function countPaths(paths: ServerSideRoute[]) {
   return paths.reduce(
-    (acc, path) => {
+    (accumulator, path) => {
       switch (path.mode) {
-        case "SSR":
-          acc.ssrCount++;
+        case "SSR": {
+          accumulator.ssrCount++;
           break;
-        case "DSG":
-          acc.dsgCount++;
+        }
+        case "DSG": {
+          accumulator.dsgCount++;
           break;
+        }
       }
-      return acc;
+      return accumulator;
     },
     { dsgCount: 0, ssrCount: 0 }
   );

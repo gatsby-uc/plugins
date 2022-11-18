@@ -7,17 +7,17 @@ export function getProxiesAndRedirects(store: Store) {
   const { redirects: proxiesAndRedirects }: { redirects: IRedirect[] } = store.getState();
 
   return proxiesAndRedirects.reduce(
-    (acc, curr) => {
-      if (curr.statusCode == 200) {
-        acc.proxies.push({
-          toPath: curr.toPath.replace(/\*$/, ""),
-          fromPath: curr.fromPath.replace(/\*$/, ""),
+    (accumulator, current) => {
+      if (current.statusCode == 200) {
+        accumulator.proxies.push({
+          toPath: current.toPath.replace(/\*$/, ""),
+          fromPath: current.fromPath.replace(/\*$/, ""),
         });
       } else {
-        acc.redirects.push(curr);
+        accumulator.redirects.push(current);
       }
 
-      return acc;
+      return accumulator;
     },
     { redirects: [] as IRedirect[], proxies: [] as GatsbyFastifyProxy[] }
   );

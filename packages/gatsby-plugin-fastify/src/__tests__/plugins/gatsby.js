@@ -1,4 +1,4 @@
-const { setupFastify, shutdownFastify } = require("../__utils__/server");
+import { setupFastify, shutdownFastify } from "../__utils__/server";
 
 describe(`Test Gatsby Server`, () => {
   let fastify;

@@ -38,8 +38,8 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
-  } catch (e: any) {
-    reporter.error("Error building config for Fastify Server", e, "gatsby-plugin-fastify");
+  } catch (error: any) {
+    reporter.error("Error building config for Fastify Server", error, "gatsby-plugin-fastify");
   }
 };
 

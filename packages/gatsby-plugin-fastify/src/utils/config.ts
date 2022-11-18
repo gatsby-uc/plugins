@@ -6,7 +6,7 @@ import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/serverRoutes";
 import type { GatsbyFastifyProxy } from "../gatsby/proxiesAndRedirects";
 
-import { PathConfig } from "../plugins/clientRoutes";
+import { PathConfig } from "../plugins/client-routes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
 import { buildPrefixer } from "./plugin-data";
 
@@ -73,7 +73,9 @@ export function setConfig(key: ConfigKeyEnum, incomingConfig: GetConfigOptions<C
 export function getServerConfig(): GatsbyNodeServerConfig {
   const configPath = configPrefixer(CONFIG_FILE_NAME);
   if (!existsSync(configPath)) {
-    throw Error(`No Server config found @ ${configPath}, did you do a production Gatsby Build?`);
+    throw new Error(
+      `No Server config found @ ${configPath}, did you do a production Gatsby Build?`
+    );
   }
   return readJSONSync(configPath, { encoding: "utf8" });
 }

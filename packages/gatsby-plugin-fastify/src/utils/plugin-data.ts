@@ -1,6 +1,6 @@
 //This file was initially coppied from `gatsby-plugin-gatsby-cloud`
 
-import { join } from "path";
+import { join } from "node:path";
 import { PATH_TO_CACHE, PATH_TO_FUNCTIONS, PATH_TO_PUBLIC } from "./constants";
 import type { Store } from "gatsby";
 import { IGatsbyState } from "gatsby/dist/redux/types";
