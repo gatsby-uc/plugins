@@ -1,5 +1,19 @@
 # gatsby-source-s3
 
+## 3.2.0
+
+### Minor Changes
+
+- [#303](https://github.com/gatsby-uc/plugins/pull/303) [`bae3266`](https://github.com/gatsby-uc/plugins/commit/bae326612720b00116aea0928fc84a01a328fbb7) Thanks [@renovate](https://github.com/apps/renovate)! - Bumping dependencies to match Gatsby v5 related changes. We will only be testing against Gatsby v5, so there's no promisses for Gatsby v4, though there's no known breaking changes.
+
+### Patch Changes
+
+- [#304](https://github.com/gatsby-uc/plugins/pull/304) [`7bfdd1c`](https://github.com/gatsby-uc/plugins/commit/7bfdd1c2ea6c4cff5c1b8ed82c4257c606a1ee77) Thanks [@renovate](https://github.com/apps/renovate)! - chore(packages): update dependency cypress to v11
+
+- [#305](https://github.com/gatsby-uc/plugins/pull/305) [`97af0d6`](https://github.com/gatsby-uc/plugins/commit/97af0d667d8f6e5265773f9cdb8eb0a184b9a6fa) Thanks [@moonmeister](https://github.com/moonmeister)! - ADded ESLint configs and updated packages to lint rules. Don't expect any functional changes but code was changed. Please open an issue if you notice any change in behavior.
+
+- [#288](https://github.com/gatsby-uc/plugins/pull/288) [`0a047a8`](https://github.com/gatsby-uc/plugins/commit/0a047a8a241c82205b7ac43abcb7f3b9ca5b97a0) Thanks [@moonmeister](https://github.com/moonmeister)! - chore(repo): node 18 version bumps and testing
+
 ## 3.1.6
 
 ### Patch Changes
