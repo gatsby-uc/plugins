@@ -53,6 +53,20 @@ jobs:
       - name: Check Types
         run: yarn test:types
 
+  check_lint:
+    name: Validate linting with ES Lint
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: ./.github/actions/cache-restore
+
+      - name: Check Types
+        run: yarn test:lint
+
   run-tests:
     name: Run package tests on (Node.js v${{ matrix.node }})
     runs-on: ubuntu-latest
