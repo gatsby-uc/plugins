@@ -1,3 +1,3 @@
-const gatsbyBrowser = require("./dist/gatsby-browser")
+const gatsbyBrowser = require("./dist/gatsby-browser");
 
 module.exports = gatsbyBrowser;

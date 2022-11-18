@@ -1,3 +1,3 @@
-const gatsbySsr = require("./dist/gatsby-ssr")
+const gatsbySsr = require("./dist/gatsby-ssr");
 
-module.exports = gatsbySsr
+module.exports = gatsbySsr;

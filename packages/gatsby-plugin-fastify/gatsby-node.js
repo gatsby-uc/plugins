@@ -1,3 +1,3 @@
-const gatsbyNode = require("./dist/gatsby-node")
+const gatsbyNode = require("./dist/gatsby-node");
 
-module.exports = gatsbyNode
+module.exports = gatsbyNode;
