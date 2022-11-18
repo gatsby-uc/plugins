@@ -1,3 +1,5 @@
+import { FG_MODULE_HEADER } from "../../utils/headers";
+
 describe(`Test Gatsby Reverse Proxy Routes`, () => {
   it(`Should serve Reverse Proxy route`, async () => {
     const response = await fastify.inject({
@@ -7,7 +9,7 @@ describe(`Test Gatsby Reverse Proxy Routes`, () => {
 
     expect(response.statusCode).toEqual(200);
     expect(response.headers["content-type"]).toContain("text/html");
-    expect(response.headers["x-gatsby-fastify"]).toContain("Reverse Proxy");
+    expect(response.headers[FG_MODULE_HEADER]).toContain("Reverse Proxy");
     expect(response.payload).toContain("Example Domain");
   });
 
@@ -19,7 +21,7 @@ describe(`Test Gatsby Reverse Proxy Routes`, () => {
 
     expect(response.statusCode).toEqual(200);
     expect(response.headers["content-type"]).toContain("text/html");
-    expect(response.headers["x-gatsby-fastify"]).toContain("Reverse Proxy");
+    expect(response.headers[FG_MODULE_HEADER]).toContain("Reverse Proxy");
     expect(response.payload).toContain("Example Domain");
   });
 

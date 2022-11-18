@@ -28,7 +28,7 @@ function servedBy(module: Modules) {
   return `served-by: ${module};`;
 }
 
-const FG_MODULE_HEADER = "x-gatsby-fastify";
+export const FG_MODULE_HEADER = "x-gatsby-fastify";
 
 export function appendModuleHeader(module: Modules, reply: FastifyReply): void {
   appendHeader({ name: FG_MODULE_HEADER, value: servedBy(module) }, reply);
