@@ -159,7 +159,11 @@ createRedirect({
 
 ### Gatsby Redirects
 
-Our implementation supports several examples as shown by [Gatsby Docs](https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/).
+We support the use of `statusCode` but do not currently support `conditions`, `ignoreCase`, or `force` as discussed in the [`createRedirect` docs](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect).
+
+For various reasons discussed in [this article](https://kinsta.com/knowledgebase/307-redirect/), the `isPermanent` boolean toggles HTTP `307 Temporray Redirect` and `308 Permanent Redirect` instead of `301 Moved Permanently` and `302 Found`. If you need to use `statusCode` onyour redirects to explicitly set the response code.
+
+Our implementation supports dynamic redirects as shown by [Gatsby Cloud Docs](https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/).
 
 Basic, splat, wildcard, and Querystring splat redirects should all work. e.g. :
 
@@ -211,7 +215,7 @@ createRedirect({
 });
 ```
 
-> **Note:** While These combos don't currently work it's not imposible to implement such a feature. If you need this feature please consider contributing.
+> **Note:** While these combos don't currently work it's not imposible to implement such a feature. If you need this feature please consider contributing.
 
 ### Gatsby Functions
 
@@ -231,4 +235,4 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 
 ### Gatsby Routing
 
-We have implemented a compatability layer to support the Gatsby flavor of routing for [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/routing/) and [File System Routing API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-client-only-routes). This should be transparent and if you follow the Gatsby docs for routing we should now support all those modes. This very well might not beperfect, if you have issues with routing please file a bug with a reproduction.
+We have implemented a compatability layer to support the Gatsby flavor of routing for [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/routing/) and [File System Routing API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-client-only-routes). This should be transparent and if you follow the Gatsby docs for routing we should now support all those modes. This very well might not be perfect, if you have issues with routing please file a bug with a reproduction.
