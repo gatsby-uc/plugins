@@ -11,7 +11,7 @@ jest.mock("../../utils/constants", () => ({
 }));
 
 export async function setupFastify(options) {
-  const { overrideServerConfig = {} } = options;
+  const overrideServerConfig = options?.overrideServerConfig ?? {};
   setConfig(
     ConfigKeyEnum.CLI,
     createCliConfig({
