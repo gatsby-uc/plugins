@@ -1,5 +1,14 @@
 # source-s3
 
+## 1.0.9
+
+### Patch Changes
+
+- [#311](https://github.com/gatsby-uc/plugins/pull/311) [`b7df7b2`](https://github.com/gatsby-uc/plugins/commit/b7df7b2a2ae97f55cb0025bdb12b5b52e4e7bcd3) Thanks [@renovate](https://github.com/apps/renovate)! - chore(integration-tests): update integration tests
+
+- Updated dependencies [[`3c854d0`](https://github.com/gatsby-uc/plugins/commit/3c854d0fd7c4bb81c894a08d6dca0ca2c18f7025), [`60fecbc`](https://github.com/gatsby-uc/plugins/commit/60fecbc600ce57bf82887a78f4e4d9a430b35f00)]:
+  - gatsby-source-s3@3.2.1
+
 ## 1.0.8
 
 ### Patch Changes
