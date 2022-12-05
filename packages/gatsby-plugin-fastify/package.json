@@ -35,7 +35,7 @@
     "@fastify/middie": "^8.0.0",
     "@fastify/static": "^6.5.1",
     "fastify-plugin": "^4.3.0",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.0",
     "gatsby-core-utils": "^4.2.0",
     "gatsby-plugin-utils": "^4.2.0",
     "http-status-codes": "^2.2.0",
