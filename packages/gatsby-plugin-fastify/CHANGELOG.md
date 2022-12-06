@@ -1,5 +1,25 @@
 # gatsby-plugin-fastify
 
+## 0.11.1
+
+### Patch Changes
+
+- [#317](https://github.com/gatsby-uc/plugins/pull/317) [`8fd9b57`](https://github.com/gatsby-uc/plugins/commit/8fd9b577189c98ddbacc0afb37a3cf3d756ea199) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update dependency fs-extra to v11
+
+- [#310](https://github.com/gatsby-uc/plugins/pull/310) [`3c854d0`](https://github.com/gatsby-uc/plugins/commit/3c854d0fd7c4bb81c894a08d6dca0ca2c18f7025) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
+- [#313](https://github.com/gatsby-uc/plugins/pull/313) [`60fecbc`](https://github.com/gatsby-uc/plugins/commit/60fecbc600ce57bf82887a78f4e4d9a430b35f00) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
+## 0.11.0
+
+### Minor Changes
+
+- [#306](https://github.com/gatsby-uc/plugins/pull/306) [`c109eb2`](https://github.com/gatsby-uc/plugins/commit/c109eb284913f00c05423804e3de888724848409) Thanks [@moonmeister](https://github.com/moonmeister)! - We've changed the default redirect codes to 307/308 from 301/302. See the redirects docs for more info. This won't break most use cases, unless you were expecting a specific response code. You may uses Gatsby's "statusCode" field to explicitly set the satus code back to 301/302 when creating the redirect.
+
+### Patch Changes
+
+- [#306](https://github.com/gatsby-uc/plugins/pull/306) [`c109eb2`](https://github.com/gatsby-uc/plugins/commit/c109eb284913f00c05423804e3de888724848409) Thanks [@moonmeister](https://github.com/moonmeister)! - feat: Changed redirects to respond on any HTTP medthod, not just GET.
+
 ## 0.10.0
 
 ### Minor Changes

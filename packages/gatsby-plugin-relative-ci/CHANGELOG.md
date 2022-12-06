@@ -1,5 +1,11 @@
 # gatsby-plugin-relative-ci
 
+## 2.0.1
+
+### Patch Changes
+
+- [#310](https://github.com/gatsby-uc/plugins/pull/310) [`3c854d0`](https://github.com/gatsby-uc/plugins/commit/3c854d0fd7c4bb81c894a08d6dca0ca2c18f7025) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
 ## 2.0.0
 
 ### Major Changes

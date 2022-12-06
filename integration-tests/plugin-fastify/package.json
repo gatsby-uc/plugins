@@ -1,6 +1,6 @@
 {
   "name": "test-plugin-fastify",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "private": true,
   "description": "Gatsby starter and test site for gatsby-plugin-fastify",
   "author": "Alex Moon",
@@ -16,26 +16,26 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "fastify": "^4.9.2",
-    "gatsby": "^5.0.1",
+    "fastify": "^4.10.2",
+    "gatsby": "^5.2.0",
     "gatsby-plugin-fastify": "*",
-    "gatsby-plugin-image": "^3.0.0",
-    "gatsby-plugin-manifest": "^5.0.0",
-    "gatsby-plugin-postcss": "^6.0.0",
-    "gatsby-plugin-sharp": "^5.0.0",
-    "gatsby-plugin-sitemap": "^6.0.0",
-    "gatsby-source-faker": "^5.0.0",
-    "gatsby-source-filesystem": "^5.0.0",
-    "gatsby-transformer-sharp": "^5.0.0",
-    "postcss": "^8.4.18",
+    "gatsby-plugin-image": "^3.2.0",
+    "gatsby-plugin-manifest": "^5.2.0",
+    "gatsby-plugin-postcss": "^6.2.0",
+    "gatsby-plugin-sharp": "^5.2.0",
+    "gatsby-plugin-sitemap": "^6.2.0",
+    "gatsby-source-faker": "^5.2.0",
+    "gatsby-source-filesystem": "^5.2.0",
+    "gatsby-transformer-sharp": "^5.2.0",
+    "postcss": "^8.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.6",
+    "@babel/core": "^7.20.5",
     "@babel/preset-typescript": "^7.18.6",
-    "babel-loader": "^9.0.1",
-    "babel-preset-gatsby": "^3.0.0",
+    "babel-loader": "^9.1.0",
+    "babel-preset-gatsby": "^3.2.0",
     "benchmark": "^2.1.4"
   }
 }
