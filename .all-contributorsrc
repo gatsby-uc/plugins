@@ -141,6 +141,16 @@
         "doc",
         "tool"
       ]
+    },
+    {
+      "login": "robinske",
+      "name": "Kelley Robinson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3673341?v=4",
+      "profile": "https://github.com/robinske",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

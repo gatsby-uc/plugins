@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -61,6 +61,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://alexpatterson.dev/"><img src="https://avatars.githubusercontent.com/u/3102249?v=4?s=100" width="100px;" alt="Alex Patterson"/><br /><sub><b>Alex Patterson</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=codercatdev" title="Code">💻</a> <a href="#plugin-codercatdev" title="Plugin/utility libraries">🔌</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.osiux.ws/"><img src="https://avatars.githubusercontent.com/u/204463?v=4?s=100" width="100px;" alt="Eduardo Reveles"/><br /><sub><b>Eduardo Reveles</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=osiux" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://michaeldeboey.be/"><img src="https://avatars.githubusercontent.com/u/6643991?v=4?s=100" width="100px;" alt="Michaël De Boey"/><br /><sub><b>Michaël De Boey</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=MichaelDeBoey" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=MichaelDeBoey" title="Documentation">📖</a> <a href="#tool-MichaelDeBoey" title="Tools">🔧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/robinske"><img src="https://avatars.githubusercontent.com/u/3673341?v=4?s=100" width="100px;" alt="Kelley Robinson"/><br /><sub><b>Kelley Robinson</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=robinske" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=robinske" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
