@@ -69,7 +69,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/35560568?v=4",
       "profile": "https://robinmetral.com/",
       "contributions": [
-        "plugin"
+        "plugin",
+        "code",
+        "doc",
+        "ideas"
       ]
     },
     {
@@ -117,6 +120,15 @@
       "contributions": [
         "code",
         "plugin"
+      ]
+    },
+    {
+      "login": "osiux",
+      "name": "Eduardo Reveles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/204463?v=4",
+      "profile": "https://www.osiux.ws/",
+      "contributions": [
+        "code"
       ]
     }
   ],
