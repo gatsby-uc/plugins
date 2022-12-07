@@ -3,6 +3,10 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   setup:
     name: Setup Dependencies
@@ -50,7 +54,7 @@ jobs:
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
 
-      - name: Check Types
+      - name: Check types
         run: yarn test:types
 
   check_lint:
@@ -66,6 +70,23 @@ jobs:
 
       - name: Check Types
         run: yarn test:lint
+
+  check_gatsby_exports:
+    name: Validate Gatsby exports
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: ./.github/actions/cache-restore
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Check exports
+        run: yarn test:exports
 
   run-tests:
     name: Run package tests on (Node.js v${{ matrix.node }})
