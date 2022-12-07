@@ -17,9 +17,6 @@ const log = {
     ENABLE_DEBUG && console.info(chalk.bold.gray(`[${name}]:`), chalk.blue(message), ...rest),
   ok: (name, message, ...rest) =>
     console.log(chalk.bold.gray(`[${name}]:`), chalk.green(message), ...rest),
-  warn: (name, message, ...rest) =>
-    ENABLE_DEBUG &&
-    console.warn(chalk.bold.gray(`[${name}]:`), chalk.bold.yellow(message), ...rest),
 };
 
 const PACKAGES_PATH = join(cwd(), "packages");
@@ -70,8 +67,8 @@ for (const name of packageFolders) {
       results_table[name][fileName] = "❌";
       log.error(
         name,
-        `${fileName} is in \`dist\` but is not in root. Gatsby requires these files in root, please re-export file in \`dist\` from package root by.`,
-        chalk.white(`placing the code`),
+        `${fileName} is in \`dist\` but is not in root.`,
+        `Gatsby requires these files in root, please re-export file in \`dist\` from package root by placing the code`,
         `\`${chalk.green("module")}.${chalk.green("exports")} = ${chalk.hex("dcdcaa")(
           "require"
         )}${chalk.hex("ffd700")("(")}${chalk.hex("ce9178")(
