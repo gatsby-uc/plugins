@@ -13,7 +13,8 @@ export async function gatsbyServer() {
     logger: { level: logLevel },
     maxParamLength: 500,
     ...fastifyOptions,
-    ignoreTrailingSlash: trailingSlash === "ignore" ? true : false,
+    // @ts-expect-error v4 of Gatsby had a legacy mode that should keep this true
+    ignoreTrailingSlash: trailingSlash === "ignore" || trailingSlash === "legacy" ? true : false,
   });
 
   fastify.log.info(`Logging Level set @ ${logLevel}`);
