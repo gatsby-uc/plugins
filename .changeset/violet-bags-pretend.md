@@ -40,3 +40,5 @@ module.exports = {
   ],
 };
 ```
+
+> To restore pretty printing you'll also need to install `pino-pretty` from npm.
