@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.11.2
+
+### Patch Changes
+
+- [#319](https://github.com/gatsby-uc/plugins/pull/319) [`327f233`](https://github.com/gatsby-uc/plugins/commit/327f233beb45485e7fcbdcc2d9a2811c7d21c561) Thanks [@moonmeister](https://github.com/moonmeister)! - refactor re-export. no funcitonal changes.
+
 ## 0.11.1
 
 ### Patch Changes
