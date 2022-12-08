@@ -78,8 +78,6 @@ for (const name of packageFolders) {
         chalk.underline(`${join("packages", name, fileName)}`)
       );
 
-      console.log();
-
       continue;
     }
 

@@ -45,7 +45,6 @@ yargs(hideBin(process.argv))
       });
     },
     async (argv) => {
-      console.log(argv);
       // @ts-expect-error argv isn't correctly typed by yargs.
       // We're just going to ignore it since it gives us what we need.
       setConfig(ConfigKeyEnum.CLI, argv);
