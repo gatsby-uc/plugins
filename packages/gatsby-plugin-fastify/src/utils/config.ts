@@ -6,6 +6,7 @@ import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/server-routes";
 import type { GatsbyFastifyProxy } from "../gatsby/proxies-and-redirects";
 import type { FastifyServerOptions } from "fastify";
+import type { TrailingSlash } from "gatsby-page-utils";
 
 import { PathConfig } from "../plugins/client-routes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -30,6 +31,7 @@ export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   prefix: string | undefined;
   functions: IGatsbyFunction[];
   proxies: GatsbyFastifyProxy[];
+  trailingSlash: TrailingSlash;
 }
 
 export type GfCliOptions = {

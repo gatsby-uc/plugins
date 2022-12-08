@@ -116,7 +116,6 @@ module.exports = {
       /* Default option value shown */
       options: {
         fastify: {
-          ignoreTralingSlash: true,
           maxParamLength: 500,
           // for complete options see https://www.fastify.io/docs/latest/Reference/Server/#factory
         },
@@ -125,6 +124,10 @@ module.exports = {
   ],
 };
 ```
+
+> Not all Fastify options may be overridden directly. This is because some Gatsby config options control these. Here's a list of those:
+>
+> - `ignoreTralingSlash`: is determined by your Gatsby [`trailingSlash`](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#trailingslash) config.
 
 ## Features
 

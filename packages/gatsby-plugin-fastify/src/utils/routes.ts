@@ -1,12 +1,16 @@
-export function formatMatchPath(matchPath: string): string {
-  return (
-    matchPath
-      // /test/*example (named splat route) => /test/* as find-my-way doesn't support named splats
-      .replace(/\*([a-z]+)?/i, "*")
-      // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
-      // Work around for https://github.com/fastify/fastify/issues/3331
-      .replace(/\/\*$/, "*")
-  );
+import { TrailingSlash, applyTrailingSlashOption } from "gatsby-page-utils";
+
+export function formatMatchPath(matchPath: string, trailingSlash: TrailingSlash): string {
+  // /test/*example (named splat route) => /test/* as find-my-way doesn't support named splats
+  let path = matchPath.replace(/\*([a-z]+)?/i, "*");
+
+  if (trailingSlash !== "always") {
+    // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
+    // Work around for https://github.com/fastify/fastify/issues/3331
+    path = path.replace(/\/\*$/, "*");
+  }
+
+  return path;
 }
 
 export function removeQueryParmsFromUrl(url: string) {
@@ -25,4 +29,8 @@ export function buildRedirectUrlFromParameters(path: string, data: { [s: string]
 
     return replacement;
   });
+}
+
+export function handleGatsbyTrailingSlash(path: string, trailingSlash: TrailingSlash) {
+  return applyTrailingSlashOption(path, trailingSlash);
 }

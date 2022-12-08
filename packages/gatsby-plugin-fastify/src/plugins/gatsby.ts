@@ -18,8 +18,15 @@ import type { FastifyPluginAsync } from "fastify";
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
 
-  const { clientSideRoutes, serverSideRoutes, redirects, functions, proxies, features } =
-    serverConfig;
+  const {
+    clientSideRoutes,
+    serverSideRoutes,
+    redirects,
+    functions,
+    proxies,
+    features,
+    trailingSlash,
+  } = serverConfig;
 
   // Utils
   await fastify.register(fastifyAccepts);
@@ -63,5 +70,5 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handleServerRoutes, { paths: serverSideRoutes });
 
   // Gatsby 404
-  await fastify.register(handle404, {});
+  await fastify.register(handle404, { trailingSlash });
 };

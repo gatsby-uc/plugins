@@ -1,3 +1,4 @@
+import { TrailingSlash } from "gatsby-page-utils";
 import type { PluginData } from "../utils/plugin-data";
 import { formatMatchPath } from "../utils/routes";
 
@@ -7,7 +8,7 @@ export type ServerSideRoute = {
   matchPath: string;
 };
 
-export async function getServerSideRoutes(pageData: PluginData) {
+export async function getServerSideRoutes(pageData: PluginData, trailingSlash: TrailingSlash) {
   const { pages } = pageData;
   const routes: ServerSideRoute[] = [];
 
@@ -16,7 +17,7 @@ export async function getServerSideRoutes(pageData: PluginData) {
       routes.push({
         path: page.path,
         mode: page.mode,
-        matchPath: page?.matchPath ? formatMatchPath(page.matchPath) : page.path,
+        matchPath: page?.matchPath ? formatMatchPath(page.matchPath, trailingSlash) : page.path,
       });
     }
   }

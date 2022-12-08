@@ -4,7 +4,7 @@ exports[`Gatsby Node API Should Build Config 1`] = `
 {
   "clientSideRoutes": [
     {
-      "matchPath": "/app*",
+      "matchPath": "/app/*",
       "path": "/app/[...]/",
     },
   ],
@@ -65,5 +65,6 @@ exports[`Gatsby Node API Should Build Config 1`] = `
       "path": "/my/dsg/path",
     },
   ],
+  "trailingSlash": "always",
 }
 `;

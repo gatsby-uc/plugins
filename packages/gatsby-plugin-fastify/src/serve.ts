@@ -6,11 +6,14 @@ import { getConfig } from "./utils/config";
 export async function gatsbyServer() {
   const {
     cli: { port, host, logLevel },
-    server: { prefix, fastify: fastifyOptions },
+    server: { prefix, fastify: fastifyOptions, trailingSlash },
   } = getConfig();
 
   const fastify = Fastify({
+    logger: { level: logLevel },
+    maxParamLength: 500,
     ...fastifyOptions,
+    ignoreTrailingSlash: trailingSlash === "ignore" ? true : false,
   });
 
   fastify.log.info(`Logging Level set @ ${logLevel}`);

@@ -11,6 +11,7 @@ import { CONFIG_FILE_NAME } from "./utils/constants";
 import { getClientSideRoutes } from "./gatsby/client-side-route";
 import { getServerSideRoutes } from "./gatsby/server-routes";
 import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
+import { getTrailingSlash } from "./gatsby/trailing-slash";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
@@ -18,11 +19,13 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 ) => {
   try {
     const { proxies, redirects } = getProxiesAndRedirects(store);
+    const trailingSlash = await getTrailingSlash(store);
+
     const pluginData = await makePluginData(store, pathPrefix);
 
     const functions = await getFunctionManifest(pluginData);
-    const clientSideRoutes = await getClientSideRoutes(pluginData);
-    const serverSideRoutes = await getServerSideRoutes(pluginData);
+    const clientSideRoutes = await getClientSideRoutes(pluginData, trailingSlash);
+    const serverSideRoutes = await getServerSideRoutes(pluginData, trailingSlash);
 
     // @ts-expect-error This can't exist and making TS happy another way got complicated
     delete pluginOptions.plugins;
@@ -35,6 +38,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
       proxies,
       prefix: pathPrefix,
       functions,
+      trailingSlash,
     };
 
     await writeJSON(pluginData.configFolder(CONFIG_FILE_NAME), config, { spaces: 2 });
@@ -63,8 +67,9 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
         }),
     }).default(),
     fastify: Joi.object({
-      maxParamLength: Joi.number().default(500),
-      ignoreTralingSlash: Joi.boolean().default(true),
-    }).unknown(true),
+      ignoreTralingSlash: Joi.any().forbidden(),
+    })
+      .unknown(true)
+      .default({}),
   });
 };

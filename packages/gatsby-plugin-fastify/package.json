@@ -37,6 +37,7 @@
     "fastify-plugin": "^4.3.0",
     "fs-extra": "^11.1.0",
     "gatsby-core-utils": "^4.2.0",
+    "gatsby-page-utils": "^3.2.0",
     "gatsby-plugin-utils": "^4.2.0",
     "http-status-codes": "^2.2.0",
     "mime": "^3.0.0",

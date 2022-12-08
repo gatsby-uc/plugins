@@ -96,6 +96,7 @@ const store = {
         statusCode: 307,
       },
     ],
+    config: { trailingSlash: "always" },
   })),
 };
 
