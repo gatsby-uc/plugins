@@ -19,8 +19,11 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
     for (const p of paths) {
       fastify.log.debug(`Registering client-only route: ${p.path}`);
 
-      fastify.get(p.matchPath, (_request, reply) => {
+      fastify.get(p.matchPath, (request, reply) => {
         reply.appendModuleHeader("Client Route");
+
+        //Handle potential trailingSlash issues
+        // reply.handleTrailingSlash(request.url, fastify.config.trailingSlash);
 
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
       });

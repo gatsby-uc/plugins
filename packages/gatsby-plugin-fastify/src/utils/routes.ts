@@ -1,4 +1,6 @@
+import { FastifyReply } from "fastify";
 import { TrailingSlash, applyTrailingSlashOption } from "gatsby-page-utils";
+import { StatusCodes } from "http-status-codes";
 
 export function formatMatchPath(matchPath: string, trailingSlash: TrailingSlash): string {
   // /test/*example (named splat route) => /test/* as find-my-way doesn't support named splats
@@ -33,4 +35,17 @@ export function buildRedirectUrlFromParameters(path: string, data: { [s: string]
 
 export function handleGatsbyTrailingSlash(path: string, trailingSlash: TrailingSlash) {
   return applyTrailingSlashOption(path, trailingSlash);
+}
+
+export function handleTrailingSlash(this: FastifyReply, url: string, trailingSlash) {
+  const potentialTrailingSlashRedirect = handleGatsbyTrailingSlash(url, trailingSlash);
+  this.log.debug(
+    `trailingSlash Handler; potential: ${potentialTrailingSlashRedirect}; current: ${url}`
+  );
+  console.log(
+    `trailingSlash Handler; potential: ${potentialTrailingSlashRedirect}; current: ${url}`
+  );
+  if (potentialTrailingSlashRedirect !== url) {
+    this.redirect(StatusCodes.MOVED_PERMANENTLY, potentialTrailingSlashRedirect);
+  }
 }

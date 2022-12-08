@@ -1,5 +1,5 @@
+import { implementUtilDecorators, implementConfigDecorators } from "./decorators";
 import { handleClientOnlyRoutes } from "./client-routes";
-import { implementUtilDecorators } from "./decorators";
 import { handleServerRoutes } from "./server-routes";
 import { handleImageTransforms } from "./image-transform";
 import { handleFunctions } from "./functions";
@@ -31,12 +31,13 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   // Utils
   await fastify.register(fastifyAccepts);
   await fastify.register(implementUtilDecorators);
+  await fastify.register(implementConfigDecorators, { trailingSlash });
 
   // Gatsby 500 - This must be registered before anything that wants to use it
-  await fastify.register(handle500, {});
+  await fastify.register(handle500);
 
   // Gatsby Image CDN
-  await fastify.register(middiePlugin).register(handleImageTransforms, {});
+  await fastify.register(middiePlugin).register(handleImageTransforms);
 
   // Gatsby Functions
   await fastify.register(handleFunctions, {
@@ -45,7 +46,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   });
 
   // Gatsby Static
-  await fastify.register(handleStatic, {});
+  await fastify.register(handleStatic);
 
   // Gatsby Client Only Routes
   await fastify.register(handleClientOnlyRoutes, {
@@ -70,5 +71,5 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handleServerRoutes, { paths: serverSideRoutes });
 
   // Gatsby 404
-  await fastify.register(handle404, { trailingSlash });
+  await fastify.register(handle404);
 };

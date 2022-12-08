@@ -1,7 +1,7 @@
 describe(`Gatsby Static Routes`, () => {
   it(`Should serve custom 404`, async () => {
     const response = await fastify.inject({
-      url: "/badRoute",
+      url: "/badRoute/",
       method: "GET",
     });
 
