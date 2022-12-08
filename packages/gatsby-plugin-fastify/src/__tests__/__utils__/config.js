@@ -18,7 +18,10 @@ export async function createFastifyInstance(plugin) {
   const {
     server: { fastify: fastifyOptions },
   } = getConfig();
-  const fastify = Fastify(fastifyOptions);
+  const fastify = Fastify({
+    ...fastifyOptions,
+    ignoreTrailingSlash: true,
+  });
 
   const {
     server: { prefix },
