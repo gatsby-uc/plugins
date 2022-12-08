@@ -16,21 +16,11 @@ export function createCliConfig({ host, port, logLevel, open }) {
 
 export async function createFastifyInstance(plugin) {
   const {
-    cli: { logLevel },
+    server: { fastify: fastifyOptions },
   } = getConfig();
   const fastify = Fastify({
+    ...fastifyOptions,
     ignoreTrailingSlash: true,
-    logger: {
-      level: logLevel,
-      transport: {
-        target: "pino-pretty",
-        options: {
-          translateTime: "HH:MM:ss Z",
-          ignore: "pid,hostname",
-        },
-      },
-    },
-    disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
   });
 
   const {

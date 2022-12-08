@@ -6,26 +6,11 @@ import { getConfig } from "./utils/config";
 export async function gatsbyServer() {
   const {
     cli: { port, host, logLevel },
-    server: { prefix },
+    server: { prefix, fastify: fastifyOptions },
   } = getConfig();
 
   const fastify = Fastify({
-    maxParamLength: 500,
-    ignoreTrailingSlash: true,
-    logger: {
-      level: logLevel,
-      transport:
-        process.env.NODE_ENV === "development"
-          ? {
-              target: "pino-pretty",
-              options: {
-                translateTime: "HH:MM:ss Z",
-                ignore: "pid,hostname",
-              },
-            }
-          : undefined,
-    },
-    disableRequestLogging: ["trace", "debug"].includes(logLevel) ? false : true,
+    ...fastifyOptions,
   });
 
   fastify.log.info(`Logging Level set @ ${logLevel}`);

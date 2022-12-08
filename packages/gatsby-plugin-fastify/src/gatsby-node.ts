@@ -62,5 +62,9 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
           return value;
         }),
     }).default(),
+    fastify: Joi.object({
+      maxParamLength: Joi.number().default(500),
+      ignoreTralingSlash: Joi.boolean().default(true),
+    }).unknown(true),
   });
 };

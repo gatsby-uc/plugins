@@ -42,7 +42,6 @@
     "mime": "^3.0.0",
     "open": "^8.4.0",
     "picomatch": "^2.3.1",
-    "pino-pretty": "^9.1.1",
     "yargs": "^17.6.2"
   },
   "devDependencies": {

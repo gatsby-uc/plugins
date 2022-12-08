@@ -100,12 +100,30 @@ export GATSBY_SERVER_LOG_LEVEL=debug
 
 ### Logging
 
-By default only basic info is logged along with warnings or errors. By setting the logging level to `debug` you'll also enable Fastify's default [request logging](https://www.fastify.io/docs/latest/Logging/) which is usually enabled for the `info` level.
+For info on logging see Fastify's [documentation on logging](https://www.fastify.io/docs/latest/Reference/Logging/).
 
-For prettier logging to console set the `NODE_ENV` envrionment variable to `development`. This should not be used in production due to performance concerns. e.g.
+## Fastify Server Options
 
-```
-NODE_ENV=development yarn start
+You may directly [configure the Fastify server](https://www.fastify.io/docs/latest/Reference/Server/#factory) from the plugin options in Gatsby config. While many options fastify provides are safe to modify, it's very possible to break your server with these as well, test well. Outside the defaults any values passed are not type checked by Gatsby for compatibility, make sure you are passing valid values as defined in the [Fastify server factory docs](https://www.fastify.io/docs/latest/Reference/Server/#factory).
+
+```js
+module.exports = {
+  /* Site config */
+  plugins: [
+    /* Rest of the plugins */
+    {
+      resolve: `gatsby-plugin-fastify`,
+      /* Default option value shown */
+      options: {
+        fastify: {
+          ignoreTralingSlash: true,
+          maxParamLength: 500,
+          // for complete options see https://www.fastify.io/docs/latest/Reference/Server/#factory
+        },
+      },
+    },
+  ],
+};
 ```
 
 ## Features
@@ -132,7 +150,7 @@ module.exports = {
 };
 ```
 
-## Gatsby Image CDN (BETA)
+### Gatsby Image CDN (BETA)
 
 > **BETA:** This feature is under going active development to fix bugs and extend functionality by the Gatsby team. I'm releasing this feature here with compatability for `gatsby@4.12.1`, `gatsby-source-wordpres@6.12.1`, and `gatsby-source-contentful@7.10.0` No guarantee it works on newer or older versions.
 

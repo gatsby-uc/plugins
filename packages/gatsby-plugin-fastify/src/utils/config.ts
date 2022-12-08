@@ -5,6 +5,7 @@ import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
 import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/server-routes";
 import type { GatsbyFastifyProxy } from "../gatsby/proxies-and-redirects";
+import type { FastifyServerOptions } from "fastify";
 
 import { PathConfig } from "../plugins/client-routes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -20,6 +21,7 @@ export interface GatsbyFastifyPluginOptions extends PluginOptions {
     redirects: boolean;
     imageCdn: boolean;
   };
+  fastify: FastifyServerOptions;
 }
 export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
