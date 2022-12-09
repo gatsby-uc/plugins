@@ -13,7 +13,9 @@
     "start": "gserve",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "build:deps": "cd ../../packages/gatsby-plugin-fastify && yarn build",
+    "postinstall": "[[ x\"${GATSBY_CLOUD}\" == \"x\" ]] || yarn build:deps"
   },
   "dependencies": {
     "fastify": "^4.10.2",
