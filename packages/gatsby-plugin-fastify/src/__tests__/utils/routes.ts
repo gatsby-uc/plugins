@@ -1,15 +1,17 @@
+import { TrailingSlash } from "gatsby-page-utils";
 import { formatMatchPath } from "../../utils/routes";
 
 describe("Gatsby Route Handler Tests", () => {
   describe("Match path formatter Tests", () => {
-    it("Correctly handle splat route modification to ignore final /", () => {
-      const result = formatMatchPath("/test/*");
-      expect(result).toBe("/test*");
+    it.each([
+      ["/test/*", "/test*"],
+      ["/test/*name", "/test*"],
+    ])("Correctly modify match path from %s to %s", (input, output) => {
+      expect(formatMatchPath(input)).toBe(output);
     });
 
-    it("Correctly handle named splat/wildcard route modification to ignore final *name to *", () => {
-      const result = formatMatchPath("/test/*nameu");
-      expect(result).toBe("/test*");
+    it.each(["/test/:test"])("Don't modify match path route: %s", (input) => {
+      expect(formatMatchPath(input)).toBe(input);
     });
   });
 });
