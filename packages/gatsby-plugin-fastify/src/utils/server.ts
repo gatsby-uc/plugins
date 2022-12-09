@@ -1,5 +1,4 @@
 import type { FastifyServerOptions } from "fastify";
-import { Server } from "node:http";
 import type { GfConfig } from "./config";
 
 export function createFastifyConfig(config: GfConfig): FastifyServerOptions {
