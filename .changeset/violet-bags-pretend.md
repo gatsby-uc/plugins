@@ -2,7 +2,7 @@
 "gatsby-plugin-fastify": minor
 ---
 
-FEAT: Added ability to configure Fastify server opptions from plugin config. As a part of this effort several non-critical defaults have been changed. While debating this change I relized these defaults were more for my development ease than good production defaults.
+FEAT: Added ability to configure Fastify server options from plugin config. As a part of this effort several non-critical defaults have been changed. While debating this change it was relized these defaults were more for development ease than good production defaults.
 
 1. Request logging is now on by default as is normal in Fastify.
 2. Logging is no longer "pretty" when `NODE_ENV=development`.
