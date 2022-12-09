@@ -1,4 +1,3 @@
-import { TrailingSlash } from "gatsby-page-utils";
 import { formatMatchPath } from "../../utils/routes";
 
 describe("Gatsby Route Handler Tests", () => {
