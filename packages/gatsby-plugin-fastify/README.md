@@ -116,6 +116,7 @@ module.exports = {
       /* Default option value shown */
       options: {
         fastify: {
+          logger: { level: /* defaults to info by CLI params*/ },
           ignoreTralingSlash: true,
           maxParamLength: 500,
           // for complete options see https://www.fastify.io/docs/latest/Reference/Server/#factory
