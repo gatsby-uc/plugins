@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
-describe(`404 Handler`, () => {
+describe.skip(`404 Handler`, () => {
   describe(`trailingSlash = "always"`, () => {
     it(`Client-only App base route should Redirect`, async () => {
       const response = await fastify.inject({

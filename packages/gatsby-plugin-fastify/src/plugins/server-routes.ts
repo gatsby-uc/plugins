@@ -87,6 +87,9 @@ export const handleServerRoutes: FastifyPluginAsync<{
         const accept = request.accepts();
         const workingURL = removeQueryParmsFromUrl(request.url);
 
+        //Handle potential trailingSlash issues
+        // reply.handleTrailingSlash(workingURL, fastify.config.trailingSlash);
+
         if (accept.type(["html"])) {
           fastify.log.debug(`DSG/SSR for "text/html" @  ${request.url}`);
           const potentialPagePath = reverseFixedPagePath(workingURL);

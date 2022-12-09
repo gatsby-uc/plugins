@@ -30,8 +30,8 @@ describe(`Gatsby Static Routes`, () => {
       method: "GET",
     });
 
-    expect(noSlashResponse.statusCode).toEqual(200);
+    expect(noSlashResponse.statusCode).toEqual(301);
+    expect(noSlashResponse.headers["location"]).toEqual("/posts/page-1/");
     expect(slashResponse.statusCode).toEqual(200);
-    expect(noSlashResponse.payload).toEqual(slashResponse.payload);
   });
 });

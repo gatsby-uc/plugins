@@ -23,7 +23,7 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
         reply.appendModuleHeader("Client Route");
 
         //Handle potential trailingSlash issues
-        // reply.handleTrailingSlash(request.url, fastify.config.trailingSlash);
+        reply.handleTrailingSlash(request.url, fastify.config.trailingSlash);
 
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
       });

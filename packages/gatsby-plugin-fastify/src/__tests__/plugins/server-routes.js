@@ -1,15 +1,13 @@
 describe(`Test Gatsby DSG/SSR Routes`, () => {
   describe("DSG", () => {
-    it(`Should serve DSG route HTML no slash`, async () => {
+    it(`Should redirect DSG route HTML no slash`, async () => {
       const response = await fastify.inject({
         url: "/generated/page-6",
         method: "GET",
       });
 
-      expect(response.statusCode).toEqual(200);
-      expect(response.headers["content-type"]).toEqual("text/html");
-      expect(response.headers["x-gatsby-fastify"]).toContain("DSG");
-      expect(response.payload).toContain("<div>Hello world #<!-- -->6<!-- -->!</div>");
+      expect(response.statusCode).toEqual(301);
+      expect(response.headers["location"]).toEqual("/generated/page-6/");
     });
 
     it(`Should serve DSG route HTML with slash`, async () => {
@@ -38,16 +36,16 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
   });
 
   describe("SSR", () => {
-    it(`Should serve SSR route HTML no slash`, async () => {
+    it(`Should redirect SSR route HTML no slash`, async () => {
       const response = await fastify.inject({
         url: "/ssr",
         method: "GET",
       });
 
-      expect(response.statusCode).toEqual(200);
+      expect(response.statusCode).toEqual(301);
       expect(response.headers["content-type"]).toEqual("text/html");
       expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
-      expect(response.payload).toContain("SSR Page with Dogs");
+      expect(response.headers["location"]).toEqual("/ssr/");
     });
 
     it(`Should serve SSR route HTML with slash`, async () => {
@@ -86,7 +84,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
     it(`Should throw 500 error on exception when fetching server data`, async () => {
       const response = await fastify.inject({
-        url: "/ssrBad",
+        url: "/ssrBad/",
         method: "GET",
       });
 
@@ -96,7 +94,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
     it(`Should Add custom headers to SSR routes`, async () => {
       const response = await fastify.inject({
-        url: "/ssr",
+        url: "/ssr/",
         method: "GET",
       });
 
@@ -107,7 +105,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
     it(`Should serve SSR page from a parametric route`, async () => {
       const meaningfulResponse = await fastify.inject({
-        url: "/ssr/42",
+        url: "/ssr/42/",
         method: "GET",
       });
 
@@ -116,7 +114,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       expect(meaningfulResponse.payload).toContain("meaning of life");
 
       const meaninglessResponse = await fastify.inject({
-        url: "/ssr/43",
+        url: "/ssr/43/",
         method: "GET",
       });
 
@@ -128,7 +126,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
   it(`Should 400 if request does not accept "text/html" on DSG/SSR route`, async () => {
     const response = await fastify.inject({
-      url: "/ssr",
+      url: "/ssr/",
       method: "GET",
       headers: {
         accept: "text/plain",
@@ -149,7 +147,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
   it(`Should throw returned status code from getServer Data for HTML`, async () => {
     const response = await fastify.inject({
-      url: "/ssr403",
+      url: "/ssr403/",
       method: "GET",
     });
 
@@ -171,6 +169,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       method: "GET",
     });
 
+    console.log(response.headers["location"]);
     expect(response.statusCode).toEqual(200);
   });
 

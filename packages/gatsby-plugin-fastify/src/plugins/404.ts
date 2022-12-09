@@ -17,9 +17,6 @@ export const handle404: FastifyPluginAsync = async (fastify) => {
     fastify.log.warn(`404: '${request.url}' not found.`);
     reply.appendModuleHeader("404");
 
-    //Handle potential trailingSlash issues
-    reply.handleTrailingSlash(request.url, fastify.config.trailingSlash);
-
     if (gatsby404ErrorFileExists) {
       reply.code(StatusCodes.NOT_FOUND).sendFile("404.html");
     } else {

@@ -3,13 +3,19 @@ import { TrailingSlash, applyTrailingSlashOption } from "gatsby-page-utils";
 import { StatusCodes } from "http-status-codes";
 
 export function formatMatchPath(matchPath: string, trailingSlash: TrailingSlash): string {
-  // /test/*example (named splat route) => /test/* as find-my-way doesn't support named splats
-  let path = matchPath.replace(/\*([a-z]+)?/i, "*");
+  let path = matchPath
+    // /test/*example (named splat route) => /test/* as find-my-way doesn't support named splats
+    .replace(/\*([a-z]+)?/i, "*");
 
   if (trailingSlash !== "always") {
-    // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
-    // Work around for https://github.com/fastify/fastify/issues/3331
-    path = path.replace(/\/\*$/, "*");
+    path = path
+      // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
+      // Work around for https://github.com/fastify/fastify/issues/3331
+      .replace(/\/\*$/, "*");
+  }
+  if (trailingSlash === "always") {
+    // /test/:param => /test/:param/
+    path = path.replace(/(:[a-z]+)\/?/gi, "$1/");
   }
 
   return path;
@@ -39,12 +45,7 @@ export function handleGatsbyTrailingSlash(path: string, trailingSlash: TrailingS
 
 export function handleTrailingSlash(this: FastifyReply, url: string, trailingSlash) {
   const potentialTrailingSlashRedirect = handleGatsbyTrailingSlash(url, trailingSlash);
-  this.log.debug(
-    `trailingSlash Handler; potential: ${potentialTrailingSlashRedirect}; current: ${url}`
-  );
-  console.log(
-    `trailingSlash Handler; potential: ${potentialTrailingSlashRedirect}; current: ${url}`
-  );
+
   if (potentialTrailingSlashRedirect !== url) {
     this.redirect(StatusCodes.MOVED_PERMANENTLY, potentialTrailingSlashRedirect);
   }
