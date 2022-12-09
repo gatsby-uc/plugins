@@ -1,16 +1,12 @@
 import type { FastifyServerOptions } from "fastify";
+import { Server } from "node:http";
 import type { GfConfig } from "./config";
 
 export function createFastifyConfig(config: GfConfig): FastifyServerOptions {
-  const {
-    cli: { logLevel },
-    server: { fastify: userOptions },
-  } = config;
-
   return {
-    logger: { level: logLevel },
+    logger: { level: config.cli.logLevel },
     maxParamLength: 500,
-    ...userOptions,
+    ...config.server.fastify,
     ignoreTrailingSlash: false,
   };
 }
