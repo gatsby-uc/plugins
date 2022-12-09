@@ -6,6 +6,6 @@ export function createFastifyConfig(config: GfConfig): FastifyServerOptions {
     logger: { level: config.cli.logLevel },
     maxParamLength: 500,
     ...config.server.fastify,
-    ignoreTrailingSlash: false,
+    ignoreTrailingSlash: true,
   };
 }
