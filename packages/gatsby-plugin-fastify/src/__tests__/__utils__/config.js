@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import { getConfig } from "../../utils/config";
+import { createFastifyConfig } from "../../utils/server";
 
 export function createCliConfig({ host, port, logLevel, open }) {
   return {
@@ -15,18 +16,11 @@ export function createCliConfig({ host, port, logLevel, open }) {
 }
 
 export async function createFastifyInstance(plugin) {
-  const {
-    server: { fastify: fastifyOptions },
-  } = getConfig();
-  const fastify = Fastify({
-    ...fastifyOptions,
-    ignoreTrailingSlash: true,
-  });
+  const config = getConfig();
 
-  const {
-    server: { prefix },
-  } = getConfig();
-  await fastify.register(plugin, { prefix });
+  const fastify = Fastify(createFastifyConfig(config));
+
+  await fastify.register(plugin, { prefix: config.server.prefix });
   await fastify.ready();
 
   return fastify;

@@ -2,16 +2,15 @@
 import { serveGatsby } from "./plugins/gatsby";
 import Fastify from "fastify";
 import { getConfig } from "./utils/config";
+import { createFastifyConfig } from "./utils/server";
 
 export async function gatsbyServer() {
   const {
     cli: { port, host, logLevel },
-    server: { prefix, fastify: fastifyOptions },
+    server: { prefix },
   } = getConfig();
 
-  const fastify = Fastify({
-    ...fastifyOptions,
-  });
+  const fastify = Fastify(createFastifyConfig(getConfig()));
 
   fastify.log.info(`Logging Level set @ ${logLevel}`);
   fastify.log.info(`Mounting Gatsby @ ${prefix || "/"}`);
