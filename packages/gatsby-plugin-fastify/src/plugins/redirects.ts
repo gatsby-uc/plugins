@@ -64,7 +64,7 @@ export const handleRedirects: FastifyPluginAsync<{
           ...request.query,
         });
 
-        reply.code(responseCode).redirect(toUrl);
+        reply.code(responseCode).redirect(encodeURI(toUrl));
       });
     }
   }
