@@ -149,4 +149,24 @@ describe(`Gatsby Redirects`, () => {
 
     expect(response.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
   });
+
+  it(`Should handle redirect with special chars in the path`, async () => {
+    const response = await fastify.inject({
+      url: "/redirect-all/而且",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
+    expect(response.headers.location).toEqual("/app/%E8%80%8C%E4%B8%94");
+  });
+
+  it(`Should handle redirect with special chars in the path that go to another domain`, async () => {
+    const response = await fastify.inject({
+      url: "/google/而且",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(StatusCodes.TEMPORARY_REDIRECT);
+    expect(response.headers.location).toEqual("https://google.com/search?q=%E8%80%8C%E4%B8%94");
+  });
 });

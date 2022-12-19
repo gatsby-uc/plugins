@@ -144,6 +144,10 @@ export const createPages: GatsbyNode["createPages"] = async (gatsbyUtilities) =>
     fromPath: "/some/:thing/all",
     toPath: "/something::thing/*",
   });
+  createRedirect({
+    fromPath: "/google/*",
+    toPath: "https://google.com/search?q=*",
+  });
 };
 
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = ({
