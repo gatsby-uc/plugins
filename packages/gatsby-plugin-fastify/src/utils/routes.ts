@@ -23,6 +23,6 @@ export function buildRedirectUrlFromParameters(path: string, data: { [s: string]
       throw new Error("Could not find url parameter " + lookupString + " in passed data object");
     }
 
-    return replacement;
+    return encodeURIComponent(replacement);
   });
 }
