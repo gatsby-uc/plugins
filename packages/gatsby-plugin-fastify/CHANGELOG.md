@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.12.1
+
+### Patch Changes
+
+- [#328](https://github.com/gatsby-uc/plugins/pull/328) [`90e1706`](https://github.com/gatsby-uc/plugins/commit/90e170661041dd62cb9453c25905bf10418f066f) Thanks [@tsdexter](https://github.com/tsdexter)! - encode replacements in wildcard redirects fixes #327
+
 ## 0.12.0
 
 ### Minor Changes
