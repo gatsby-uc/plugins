@@ -1,18 +1,18 @@
-import { fetchStrapiContentTypes, fetchEntities, fetchEntity } from './fetch';
-import { downloadMediaFiles } from './download-media-files';
+import { fetchStrapiContentTypes, fetchEntities, fetchEntity } from "./fetch";
+import { downloadMediaFiles } from "./download-media-files";
 import {
   buildMapFromNodes,
   buildNodesToRemoveMap,
   getEndpoints,
   makeParentNodeName,
-} from './helpers';
-import { createNodes } from './normalize';
+} from "./helpers";
+import { createNodes } from "./normalize";
 
-const LAST_FETCHED_KEY = 'timestamp';
+const LAST_FETCHED_KEY = "timestamp";
 
-exports.onPreInit = () => console.log('Loaded gatsby-source-strapi-plugin');
+export const onPreInit = () => console.log("Loaded gatsby-source-strapi-plugin");
 
-exports.sourceNodes = async (
+export const sourceNodes = async (
   {
     actions,
     createContentDigest,
@@ -38,7 +38,7 @@ exports.sourceNodes = async (
 
   const { deleteNode, touchNode } = actions;
 
-  const ctx = {
+  const context = {
     strapiConfig,
     actions,
     schemas,
@@ -52,11 +52,15 @@ exports.sourceNodes = async (
     cache,
   };
 
+  const { unstable_createNodeManifest, createNode } = actions;
+
   const existingNodes = getNodes().filter(
-    (n) => n.internal.owner === `gatsby-source-strapi` || n.internal.type === 'File'
+    (n) => n.internal.owner === `gatsby-source-strapi` || n.internal.type === "File"
   );
 
-  existingNodes.forEach((n) => touchNode(n));
+  for (const n of existingNodes) {
+    touchNode(n);
+  }
 
   const endpoints = getEndpoints(strapiConfig, schemas);
 
@@ -64,11 +68,11 @@ exports.sourceNodes = async (
 
   const allResults = await Promise.all(
     endpoints.map(({ kind, ...config }) => {
-      if (kind === 'singleType') {
-        return fetchEntity(config, ctx);
+      if (kind === "singleType") {
+        return fetchEntity(config, context);
       }
 
-      return fetchEntities(config, ctx);
+      return fetchEntities(config, context);
     })
   );
 
@@ -92,11 +96,11 @@ exports.sourceNodes = async (
 
     newOrExistingEntries = await Promise.all(
       deltaEndpoints.map(({ kind, ...config }) => {
-        if (kind === 'singleType') {
-          return fetchEntity(config, ctx);
+        if (kind === "singleType") {
+          return fetchEntity(config, context);
         }
 
-        return fetchEntities(config, ctx);
+        return fetchEntities(config, context);
       })
     );
   }
@@ -115,51 +119,48 @@ exports.sourceNodes = async (
   const nodesToRemoveMap = buildNodesToRemoveMap(existingNodesMap, endpoints, allResults);
 
   // Delete all nodes that should be deleted
-  Object.entries(nodesToRemoveMap).forEach(([nodeName, nodesToDelete]) => {
-    if (nodesToDelete.length) {
+  for (const [nodeName, nodesToDelete] of Object.entries(nodesToRemoveMap)) {
+    if (nodesToDelete.length > 0) {
       reporter.info(`Strapi: ${nodeName} deleting ${nodesToDelete.length}`);
 
-      nodesToDelete.forEach(({ id }) => {
+      for (const { id } of nodesToDelete) {
         const node = getNode(id);
 
         touchNode(node);
         deleteNode(node);
-      });
+      }
     }
-  });
+  }
 
   let warnOnceForNoSupport = false;
 
   await cache.set(LAST_FETCHED_KEY, Date.now());
 
-  for (let i = 0; i < endpoints.length; i++) {
-    const { uid } = endpoints[i];
-
+  for (const [index, { uid }] of endpoints.entries()) {
     if (!strapiConfig.skipFileDownloads) {
-      await downloadMediaFiles(data[i], ctx, uid);
+      await downloadMediaFiles(data[index], context, uid);
     }
 
-    for (let entity of data[i]) {
-      const nodes = createNodes(entity, ctx, uid);
+    for (let entity of data[index]) {
+      const nodes = createNodes(entity, context, uid);
 
-      await Promise.all(nodes.map((n) => actions.createNode(n)));
+      await Promise.all(nodes.map((n) => createNode(n)));
 
-      const nodeType = makeParentNodeName(ctx.schemas, uid);
+      const nodeType = makeParentNodeName(context.schemas, uid);
 
       const mainEntryNode = nodes.find((n) => {
         return n && n.strapi_id === entity.id && n.internal.type === nodeType;
       });
 
       const isPreview = process.env.GATSBY_IS_PREVIEW === `true`;
-      const createNodeManifestIsSupported =
-        typeof actions.unstable_createNodeManifest === `function`;
+      const createNodeManifestIsSupported = typeof unstable_createNodeManifest === `function`;
       const shouldCreateNodeManifest = isPreview && createNodeManifestIsSupported && mainEntryNode;
 
       if (shouldCreateNodeManifest) {
         const updatedAt = entity.updatedAt;
         const manifestId = `${uid}-${entity.id}-${updatedAt}`;
 
-        actions.unstable_createNodeManifest({
+        unstable_createNodeManifest({
           manifestId,
           node: mainEntryNode,
           updatedAtUTC: updatedAt,

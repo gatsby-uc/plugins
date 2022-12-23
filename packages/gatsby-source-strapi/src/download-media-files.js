@@ -1,8 +1,8 @@
-import { Parser } from 'commonmark';
-import qs from 'qs';
-import { createRemoteFileNode } from 'gatsby-source-filesystem';
-import { getContentTypeSchema } from './helpers';
-import createInstance from './axiosInstance';
+import { Parser } from "commonmark";
+import qs from "qs";
+import { createRemoteFileNode } from "gatsby-source-filesystem";
+import { getContentTypeSchema } from "./helpers";
+import createInstance from "./axios-instance";
 
 const reader = new Parser();
 
@@ -22,9 +22,9 @@ const extractFiles = (text, apiURL) => {
   while ((event = walker.next())) {
     node = event.node;
     // process image nodes
-    if (event.entering && node.type === 'image') {
+    if (event.entering && node.type === "image") {
       let destination;
-      const alternativeText = node.firstChild?.literal || '';
+      const alternativeText = node.firstChild?.literal || "";
 
       if (/^\//.test(node.destination)) {
         destination = `${apiURL}${node.destination}`;
@@ -47,7 +47,7 @@ const extractFiles = (text, apiURL) => {
  * @param {Object} ctx
  * @returns {String} node Id
  */
-export const downloadFile = async (file, ctx) => {
+export const downloadFile = async (file, context) => {
   const {
     actions: { createNode, touchNode },
     cache,
@@ -55,7 +55,7 @@ export const downloadFile = async (file, ctx) => {
     getNode,
     store,
     strapiConfig,
-  } = ctx;
+  } = context;
   const { apiURL } = strapiConfig;
 
   let fileNodeID;
@@ -73,7 +73,7 @@ export const downloadFile = async (file, ctx) => {
   if (!fileNodeID) {
     try {
       // full media url
-      const source_url = `${file.url.startsWith('http') ? '' : apiURL}${file.url}`;
+      const source_url = `${file.url.startsWith("http") ? "" : apiURL}${file.url}`;
       const fileNode = await createRemoteFileNode({
         url: source_url,
         store,
@@ -90,9 +90,9 @@ export const downloadFile = async (file, ctx) => {
           updatedAt: file.updatedAt,
         });
       }
-    } catch (e) {
+    } catch (error) {
       // Ignore
-      console.log('err', e);
+      console.log("err", error);
     }
   }
 
@@ -105,8 +105,8 @@ export const downloadFile = async (file, ctx) => {
  * @param {Object} ctx gatsby function
  * @param {String} uid the main schema uid
  */
-const extractImages = async (item, ctx, uid) => {
-  const { schemas, strapiConfig } = ctx;
+const extractImages = async (item, context, uid) => {
+  const { schemas, strapiConfig } = context;
   const axiosInstance = createInstance(strapiConfig);
   const schema = getContentTypeSchema(schemas, uid);
   const { apiURL } = strapiConfig;
@@ -116,17 +116,17 @@ const extractImages = async (item, ctx, uid) => {
 
     const attribute = schema.schema.attributes[attributeName];
 
-    const type = attribute?.type || null;
+    const type = attribute?.type || undefined;
 
     if (value && type) {
-      if (type === 'richtext') {
+      if (type === "richtext") {
         const extractedFiles = extractFiles(value.data, apiURL);
 
         const files = await Promise.all(
           extractedFiles.map(async ({ url }) => {
             const filters = qs.stringify(
               {
-                filters: { url: url.replace(`${apiURL}`, '') },
+                filters: { url: url.replace(`${apiURL}`, "") },
               },
               { encode: false }
             );
@@ -135,10 +135,10 @@ const extractImages = async (item, ctx, uid) => {
             const file = data[0];
 
             if (!file) {
-              return null;
+              return;
             }
 
-            const fileNodeID = await downloadFile(file, ctx);
+            const fileNodeID = await downloadFile(file, context);
 
             return { fileNodeID, file };
           })
@@ -146,56 +146,56 @@ const extractImages = async (item, ctx, uid) => {
 
         const fileNodes = files.filter(Boolean);
 
-        for (let i = 0; i < fileNodes.length; i++) {
+        for (const [index, fileNode] of fileNodes.entries()) {
           item[attributeName].medias.push({
-            alternativeText: extractedFiles[i].alternativeText,
-            url: extractedFiles[i].url,
-            src: extractedFiles[i].src,
-            localFile___NODE: fileNodes[i].fileNodeID,
-            file: fileNodes[i].file,
+            alternativeText: extractedFiles[index].alternativeText,
+            url: extractedFiles[index].url,
+            src: extractedFiles[index].src,
+            localFile___NODE: fileNode.fileNodeID,
+            file: fileNode.file,
           });
         }
       }
 
-      if (type === 'dynamiczone') {
+      if (type === "dynamiczone") {
         for (const element of value) {
-          await extractImages(element, ctx, element.strapi_component);
+          await extractImages(element, context, element.strapi_component);
         }
       }
 
-      if (type === 'component') {
+      if (type === "component") {
         if (attribute.repeatable) {
           for (const element of value) {
-            await extractImages(element, ctx, attribute.component);
+            await extractImages(element, context, attribute.component);
           }
         } else {
-          await extractImages(value, ctx, attribute.component);
+          await extractImages(value, context, attribute.component);
         }
       }
 
-      if (type === 'relation') {
-        await extractImages(value, ctx, attribute.target);
+      if (type === "relation") {
+        await extractImages(value, context, attribute.target);
       }
 
-      if (type === 'media') {
+      if (type === "media") {
         const isMultiple = attribute.multiple;
         const imagesField = isMultiple ? value : [value];
 
         // Dowload all files
         const files = await Promise.all(
           imagesField.map(async (file) => {
-            const fileNodeID = await downloadFile(file, ctx);
+            const fileNodeID = await downloadFile(file, context);
 
             return fileNodeID;
           })
         );
 
-        const images = files.filter((fileNodeID) => fileNodeID);
+        const images = files.filter(Boolean);
 
         if (images && images.length > 0) {
           if (isMultiple) {
-            for (let i = 0; i < value.length; i++) {
-              item[attributeName][i][`localFile___NODE`] = images[i];
+            for (let index = 0; index < value.length; index++) {
+              item[attributeName][index][`localFile___NODE`] = images[index];
             }
           } else {
             item[attributeName][`localFile___NODE`] = isMultiple ? images : images[0];
@@ -207,10 +207,10 @@ const extractImages = async (item, ctx, uid) => {
 };
 
 // Downloads media from image type fields
-export const downloadMediaFiles = async (entities, ctx, contentTypeUid) =>
+export const downloadMediaFiles = async (entities, context, contentTypeUid) =>
   Promise.all(
     entities.map(async (entity) => {
-      await extractImages(entity, ctx, contentTypeUid);
+      await extractImages(entity, context, contentTypeUid);
 
       return entity;
     })

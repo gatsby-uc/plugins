@@ -1,9 +1,9 @@
-import { castArray, flattenDeep } from 'lodash';
-import createInstance from './axiosInstance';
-import qs from 'qs';
-import { cleanData } from './clean-data';
+import { castArray, flattenDeep } from "lodash";
+import createInstance from "./axios-instance";
+import qs from "qs";
+import { cleanData } from "./clean-data";
 
-const fetchStrapiContentTypes = async (strapiConfig) => {
+export const fetchStrapiContentTypes = async (strapiConfig) => {
   const axiosInstance = createInstance(strapiConfig);
   const [
     {
@@ -13,8 +13,8 @@ const fetchStrapiContentTypes = async (strapiConfig) => {
       data: { data: components },
     },
   ] = await Promise.all([
-    axiosInstance.get('/api/content-type-builder/content-types'),
-    axiosInstance.get('/api/content-type-builder/components'),
+    axiosInstance.get("/api/content-type-builder/content-types"),
+    axiosInstance.get("/api/content-type-builder/components"),
   ]);
 
   return {
@@ -24,19 +24,21 @@ const fetchStrapiContentTypes = async (strapiConfig) => {
   };
 };
 
-const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, ctx) => {
-  const { strapiConfig, reporter } = ctx;
+export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
+  const { strapiConfig, reporter } = context;
   const axiosInstance = createInstance(strapiConfig);
 
-  const opts = {
-    method: 'GET',
+  const options = {
+    method: "GET",
     url: endpoint,
     params: queryParams,
-    paramsSerializer: (params) => qs.stringify(params, { encodeValuesOnly: true }),
+    paramsSerializer: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
   };
 
   try {
-    reporter.info(`Starting to fetch data from Strapi - ${opts.url} with ${JSON.stringify(opts)}`);
+    reporter.info(
+      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(options)}`
+    );
 
     // Handle internationalization
     const locale = pluginOptions?.i18n?.locale;
@@ -46,21 +48,21 @@ const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, ctx) =
       // Ignore queryParams locale in favor of pluginOptions
       delete queryParams.locale;
 
-      if (locale === 'all') {
+      if (locale === "all") {
         // Get all available locales
         const { data: response } = await axiosInstance({
-          ...opts,
+          ...options,
           params: {
             populate: {
               localizations: {
-                fields: ['locale'],
+                fields: ["locale"],
               },
             },
           },
         });
-        response.data.attributes.localizations.data.forEach((localization) =>
-          otherLocales.push(localization.attributes.locale)
-        );
+        for (const localization of response.data.attributes.localizations.data) {
+          otherLocales.push(localization.attributes.locale);
+        }
       } else {
         // Only one locale
         queryParams.locale = locale;
@@ -68,14 +70,14 @@ const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, ctx) =
     }
 
     // Fetch default entity based on request options
-    const { data } = await axiosInstance(opts);
+    const { data } = await axiosInstance(options);
 
     // Fetch other localizations of this entry if there are any
     const otherLocalizationsPromises = otherLocales.map(async (locale) => {
       const { data: localizationResponse } = await axiosInstance({
-        ...opts,
+        ...options,
         params: {
-          ...opts.params,
+          ...options.params,
           locale,
         },
       });
@@ -86,9 +88,9 @@ const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, ctx) =
     const otherLocalizationsData = await Promise.all(otherLocalizationsPromises);
 
     return castArray([data.data, ...otherLocalizationsData]).map((entry) =>
-      cleanData(entry, { ...ctx, contentTypeUid: uid })
+      cleanData(entry, { ...context, contentTypeUid: uid })
     );
-  } catch (error) {
+  } catch {
     // reporter.panic(
     //   `Failed to fetch data from Strapi ${opts.url} with ${JSON.stringify(opts)}`,
     //   error,
@@ -97,15 +99,15 @@ const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, ctx) =
   }
 };
 
-const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, ctx) => {
-  const { strapiConfig, reporter } = ctx;
+export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
+  const { strapiConfig, reporter } = context;
   const axiosInstance = createInstance(strapiConfig);
 
-  const opts = {
-    method: 'GET',
+  const options = {
+    method: "GET",
     url: endpoint,
     params: queryParams,
-    paramsSerializer: (params) => qs.stringify(params, { encodeValuesOnly: true }),
+    paramsSerializer: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
   };
 
   // Use locale from pluginOptions if it's defined
@@ -116,43 +118,43 @@ const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, ctx)
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${opts.url} with ${JSON.stringify(opts.params)}`
+      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(options_.params)}`
     );
 
-    const { data: response } = await axiosInstance(opts);
+    const { data: response } = await axiosInstance(options);
 
     const data = response?.data || response;
     const meta = response?.meta;
 
-    const page = parseInt(meta?.pagination.page || 1, 10);
-    const pageCount = parseInt(meta?.pagination.pageCount || 1, 10);
+    const page = Number.parseInt(meta?.pagination.page || 1, 10);
+    const pageCount = Number.parseInt(meta?.pagination.pageCount || 1, 10);
 
     const pagesToGet = Array.from({
       length: pageCount - page,
-    }).map((_, i) => i + page + 1);
+    }).map((_, index) => index + page + 1);
 
     const fetchPagesPromises = pagesToGet.map((page) => {
       return (async () => {
-        const options = {
-          ...opts,
+        const fetchOptions = {
+          ...options,
         };
 
-        options.params.pagination.page = page;
+        fetchOptions.params.pagination.page = page;
 
         reporter.info(
-          `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(
-            opts.paramsSerializer(opts.params)
+          `Starting to fetch data from Strapi - ${fetchOptions.url} with ${JSON.stringify(
+            options.paramsSerializer(options.params)
           )}`
         );
 
         try {
           const {
             data: { data },
-          } = await axiosInstance(options);
+          } = await axiosInstance(fetchOptions);
 
           return data;
-        } catch (err) {
-          reporter.panic(`Failed to fetch data from Strapi ${options.url}`, err);
+        } catch (error) {
+          reporter.panic(`Failed to fetch data from Strapi ${fetchOptions.url}`, error);
         }
       })();
     });
@@ -160,14 +162,12 @@ const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, ctx)
     const results = await Promise.all(fetchPagesPromises);
 
     const cleanedData = [...data, ...flattenDeep(results)].map((entry) =>
-      cleanData(entry, { ...ctx, contentTypeUid: uid })
+      cleanData(entry, { ...context, contentTypeUid: uid })
     );
 
     return cleanedData;
   } catch (error) {
-    reporter.panic(`Failed to fetch data from Strapi ${opts.url}`, error);
+    reporter.panic(`Failed to fetch data from Strapi ${options.url}`, error);
     return [];
   }
 };
-
-export { fetchStrapiContentTypes, fetchEntity, fetchEntities };

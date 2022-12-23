@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import { getContentTypeSchema, makeParentNodeName } from './helpers';
+import _ from "lodash";
+import { getContentTypeSchema, makeParentNodeName } from "./helpers";
 
 /**
  * Create a child node for json fields
@@ -7,8 +7,8 @@ import { getContentTypeSchema, makeParentNodeName } from './helpers';
  * @param {Object} ctx
  * @returns {Object} gatsby node
  */
-const prepareJSONNode = (json, ctx) => {
-  const { createContentDigest, createNodeId, parentNode, attributeName } = ctx;
+const prepareJSONNode = (json, context) => {
+  const { createContentDigest, createNodeId, parentNode, attributeName } = context;
 
   const jsonNodeId = createNodeId(
     `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-JSONNode`
@@ -36,8 +36,8 @@ const prepareJSONNode = (json, ctx) => {
  * @param {Object} ctx
  * @returns {Object} gatsby node
  */
-const prepareRelationNode = (relation, ctx) => {
-  const { schemas, createNodeId, createContentDigest, parentNode, targetSchemaUid } = ctx;
+const prepareRelationNode = (relation, context) => {
+  const { schemas, createNodeId, createContentDigest, parentNode, targetSchemaUid } = context;
 
   // const targetSchema = getContentTypeSchema(schemas, targetSchemaUid);
   // const {
@@ -69,8 +69,8 @@ const prepareRelationNode = (relation, ctx) => {
  * @param {Object} ctx
  * @returns {Object} gatsby node
  */
-const prepareTextNode = (text, ctx) => {
-  const { createContentDigest, createNodeId, parentNode, attributeName } = ctx;
+const prepareTextNode = (text, context) => {
+  const { createContentDigest, createNodeId, parentNode, attributeName } = context;
   const textNodeId = createNodeId(
     `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-TextNode`
   );
@@ -97,10 +97,10 @@ const prepareTextNode = (text, ctx) => {
  * @param {Object} ctx
  * @returns {Object} gatsby node
  */
-const prepareMediaNode = (media, ctx) => {
-  const { createNodeId, createContentDigest, parentNode } = ctx;
+const prepareMediaNode = (media, context) => {
+  const { createNodeId, createContentDigest, parentNode } = context;
 
-  const nodeType = 'STRAPI__MEDIA';
+  const nodeType = "STRAPI__MEDIA";
   const relationNodeId = createNodeId(`${nodeType}-${media.id}`);
 
   const node = {
@@ -127,16 +127,16 @@ const prepareMediaNode = (media, ctx) => {
  * @param {String} uid the main schema uid
  * @returns {Object[]} array of nodes to create
  */
-export const createNodes = (entity, ctx, uid) => {
+export const createNodes = (entity, context, uid) => {
   const nodes = [];
 
-  const { schemas, createNodeId, createContentDigest, getNode } = ctx;
+  const { schemas, createNodeId, createContentDigest, getNode } = context;
   const nodeType = makeParentNodeName(schemas, uid);
 
   let entryNode = {
     id: createNodeId(`${nodeType}-${entity.id}`),
     strapi_id: entity.id,
-    parent: null,
+    parent: undefined,
     children: [],
     internal: {
       type: nodeType,
@@ -151,15 +151,15 @@ export const createNodes = (entity, ctx, uid) => {
     const value = entity[attributeName];
 
     const attribute = schema.schema.attributes[attributeName];
-    const type = _.get(attribute, 'type', null);
+    const type = _.get(attribute, "type");
 
     if (value) {
       // Add support for dynamic zones
-      if (type === 'dynamiczone') {
-        value.forEach((v) => {
+      if (type === "dynamiczone") {
+        for (const v of value) {
           const componentNodeName = makeParentNodeName(schemas, v.strapi_component);
 
-          const valueNodes = _.flatten(createNodes(v, ctx, v.strapi_component));
+          const valueNodes = createNodes(v, context, v.strapi_component).flat();
           const compoNodeIds = valueNodes
             .filter(({ internal }) => internal.type === componentNodeName)
             .map(({ id }) => id);
@@ -169,15 +169,15 @@ export const createNodes = (entity, ctx, uid) => {
             ...compoNodeIds,
           ];
 
-          valueNodes.forEach((n) => {
+          for (const n of valueNodes) {
             nodes.push(n);
-          });
-        });
+          }
+        }
 
         delete entity[attributeName];
       }
 
-      if (type === 'relation') {
+      if (type === "relation") {
         // Create type for the first level of relations, otherwise the user should fetch the other content type
         // to link them
         const config = {
@@ -193,11 +193,11 @@ export const createNodes = (entity, ctx, uid) => {
           const relationNodes = value.map((relation) => prepareRelationNode(relation, config));
           entity[`${attributeName}___NODE`] = relationNodes.map(({ id }) => id);
 
-          relationNodes.forEach((node) => {
+          for (const node of relationNodes) {
             if (!getNode(node.id)) {
               nodes.push(node);
             }
-          });
+          }
         } else {
           const relationNode = prepareRelationNode(value, config);
 
@@ -213,38 +213,38 @@ export const createNodes = (entity, ctx, uid) => {
       }
 
       // Apply transformations to components: markdown, json...
-      if (type === 'component') {
+      if (type === "component") {
         const componentSchema = getContentTypeSchema(schemas, attribute.component);
         const componentNodeName = makeParentNodeName(schemas, componentSchema.uid);
 
         if (attribute.repeatable) {
-          const compoNodes = _.flatten(value.map((v) => createNodes(v, ctx, attribute.component)));
+          const compoNodes = value.flatMap((v) => createNodes(v, context, attribute.component));
 
           // Just link the component nodes and not the components' children one
           entity[`${attributeName}___NODE`] = compoNodes
             .filter(({ internal }) => internal.type === componentNodeName)
             .map(({ id }) => id);
 
-          compoNodes.forEach((node) => {
+          for (const node of compoNodes) {
             nodes.push(node);
-          });
+          }
         } else {
-          const compoNodes = _.flatten(createNodes(value, ctx, attribute.component));
+          const compoNodes = createNodes(value, context, attribute.component).flat();
           // Just link the component node and not the component's children one
-          entity[`${attributeName}___NODE`] = compoNodes.filter(
+          entity[`${attributeName}___NODE`] = compoNodes.find(
             ({ internal }) => internal.type === componentNodeName
-          )[0].id;
+          ).id;
 
-          compoNodes.forEach((node) => {
+          for (const node of compoNodes) {
             nodes.push(node);
-          });
+          }
         }
 
         delete entity[attributeName];
       }
 
       // Create nodes for richtext in order to make the markdown-remark plugin works
-      if (type === 'richtext') {
+      if (type === "richtext") {
         const textNode = prepareTextNode(value.data, {
           createContentDigest,
           createNodeId,
@@ -261,7 +261,7 @@ export const createNodes = (entity, ctx, uid) => {
 
       // Create nodes for JSON fields in order to be able to query each field in GraphiQL
       // We can remove this if not pertinent
-      if (type === 'json') {
+      if (type === "json") {
         const JSONNode = prepareJSONNode(value, {
           createContentDigest,
           createNodeId,
@@ -269,7 +269,7 @@ export const createNodes = (entity, ctx, uid) => {
           attributeName,
         });
 
-        entryNode.children = entryNode.children.concat([JSONNode.id]);
+        entryNode.children = [...entryNode.children, JSONNode.id];
 
         entity[`${attributeName}___NODE`] = JSONNode.id;
         // Resolve only the attributeName___NODE and not to both ones
@@ -278,7 +278,7 @@ export const createNodes = (entity, ctx, uid) => {
         nodes.push(JSONNode);
       }
 
-      if (type == 'media') {
+      if (type == "media") {
         const config = {
           createContentDigest,
           createNodeId,
@@ -289,11 +289,11 @@ export const createNodes = (entity, ctx, uid) => {
           const mediaNodes = value.map((relation) => prepareMediaNode(relation, config));
           entity[`${attributeName}___NODE`] = mediaNodes.map(({ id }) => id);
 
-          mediaNodes.forEach((node) => {
+          for (const node of mediaNodes) {
             if (!getNode(node.id)) {
               nodes.push(node);
             }
-          });
+          }
         } else {
           const mediaNode = prepareMediaNode(value, config);
 

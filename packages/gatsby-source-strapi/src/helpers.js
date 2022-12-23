@@ -1,60 +1,55 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 const buildMapFromNodes = (nodes) => {
-  return nodes.reduce((acc, current) => {
+  // eslint-disable-next-line unicorn/no-array-reduce
+  return nodes.reduce((accumulator, current) => {
     const { internal, strapi_id, id } = current;
     const type = internal?.type;
 
     // We only delete the parent nodes
-    if (type.includes('STRAPI__COMPONENT_')) {
-      return acc;
+    if (type.includes("STRAPI__COMPONENT_")) {
+      return accumulator;
     }
 
-    if (type.includes('_JSONNODE')) {
-      return acc;
+    if (type.includes("_JSONNODE")) {
+      return accumulator;
     }
 
-    if (type.includes('_TEXTNODE')) {
-      return acc;
+    if (type.includes("_TEXTNODE")) {
+      return accumulator;
     }
 
     if (type && id && strapi_id) {
-      if (acc[type]) {
-        acc[type] = [
-          ...acc[type],
-          {
-            strapi_id,
-            id,
-          },
-        ];
-      } else {
-        acc[type] = [
-          {
-            strapi_id,
-            id,
-          },
-        ];
-      }
+      accumulator[type] = accumulator[type]
+        ? [
+            ...accumulator[type],
+            {
+              strapi_id,
+              id,
+            },
+          ]
+        : [
+            {
+              strapi_id,
+              id,
+            },
+          ];
     }
 
-    return acc;
+    return accumulator;
   }, {});
 };
 
 const buildMapFromData = (endpoints, data) => {
   const map = {};
 
-  for (let i = 0; i < endpoints.length; i++) {
-    const { singularName } = endpoints[i];
-
+  for (const [index, { singularName }] of endpoints.entries()) {
     const nodeType = _.toUpper(`Strapi_${_.snakeCase(singularName)}`);
 
-    for (let entity of data[i]) {
-      if (map[nodeType]) {
-        map[nodeType] = [...map[nodeType], { strapi_id: entity.id }];
-      } else {
-        map[nodeType] = [{ strapi_id: entity.id }];
-      }
+    for (let entity of data[index]) {
+      map[nodeType] = map[nodeType]
+        ? [...map[nodeType], { strapi_id: entity.id }]
+        : [{ strapi_id: entity.id }];
     }
   }
 
@@ -64,20 +59,21 @@ const buildMapFromData = (endpoints, data) => {
 const buildNodesToRemoveMap = (existingNodesMap, endpoints, data) => {
   const newNodes = buildMapFromData(endpoints, data);
 
-  const toRemoveMap = Object.entries(existingNodesMap).reduce((acc, [name, value]) => {
+  // eslint-disable-next-line unicorn/no-array-reduce
+  const toRemoveMap = Object.entries(existingNodesMap).reduce((accumulator, [name, value]) => {
     const currentNodes = newNodes[name];
 
     // Since we create nodes for relations when fetching the api
     // We only to delete nodes that are actually being fetched
     if (!currentNodes) {
-      return acc;
+      return accumulator;
     }
 
-    acc[name] = value.filter((j) => {
-      return currentNodes.findIndex((k) => k.strapi_id === j.strapi_id) === -1;
+    accumulator[name] = value.filter((index) => {
+      return currentNodes.findIndex((k) => k.strapi_id === index.strapi_id) === -1;
     });
 
-    return acc;
+    return accumulator;
   }, {});
 
   return toRemoveMap;
@@ -95,7 +91,7 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
   const endpoints = schemas
     .filter(
       ({ schema, uid }) =>
-        !uid.startsWith('admin::') &&
+        !uid.startsWith("admin::") &&
         types.findIndex(({ singularName }) => singularName === schema.singularName) !== -1
     )
     .map(({ schema: { kind, singularName, pluralName }, uid, plugin }) => {
@@ -103,16 +99,16 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
       const { queryParams, queryLimit, pluginOptions } = options;
 
       // Prepend plugin prefix except for users as their endpoint is /api/users
-      const pluginPrefix = plugin && singularName !== 'user' ? `${plugin}/` : '';
+      const pluginPrefix = plugin && singularName !== "user" ? `${plugin}/` : "";
 
-      if (kind === 'singleType') {
+      if (kind === "singleType") {
         return {
           singularName,
           kind,
           uid,
           endpoint: `/api/${pluginPrefix}${singularName}`,
           queryParams: queryParams || {
-            populate: '*',
+            populate: "*",
           },
           pluginOptions,
         };
@@ -125,12 +121,12 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
         uid,
         endpoint: `/api/${pluginPrefix}${pluralName}`,
         queryParams: {
-          ...(queryParams || {}),
+          ...queryParams,
           pagination: {
             pageSize: queryLimit || 250,
             page: 1,
           },
-          populate: queryParams?.populate || '*',
+          populate: queryParams?.populate || "*",
         },
         pluginOptions,
       };
@@ -139,20 +135,20 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
   return endpoints;
 };
 
+const toSchemaDefinition = (types) =>
+  types
+    .map((config) => {
+      if (_.isPlainObject(config)) {
+        return config;
+      }
+
+      return { singularName: config };
+    })
+    .filter(Boolean);
+
 const normalizeConfig = ({ collectionTypes, singleTypes }) => {
-  const toSchemaDef = (types) =>
-    types
-      .map((config) => {
-        if (_.isPlainObject(config)) {
-          return config;
-        }
-
-        return { singularName: config };
-      })
-      .filter(Boolean);
-
-  const normalizedCollectionTypes = toSchemaDef(collectionTypes);
-  const normalizedSingleTypes = toSchemaDef(singleTypes);
+  const normalizedCollectionTypes = toSchemaDefinition(collectionTypes);
+  const normalizedSingleTypes = toSchemaDefinition(singleTypes);
 
   return [...(normalizedCollectionTypes || []), ...(normalizedSingleTypes || [])];
 };
@@ -165,10 +161,10 @@ const makeParentNodeName = (schemas, uid) => {
 
   let nodeName = `Strapi_${_.snakeCase(singularName)}`;
 
-  const isComponentType = !['collectionType', 'singleType'].includes(kind);
+  const isComponentType = !["collectionType", "singleType"].includes(kind);
 
   if (isComponentType) {
-    nodeName = `Strapi__Component_${_.snakeCase(_.replace(uid, '.', '_'))}`;
+    nodeName = `Strapi__Component_${_.snakeCase(_.replace(uid, ".", "_"))}`;
   }
 
   return _.toUpper(nodeName);
