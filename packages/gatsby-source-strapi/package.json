@@ -2,48 +2,33 @@
   "name": "gatsby-source-strapi",
   "version": "3.0.0",
   "description": "Gatsby source plugin for building websites using Strapi as a data source",
-  "author": {
-    "email": "hi@strapi.io",
-    "name": "Strapi Solutions",
-    "url": "http://strapi.io"
-  },
-  "maintainers": [
-    {
-      "name": "Strapi Solutions",
-      "email": "hi@strapi.io",
-      "url": "http://strapi.io"
-    }
-  ],
-  "directories": {
-    "lib": "./lib"
-  },
-  "files": [
-    "lib/*",
-    "gatsby-node.js",
-    "index.js"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gatsby-uc/gatsby-source-strapi.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsby-uc/gatsby-source-strapi/issues"
-  },
-  "license": "MIT",
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "babel src --out-dir lib",
-    "watch": "babel -w src --out-dir lib",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write 'src/**/*.js'",
-    "lint": "eslint src"
-  },
   "keywords": [
     "gatsby",
     "gatsby-plugin",
     "gatsby-source-plugin",
     "strapi"
   ],
+  "directories": {
+    "dist": "./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-source-strapi"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsby-uc/plugins/issues"
+  },
+  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-source-packagist#readme",
+  "author": {
+    "email": "hi@strapi.io",
+    "name": "Strapi Solutions",
+    "url": "http://strapi.io"
+  },
+  "contributors": [
+    "Laurens Kling <laurens@goedideemeida.nl>"
+  ],
+  "license": "MIT",
   "dependencies": {
     "axios": "0.24.0",
     "commonmark": "^0.30.0",
@@ -51,20 +36,14 @@
     "lodash": "^4.17.21",
     "qs": "^6.10.3"
   },
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
   "devDependencies": {
     "@babel/cli": "7.14.5",
-    "@babel/core": "7.14.6",
-    "@babel/plugin-transform-runtime": "7.14.5",
-    "@babel/preset-env": "7.14.7",
-    "eslint": "7.13.0",
-    "husky": "4.3.0",
-    "lint-staged": "10.5.1",
-    "prettier": "2.1.2"
+    "@babel/core": "7.14.6"
   },
   "peerDependencies": {
-    "gatsby": "^4.0.0 || ^5.0.0",
-    "gatsby-plugin-image": "^2.5.1",
-    "gatsby-plugin-sharp": "^4.5.1",
-    "sharp": "^0.29.0"
+    "gatsby": "^4.0.0 || ^5.0.0"
   }
 }
