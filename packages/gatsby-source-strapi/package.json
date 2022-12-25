@@ -32,7 +32,7 @@
   "dependencies": {
     "axios": "0.24.0",
     "commonmark": "^0.30.0",
-    "gatsby-source-filesystem": "4.5.1",
+    "gatsby-source-filesystem": "^5.2.0",
     "lodash": "^4.17.21",
     "qs": "^6.10.3"
   },
@@ -44,6 +44,7 @@
     "@babel/core": "7.14.6"
   },
   "peerDependencies": {
-    "gatsby": "^4.0.0 || ^5.0.0"
+    "gatsby": "^4.0.0 || ^5.0.0",
+    "gatsby-source-filesystem": "^4.5.0 || ^5.0.0"
   }
 }
