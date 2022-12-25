@@ -1,0 +1,52 @@
+{
+  "name": "gatsby-source-strapi",
+  "version": "2.0.0",
+  "description": "Gatsby source plugin for building websites using Strapi as a data source",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin",
+    "strapi"
+  ],
+  "directories": {
+    "dist": "./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-source-strapi"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsby-uc/plugins/issues"
+  },
+  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-source-strapi#readme",
+  "author": {
+    "email": "hi@strapi.io",
+    "name": "Strapi Solutions",
+    "url": "http://strapi.io"
+  },
+  "contributors": [
+    "Laurens Kling <laurens@goedideemeida.nl>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.24.0",
+    "commonmark": "^0.30.0",
+    "gatsby-source-filesystem": "^5.2.0",
+    "lodash": "^4.17.21",
+    "qs": "^6.10.3"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.14.5",
+    "@babel/core": "7.14.6"
+  },
+  "peerDependencies": {
+    "gatsby": "^4.0.0 || ^5.0.0",
+    "gatsby-plugin-image": "^2.5.1 || ^3.0.0",
+    "gatsby-plugin-sharp": "^4.5.1 || ^5.0.0",
+    "gatsby-transformer-sharp": "^4.5.1 || ^5.0.0"
+  }
+}
