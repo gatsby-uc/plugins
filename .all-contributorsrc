@@ -151,6 +151,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "laurenskling",
+      "name": "Laurens Kling",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6753724?v=4",
+      "profile": "https://github.com/laurenskling",
+      "contributions": [
+        "code",
+        "plugin"
+      ]
     }
   ],
   "contributorsPerLine": 7
