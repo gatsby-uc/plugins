@@ -4,7 +4,7 @@ Source plugin for pulling documents into Gatsby from a Strapi API.
 
 > ⚠️ This version of `gatsby-source-strapi` is only compatible with Strapi v4. For v3 use this [release](https://www.npmjs.com/package/gatsby-source-strapi/v/1.0.3)
 
-*This plugin is now maintained publicly by the Gatsby User Collective. Join us in maintaining this piece of software.*
+_This plugin is now maintained publicly by the Gatsby User Collective. Join us in maintaining this piece of software._
 
 <details>
 <summary><strong>Table of contents</strong></summary>
@@ -68,14 +68,14 @@ STRAPI_TOKEN=<my-development-api-token-for-gatsby>
 **Path:** `./gatsby.config.js`
 
 ```javascript
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ['article', 'company', 'author'],
+  collectionTypes: ["article", "company", "author"],
   singleTypes: [],
 };
 
@@ -98,19 +98,19 @@ const strapiConfig = {
   // ...
   collectionTypes: [
     {
-      singularName: 'article',
+      singularName: "article",
       queryParams: {
         // Populate media and relations
         // Make sure to not specify the fields key so the api always returns the updatedAt
         populate: {
-          image: '*',
-          images: '*',
+          image: "*",
+          images: "*",
           author: {
             populate: {
-              avatar: '*',
+              avatar: "*",
               company: {
                 populate: {
-                  image: '*',
+                  image: "*",
                 },
               },
             },
@@ -138,14 +138,14 @@ const strapiConfig = {
   // ...
   collectionTypes: [
     {
-      singularName: 'article',
+      singularName: "article",
       queryParams: {
-        publicationState: process.env.GATSBY_IS_PREVIEW === 'true' ? 'preview' : 'live',
+        publicationState: process.env.GATSBY_IS_PREVIEW === "true" ? "preview" : "live",
         populate: {
-          category: { populate: '*' },
-          cover: '*',
+          category: { populate: "*" },
+          cover: "*",
           blocks: {
-            populate: '*',
+            populate: "*",
           },
         },
       },
@@ -196,7 +196,7 @@ If you do not want this plugin to download your media (images, videos, and file 
 ```javascript
 const strapiConfig = {
   // ...
-  skipFileDownloads: true
+  skipFileDownloads: true,
   // ...
 };
 ```
@@ -313,20 +313,20 @@ const strapiConfig = {
   // ...
   collectionTypes: [
     {
-      singularName: 'article',
+      singularName: "article",
       pluginOptions: {
         i18n: {
-          locale: 'fr', // Only fetch a specific locale
+          locale: "fr", // Only fetch a specific locale
         },
       },
     },
   ],
   singleTypes: [
     {
-      singularName: 'global',
+      singularName: "global",
       pluginOptions: {
         i18n: {
-          locale: 'all', // Fetch all localizations
+          locale: "all", // Fetch all localizations
         },
       },
     },
@@ -347,12 +347,12 @@ Then use the one of the following queries to fetch a localized content type:
   }
 
   # Get a single type in a specific locale
-  strapiGlobal(locale: {eq: "fr"}) {
+  strapiGlobal(locale: { eq: "fr" }) {
     locale
   }
 
   # Get a collection type in a specific locale
-  allStrapiArticle(filter: {locale: {eq: "fr"}}) {
+  allStrapiArticle(filter: { locale: { eq: "fr" } }) {
     nodes {
       locale
     }
