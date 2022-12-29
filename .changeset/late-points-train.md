@@ -2,4 +2,4 @@
 "gatsby-source-strapi": patch
 ---
 
-Fix bugs introduced by rewriting the codebase with new linting rules whie releasing 3.0.0
+Fix incorectly named variable `options_` to `options` after being introduced ing rewriting the codebase with new linting rules while releasing 3.0.0
