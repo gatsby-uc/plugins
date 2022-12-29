@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.0.1
+
+### Patch Changes
+
+- [#345](https://github.com/gatsby-uc/plugins/pull/345) [`65fd3f2`](https://github.com/gatsby-uc/plugins/commit/65fd3f28db83a8db0070eb8b041b212a28f5e46b) Thanks [@laurenskling](https://github.com/laurenskling)! - Fix incorectly named variable `options_` to `options` after being introduced ing rewriting the codebase with new linting rules while releasing 3.0.0
+
 ## 3.0.0
 
 ### Major Changes
