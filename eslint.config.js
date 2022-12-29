@@ -20,7 +20,7 @@ module.exports = [
       ...unicorn.configs.recommended.rules,
     },
   },
-  //For some reason when plugins are inside a theme the index.js is requried. This allows us to add empty index.js files in all plugins.
+  // For some reason when plugins are inside a theme, the index.js is required. This allows us to add empty index.js files in all plugins.
   {
     files: ["packages/*/index.js"],
     rules: {
