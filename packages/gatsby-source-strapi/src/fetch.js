@@ -118,7 +118,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(options_.params)}`
+      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(options.params)}`
     );
 
     const { data: response } = await axiosInstance(options);
