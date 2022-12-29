@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-supabase",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Gatsby source plugin for building websites using Supabase as a data source",
   "keywords": [
     "gatsby",

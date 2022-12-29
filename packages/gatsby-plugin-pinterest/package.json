@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-pinterest",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Gatsby plugin to add Pinterest's add-on script.",
   "keywords": [
     "gatsby",
