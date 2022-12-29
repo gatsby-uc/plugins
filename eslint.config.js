@@ -8,7 +8,7 @@ const typescript = require("@typescript-eslint/eslint-plugin");
 module.exports = [
   // "eslint:recomended",
   {
-    ignores: ["**/dist", "**/*.config.js", "**/coverage"],
+    ignores: ["**/dist", "**/*.config.js", "**/coverage", "packages/gatsby-source-strapi/index.js"],
   },
   {
     plugins: {
