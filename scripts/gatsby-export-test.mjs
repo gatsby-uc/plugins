@@ -49,6 +49,16 @@ for (const name of packageFolders) {
 
   results_table[name] = {};
 
+  // Check index.js exists in root
+  results_table[name]["index.js"] = "❓";
+
+  if (await pathExists(join(packagePath, "index.js"))) {
+    results_table[name]["index.js"] = "✅";
+  } else {
+    log.info(name, `does not have empty 'index.js' in root.`);
+    results_table[name]["index.js"] = "❌";
+  }
+
   // Check which Gatsby files exist in dist
   for (const fileName of GATSBY_FILES) {
     const filePath = join(packagePath, "dist", fileName);
