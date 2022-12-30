@@ -77,7 +77,7 @@ const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: ["article", "company", "author"],
   singleTypes: [],
-  headersOptions: {
+  remoteFileHeaders: {
     /**
      * Customized request headers
      * For http request with a image or other files need authorization
