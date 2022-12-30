@@ -77,6 +77,15 @@ const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: ["article", "company", "author"],
   singleTypes: [],
+  remoteFileHeaders: {
+    /**
+     * Customized request headers
+     * For http request with a image or other files need authorization
+     * For expamle: Fetch a CDN file which has a security config when gatsby building needs
+     */
+    Referer: "https://your-site-domain/",
+    // Authorization: "Bearer eyJhabcdefg_replace_it_with_your_own_token",
+  },
 };
 
 module.exports = {
