@@ -56,7 +56,7 @@ export const downloadFile = async (file, context) => {
     store,
     strapiConfig,
   } = context;
-  const { apiURL } = strapiConfig;
+  const { apiURL, remoteFileHeaders } = strapiConfig;
 
   let fileNodeID;
 
@@ -80,6 +80,7 @@ export const downloadFile = async (file, context) => {
         cache,
         createNode,
         createNodeId,
+        httpHeaders: remoteFileHeaders || {},
       });
 
       if (fileNode) {
