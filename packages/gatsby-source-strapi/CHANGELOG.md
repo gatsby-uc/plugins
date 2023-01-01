@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.0.3
+
+### Patch Changes
+
+- [#353](https://github.com/gatsby-uc/plugins/pull/353) [`56b0306`](https://github.com/gatsby-uc/plugins/commit/56b0306e48b265d29f4fb665727a002c79bc34b0) Thanks [@whidy](https://github.com/whidy)! - feat(gatsby-source-strapi): add a customized headers options that gatsby could request a remote file which may need authorization. Related to #341
+
 ## 3.0.2
 
 ### Patch Changes
