@@ -49,7 +49,7 @@
     "@babel/core": "^7.20.5",
     "@types/connect": "^3.4.35",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^29.2.3",
+    "@types/jest": "^29.2.5",
     "@types/mime": "^3.0.1",
     "@types/node": "^18.11.10",
     "@types/picomatch": "^2.3.0",
