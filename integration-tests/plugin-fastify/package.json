@@ -19,25 +19,25 @@
   },
   "dependencies": {
     "fastify": "^4.10.2",
-    "gatsby": "^5.2.0",
+    "gatsby": "^5.3.3",
     "gatsby-plugin-fastify": "*",
-    "gatsby-plugin-image": "^3.2.0",
-    "gatsby-plugin-manifest": "^5.2.0",
-    "gatsby-plugin-postcss": "^6.2.0",
-    "gatsby-plugin-sharp": "^5.2.0",
-    "gatsby-plugin-sitemap": "^6.2.0",
-    "gatsby-source-faker": "^5.2.0",
-    "gatsby-source-filesystem": "^5.2.0",
-    "gatsby-transformer-sharp": "^5.2.0",
-    "postcss": "^8.4.19",
+    "gatsby-plugin-image": "^3.3.2",
+    "gatsby-plugin-manifest": "^5.3.1",
+    "gatsby-plugin-postcss": "^6.3.0",
+    "gatsby-plugin-sharp": "^5.3.2",
+    "gatsby-plugin-sitemap": "^6.3.1",
+    "gatsby-source-faker": "^5.3.0",
+    "gatsby-source-filesystem": "^5.3.1",
+    "gatsby-transformer-sharp": "^5.3.1",
+    "postcss": "^8.4.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
+    "@babel/core": "^7.20.7",
     "@babel/preset-typescript": "^7.18.6",
     "babel-loader": "^9.1.0",
-    "babel-preset-gatsby": "^3.2.0",
+    "babel-preset-gatsby": "^3.3.1",
     "benchmark": "^2.1.4"
   }
 }
