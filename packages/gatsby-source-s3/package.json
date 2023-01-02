@@ -19,10 +19,10 @@
     "s3"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.5",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
     "@types/node": "^18.11.18",
-    "babel-preset-gatsby-package": "^3.2.0",
+    "babel-preset-gatsby-package": "^3.3.0",
     "cypress": "^11.2.0",
     "start-server-and-test": "^1.15.2"
   },
@@ -33,7 +33,7 @@
     "test": "start-server-and-test 'yarn start' http://localhost:9000 'yarn test:e2e'"
   },
   "dependencies": {
-    "@babel/runtime": "^7.20.6",
+    "@babel/runtime": "^7.20.7",
     "aws-sdk": "^2.1286.0",
     "gatsby-source-filesystem": "^5.3.1"
   },
