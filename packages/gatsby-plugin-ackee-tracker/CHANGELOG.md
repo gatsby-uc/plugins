@@ -1,5 +1,11 @@
 # gatsby-plugin-ackee-tracker
 
+## 4.0.3
+
+### Patch Changes
+
+- [#365](https://github.com/gatsby-uc/plugins/pull/365) [`369749a`](https://github.com/gatsby-uc/plugins/commit/369749a50931bc073ba25815dc6d1e6561de28de) Thanks [@moonmeister](https://github.com/moonmeister)! - chore(babel): update build tooling
+
 ## 4.0.2
 
 ### Patch Changes
