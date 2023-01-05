@@ -61,7 +61,7 @@ Make sure to create a full-access [API token](https://docs.strapi.io/developer-d
 **Path:** `./.env.development`
 
 ```sh
-STRAPI_API_URL=http://localhost:1337
+STRAPI_API_URL=http://localhost:1337 #or http://127.0.0.1:1337 if localhost doesn't work for local development
 STRAPI_TOKEN=<my-development-api-token-for-gatsby>
 ```
 
