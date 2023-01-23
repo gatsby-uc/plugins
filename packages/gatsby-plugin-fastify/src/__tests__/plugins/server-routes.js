@@ -1,3 +1,5 @@
+import { FG_MODULE_HEADER } from "../../utils/headers";
+
 describe(`Test Gatsby DSG/SSR Routes`, () => {
   describe("DSG", () => {
     it(`Should serve DSG route HTML no slash`, async () => {
@@ -8,7 +10,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
       expect(response.statusCode).toEqual(200);
       expect(response.headers["content-type"]).toEqual("text/html");
-      expect(response.headers["x-gatsby-fastify"]).toContain("DSG");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("DSG");
       expect(response.payload).toContain("<div>Hello world #<!-- -->6<!-- -->!</div>");
     });
 
@@ -20,7 +22,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
       expect(response.statusCode).toEqual(200);
       expect(response.headers["content-type"]).toEqual("text/html");
-      expect(response.headers["x-gatsby-fastify"]).toContain("DSG");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("DSG");
       expect(response.payload).toContain("<div>Hello world #<!-- -->6<!-- -->!</div>");
     });
 
@@ -31,7 +33,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       });
 
       expect(response.statusCode).toEqual(200);
-      expect(response.headers["x-gatsby-fastify"]).toContain("DSG");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("DSG");
       expect(response.headers["content-type"]).toEqual("application/json; charset=utf-8");
       expect(response.payload).toContain(`"result":{"pageContext":{"pageNumber":6}}`);
     });
@@ -46,7 +48,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
       expect(response.statusCode).toEqual(200);
       expect(response.headers["content-type"]).toEqual("text/html");
-      expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
       expect(response.payload).toContain("SSR Page with Dogs");
     });
 
@@ -58,7 +60,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
 
       expect(response.statusCode).toEqual(200);
       expect(response.headers["content-type"]).toEqual("text/html");
-      expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
       expect(response.payload).toContain("SSR Page with Dogs");
     });
 
@@ -69,7 +71,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       });
 
       expect(response.statusCode).toEqual(200);
-      expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
       expect(response.headers["content-type"]).toEqual("application/json; charset=utf-8");
       expect(response.payload).toContain(`"path":"/ssr/","result":{"serverData"`);
     });
@@ -91,7 +93,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       });
 
       expect(response.statusCode).toEqual(500);
-      expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
     });
 
     it(`Should Add custom headers to SSR routes`, async () => {
@@ -112,7 +114,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       });
 
       expect(meaningfulResponse.statusCode).toEqual(200);
-      expect(meaningfulResponse.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(meaningfulResponse.headers[FG_MODULE_HEADER]).toContain("SSR");
       expect(meaningfulResponse.payload).toContain("meaning of life");
 
       const meaninglessResponse = await fastify.inject({
@@ -121,7 +123,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       });
 
       expect(meaninglessResponse.statusCode).toEqual(200);
-      expect(meaninglessResponse.headers["x-gatsby-fastify"]).toContain("SSR");
+      expect(meaninglessResponse.headers[FG_MODULE_HEADER]).toContain("SSR");
       expect(meaninglessResponse.payload).toContain("try again");
     });
   });
@@ -180,7 +182,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       method: "GET",
     });
 
-    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
     expect(response.statusCode).toEqual(200);
     expect(response.body).toContain("&quot;*&quot;: &quot;example/test&quot;");
   });
@@ -191,7 +193,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       method: "GET",
     });
 
-    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
     expect(response.headers["content-type"]).toContain("json");
     expect(response.statusCode).toEqual(200);
   });
@@ -202,7 +204,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       method: "GET",
     });
 
-    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
     expect(response.statusCode).toEqual(200);
     expect(response.body).toContain("&quot;test&quot;: &quot;example/test&quot;");
   });
@@ -213,7 +215,7 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
       method: "GET",
     });
 
-    expect(response.headers["x-gatsby-fastify"]).toContain("SSR");
+    expect(response.headers[FG_MODULE_HEADER]).toContain("SSR");
     expect(response.headers["content-type"]).toContain("json");
     expect(response.statusCode).toEqual(200);
   });

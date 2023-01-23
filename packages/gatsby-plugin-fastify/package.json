@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir ./dist --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
-    "pretest": "cd ../../integration-tests/plugin-fastify/ && yarn run build",
+    "pretest": "yarn run build && cd ../../integration-tests/plugin-fastify/ && yarn run build",
     "test": "jest --coverage",
     "watch": "yarn build --watch"
   },
@@ -39,10 +39,16 @@
     "gatsby-core-utils": "^4.7.0",
     "gatsby-plugin-utils": "^4.7.0",
     "http-status-codes": "^2.2.0",
+    "just-compose": "^2.3.0",
+    "just-map-object": "^2.3.0",
+    "just-map-values": "^3.2.0",
+    "just-merge": "^3.2.0",
+    "just-typeof": "^3.2.0",
     "mime": "^3.0.0",
     "open": "^8.4.2",
     "picomatch": "^2.3.1",
-    "yargs": "^17.7.1"
+    "webpack-assets-manifest": "^5.1.0",
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
@@ -53,9 +59,10 @@
     "@types/mime": "^3.0.1",
     "@types/node": "^18.14.6",
     "@types/picomatch": "^2.3.0",
-    "@types/yargs": "^17.0.22",
-    "babel-jest": "^29.4.3",
-    "babel-preset-gatsby-package": "^3.7.0",
+    "@types/webpack-assets-manifest": "^5.1.0",
+    "@types/yargs": "^17.0.18",
+    "babel-jest": "^29.3.1",
+    "babel-preset-gatsby-package": "^3.3.0",
     "cross-env": "^7.0.3",
     "jest": "^29.4.3"
   },
