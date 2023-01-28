@@ -9,7 +9,6 @@ Gatsby source plugin for sourcing data into your Gatsby application from your
 Airtable base tables
 
 [![npm](https://badgen.net/npm/v/gatsby-source-airtable)](https://www.npmjs.com/package/gatsby-source-airtable)
-[![travis](https://badgen.net/travis/jbolda/gatsby-source-airtable)](https://travis-ci.com/jbolda/gatsby-source-airtable)
 
 </div>
 
@@ -81,10 +80,7 @@ Get one single record (table row), where `Field_1 === YOUR_VALUE`:
 
 ```graphql
 {
-  airtable(
-    table: { eq: "YOUR_TABLE_NAME" }
-    data: { Field_1: { eq: "YOUR_VALUE" } }
-  ) {
+  airtable(table: { eq: "YOUR_TABLE_NAME" }, data: { Field_1: { eq: "YOUR_VALUE" } }) {
     data {
       Field_1
       Field_2
@@ -103,10 +99,7 @@ Get all records from `YOUR_TABLE_NAME` where `Field_1 === YOUR_VALUE`:
 ```graphql
 {
   allAirtable(
-    filter: {
-      table: { eq: "YOUR_TABLE_NAME" }
-      data: { Field_1: { eq: "YOUR_VALUE" } }
-    }
+    filter: { table: { eq: "YOUR_TABLE_NAME" }, data: { Field_1: { eq: "YOUR_VALUE" } } }
   ) {
     edges {
       node {
@@ -314,8 +307,7 @@ plugins: [
           defaultValues: {
             // currently does not accept null / undefined. use empty string instead
             // and perform your conditional logic on name_of_field.length > 0 ? condition_1 : condition_2
-            NAME_OF_FIELD_THAT_WILL_OTHERWISE_NOT_BE_RETURNED_IF_ALL_VALUES_ARE_BLANK:
-              "",
+            NAME_OF_FIELD_THAT_WILL_OTHERWISE_NOT_BE_RETURNED_IF_ALL_VALUES_ARE_BLANK: "",
             // ... etc
           },
         },

@@ -1,13 +1,13 @@
 const Airtable = require("airtable");
-const crypto = require("crypto");
+const crypto = require("node:crypto");
 const { createRemoteFileNode } = require("gatsby-source-filesystem");
 const { map } = require("bluebird");
 const mime = require("mime/lite");
-const path = require("path");
+const path = require("node:path");
 
 exports.sourceNodes = async (
   { actions, createNodeId, store, cache },
-  { apiKey, tables, concurrency },
+  { apiKey, tables, concurrency }
 ) => {
   // tables contain baseId, tableName, tableView, queryName, mapping, tableLinks
   const { createNode, setPluginStatus } = actions;
@@ -16,13 +16,13 @@ exports.sourceNodes = async (
     // hoist api so we can use in scope outside of this block
     if (!apiKey && process.env.GATSBY_AIRTABLE_API_KEY) {
       console.warn(
-        "\nImplicit setting of GATSBY_AIRTABLE_API_KEY as apiKey will be deprecated in future release, apiKey should be set in gatsby-config.js, please see Readme!",
+        "\nImplicit setting of GATSBY_AIRTABLE_API_KEY as apiKey will be deprecated in future release, apiKey should be set in gatsby-config.js, please see Readme!"
       );
     }
     var api = await new Airtable({
       apiKey: process.env.GATSBY_AIRTABLE_API_KEY || apiKey,
     });
-  } catch (e) {
+  } catch {
     // airtable uses `assert` which doesn't exit the process,
     //  but rather just makes gatsby hang. Warn, don't create any
     //  nodes, but let gatsby continue working
@@ -32,9 +32,7 @@ exports.sourceNodes = async (
 
   // exit if tables is not defined
   if (tables === undefined || tables.length === 0) {
-    console.warn(
-      "\ntables is not defined for gatsby-source-airtable in gatsby-config.js",
-    );
+    console.warn("\ntables is not defined for gatsby-source-airtable in gatsby-config.js");
     return;
   }
 
@@ -49,7 +47,7 @@ exports.sourceNodes = async (
   console.time(`\nfetch all Airtable rows from ${tables.length} tables`);
 
   let queue = [];
-  tables.forEach((tableOptions) => {
+  for (const tableOptions of tables) {
     let base = api.base(tableOptions.baseId);
 
     let table = base(tableOptions.tableName);
@@ -64,9 +62,10 @@ exports.sourceNodes = async (
     // if they are not, warn them and change it for them
     // we can settle the API on clean keys and not have a breaking
     // change until the next major version when we remove this
-    const cleanMapping = !tableOptions.mapping
-      ? null
-      : Object.keys(tableOptions.mapping).reduce((cleaned, key) => {
+    const cleanMapping = tableOptions.mapping
+      ? // disabling for legacy code for initial import
+        // eslint-disable-next-line unicorn/no-array-reduce
+        Object.keys(tableOptions.mapping).reduce((cleaned, key) => {
           let useKey = cleanKey(key);
           if (useKey !== key)
             console.warn(`
@@ -79,11 +78,13 @@ exports.sourceNodes = async (
       `);
           cleaned[useKey] = tableOptions.mapping[key];
           return cleaned;
-        }, {});
+        }, {})
+      : // disabling for legacy code for initial import
+        // eslint-disable-next-line unicorn/no-null
+        null;
 
-    const cleanLinks = !tableOptions.tableLinks
-      ? null
-      : tableOptions.tableLinks.map((key) => {
+    const cleanLinks = tableOptions.tableLinks
+      ? tableOptions.tableLinks.map((key) => {
           let useKey = cleanKey(key);
           if (useKey !== key)
             console.warn(`
@@ -95,7 +96,10 @@ exports.sourceNodes = async (
         for more information.
       `);
           return useKey;
-        });
+        })
+      : // disabling for legacy code for initial import
+        // eslint-disable-next-line unicorn/no-null
+        null;
 
     // query.all() returns a promise, pass an array for each table with
     // both our promise and the queryName and then map reduce at the
@@ -105,24 +109,24 @@ exports.sourceNodes = async (
         query.all(),
         tableOptions.queryName,
         tableOptions.defaultValues || {},
-        typeof tableOptions.separateNodeType !== "undefined"
-          ? tableOptions.separateNodeType
-          : false,
-        typeof tableOptions.separateMapType !== "undefined"
-          ? tableOptions.separateMapType
-          : false,
+        tableOptions.separateNodeType === undefined ? false : tableOptions.separateNodeType,
+        tableOptions.separateMapType === undefined ? false : tableOptions.separateMapType,
         cleanMapping,
         cleanLinks,
-      ]),
+      ])
     );
-  });
+  }
 
   // queue has array of promises and when resolved becomes nested arrays
   // we flatten the array to return all rows from all tables after mapping
   // the queryName to each row
   const allRows = await Promise.all(queue)
     .then((all) => {
+      // disabling for legacy code for initial import
+      // eslint-disable-next-line unicorn/no-array-reduce
       return all.reduce((accumulator, currentValue) => {
+        // disabling for legacy code for initial import
+        // eslint-disable-next-line unicorn/prefer-spread
         return accumulator.concat(
           currentValue[0].map((row, rowIndex) => {
             row.rowIndex = rowIndex;
@@ -133,13 +137,13 @@ exports.sourceNodes = async (
             row.mapping = currentValue[5]; // mapping from tableOptions above
             row.tableLinks = currentValue[6]; // tableLinks from tableOptions above
             return row;
-          }),
+          })
         );
       }, []);
     })
-    .catch((e) => {
-      console.warn("Error fetching tables: " + e);
-      throw e;
+    .catch((error) => {
+      console.warn("Error fetching tables: " + error);
+      throw error;
       return;
     });
 
@@ -174,12 +178,14 @@ exports.sourceNodes = async (
       if (row.separateNodeType && (!row.queryName || row.queryName === "")) {
         console.warn(
           `You have opted into separate node types, but not specified a queryName.
-          We use the queryName to suffix to node type. Without a queryName, it will act like separateNodeType is false.`,
+          We use the queryName to suffix to node type. Without a queryName, it will act like separateNodeType is false.`
         );
       }
 
       const node = {
         id: createNodeId(`Airtable_${row.id}`),
+        // disabling for legacy code for initial import
+        // eslint-disable-next-line unicorn/no-null
         parent: null,
         table: row._table.name,
         recordId: row.id,
@@ -187,13 +193,8 @@ exports.sourceNodes = async (
         rowIndex: row.rowIndex,
         children: [],
         internal: {
-          type: `Airtable${
-            row.separateNodeType ? cleanType(row.queryName) : ""
-          }`,
-          contentDigest: crypto
-            .createHash("md5")
-            .update(JSON.stringify(row))
-            .digest("hex"),
+          type: `Airtable${row.separateNodeType ? cleanType(row.queryName) : ""}`,
+          contentDigest: crypto.createHash("md5").update(JSON.stringify(row)).digest("hex"),
         },
         data: processedData.data,
       };
@@ -201,10 +202,10 @@ exports.sourceNodes = async (
       createNode(node);
 
       await Promise.all(processedData.childNodes).then((nodes) => {
-        nodes.forEach((node) => createNode(node));
+        for (const node of nodes) createNode(node);
       });
     },
-    { concurrency: concurrency },
+    { concurrency: concurrency }
   );
 };
 
@@ -215,7 +216,7 @@ const processData = async (row, { createNodeId, createNode, store, cache }) => {
   let processedData = {};
   let childNodes = [];
 
-  fieldKeys.forEach((key) => {
+  for (const key of fieldKeys) {
     // once in "Gatsby-land" we want to use the cleanKey
     // consistently everywhere including in configs
     // this key that we clean comes from Airtable
@@ -230,9 +231,7 @@ const processData = async (row, { createNodeId, createNode, store, cache }) => {
 
       // `data` is direct from Airtable so we don't use
       // the cleanKey here
-      processedData[useKey] = data[key].map((id) =>
-        createNodeId(`Airtable_${id}`),
-      );
+      processedData[useKey] = data[key].map((id) => createNodeId(`Airtable_${id}`));
     } else if (row.mapping && row.mapping[cleanedKey]) {
       // A child node comes from the mapping, where we want to
       // define a separate node in gatsby that is available
@@ -252,7 +251,7 @@ const processData = async (row, { createNodeId, createNode, store, cache }) => {
       // the cleanKey here
       processedData[cleanedKey] = data[key];
     }
-  });
+  }
 
   // wait for all of the children to finish
   await Promise.all(childNodes);
@@ -264,7 +263,7 @@ const checkChildNode = async (
   key,
   row,
   processedData,
-  { createNodeId, createNode, store, cache },
+  { createNodeId, createNode, store, cache }
 ) => {
   let data = row.fields;
   let mapping = row.mapping;
@@ -276,25 +275,12 @@ const checkChildNode = async (
     cache,
   });
 
-  processedData[`${cleanedKey}___NODE`] = createNodeId(
-    `AirtableField_${row.id}_${cleanedKey}`,
-  );
+  processedData[`${cleanedKey}___NODE`] = createNodeId(`AirtableField_${row.id}_${cleanedKey}`);
 
-  return buildNode(
-    localFiles,
-    row,
-    cleanedKey,
-    data[key],
-    mapping[key],
-    createNodeId,
-  );
+  return buildNode(localFiles, row, cleanedKey, data[key], mapping[key], createNodeId);
 };
 
-const localFileCheck = async (
-  key,
-  row,
-  { createNodeId, createNode, store, cache },
-) => {
+const localFileCheck = async (key, row, { createNodeId, createNode, store, cache }) => {
   let data = row.fields;
   let mapping = row.mapping;
   let cleanedKey = cleanKey(key);
@@ -304,37 +290,35 @@ const localFileCheck = async (
       // where data[key] is the array of attachments
       // `data` is direct from Airtable so we don't use
       // the cleanKey here
-      data[key].forEach((attachment) => {
+      for (const attachment of data[key]) {
         // get the filename from the airtable metadata instead of the remote file
         const airtableFile = path.parse(attachment.filename);
         // console.log(airtableFile);
-        let ext = airtableFile.ext;
-        if (!ext) {
-          const deriveExt = mime.getExtension(attachment.type); // unknown type returns null
-          ext = !!deriveExt ? `.${deriveExt}` : undefined;
+        let extension = airtableFile.ext;
+        if (!extension) {
+          const deriveExtension = mime.getExtension(attachment.type); // unknown type returns null
+          extension = deriveExtension ? `.${deriveExtension}` : undefined;
         }
         let attachmentNode = createRemoteFileNode({
           url: attachment.url,
-          name: airtableFile.name.replace(/[/\\?%*:|"<>]/g, ""),
+          name: airtableFile.name.replace(/["%*/:<>?\\|]/g, ""),
           store,
           cache,
           createNode,
           createNodeId,
-          ext: !!ext ? `.${ext}` : undefined,
+          ext: extension ? `.${extension}` : undefined,
         });
         fileNodes.push(attachmentNode);
-      });
+      }
       // Adds a field `localFile` to the node
       // ___NODE tells Gatsby that this field will link to another nodes
       const resolvedFileNodes = await Promise.all(fileNodes);
-      const localFiles = resolvedFileNodes.map(
-        (attachmentNode) => attachmentNode.id,
-      );
+      const localFiles = resolvedFileNodes.map((attachmentNode) => attachmentNode.id);
       return localFiles;
-    } catch (e) {
+    } catch (error) {
       console.log(
         "You specified a fileNode, but we caught an error. First check that you have gatsby-source-filesystem installed?\n",
-        e,
+        error
       );
     }
   }
@@ -343,42 +327,36 @@ const localFileCheck = async (
 
 const buildNode = (localFiles, row, cleanedKey, raw, mapping, createNodeId) => {
   const nodeType = row.separateNodeType
-    ? `Airtable${cleanKey(row.queryName ? row.queryName : row._table.name)}`
+    ? // disabling for legacy code for initial import
+      // eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary
+      `Airtable${cleanKey(row.queryName ? row.queryName : row._table.name)}`
     : "Airtable";
-  if (localFiles) {
-    return {
-      id: createNodeId(`AirtableField_${row.id}_${cleanedKey}`),
-      parent: createNodeId(`Airtable_${row.id}`),
-      children: [],
-      raw: raw,
-      localFiles___NODE: localFiles,
-      internal: {
-        type: `AirtableField${row.separateMapType ? cleanType(mapping) : ""}`,
-        mediaType: mapping,
-        content: typeof raw === "string" ? raw : JSON.stringify(raw),
-        contentDigest: crypto
-          .createHash("md5")
-          .update(JSON.stringify(row))
-          .digest("hex"),
-      },
-    };
-  } else {
-    return {
-      id: createNodeId(`AirtableField_${row.id}_${cleanedKey}`),
-      parent: createNodeId(`Airtable_${row.id}`),
-      children: [],
-      raw: raw,
-      internal: {
-        type: `AirtableField${row.separateMapType ? cleanType(mapping) : ""}`,
-        mediaType: mapping,
-        content: typeof raw === "string" ? raw : JSON.stringify(raw),
-        contentDigest: crypto
-          .createHash("md5")
-          .update(JSON.stringify(row))
-          .digest("hex"),
-      },
-    };
-  }
+  return localFiles
+    ? {
+        id: createNodeId(`AirtableField_${row.id}_${cleanedKey}`),
+        parent: createNodeId(`Airtable_${row.id}`),
+        children: [],
+        raw: raw,
+        localFiles___NODE: localFiles,
+        internal: {
+          type: `AirtableField${row.separateMapType ? cleanType(mapping) : ""}`,
+          mediaType: mapping,
+          content: typeof raw === "string" ? raw : JSON.stringify(raw),
+          contentDigest: crypto.createHash("md5").update(JSON.stringify(row)).digest("hex"),
+        },
+      }
+    : {
+        id: createNodeId(`AirtableField_${row.id}_${cleanedKey}`),
+        parent: createNodeId(`Airtable_${row.id}`),
+        children: [],
+        raw: raw,
+        internal: {
+          type: `AirtableField${row.separateMapType ? cleanType(mapping) : ""}`,
+          mediaType: mapping,
+          content: typeof raw === "string" ? raw : JSON.stringify(raw),
+          contentDigest: crypto.createHash("md5").update(JSON.stringify(row)).digest("hex"),
+        },
+      };
 };
 
 const cleanKey = (key, data) => {
@@ -386,5 +364,5 @@ const cleanKey = (key, data) => {
 };
 
 const cleanType = (key) => {
-  return !key ? "" : key.replace(/[ /+]/g, "");
+  return key ? key.replace(/[ +/]/g, "") : "";
 };
