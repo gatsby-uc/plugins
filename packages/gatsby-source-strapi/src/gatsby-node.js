@@ -82,12 +82,16 @@ export const sourceNodes = async (
   if (lastFetched) {
     // Add the updatedAt filter
     const deltaEndpoints = endpoints.map((endpoint) => {
+      const lastEndpoint = { ...endpoint };
+      if (lastEndpoint.queryParams.pagination) {
+        lastEndpoint.queryParams.pagination.page = 1;
+      }
       return {
-        ...endpoint,
+        ...lastEndpoint,
         queryParams: {
-          ...endpoint.queryParams,
+          ...lastEndpoint.queryParams,
           filters: {
-            ...endpoint.queryParams.filters,
+            ...lastEndpoint.queryParams.filters,
             updatedAt: { $gt: lastFetched },
           },
         },
