@@ -1,0 +1,37 @@
+{
+  "name": "gatsby-source-airtable",
+  "description": "Gatsby Airtable Source with Linked Nodes, Multiple Tables and File Nodes.",
+  "version": "2.3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsby-uc/plugins.git",
+    "directory": "packages/gatsby-plugin-airtable"
+  },
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "/gatsby-node.js"
+  ],
+  "keywords": [
+    "airtable",
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source",
+    "gatsby-source-airtable"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "dependencies": {
+    "airtable": "^0.11.1",
+    "bluebird": "^3.5.4",
+    "mime": "^2.4.4"
+  },
+  "devDependencies": {
+    "covector": "0.8.0"
+  },
+  "peerDependencies": {
+    "gatsby-source-filesystem": ">=2.0.0-rc.0"
+  }
+}
