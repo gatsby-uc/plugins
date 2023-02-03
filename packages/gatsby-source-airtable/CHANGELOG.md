@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.1
+
+### Patch Changes
+
+- [#369](https://github.com/gatsby-uc/plugins/pull/369) [`1acb646`](https://github.com/gatsby-uc/plugins/commit/1acb6466e2a3423acc6323126243964a9162e64d) Thanks [@jbolda](https://github.com/jbolda)! - Moved this source plugin into gatsby-uc/plugins repo for improved ongoing maintenance.
+
 ## \[2.3.0]
 
 - This makes the fileNode pull `name` from the airtable metadata instead of the
