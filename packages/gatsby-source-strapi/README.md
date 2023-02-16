@@ -369,6 +369,22 @@ Then use the one of the following queries to fetch a localized content type:
 }
 ```
 
+#### Limiting parallel requests
+
+With huge datasets in strapi parallel requests can be limited with the following option.
+
+```javascript
+const strapiConfig = {
+  // ...
+  apiURL: process.env.STRAPI_API_URL,
+  accessToken: process.env.STRAPI_TOKEN,
+  maxParallelRequests: 10,
+  collectionTypes: [
+    // ...
+  ],
+};
+```
+
 ## Gatsby cloud and preview environment setup
 
 ### Setup

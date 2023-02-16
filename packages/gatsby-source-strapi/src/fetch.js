@@ -102,6 +102,7 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
 export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
   const { strapiConfig, reporter } = context;
   const axiosInstance = createInstance(strapiConfig);
+  const { maxParallelRequests } = strapiConfig;
 
   const options = {
     method: "GET",
@@ -134,7 +135,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
     }).map((_, index) => index + page + 1);
 
     const fetchPagesPromises = pagesToGet.map((page) => {
-      return (async () => {
+      return async () => {
         const fetchOptions = {
           ...options,
         };
@@ -156,10 +157,15 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
         } catch (error) {
           reporter.panic(`Failed to fetch data from Strapi ${fetchOptions.url}`, error);
         }
-      })();
+      };
     });
 
-    const results = await Promise.all(fetchPagesPromises);
+    // eslint-disable-next-line unicorn/explicit-length-check
+    const chunkSize = maxParallelRequests || fetchPagesPromises.length;
+    const results = [];
+    for (let index = 0; index < pagesToGet.length; index += chunkSize) {
+      results.push(await Promise.all(fetchPagesPromises.slice(index, index + chunkSize).map((x) => x())));
+    }
 
     const cleanedData = [...data, ...flattenDeep(results)].map((entry) =>
       cleanData(entry, { ...context, contentTypeUid: uid })
