@@ -164,7 +164,9 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
     const chunkSize = maxParallelRequests || fetchPagesPromises.length;
     const results = [];
     for (let index = 0; index < pagesToGet.length; index += chunkSize) {
-      results.push(await Promise.all(fetchPagesPromises.slice(index, index + chunkSize).map((x) => x())));
+      results.push(
+        await Promise.all(fetchPagesPromises.slice(index, index + chunkSize).map((x) => x()))
+      );
     }
 
     const cleanedData = [...data, ...flattenDeep(results)].map((entry) =>
