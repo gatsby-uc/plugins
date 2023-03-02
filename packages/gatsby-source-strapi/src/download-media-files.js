@@ -121,7 +121,8 @@ const extractImages = async (item, context, uid) => {
 
     if (value && type) {
       if (type === "richtext") {
-        const extractedFiles = extractFiles(value.data, apiURL);
+        const richText = value.data ? value.data : value;
+        const extractedFiles = extractFiles(richText, apiURL);
 
         const files = await Promise.all(
           extractedFiles.map(async ({ url }) => {
