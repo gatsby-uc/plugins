@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "gatsby": "3.12.0",
+    "gatsby": "3.15.0",
     "gatsby-source-airtable": "file:../__fixtures__",
-    "gatsby-source-filesystem": "3.12.0",
-    "gatsby-transformer-remark": "4.9.0",
+    "gatsby-source-filesystem": "3.15.0",
+    "gatsby-transformer-remark": "4.12.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "remark-html": "14.0.1"
@@ -22,8 +22,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "nock": "13.2.4",
-    "prettier": "2.3.2"
+    "nock": "13.3.0",
+    "prettier": "2.8.4"
   },
   "volta": {
     "extends": "../../package.json"
