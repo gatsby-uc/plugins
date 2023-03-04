@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-ackee-tracker",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Gatsby plugin to add Ackee Tracker to a site.",
   "keywords": [
     "ackee",
