@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.2
+
+### Patch Changes
+
+- [#382](https://github.com/gatsby-uc/plugins/pull/382) [`d578b78`](https://github.com/gatsby-uc/plugins/commit/d578b7896f804716a4c2222385c19be11c27bdf4) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
 ## 2.3.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # gatsby-source-packagist
 
+## 3.1.4
+
+### Patch Changes
+
+- [#382](https://github.com/gatsby-uc/plugins/pull/382) [`d578b78`](https://github.com/gatsby-uc/plugins/commit/d578b7896f804716a4c2222385c19be11c27bdf4) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
+- [#378](https://github.com/gatsby-uc/plugins/pull/378) [`07bbfa7`](https://github.com/gatsby-uc/plugins/commit/07bbfa7c434b8543a7d15c5f2e87ac48705aa593) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
 ## 3.1.3
 
 ### Patch Changes
