@@ -24,9 +24,9 @@
     "test": "echo \"Error: no test specified\""
   },
   "dependencies": {
-    "airtable": "^0.11.1",
-    "bluebird": "^3.5.4",
-    "mime": "^2.4.4"
+    "airtable": "^0.11.6",
+    "bluebird": "^3.7.2",
+    "mime": "^2.6.0"
   },
   "devDependencies": {
     "covector": "0.8.0"
