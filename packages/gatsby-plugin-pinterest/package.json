@@ -24,13 +24,13 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "@babel/runtime": "^7.20.7"
+    "@babel/runtime": "^7.21.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.7",
-    "babel-jest": "^29.3.1",
-    "babel-preset-gatsby-package": "^3.3.0",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "babel-jest": "^29.4.3",
+    "babel-preset-gatsby-package": "^3.7.0",
     "gatsby-plugin-utils": "^4.3.1",
     "jest": "^29.4.3"
   },
