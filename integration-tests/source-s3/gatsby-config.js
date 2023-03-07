@@ -9,12 +9,14 @@ module.exports = {
       resolve: `gatsby-source-s3`,
       options: {
         aws: {
-          accessKeyId: "minioadmin",
-          secretAccessKey: "minioadmin",
-          s3ForcePathStyle: true,
-          endpoint: "localhost:9001",
+          credentials: {
+            accessKeyId: "minioadmin",
+            secretAccessKey: "minioadmin",
+          },
+          forcePathStyle: true,
+          endpoint: "http://localhost:9001",
           sslEnabled: false,
-          s3ForcePathStyle: true,
+          region: "us-east-1",
         },
         buckets: [
           "gatsby-source-s3-example",
