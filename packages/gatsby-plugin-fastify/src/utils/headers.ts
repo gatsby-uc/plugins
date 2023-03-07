@@ -57,9 +57,10 @@ export function getRouteHeaders(route: string) {
    *
    */
 
-  mapObject(headers, (headerRoute, headerValue) => {
+  return mapObject(headers, (headerRoute, headerValue) => {
     if (isMatch(route, headerRoute)) {
       return headerValue.headers;
     }
+    return headers;
   });
 }
