@@ -1,5 +1,28 @@
 # gatsby-source-s3
 
+## 4.0.0
+
+### Major Changes
+
+- [#387](https://github.com/gatsby-uc/plugins/pull/387) [`a0cfd0b`](https://github.com/gatsby-uc/plugins/commit/a0cfd0b5185c86f34226e67ad33509a86f686bba) Thanks [@h93xV2](https://github.com/h93xV2)! - Upgraded the AWS SDK dependency in gatsby-source-s3 from v2 to v3.
+
+  AWS SDK v2 is going into maintenance mode in 2023, and projects which use the old version have error messages logged in their consoles.
+
+  The upgrade breaks backwards compatibility for existing plugin configurations, so a major version increment has been applied.
+
+  For plugin configuration, the AWS property follows the [S3ClientConfig interface](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html), but adds the additional `Buckets` property unique to the plugin.
+
+  The two main differences with the plugin configuration are:
+
+  1. `region` is now required for custom endpoints.
+  2. The `accessKeyId` and `secretAccessKey` properties have been moved into the `credentials` property.
+
+### Patch Changes
+
+- [#389](https://github.com/gatsby-uc/plugins/pull/389) [`a015186`](https://github.com/gatsby-uc/plugins/commit/a0151861197bef823f74bed00187ee80fa47d092) Thanks [@renovate](https://github.com/apps/renovate)! - chore(packages): update dependency start-server-and-test to v2
+
+- [#361](https://github.com/gatsby-uc/plugins/pull/361) [`b37cbaf`](https://github.com/gatsby-uc/plugins/commit/b37cbaf4765363d33e024cd7e313074a23c6a13e) Thanks [@renovate](https://github.com/apps/renovate)! - chore(packages): update dependency cypress to v12
+
 ## 3.2.4
 
 ### Patch Changes
