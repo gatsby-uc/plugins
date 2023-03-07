@@ -11884,9 +11884,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^11.2.0":
-  version: 11.2.0
-  resolution: "cypress@npm:11.2.0"
+"cypress@npm:^12.7.0":
+  version: 12.7.0
+  resolution: "cypress@npm:12.7.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -11905,7 +11905,7 @@ __metadata:
     commander: ^5.1.0
     common-tags: ^1.8.0
     dayjs: ^1.10.4
-    debug: ^4.3.2
+    debug: ^4.3.4
     enquirer: ^2.3.6
     eventemitter2: 6.4.7
     execa: 4.1.0
@@ -11932,7 +11932,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: e13649fb4b62a3c9dff7cc571f4e01dba009d8179b05c4f885c5ceb4ed76b78a7323fec491d992da35527708b54e596bfc9edb1d702f788317889f794d8c1e76
+  checksum: a9489f7f254dcee1b8a374d14d175c8f8681a3388e4c02181e0486f064f4de59bfc79dec1f401605332d3a5869bf2ba06b3a1653a5c287e447810d756d470078
   languageName: node
   linkType: hard
 
@@ -15246,7 +15246,7 @@ __metadata:
     "@babel/runtime": ^7.21.0
     "@types/node": ^18.14.6
     babel-preset-gatsby-package: ^3.7.0
-    cypress: ^11.2.0
+    cypress: ^12.7.0
     gatsby-source-filesystem: ^5.7.0
     start-server-and-test: ^2.0.0
   peerDependencies:

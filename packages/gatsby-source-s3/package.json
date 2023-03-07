@@ -24,7 +24,7 @@
     "@babel/core": "^7.21.0",
     "@types/node": "^18.14.6",
     "babel-preset-gatsby-package": "^3.7.0",
-    "cypress": "^11.2.0",
+    "cypress": "^12.7.0",
     "start-server-and-test": "^2.0.0"
   },
   "scripts": {
