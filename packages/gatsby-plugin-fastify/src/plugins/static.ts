@@ -9,6 +9,7 @@ import type { FastifyPluginAsync } from "fastify";
 
 export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = fp(
   async (fastify, options) => {
+    console.log("handleStatic", {fastify});
     const publicPath = resolve(PATH_TO_PUBLIC);
     fastify.log.debug(`Serving Static Assets from ${publicPath}`);
     fastify.register(fastifyStatic, {
@@ -17,13 +18,20 @@ export const handleStatic: FastifyPluginAsync<Partial<FastifyStaticOptions>> = f
       redirect: false,
       wildcard: false,
       setHeaders: (reply, path) => {
-        if (
-          isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
-          isMatch(path, "!**/sw.js")
-        ) {
-          reply.setHeader(...IMMUTABLE_CACHING_HEADER);
-        } else {
-          reply.setHeader(...NEVER_CACHE_HEADER);
+        // console.log(`setHeaders`, {reply, path});
+        // if (
+        //   isMatch(path, ["**/public/*.@(js|css)", "**/public/static/**"]) &&
+        //   isMatch(path, "!**/sw.js")
+        // ) {
+        //   reply.setHeader(...IMMUTABLE_CACHING_HEADER);
+        // } else {
+        //   reply.setHeader(...NEVER_CACHE_HEADER);
+        // }
+        const barePath = path.replace(publicPath, ``);
+        reply.setHeader(`x-test-thomas`, `heloo`);
+        // console.log(`path`, barePath, publicPath);
+        if (path.includes(`/posts/page-1`)) {
+          reply.setHeader(`x-test-thomas`, `tis apge`);
         }
         appendModuleHeader("Static", reply);
       },
