@@ -8,6 +8,8 @@ import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
 import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
 import { removeQueryParmsFromUrl } from "../utils/routes";
 import { countPaths } from "../utils/log";
+import { appendRouteHeaders } from "../utils/headers";
+import mapValues from "just-map-values";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
@@ -69,7 +71,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
             }
           }
 
-          reply.header(...NEVER_CACHE_HEADER);
+          appendRouteHeaders(path, reply);
           return reply.send(pageData);
         } catch (error) {
           if (error instanceof Error) {
@@ -97,30 +99,33 @@ export const handleServerRoutes: FastifyPluginAsync<{
           }
 
           reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
-
+          
           try {
             const pageQueryData = await getData({
               pathName: potentialPagePath,
               graphqlEngine,
               req: request,
             });
-
+            
             const results = await renderHTML({ data: pageQueryData });
+            
+            if (page.mode === "DSG") {              
+              mapValues(NEVER_CACHE_HEADER, (value, key) => {
+                reply.header(key, value);
+              });
+            }
+            appendRouteHeaders(path, reply);
 
             if (page.mode === `SSR`) {
               if (pageQueryData?.serverDataHeaders) {
                 reply.headers(pageQueryData.serverDataHeaders);
               }
-
+              
               if (pageQueryData?.serverDataStatus) {
                 reply.code(pageQueryData.serverDataStatus);
               }
             }
-
-            if (page.mode === "DSG") {
-              reply.header(...NEVER_CACHE_HEADER);
-            }
-
+            
             return reply.type("text/html").send(results);
           } catch (error) {
             if (error instanceof Error) {

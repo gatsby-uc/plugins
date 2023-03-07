@@ -18,6 +18,7 @@ export async function getServerData() {
     return {
       headers: {
         "x-test": "Custom Headers Work!",
+        "x-test-ssr-overwrite": "Overwritten by SSR",
       },
       props: await res.json(),
     };
