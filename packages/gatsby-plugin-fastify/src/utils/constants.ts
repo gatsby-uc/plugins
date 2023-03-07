@@ -13,23 +13,21 @@ export const CONFIG_FILE_PATH = PATH_TO_CACHE;
 
 // implementation values
 
-type Header = [string, string];
-export const IMMUTABLE_CACHING_HEADER: Header = [
-  `cache-control`,
-  `public, max-age=31536000, immutable`,
-];
-export const NEVER_CACHE_HEADER: Header = [`cache-control`, `public, max-age=0, must-revalidate`];
+export const IMMUTABLE_CACHING_HEADER = {
+  'cache-control' : `public, max-age=31536000, immutable`,
+};
+export const NEVER_CACHE_HEADER = {'cache-control': `public, max-age=0, must-revalidate`};
 
 export const SECURITY_HEADERS = {
-  "/*": [
-    `X-Frame-Options: DENY`,
-    `X-XSS-Protection: 1; mode=block`,
-    `X-Content-Type-Options: nosniff`,
-    `Referrer-Policy: same-origin`,
-  ],
+  "/**": {
+    'X-Frame-Options':'DENY',
+    'X-XSS-Protection':'1; mode=block',
+    'X-Content-Type-Options':'nosniff',
+    'Referrer-Policy':'same-origin'
+  },
 };
 
 export const CACHING_HEADERS = {
-  "/static/*": IMMUTABLE_CACHING_HEADER,
+  "/static/**": IMMUTABLE_CACHING_HEADER,
   "/sw.js": NEVER_CACHE_HEADER,
 };

@@ -219,4 +219,39 @@ describe(`Test Gatsby DSG/SSR Routes`, () => {
     expect(response.headers["content-type"]).toContain("json");
     expect(response.statusCode).toEqual(200);
   });
+
+  // dsg routes should also get custom headers
+  it(`Should Add custom headers to DSG routes`, async () => {
+    const response = await fastify.inject({
+      url: "/faker",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(200);
+    expect(response.headers).toHaveProperty("x-test-all-pages");
+  });
+
+  // ssr routes should also get custom headers
+  it(`Should Add custom headers to SSR routes alongside SSR headers`, async () => {
+    const response = await fastify.inject({
+      url: "/ssr",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(200);
+    expect(response.headers).toHaveProperty("x-test-all-pages");
+    expect(response.headers).toHaveProperty("x-test", "Custom Headers Work!");
+  });
+
+  // ssr headers set in SSR file should overwrite custom headers
+  it(`Should overwrite custom headers in SSR paths with headers set in the SSR file`, async () => {
+    const response = await fastify.inject({
+      url: "/ssr",
+      method: "GET",
+    });
+
+    expect(response.statusCode).toEqual(200);
+    expect(response.headers).toHaveProperty("x-test-ssr-kept", "ssr page");
+    expect(response.headers).toHaveProperty("x-test-ssr-overwrite", "Overwritten by SSR");
+  });
 });

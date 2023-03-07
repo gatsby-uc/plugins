@@ -42,7 +42,7 @@ export function setHeaderDecorator(this: FastifyReply, key: string, value: strin
   this.header(key, value);
 }
 
-export function getRouteHeaders(route: string) {
+export function appendRouteHeaders(route: string, reply: FastifyReply): Record<string, string> {
   const {
     server: { headers },
   } = getConfig();
@@ -54,13 +54,21 @@ export function getRouteHeaders(route: string) {
    * How do I make sure that the header is not overwritten by other matches?
    * we expect this but we need a way to prioritize one match over another
    * or am I over complicating this?
-   *
+   * 
+   * @tsdexter: I think we can just use the order of the headers in the
+   * config file. Successive matches will with duplicate header `name`'s
+   * will overwrite the previous header of the same `name`.
    */
-
-  return mapObject(headers, (headerRoute, headerValue) => {
-    if (isMatch(route, headerRoute)) {
-      return headerValue.headers;
+  // console.log(`\n\nheaders`, {headers}, `\n\n`);
+  let routeHeaders = {};
+  // console.log(`\n\nheaders`, {headers}, `\n\n`);
+  mapObject(headers, (pattern, headerObj) => {
+    if (isMatch(route, pattern)) {
+      // routeHeaders = {...routeHeaders, ...headerObj};
+      mapObject(headerObj, (name, value) => {
+        reply.setHeader(name, value);
+      });
     }
-    return headers;
   });
+  return routeHeaders;
 }

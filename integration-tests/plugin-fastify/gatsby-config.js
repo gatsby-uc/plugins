@@ -27,16 +27,26 @@ module.exports = {
       resolve: `gatsby-plugin-fastify`,
       options: {
         headers: {
-          "/*": {
-            "x-test-2": "Does this show",
-            "x-test": "Doesthisshow",
-            "X-Content-Type-Options": "this is overridden",
+          "/posts/page-1/*": {
+            "x-test-page-specific": "shows on /posts/page-1 and its page-data",
           },
-          "/static/*": {
-            "cache-control": "max-age=31536000",
+          "/posts/page-2/*": {
+            "X-Content-Type-Options": "nosniff by default, overwritten for this page",
           },
-          "/polyfill.js": {
-            "x-test": "someStuff here",
+          "/**": {
+            "x-test-all-pages": "shows on every page/file",
+          },
+          "/icon.png": {
+            "cache-control": "max-age=60000",
+          },
+          "/component*.js": {
+            "x-test-js": "root js file",
+            "x-cache-control": "overwrite cache-control for all root js files",
+            "cache-control": "max-age=60000",
+          },
+          "/ssr/**": {
+            "x-test-ssr-kept": "ssr page",
+            "x-test-ssr-overwrite": "ssr page",
           },
         },
       },
