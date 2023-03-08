@@ -328,6 +328,18 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "tsdexter",
+      "name": "Thomas Dexter",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4126987?v=4",
+      "profile": "https://github.com/tsdexter",
+      "contributions": [
+        "maintenance",
+        "code",
+        "doc",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
