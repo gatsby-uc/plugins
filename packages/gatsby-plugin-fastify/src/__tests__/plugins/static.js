@@ -38,12 +38,12 @@ describe(`Gatsby Static Routes`, () => {
   // test to check that /posts/page-1 contains x-test-page-specific header
   it(`cache headers can be added to specific pages`, async () => {
     const response = await fastify.inject({
-      url: "/posts/page-1/",
+      url: "/posts/page-1",
       method: "GET",
     });
 
     expect(response.statusCode).toEqual(200);
-    // expect(response.headers).toHaveProperty("x-test-page-specific");
+    expect(response.headers).toHaveProperty("x-test-page-specific");
   });
 
   // should not contain x-test-page-specific header on other pages
@@ -54,7 +54,7 @@ describe(`Gatsby Static Routes`, () => {
     });
 
     expect(response.statusCode).toEqual(200);
-    // expect(response.headers).not.toHaveProperty("x-test-page-specific");
+    expect(response.headers).not.toHaveProperty("x-test-page-specific");
   });
 
   // check that /posts/page-2 x-content-type-options header is not nosniff
@@ -65,7 +65,7 @@ describe(`Gatsby Static Routes`, () => {
     });
 
     expect(response.statusCode).toEqual(200);
-    // expect(response.headers["x-content-type-options"]).not.toEqual("nosniff");
+    expect(response.headers["x-content-type-options"]).not.toEqual("nosniff");
   });
 
   // other pages should have x-content-type-options header set to nosniff (default value)
@@ -76,7 +76,7 @@ describe(`Gatsby Static Routes`, () => {
     });
 
     expect(response.statusCode).toEqual(200);
-    // expect(response.headers["x-content-type-options"]).toEqual("nosniff");
+    expect(response.headers["x-content-type-options"]).toEqual("nosniff");
   });
 
   // icon.png should be server with max-age=60000
@@ -87,7 +87,7 @@ describe(`Gatsby Static Routes`, () => {
     });
 
     expect(response.statusCode).toEqual(200);
-    // expect(response.headers["cache-control"]).toEqual("max-age=60000");
+    expect(response.headers["cache-control"]).toEqual("max-age=60000");
   });
 
   // cache headers can be added to every page
@@ -103,8 +103,8 @@ describe(`Gatsby Static Routes`, () => {
     });
 
     expect(response.statusCode).toEqual(200);
-    // expect(response.headers).toHaveProperty("x-test-all-pages");
+    expect(response.headers).toHaveProperty("x-test-all-pages");
     expect(response2.statusCode).toEqual(200);
-    // expect(response2.headers).toHaveProperty("x-test-all-pages");
+    expect(response2.headers).toHaveProperty("x-test-all-pages");
   });
 });
