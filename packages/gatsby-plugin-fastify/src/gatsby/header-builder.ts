@@ -4,11 +4,12 @@ import typeOf from "just-typeof";
 
 import { SECURITY_HEADERS, CACHING_HEADERS, IMMUTABLE_CACHING_HEADER } from "../utils/constants";
 import type { PluginData } from "../utils/plugin-data";
-import type { GatsbyNodeServerConfig } from "../utils/config";
+import type { GatsbyFastifyPluginOptions } from "../utils/config";
+import { HeadersOption } from "../utils/headers";
 
-function deepMerge(...headers) {
+function deepMerge(...headers: HeadersOption[]) {
   // eslint-disable-next-line unicorn/no-array-reduce
-  return headers.reduce((accumulator, header: { [key: string]: object }) => {
+  return headers.reduce((accumulator, header) => {
     for (let [key, value] of Object.entries(header)) {
       // console.log(typeOf(value));
       //merge needs empty object to prevent overwriting of references use across multiple routes
@@ -23,8 +24,8 @@ function deepMerge(...headers) {
 
 // program methods
 const applySecurityHeaders =
-  ({ mergeSecurityHeaders }: GatsbyNodeServerConfig) =>
-  (headers) => {
+  ({ mergeSecurityHeaders }: GatsbyFastifyPluginOptions) =>
+  (headers: HeadersOption) => {
     if (!mergeSecurityHeaders) {
       return headers;
     }
@@ -33,8 +34,8 @@ const applySecurityHeaders =
   };
 
 const applyCachingHeaders =
-  (pluginData: PluginData, { mergeCacheHeaders }: GatsbyNodeServerConfig) =>
-  (headers) => {
+  (pluginData: PluginData, { mergeCacheHeaders }: GatsbyFastifyPluginOptions) =>
+  (headers: HeadersOption) => {
     if (!mergeCacheHeaders) {
       return headers;
     }
@@ -53,7 +54,7 @@ const applyCachingHeaders =
 
     const files = chunks.flatMap((chunk) => pluginData.manifest[chunk]);
 
-    const cachingHeaders = {};
+    const cachingHeaders: HeadersOption = {};
 
     for (const file of files) {
       if (typeof file === `string`) {
@@ -63,7 +64,10 @@ const applyCachingHeaders =
     return deepMerge(cachingHeaders, CACHING_HEADERS, headers);
   };
 
-export function buildHeadersProgram(pluginData, pluginOptions) {
+export function buildHeadersProgram(
+  pluginData: PluginData,
+  pluginOptions: GatsbyFastifyPluginOptions
+) {
   return compose(
     applySecurityHeaders(pluginOptions),
     applyCachingHeaders(pluginData, pluginOptions)

@@ -12,6 +12,12 @@ function appendHeader({ name, value }: { name: string; value: string }, reply: F
   }
 }
 
+export type HeadersOption = {
+  [key: string]: {
+    [key: string]: string;
+  };
+};
+
 export type Modules =
   | "DSG"
   | "SSR"

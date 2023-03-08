@@ -10,6 +10,7 @@ import type { FastifyServerOptions } from "fastify";
 import { PathConfig } from "../plugins/client-routes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
 import { buildPrefixer } from "./plugin-data";
+import { HeadersOption } from "./headers";
 
 let config: Partial<GfConfig> = {};
 
@@ -22,15 +23,12 @@ export interface GatsbyFastifyPluginOptions extends PluginOptions {
     imageCdn: boolean;
   };
   fastify: FastifyServerOptions;
+  headers: HeadersOption;
 }
 export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
   serverSideRoutes: ServerSideRoute[];
-  headers: {
-    [path: string]: {
-      [name: string]: string;
-    };
-  };
+  headers: HeadersOption;
   mergeCacheHeaders?: boolean;
   mergeSecurityHeaders?: boolean;
   redirects: IRedirect[];
