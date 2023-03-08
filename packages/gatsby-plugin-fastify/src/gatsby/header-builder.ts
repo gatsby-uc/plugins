@@ -7,15 +7,15 @@ import type { PluginData } from "../utils/plugin-data";
 import type { GatsbyNodeServerConfig } from "../utils/config";
 
 function deepMerge(...headers) {
+  // eslint-disable-next-line unicorn/no-array-reduce
   return headers.reduce((accumulator, header: { [key: string]: object }) => {
     for (let [key, value] of Object.entries(header)) {
-      console.log(typeOf(value));
-      if (accumulator.hasOwnProperty(key) && typeOf(value) === `object`) {
-        //merge needs empty object to prevent overwriting of references use across multiple routes
-        accumulator[key] = merge({}, accumulator[key], value);
-      } else {
-        accumulator[key] = value;
-      }
+      // console.log(typeOf(value));
+      //merge needs empty object to prevent overwriting of references use across multiple routes
+      accumulator[key] =
+        accumulator.hasOwnProperty(key) && typeOf(value) === `object`
+          ? merge({}, accumulator[key], value)
+          : value;
     }
     return accumulator;
   }, {});
@@ -45,7 +45,9 @@ const applyCachingHeaders =
     // over large numbers of pages.
     const isComponentChunkSet = !!pluginData.components.entries()?.next()?.value[1]
       ?.componentChunkName;
-    chunks = isComponentChunkSet ? [...pluginData.components.values()].map((c) => c.componentChunkName) : [...pluginData.pages.values()].map((page) => page.componentChunkName);
+    chunks = isComponentChunkSet
+      ? [...pluginData.components.values()].map((c) => c.componentChunkName)
+      : [...pluginData.pages.values()].map((page) => page.componentChunkName);
 
     chunks.push(`polyfill`, `app`);
 
