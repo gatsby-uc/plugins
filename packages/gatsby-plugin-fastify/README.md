@@ -258,14 +258,14 @@ We have implemented a compatability layer to support the Gatsby flavor of routin
 
 ### Headers
 
-Sensible default security headers are added to all files/paths served via Fastify (this does not include proxied paths). These headers include: 
+Sensible default security headers are added to all files/paths served via Fastify (this does not include proxied paths). These headers include:
 
 - X-Frame-Options: DENY
 - X-XSS-Protection: 1; mode=block
 - X-Content-Type-Options: nosniff
 - Referrer-Policy: same-origin
 
-Headers for user-defined files/paths can be added/overwritten via options config with [glob patterns](https://www.npmjs.com/package/picomatch#basic-globbing). For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**` as opposed to `/posts/*` as a single asterisk would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside. 
+Headers for user-defined files/paths can be added/overwritten via options config with [glob patterns](https://www.npmjs.com/package/picomatch#basic-globbing). For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**` as opposed to `/posts/*` as a single asterisk would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside.
 
 ```
 {
@@ -283,6 +283,6 @@ Headers for user-defined files/paths can be added/overwritten via options config
 },
 ```
 
-As in the example above, successive matching entries in `options.headers` will overwrite previous matches - this includes the default caching and security headers if you choose to use your own. 
+As in the example above, successive matching entries in `options.headers` will overwrite previous matches - this includes the default caching and security headers if you choose to use your own.
 
-For SSR pages, headers configured in `options.headers` will be added to the matching routes alongside headers returned from `getServerData`, however, if both places set the same header the value in `getServerData` will take precedence. 
+For SSR pages, headers configured in `options.headers` will be added to the matching routes alongside headers returned from `getServerData`, however, if both places set the same header the value in `getServerData` will take precedence.

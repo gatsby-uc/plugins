@@ -99,17 +99,17 @@ export const handleServerRoutes: FastifyPluginAsync<{
           }
 
           reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
-          
+
           try {
             const pageQueryData = await getData({
               pathName: potentialPagePath,
               graphqlEngine,
               req: request,
             });
-            
+
             const results = await renderHTML({ data: pageQueryData });
-            
-            if (page.mode === "DSG") {              
+
+            if (page.mode === "DSG") {
               mapValues(NEVER_CACHE_HEADER, (value, key) => {
                 reply.header(key, value);
               });
@@ -120,12 +120,12 @@ export const handleServerRoutes: FastifyPluginAsync<{
               if (pageQueryData?.serverDataHeaders) {
                 reply.headers(pageQueryData.serverDataHeaders);
               }
-              
+
               if (pageQueryData?.serverDataStatus) {
                 reply.code(pageQueryData.serverDataStatus);
               }
             }
-            
+
             return reply.type("text/html").send(results);
           } catch (error) {
             if (error instanceof Error) {

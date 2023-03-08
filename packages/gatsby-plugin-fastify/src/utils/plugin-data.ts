@@ -14,7 +14,11 @@ export function buildPrefixer(prefix: string, ...paths: string[]) {
 // This function assembles data across the manifests and store to match a similar
 // shape of `static-entry.js`. With it, we can build headers that point to the correct
 // hashed filenames and ensure we pull in the componentChunkName.
-export async function makePluginData(store: Store, assetsManifest: WebpackAssetsManifest.Assets, pathPrefix: string): Promise<PluginData> {
+export async function makePluginData(
+  store: Store,
+  assetsManifest: WebpackAssetsManifest.Assets,
+  pathPrefix: string
+): Promise<PluginData> {
   const { program, pages, components } = store.getState() as IGatsbyState;
 
   const publicFolder = buildPrefixer(program.directory, PATH_TO_PUBLIC);

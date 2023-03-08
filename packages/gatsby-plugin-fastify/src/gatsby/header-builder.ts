@@ -7,17 +7,17 @@ import type { PluginData } from "../utils/plugin-data";
 import type { GatsbyNodeServerConfig } from "../utils/config";
 
 function deepMerge(...headers) {
-  return headers.reduce((acc, header: { [key: string]: object }) => {
+  return headers.reduce((accumulator, header: { [key: string]: object }) => {
     for (let [key, value] of Object.entries(header)) {
       console.log(typeOf(value));
-      if (acc.hasOwnProperty(key) && typeOf(value) === `object`) {
+      if (accumulator.hasOwnProperty(key) && typeOf(value) === `object`) {
         //merge needs empty object to prevent overwriting of references use across multiple routes
-        acc[key] = merge({}, acc[key], value);
+        accumulator[key] = merge({}, accumulator[key], value);
       } else {
-        acc[key] = value;
+        accumulator[key] = value;
       }
     }
-    return acc;
+    return accumulator;
   }, {});
 }
 
@@ -45,11 +45,7 @@ const applyCachingHeaders =
     // over large numbers of pages.
     const isComponentChunkSet = !!pluginData.components.entries()?.next()?.value[1]
       ?.componentChunkName;
-    if (isComponentChunkSet) {
-      chunks = [...pluginData.components.values()].map((c) => c.componentChunkName);
-    } else {
-      chunks = Array.from(pluginData.pages.values()).map((page) => page.componentChunkName);
-    }
+    chunks = isComponentChunkSet ? [...pluginData.components.values()].map((c) => c.componentChunkName) : [...pluginData.pages.values()].map((page) => page.componentChunkName);
 
     chunks.push(`polyfill`, `app`);
 
@@ -57,11 +53,11 @@ const applyCachingHeaders =
 
     const cachingHeaders = {};
 
-    files.forEach((file) => {
+    for (const file of files) {
       if (typeof file === `string`) {
         cachingHeaders[`/` + file] = IMMUTABLE_CACHING_HEADER;
       }
-    });
+    }
     return deepMerge(cachingHeaders, CACHING_HEADERS, headers);
   };
 
