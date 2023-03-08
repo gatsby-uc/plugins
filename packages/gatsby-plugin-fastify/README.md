@@ -283,4 +283,6 @@ Headers for user-defined files/paths can be added/overwritten via options config
 },
 ```
 
-As in the example above, successive matching entries in the `headers` option will overwrite previous matches - this includes the default caching and security headers if you choose to use your own. 
+As in the example above, successive matching entries in `options.headers` will overwrite previous matches - this includes the default caching and security headers if you choose to use your own. 
+
+For SSR pages, headers configured in `options.headers` will be added to the matching routes alongside headers returned from `getServerData`, however, if both places set the same header the value in `getServerData` will take precedence. 
