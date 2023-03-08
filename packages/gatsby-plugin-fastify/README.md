@@ -255,3 +255,32 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
 ### Gatsby Routing
 
 We have implemented a compatability layer to support the Gatsby flavor of routing for [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/routing/) and [File System Routing API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-client-only-routes). This should be transparent and if you follow the Gatsby docs for routing we should now support all those modes. This very well might not be perfect, if you have issues with routing please file a bug with a reproduction.
+
+### Headers
+
+Sensible default security headers are added to all files/paths served via Fastify (this does not include proxied paths). These headers include: 
+
+- X-Frame-Options: DENY
+- X-XSS-Protection: 1; mode=block
+- X-Content-Type-Options: nosniff
+- Referrer-Policy: same-origin
+
+Headers for user-defined files/paths can be added/overwritten via options config with [glob patterns](https://www.npmjs.com/package/picomatch#basic-globbing). For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**` as opposed to `/posts/*` as a single asterisk would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside. 
+
+```
+{
+  resolve: `gatsby-plugin-fastify`,
+  options: {
+    headers: {
+      "/posts/**": { // all categories and posts
+        "x-test": "post",
+      },
+      "/posts/fun-stuff/trampolines": { // just the trampoline post
+        "x-test": "trampoline post",
+      },
+    },
+  },
+},
+```
+
+As in the example above, successive matching entries in the `headers` option will overwrite previous matches - this includes the default caching and security headers if you choose to use your own. 
