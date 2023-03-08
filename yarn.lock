@@ -11473,9 +11473,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^11.2.0":
-  version: 11.2.0
-  resolution: "cypress@npm:11.2.0"
+"ctrlc-windows@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "ctrlc-windows@npm:2.1.0"
+  checksum: 0f0582ba9516290d3e90ea7b91710f8b9b110e1ed29b7c84ebd44c16368b2553722b86a17226120ca3ea0ef679ac3596f48104cc113cfb7c3d07260f6c92e38b
+  languageName: node
+  linkType: hard
+
+"cypress@npm:^12.7.0":
+  version: 12.7.0
+  resolution: "cypress@npm:12.7.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -11494,7 +11501,7 @@ __metadata:
     commander: ^5.1.0
     common-tags: ^1.8.0
     dayjs: ^1.10.4
-    debug: ^4.3.2
+    debug: ^4.3.4
     enquirer: ^2.3.6
     eventemitter2: 6.4.7
     execa: 4.1.0
@@ -11521,7 +11528,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: e13649fb4b62a3c9dff7cc571f4e01dba009d8179b05c4f885c5ceb4ed76b78a7323fec491d992da35527708b54e596bfc9edb1d702f788317889f794d8c1e76
+  checksum: a9489f7f254dcee1b8a374d14d175c8f8681a3388e4c02181e0486f064f4de59bfc79dec1f401605332d3a5869bf2ba06b3a1653a5c287e447810d756d470078
   languageName: node
   linkType: hard
 
@@ -14783,15 +14790,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-source-s3@workspace:packages/gatsby-source-s3"
   dependencies:
-    "@babel/cli": ^7.20.7
-    "@babel/core": ^7.20.7
-    "@babel/runtime": ^7.20.7
-    "@types/node": ^18.11.18
-    aws-sdk: ^2.1286.0
-    babel-preset-gatsby-package: ^3.3.0
-    cypress: ^11.2.0
-    gatsby-source-filesystem: ^5.3.1
-    start-server-and-test: ^1.15.2
+    "@aws-sdk/client-s3": ^3.282.0
+    "@aws-sdk/s3-request-presigner": ^3.282.0
+    "@babel/cli": ^7.21.0
+    "@babel/core": ^7.21.0
+    "@babel/runtime": ^7.21.0
+    "@types/node": ^18.14.6
+    babel-preset-gatsby-package: ^3.7.0
+    cypress: ^12.7.0
+    gatsby-source-filesystem: ^5.7.0
+    start-server-and-test: ^2.0.0
   peerDependencies:
     gatsby: ^4.5.2 || ^5.0.0
   languageName: unknown
@@ -24178,9 +24186,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"start-server-and-test@npm:^1.15.2":
-  version: 1.15.2
-  resolution: "start-server-and-test@npm:1.15.2"
+"stacktrace-parser@npm:^0.1.10":
+  version: 0.1.10
+  resolution: "stacktrace-parser@npm:0.1.10"
+  dependencies:
+    type-fest: ^0.7.1
+  checksum: f4fbddfc09121d91e587b60de4beb4941108e967d71ad3a171812dc839b010ca374d064ad0a296295fed13acd103609d99a4224a25b4e67de13cae131f1901ee
+  languageName: node
+  linkType: hard
+
+"start-server-and-test@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "start-server-and-test@npm:2.0.0"
   dependencies:
     arg: ^5.0.2
     bluebird: 3.7.2
@@ -24194,7 +24211,7 @@ __metadata:
     server-test: src/bin/start.js
     start-server-and-test: src/bin/start.js
     start-test: src/bin/start.js
-  checksum: 3334959d8c7fb72b9a88672f531a21a90146e8c855d2f8a4aca57b116221e3d0db4dd23a572c02bf2e08cc30266dde9f95cb7e53089223e1e1c5dc8ac44c3d20
+  checksum: 8788e59ad78275332c78325a804504ac558f06a112d47cb5bc3d012d2bda46add72c863cae2357836fe245ee4e22e2fec0b6d47dbdf5e0f0f5cfd1a57544d100
   languageName: node
   linkType: hard
 
