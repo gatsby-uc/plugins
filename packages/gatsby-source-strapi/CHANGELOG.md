@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.0.6
+
+### Patch Changes
+
+- [#395](https://github.com/gatsby-uc/plugins/pull/395) [`0b324dd`](https://github.com/gatsby-uc/plugins/commit/0b324dd7c5391457043974e257d9cf837810f8aa) Thanks [@KyleAMathews](https://github.com/KyleAMathews)! - Update Strapi README noting need for local IP address instead of 'localhost'
+
 ## 3.0.5
 
 ### Patch Changes
