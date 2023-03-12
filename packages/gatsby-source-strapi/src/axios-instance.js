@@ -8,7 +8,7 @@ import axios from "axios";
  * @param {number} maxParallelRequests
  */
 const throttlingInterceptors = (axiosInstance, maxParallelRequests) => {
-  const INTERVAL_MS = 400; // Wait time until retrying request
+  const INTERVAL_MS = 50; // Wait time until retrying request
   let PENDING_REQUESTS = 0;
 
   /** Axios Request Interceptor */
