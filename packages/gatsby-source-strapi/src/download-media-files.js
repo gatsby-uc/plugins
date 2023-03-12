@@ -2,7 +2,6 @@ import { Parser } from "commonmark";
 import qs from "qs";
 import { createRemoteFileNode } from "gatsby-source-filesystem";
 import { getContentTypeSchema } from "./helpers";
-import createInstance from "./axios-instance";
 
 const reader = new Parser();
 
@@ -103,12 +102,11 @@ export const downloadFile = async (file, context) => {
 /**
  * Extract images and create remote nodes for images in all fields.
  * @param {Object} item the entity
- * @param {Object} ctx gatsby function
+ * @param {Object} context gatsby function
  * @param {String} uid the main schema uid
  */
 const extractImages = async (item, context, uid) => {
-  const { schemas, strapiConfig } = context;
-  const axiosInstance = createInstance(strapiConfig);
+  const { schemas, strapiConfig, axiosInstance } = context;
   const schema = getContentTypeSchema(schemas, uid);
   const { apiURL } = strapiConfig;
 
