@@ -30,4 +30,6 @@ export const SECURITY_HEADERS = {
 export const CACHING_HEADERS = {
   "/static/**": IMMUTABLE_CACHING_HEADER,
   "/sw.js": NEVER_CACHE_HEADER,
+  "/page-data/**": NEVER_CACHE_HEADER,
+  "**/*.html": NEVER_CACHE_HEADER,
 };

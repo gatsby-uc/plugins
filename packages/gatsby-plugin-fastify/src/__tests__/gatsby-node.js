@@ -1,5 +1,6 @@
-import { onPostBuild } from "../gatsby-node";
 import fs from "fs-extra";
+import mockPath from "node:path";
+import { onPostBuild } from "../gatsby-node";
 
 jest.mock("../utils/constants", () => ({
   ...jest.requireActual("../utils/constants"),
@@ -10,8 +11,8 @@ jest.mock("../utils/constants", () => ({
 }));
 
 jest.mock("fs-extra", () => ({
-  existsSync: jest.fn((path) => {
-    if (path.includes(".cache/functions")) {
+  existsSync: jest.fn((filePath) => {
+    if (filePath.includes(mockPath.join(".cache", "functions"))) {
       return true;
     }
     return false;
@@ -42,6 +43,8 @@ jest.mock("fs-extra", () => ({
             "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/.cache/functions/test.js",
         },
       ];
+    } else if (path.includes("webpack.stats.json")) {
+      return {};
     } else {
       throw new Error("Invalid path");
     }
@@ -52,7 +55,7 @@ const pathPrefix = "/test";
 const store = {
   getState: jest.fn(() => ({
     program: {
-      directory: process.cwd() + "/__files__/",
+      directory: "",
     },
     pages: [
       {
@@ -107,6 +110,13 @@ const reporter = {
 
 const pluginOptions = {
   fakeOption: "fakeValue",
+  features: {
+    headers: {
+      customHeaders: {},
+      useDefaultCaching: false,
+      useDefaultSecurity: false,
+    },
+  },
 };
 
 describe(`Gatsby Node API`, () => {
@@ -115,7 +125,7 @@ describe(`Gatsby Node API`, () => {
 
     const writeJSONCall = fs.writeJSON.mock.calls[0];
     expect(fs.writeJSON).toHaveBeenCalledTimes(1);
-    expect(writeJSONCall[0]).toContain(".cache/gatsby-plugin-fastify.json");
+    expect(writeJSONCall[0]).toContain(mockPath.join(".cache", "gatsby-plugin-fastify.json"));
     expect(writeJSONCall[1]).toMatchSnapshot();
   });
 });

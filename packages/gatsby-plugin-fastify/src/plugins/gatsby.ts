@@ -14,6 +14,7 @@ import fastifyAccepts from "@fastify/accepts";
 import middiePlugin from "@fastify/middie";
 
 import type { FastifyPluginAsync } from "fastify";
+import { handleHeaders } from "./headers";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
@@ -64,4 +65,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
 
   // Gatsby 404
   await fastify.register(handle404);
+
+  // Custom headers
+  await fastify.register(handleHeaders);
 };

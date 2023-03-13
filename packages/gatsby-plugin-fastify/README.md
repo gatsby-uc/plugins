@@ -258,31 +258,39 @@ We have implemented a compatability layer to support the Gatsby flavor of routin
 
 ### Headers
 
-Sensible default security headers are added to all files/paths served via Fastify (this does not include proxied paths). These headers include:
+Sensible default security headers are added to all files/paths.. These headers include:
 
 - X-Frame-Options: DENY
 - X-XSS-Protection: 1; mode=block
 - X-Content-Type-Options: nosniff
 - Referrer-Policy: same-origin
 
-Headers for user-defined files/paths can be added/overwritten via options config with [glob patterns](https://www.npmjs.com/package/picomatch#basic-globbing). For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**` as opposed to `/posts/*` as a single asterisk would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside.
+Headers for user-defined path patterns can be added/overwritten via `options.features.headers.customHeaders`.
+
+We use [picomatch](https://www.npmjs.com/package/picomatch) for pattern matching so you need to use [globbing](https://www.npmjs.com/package/picomatch#basic-globbing) to match paths. For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**` rather than `/posts/*` as a single asterisk would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside.
 
 ```
 {
-  resolve: `gatsby-plugin-fastify`,
-  options: {
-    headers: {
-      "/posts/**": { // all categories and posts
-        "x-test": "post",
-      },
-      "/posts/fun-stuff/trampolines": { // just the trampoline post
-        "x-test": "trampoline post",
-      },
-    },
-  },
+	resolve: `gatsby-plugin-fastify`,
+	options: {
+		features: {
+			headers: {
+				useDefaultCaching: true, // default: true
+				useDefaultSecurity: true, // default: true
+				customHeaders: {
+					"/posts/**": { // all categories and posts
+						"x-test": "post",
+					},
+					"/posts/fun-stuff/trampolines": { // just the trampoline post
+						"x-test": "trampoline post",
+					},
+				},
+			},
+		},
+	},
 },
 ```
 
-As in the example above, successive matching entries in `options.headers` will overwrite previous matches - this includes the default caching and security headers if you choose to use your own.
+As in the example above, successive matching entries in `customHeaders` will overwrite previous matches. This successive overwriting includes overwriting the default caching and default security headers if you are including them via `options.features.headers.useDefaultCaching` and/or `options.features.headers.useDefaultSecurity` which are both `true` by default.
 
-For SSR pages, headers configured in `options.headers` will be added to the matching routes alongside headers returned from `getServerData`, however, if both places set the same header the value in `getServerData` will take precedence.
+For SSR pages, headers configured in `options.features.headers.customHeaders` will be added to the matching routes alongside headers returned from `getServerData`. If both places set the same header the value in `getServerData` will take precedence.

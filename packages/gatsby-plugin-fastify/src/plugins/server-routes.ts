@@ -5,11 +5,9 @@ import type { FastifyPluginAsync } from "fastify";
 import type { ServerSideRoute } from "../gatsby/server-routes";
 
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
-import { NEVER_CACHE_HEADER, PATH_TO_CACHE } from "../utils/constants";
+import { PATH_TO_CACHE } from "../utils/constants";
 import { removeQueryParmsFromUrl } from "../utils/routes";
 import { countPaths } from "../utils/log";
-import { appendRouteHeaders } from "../utils/headers";
-import mapValues from "just-map-values";
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
@@ -59,19 +57,15 @@ export const handleServerRoutes: FastifyPluginAsync<{
             req: request,
           });
 
+          // add pageQueryData to reply so it can be accessed in the onSend hook
+          reply.pageQueryData = pageQueryData;
+
           const pageData = (await renderPageData({ data: pageQueryData })) as unknown;
 
-          if (page.mode === `SSR`) {
-            if (pageQueryData?.serverDataHeaders) {
-              reply.headers(pageQueryData.serverDataHeaders);
-            }
-
-            if (pageQueryData?.serverDataStatus) {
-              reply.code(pageQueryData.serverDataStatus);
-            }
+          if (page.mode === `SSR` && pageQueryData?.serverDataStatus) {
+            reply.code(pageQueryData.serverDataStatus);
           }
 
-          appendRouteHeaders(path, reply);
           return reply.send(pageData);
         } catch (error) {
           if (error instanceof Error) {
@@ -107,23 +101,13 @@ export const handleServerRoutes: FastifyPluginAsync<{
               req: request,
             });
 
+            // add pageQueryData to reply so it can be accessed in the onSend hook
+            reply.pageQueryData = pageQueryData;
+
             const results = await renderHTML({ data: pageQueryData });
 
-            if (page.mode === "DSG") {
-              mapValues(NEVER_CACHE_HEADER, (value, key) => {
-                reply.header(key, value);
-              });
-            }
-            appendRouteHeaders(path, reply);
-
-            if (page.mode === `SSR`) {
-              if (pageQueryData?.serverDataHeaders) {
-                reply.headers(pageQueryData.serverDataHeaders);
-              }
-
-              if (pageQueryData?.serverDataStatus) {
-                reply.code(pageQueryData.serverDataStatus);
-              }
+            if (page.mode === `SSR` && pageQueryData?.serverDataStatus) {
+              reply.code(pageQueryData.serverDataStatus);
             }
 
             return reply.type("text/html").send(results);

@@ -5,13 +5,12 @@ import typeOf from "just-typeof";
 import { SECURITY_HEADERS, CACHING_HEADERS, IMMUTABLE_CACHING_HEADER } from "../utils/constants";
 import type { PluginData } from "../utils/plugin-data";
 import type { GatsbyFastifyPluginOptions } from "../utils/config";
-import { HeadersOption } from "../utils/headers";
+import { Headers } from "../utils/headers";
 
-function deepMerge(...headers: HeadersOption[]) {
+function deepMerge(...headers: Headers[]) {
   // eslint-disable-next-line unicorn/no-array-reduce
   return headers.reduce((accumulator, header) => {
     for (let [key, value] of Object.entries(header)) {
-      // console.log(typeOf(value));
       //merge needs empty object to prevent overwriting of references use across multiple routes
       accumulator[key] =
         accumulator.hasOwnProperty(key) && typeOf(value) === `object`
@@ -24,9 +23,13 @@ function deepMerge(...headers: HeadersOption[]) {
 
 // program methods
 const applySecurityHeaders =
-  ({ mergeSecurityHeaders }: GatsbyFastifyPluginOptions) =>
-  (headers: HeadersOption) => {
-    if (!mergeSecurityHeaders) {
+  ({
+    features: {
+      headers: { useDefaultSecurity },
+    },
+  }: GatsbyFastifyPluginOptions) =>
+  (headers: Headers) => {
+    if (!useDefaultSecurity) {
       return headers;
     }
 
@@ -34,9 +37,16 @@ const applySecurityHeaders =
   };
 
 const applyCachingHeaders =
-  (pluginData: PluginData, { mergeCacheHeaders }: GatsbyFastifyPluginOptions) =>
-  (headers: HeadersOption) => {
-    if (!mergeCacheHeaders) {
+  (
+    pluginData: PluginData,
+    {
+      features: {
+        headers: { useDefaultCaching },
+      },
+    }: GatsbyFastifyPluginOptions
+  ) =>
+  (headers: Headers) => {
+    if (!useDefaultCaching) {
       return headers;
     }
 
@@ -54,7 +64,7 @@ const applyCachingHeaders =
 
     const files = chunks.flatMap((chunk) => pluginData.manifest[chunk]);
 
-    const cachingHeaders: HeadersOption = {};
+    const cachingHeaders: Headers = {};
 
     for (const file of files) {
       if (typeof file === `string`) {
@@ -71,5 +81,5 @@ export function buildHeadersProgram(
   return compose(
     applySecurityHeaders(pluginOptions),
     applyCachingHeaders(pluginData, pluginOptions)
-  )(pluginOptions.headers);
+  )(pluginOptions.features.headers.customHeaders);
 }

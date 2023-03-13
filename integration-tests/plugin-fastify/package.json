@@ -11,6 +11,7 @@
     "benchmark": "node benchmark.js",
     "develop": "gatsby develop",
     "start": "gserve",
+    "start:devserver": "yarn build:deps && yarn start",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

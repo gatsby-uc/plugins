@@ -9,6 +9,13 @@ exports[`Gatsby Node API Should Build Config 1`] = `
     },
   ],
   "fakeOption": "fakeValue",
+  "features": {
+    "headers": {
+      "customHeaders": {},
+      "useDefaultCaching": false,
+      "useDefaultSecurity": false,
+    },
+  },
   "functions": [
     {
       "absoluteCompiledFilePath": "/Users/user/code/gatsby-uc/plugins/integration-tests/plugin-fastify/.cache/functions/splat/:splat.js",
@@ -27,6 +34,7 @@ exports[`Gatsby Node API Should Build Config 1`] = `
       "relativeCompiledFilePath": "test.js",
     },
   ],
+  "headers": {},
   "prefix": "/test",
   "proxies": [],
   "redirects": [

@@ -88,10 +88,12 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
 
           return value;
         }),
+      headers: Joi.object({
+        customHeaders: headersSchema,
+        useDefaultCaching: Joi.boolean().default(true),
+        useDefaultSecurity: Joi.boolean().default(true),
+      }).default(),
     }).default(),
-    headers: headersSchema,
-    mergeSecurityHeaders: Joi.boolean().default(true),
-    mergeCacheHeaders: Joi.boolean().default(true),
     fastify: Joi.object({
       maxParamLength: Joi.number().default(500),
       ignoreTralingSlash: Joi.boolean().default(true),

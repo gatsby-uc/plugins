@@ -26,27 +26,36 @@ module.exports = {
     {
       resolve: `gatsby-plugin-fastify`,
       options: {
-        headers: {
-          "/posts/page-1/*": {
-            "x-test-page-specific": "shows on /posts/page-1 and its page-data",
-          },
-          "/posts/page-2/*": {
-            "X-Content-Type-Options": "nosniff by default, overwritten for this page",
-          },
-          "/**": {
-            "x-test-all-pages": "shows on every page/file",
-          },
-          "/icon.png": {
-            "cache-control": "max-age=60000",
-          },
-          "/component*.js": {
-            "x-test-js": "root js file",
-            "x-cache-control": "overwrite cache-control for all root js files",
-            "cache-control": "max-age=60000",
-          },
-          "/ssr/**": {
-            "x-test-ssr-kept": "ssr page",
-            "x-test-ssr-overwrite": "ssr page",
+        features: {
+          headers: {
+            customHeaders: {
+              "/posts/page-1*": {
+                "x-test-page-specific": "shows on /posts/page-1 and its page-data",
+              },
+              "/posts/page-2*": {
+                "X-Content-Type-Options": "nosniff by default, overwritten for this page",
+              },
+              "/**": {
+                "x-test-all-pages": "shows on every page/file",
+              },
+              "/icon.png": {
+                "cache-control": "max-age=60000",
+              },
+              "/component*.js": {
+                "x-test-js": "root js file",
+                "x-cache-control": "overwrite cache-control for all root js files",
+                "cache-control": "max-age=60000",
+              },
+              "/ssr/**": {
+                "x-test-ssr-kept": "ssr page",
+                "x-test-ssr-overwrite": "ssr page",
+              },
+              "/posts/page-1/index.html": {
+                "x-test-page-specific": "shows on /posts/page-1 and its page-data (overwritten)",
+              },
+            },
+            useDefaultCaching: true,
+            useDefaultSecurity: true,
           },
         },
       },
