@@ -267,7 +267,7 @@ Sensible default security headers are added to all files/paths. These headers in
 
 Headers for user-defined path patterns can be added/overwritten via `options.features.headers.customHeaders`.
 
-We use [picomatch](https://www.npmjs.com/package/picomatch) for pattern matching. [Globbing](https://www.npmjs.com/package/picomatch#basic-globbing) can be used to match paths. For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**`.  `/posts/*`, with a single asterisk, would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside.
+We use [picomatch](https://www.npmjs.com/package/picomatch) for pattern matching. [Globbing](https://www.npmjs.com/package/picomatch#basic-globbing) can be used to match paths. For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**`. `/posts/*`, with a single asterisk, would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside.
 
 ```
 {
@@ -294,3 +294,22 @@ We use [picomatch](https://www.npmjs.com/package/picomatch) for pattern matching
 As in the example above, successive matching entries in `customHeaders` will overwrite previous matches. This successive overwriting includes overwriting the default caching and default security headers if you are including them via `options.features.headers.useDefaultCaching` and/or `options.features.headers.useDefaultSecurity` which are both `true` by default.
 
 For SSR pages, headers configured in `options.features.headers.customHeaders` will be added to the matching routes alongside headers returned from `getServerData`. If both places set the same header the value in `getServerData` will take precedence.
+
+You can unset a previously configured headers value, either custom or defaults, by setting its value to `"undefined"` (type `string`). For example:
+
+```
+{
+	resolve: `gatsby-plugin-fastify`,
+	options: {
+		features: {
+			headers: {
+				customHeaders: {
+					"/no-cache-header": {
+						"cache-control": "undefined",
+					},
+				},
+			},
+		},
+	},
+},
+```

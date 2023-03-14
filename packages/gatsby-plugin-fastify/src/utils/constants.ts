@@ -29,7 +29,10 @@ export const SECURITY_HEADERS = {
 
 export const CACHING_HEADERS = {
   "/static/**": IMMUTABLE_CACHING_HEADER,
-  "/sw.js": NEVER_CACHE_HEADER,
   "/page-data/**": NEVER_CACHE_HEADER,
   "**/*.html": NEVER_CACHE_HEADER,
+  "/*.js": {
+    "cache-control": "undefined", // unset this since fastify defaults to public, max-age=0 whereas gatsby hosting defaults unset
+  },
+  "/sw.js": NEVER_CACHE_HEADER,
 };

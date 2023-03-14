@@ -18,5 +18,6 @@ module.exports = {
     "**/__tests__/**/*.[jt]s?(x)",
     "**/?(*.)+(spec|test).[jt]s?(x)",
     "!**/__tests__/__utils__/*",
+    "!**/__tests__/__files__/public/fake*",
   ],
 };

@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { buildHeadersProgram } from "../../gatsby/header-builder";
+import { IMMUTABLE_CACHING_HEADER, NEVER_CACHE_HEADER } from "../../utils/constants";
 import { FG_MODULE_HEADER } from "../../utils/headers";
 
 describe(`Test Headers plugin`, () => {
@@ -9,11 +10,15 @@ describe(`Test Headers plugin`, () => {
     components.set("default", {
       componentChunkName: "fakeChunk",
     });
+    components.set("cssComponent", {
+      componentChunkName: "css",
+    });
     const pre35Components = new Map();
     pre35Components.set("default", {});
     const manifest = {
       fakeChunk: "fakeChunk.js",
       app: ["app.js"],
+      css: "css.css",
     };
     const preGatsby35 = buildHeadersProgram(
       {
@@ -59,27 +64,50 @@ describe(`Test Headers plugin`, () => {
       }
     );
 
+    // check chunked CSS files
+    expect(preGatsby35["/css.css"]["cache-control"]).toEqual(
+      IMMUTABLE_CACHING_HEADER["cache-control"]
+    );
+    expect(withDefaults["/css.css"]["cache-control"]).toEqual(
+      IMMUTABLE_CACHING_HEADER["cache-control"]
+    );
+    expect(withoutDefaults["/css.css"]).toBeUndefined();
+
     // check pre gatsby 3.5
     expect(preGatsby35["/**"]["X-Content-Type-Options"]).toEqual("nosniff");
-    expect(preGatsby35["**/*.html"]["cache-control"]).toEqual("public, max-age=0, must-revalidate");
-    expect(preGatsby35["/app.js"]["cache-control"]).toEqual("public, max-age=31536000, immutable");
+    expect(preGatsby35["**/*.html"]["cache-control"]).toEqual(NEVER_CACHE_HEADER["cache-control"]);
+    expect(preGatsby35["/app.js"]["cache-control"]).toEqual(
+      IMMUTABLE_CACHING_HEADER["cache-control"]
+    );
     expect(preGatsby35["/fakeChunk.js"]["cache-control"]).toEqual(
-      "public, max-age=31536000, immutable"
+      IMMUTABLE_CACHING_HEADER["cache-control"]
     );
 
     // check defaults
     expect(withDefaults["/**"]["X-Content-Type-Options"]).toEqual("nosniff");
-    expect(withDefaults["**/*.html"]["cache-control"]).toEqual(
-      "public, max-age=0, must-revalidate"
+    expect(withDefaults["**/*.html"]["cache-control"]).toEqual(NEVER_CACHE_HEADER["cache-control"]);
+    expect(withDefaults["/app.js"]["cache-control"]).toEqual(
+      IMMUTABLE_CACHING_HEADER["cache-control"]
     );
-    expect(withDefaults["/app.js"]["cache-control"]).toEqual("public, max-age=31536000, immutable");
     expect(withDefaults["/fakeChunk.js"]["cache-control"]).toEqual(
-      "public, max-age=31536000, immutable"
+      IMMUTABLE_CACHING_HEADER["cache-control"]
     );
 
     // check defaults
     expect(withoutDefaults["/**"]).toBeUndefined();
     expect(withoutDefaults["**/*.html"]).toBeUndefined();
+  });
+
+  // check non-chunked root .js files (lazy-loaded component files)
+  it(`should unset cache-control on root js files that aren't in chunks`, async () => {
+    const response = await fastify.inject({
+      url: "/fake-lazycomponent.js",
+      method: "GET",
+    });
+
+    console.log("fake-lazycomponent.js", response.headers);
+    expect(response.statusCode).toEqual(200);
+    expect(response.headers["cache-control"]).toBeUndefined();
   });
 
   // test static headers

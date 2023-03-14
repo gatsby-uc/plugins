@@ -31,6 +31,13 @@ export const handleHeaders: FastifyPluginAsync<{
           // set configured headers
           reply.headers(headerObject);
 
+          // check headerObject for "undefined" values and remove those headers
+          for (const [header, value] of Object.entries(headerObject)) {
+            if (value === "undefined") {
+              reply.removeHeader(header);
+            }
+          }
+
           // allow serverDataHeaders to override duplicate configured headers
           if (reply.serverDataHeaders) {
             reply.headers(reply.serverDataHeaders);

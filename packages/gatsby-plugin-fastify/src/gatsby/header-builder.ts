@@ -70,7 +70,7 @@ const applyCachingHeaders =
         cachingHeaders[`/` + file] = IMMUTABLE_CACHING_HEADER;
       }
     }
-    return deepMerge(cachingHeaders, CACHING_HEADERS, headers);
+    return deepMerge(CACHING_HEADERS, cachingHeaders, headers);
   };
 
 export function buildHeadersProgram(
