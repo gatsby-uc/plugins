@@ -8,17 +8,16 @@ import type { GatsbyFastifyPluginOptions } from "../utils/config";
 import { Headers } from "../utils/headers";
 
 function deepMerge(...headers: Headers[]) {
-  // eslint-disable-next-line unicorn/no-array-reduce
-  return headers.reduce((accumulator, header) => {
+  const merged = {};
+  for (const header of headers) {
     for (let [key, value] of Object.entries(header)) {
-      //merge needs empty object to prevent overwriting of references use across multiple routes
-      accumulator[key] =
-        accumulator.hasOwnProperty(key) && typeOf(value) === `object`
-          ? merge({}, accumulator[key], value)
+      merged[key] =
+        merged.hasOwnProperty(key) && typeOf(value) === `object`
+          ? merge({}, merged[key], value)
           : value;
     }
-    return accumulator;
-  }, {});
+  }
+  return merged;
 }
 
 // program methods
