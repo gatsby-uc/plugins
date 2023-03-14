@@ -68,11 +68,6 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
 };
 
 export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) => {
-  const MATCH_ALL_KEYS = /^/;
-  const headersSchema = Joi.object()
-    .pattern(MATCH_ALL_KEYS, Joi.object().pattern(MATCH_ALL_KEYS, Joi.string().required()))
-    .default({})
-    .description(`Add headers to specific pages`);
   return Joi.object({
     features: Joi.object({
       reverseProxy: Joi.alternatives().try(Joi.boolean(), Joi.object()).default(true),
@@ -89,7 +84,10 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
           return value;
         }),
       headers: Joi.object({
-        customHeaders: headersSchema,
+        customHeaders: Joi.object()
+          .pattern(/^/, Joi.object().pattern(/^/, Joi.string().required())) // /^/ pattern to allow any key
+          .default({})
+          .description(`Add headers to specific pages`),
         useDefaultCaching: Joi.boolean().default(true),
         useDefaultSecurity: Joi.boolean().default(true),
       }).default(),
