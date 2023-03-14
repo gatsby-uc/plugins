@@ -48,7 +48,7 @@
     "open": "^8.4.2",
     "picomatch": "^2.3.1",
     "webpack-assets-manifest": "^5.1.0",
-    "yargs": "^17.6.2"
+    "yargs": "^17.7.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
