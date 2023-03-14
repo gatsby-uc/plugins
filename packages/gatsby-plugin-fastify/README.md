@@ -258,7 +258,7 @@ We have implemented a compatability layer to support the Gatsby flavor of routin
 
 ### Headers
 
-Sensible default security headers are added to all files/paths.. These headers include:
+Sensible default security headers are added to all files/paths. These headers include:
 
 - X-Frame-Options: DENY
 - X-XSS-Protection: 1; mode=block
