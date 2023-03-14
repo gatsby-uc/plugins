@@ -1,3 +1,9 @@
+import { isGatsbyHosting } from "../../utils/functions";
+
 export default function handler(req, res) {
-  res.code(200).send(req.params);
+  if (isGatsbyHosting(res)) {
+    res.status(200).send(req.params);
+  } else {
+    res.code(200).send(req.params);
+  }
 }

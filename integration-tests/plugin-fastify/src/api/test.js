@@ -1,3 +1,5 @@
+import { isGatsbyHosting } from "../utils/functions";
+
 const responseData = [
   {
     _id: "612d652f43f0c05240ed09b1",
@@ -268,5 +270,9 @@ const responseData = [
 ];
 
 export default function handler(req, res) {
-  res.code(200).send(responseData);
+  if (isGatsbyHosting(res)) {
+    res.status(200).send(responseData);
+  } else {
+    res.code(200).send(responseData);
+  }
 }
