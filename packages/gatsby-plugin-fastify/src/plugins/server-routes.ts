@@ -1,17 +1,27 @@
 import { join, posix, resolve } from "node:path";
 import { StatusCodes } from "http-status-codes";
-
-import type { FastifyPluginAsync } from "fastify";
-import type { ServerSideRoute } from "../gatsby/server-routes";
-
 import { reverseFixedPagePath } from "gatsby/dist/utils/page-data";
+
 import { PATH_TO_CACHE } from "../utils/constants";
 import { removeQueryParmsFromUrl } from "../utils/routes";
 import { countPaths } from "../utils/log";
 
+import type { ServerSideRoute } from "../gatsby/server-routes";
+import type { ISSRData } from "gatsby/dist/utils/page-ssr-module/entry";
+import type { FastifyPluginAsync } from "fastify";
+
+declare module "fastify" {
+  interface FastifyReply {
+    serverDataHeaders: ISSRData["serverDataHeaders"];
+  }
+}
+
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
 }> = async (fastify, { paths }) => {
+  // eslint-disable-next-line unicorn/no-null
+  fastify.decorateReply("serverDataHeaders", null);
+
   if (paths?.length > 0) {
     const { dsgCount, ssrCount } = countPaths(paths);
 
@@ -57,8 +67,8 @@ export const handleServerRoutes: FastifyPluginAsync<{
             req: request,
           });
 
-          // add pageQueryData to reply so it can be accessed in the onSend hook
-          reply.pageQueryData = pageQueryData;
+          // add serverDataHeaders to reply so they can overwrite defaults in headers plugin
+          reply.serverDataHeaders = pageQueryData.serverDataHeaders;
 
           const pageData = (await renderPageData({ data: pageQueryData })) as unknown;
 
@@ -101,8 +111,8 @@ export const handleServerRoutes: FastifyPluginAsync<{
               req: request,
             });
 
-            // add pageQueryData to reply so it can be accessed in the onSend hook
-            reply.pageQueryData = pageQueryData;
+            // add serverDataHeaders to reply so they can overwrite defaults in headers plugin
+            reply.serverDataHeaders = pageQueryData.serverDataHeaders;
 
             const results = await renderHTML({ data: pageQueryData });
 

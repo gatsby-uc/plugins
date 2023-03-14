@@ -8,18 +8,18 @@ import { handleReverseProxy } from "./reverse-proxy";
 import { handleStatic } from "./static";
 import { handle404 } from "./404";
 import { handle500 } from "./500";
+import { handleHeaders } from "./headers";
 import { getConfig } from "../utils/config";
 
 import fastifyAccepts from "@fastify/accepts";
 import middiePlugin from "@fastify/middie";
 
 import type { FastifyPluginAsync } from "fastify";
-import { handleHeaders } from "./headers";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
 
-  const { clientSideRoutes, serverSideRoutes, redirects, functions, proxies, features } =
+  const { clientSideRoutes, serverSideRoutes, redirects, functions, proxies, features, headers } =
     serverConfig;
 
   // Utils
@@ -67,5 +67,8 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(handle404);
 
   // Custom headers
-  await fastify.register(handleHeaders);
+  await fastify.register(handleHeaders, {
+    headers,
+    useDefaultCaching: features.headers.useDefaultCaching,
+  });
 };
