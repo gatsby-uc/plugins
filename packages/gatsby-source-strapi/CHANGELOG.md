@@ -1,5 +1,16 @@
 # gatsby-source-strapi
 
+## 3.1.0
+
+### Minor Changes
+
+- [#362](https://github.com/gatsby-uc/plugins/pull/362) [`f6c5b3a`](https://github.com/gatsby-uc/plugins/commit/f6c5b3a0d91b7817115a0794ade2685e0a43467e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update dependency axios to v1
+  Thanks to @konsalex for some manual testing. Due to the lack of automated tests we cannot guarantee this update won't break anything, please report any issues you may run into.
+
+### Patch Changes
+
+- [#399](https://github.com/gatsby-uc/plugins/pull/399) [`9a562d8`](https://github.com/gatsby-uc/plugins/commit/9a562d82db14048c698d2f0a009fe76ec48320a7) Thanks [@laurenskling](https://github.com/laurenskling)! - fix(gatsby-source-strapi) make sure the pagination is not mutated when refetching
+
 ## 3.0.6
 
 ### Patch Changes
