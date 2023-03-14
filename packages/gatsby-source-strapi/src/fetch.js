@@ -118,7 +118,9 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(options.params)}`
+      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(
+        options.paramsSerializer(options.params)
+      )}`
     );
 
     const { data: response } = await axiosInstance(options);
@@ -137,13 +139,18 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
       return (async () => {
         const fetchOptions = {
           ...options,
+          params: {
+            ...options.params,
+            pagination: {
+              ...options.params.pagination,
+              page,
+            },
+          },
         };
 
-        fetchOptions.params.pagination.page = page;
-
         reporter.info(
-          `Starting to fetch data from Strapi - ${fetchOptions.url} with ${JSON.stringify(
-            options.paramsSerializer(options.params)
+          `Starting to fetch page ${page} from Strapi - ${fetchOptions.url} with ${JSON.stringify(
+            options.paramsSerializer(fetchOptions.params)
           )}`
         );
 
