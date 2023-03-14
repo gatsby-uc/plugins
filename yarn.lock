@@ -8092,7 +8092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/yargs@npm:^17.0.18":
+"@types/yargs@npm:^17.0.22":
   version: 17.0.22
   resolution: "@types/yargs@npm:17.0.22"
   dependencies:
@@ -9592,23 +9592,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-jest@npm:^29.3.1":
-  version: 29.5.0
-  resolution: "babel-jest@npm:29.5.0"
-  dependencies:
-    "@jest/transform": ^29.5.0
-    "@types/babel__core": ^7.1.14
-    babel-plugin-istanbul: ^6.1.1
-    babel-preset-jest: ^29.5.0
-    chalk: ^4.0.0
-    graceful-fs: ^4.2.9
-    slash: ^3.0.0
-  peerDependencies:
-    "@babel/core": ^7.8.0
-  checksum: eafb6d37deb71f0c80bf3c80215aa46732153e5e8bcd73f6ff47d92e5c0c98c8f7f75995d0efec6289c371edad3693cd8fa2367b0661c4deb71a3a7117267ede
-  languageName: node
-  linkType: hard
-
 "babel-jest@npm:^29.4.3":
   version: 29.4.3
   resolution: "babel-jest@npm:29.4.3"
@@ -9623,6 +9606,23 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.8.0
   checksum: a1a95937adb5e717dbffc2eb9e583fa6d26c7e5d5b07bb492a2d7f68631510a363e9ff097eafb642ad642dfac9dc2b13872b584f680e166a4f0922c98ea95853
+  languageName: node
+  linkType: hard
+
+"babel-jest@npm:^29.5.0":
+  version: 29.5.0
+  resolution: "babel-jest@npm:29.5.0"
+  dependencies:
+    "@jest/transform": ^29.5.0
+    "@types/babel__core": ^7.1.14
+    babel-plugin-istanbul: ^6.1.1
+    babel-preset-jest: ^29.5.0
+    chalk: ^4.0.0
+    graceful-fs: ^4.2.9
+    slash: ^3.0.0
+  peerDependencies:
+    "@babel/core": ^7.8.0
+  checksum: eafb6d37deb71f0c80bf3c80215aa46732153e5e8bcd73f6ff47d92e5c0c98c8f7f75995d0efec6289c371edad3693cd8fa2367b0661c4deb71a3a7117267ede
   languageName: node
   linkType: hard
 
@@ -9861,7 +9861,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-gatsby-package@npm:^3.3.0, babel-preset-gatsby-package@npm:^3.7.0":
+"babel-preset-gatsby-package@npm:^3.7.0":
   version: 3.7.0
   resolution: "babel-preset-gatsby-package@npm:3.7.0"
   dependencies:
@@ -14969,9 +14969,9 @@ __metadata:
     "@types/node": ^18.14.6
     "@types/picomatch": ^2.3.0
     "@types/webpack-assets-manifest": ^5.1.0
-    "@types/yargs": ^17.0.18
-    babel-jest: ^29.3.1
-    babel-preset-gatsby-package: ^3.3.0
+    "@types/yargs": ^17.0.22
+    babel-jest: ^29.5.0
+    babel-preset-gatsby-package: ^3.7.0
     cross-env: ^7.0.3
     fastify-plugin: ^4.5.0
     fs-extra: ^11.1.0
