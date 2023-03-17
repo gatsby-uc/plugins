@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, withPrefix } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 import "../../src/styles/test.css";
 
@@ -156,6 +157,8 @@ const IndexPage = () => {
           <a href={withPrefix("/ssr_named_splat/test/path")}>Named Splat routed SSR page</a>
         </li>
       </ul>
+
+      <StaticImage src="../images/icon.png" alt="Icon" layout="fixed" width={165} />
     </main>
   );
 };

@@ -1,0 +1,1 @@
+console.log("Hellow from component-fake-hash.js");

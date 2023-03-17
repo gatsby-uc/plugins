@@ -27,6 +27,8 @@ export const handleReverseProxy: FastifyPluginAsync<{
           replyOptions: {
             onResponse: (_request, reply, response) => {
               (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
+              reply.mode = "PROXY";
+              reply.path = proxy.fromPath;
               reply.send(response);
             },
           },
@@ -37,6 +39,8 @@ export const handleReverseProxy: FastifyPluginAsync<{
         });
         fastify.get(cleanFrom, (_request, reply) => {
           (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
+          reply.mode = "PROXY";
+          reply.path = proxy.fromPath;
           reply.from(cleanTo);
         });
       }

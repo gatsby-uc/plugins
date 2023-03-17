@@ -30,7 +30,7 @@ module.exports = {
           headers: {
             customHeaders: {
               "/posts/page-1*": {
-                "x-test-page-specific": "shows on /posts/page-1 and its page-data",
+                "x-test-page-specific": "shows on /posts/page-1",
               },
               "/posts/page-2*": {
                 "X-Content-Type-Options": "nosniff by default, overwritten for this page",
@@ -49,6 +49,16 @@ module.exports = {
               "/ssr/**": {
                 "x-test-ssr-kept": "ssr page",
                 "x-test-ssr-overwrite": "ssr page",
+              },
+              "/api/test": {
+                "x-test-function-kept": "function page",
+                "x-test-function-overwrite": "function page",
+              },
+              "/generated/page-6": {
+                "x-test-dsg-kept": "dsg page",
+              },
+              "/page-data/generated/page-6/page-data.json": {
+                "x-test-dsg-kept": "dsg page data",
               },
               "/posts/page-1/index.html": {
                 "x-test-page-specific": "shows on /posts/page-1 and its page-data (overwritten)",

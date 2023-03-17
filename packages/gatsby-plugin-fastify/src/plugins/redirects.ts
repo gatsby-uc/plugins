@@ -53,6 +53,8 @@ export const handleRedirects: FastifyPluginAsync<{
         };
       }>(cleanFromPath, { config: {} }, (request, reply) => {
         reply.appendModuleHeader("Redirects");
+        reply.mode = "REDIRECT";
+        reply.path = redirect.fromPath;
 
         if (isCleanedPath && queryStringHandlers[request.url]) {
           redirect = queryStringHandlers[request.url];

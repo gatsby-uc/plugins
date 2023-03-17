@@ -18,6 +18,8 @@ export const handle500: FastifyPluginAsync = fp(async (fastify) => {
   fastify.setErrorHandler(async (error, request, reply) => {
     fastify.log.error(`Error processing ${request.url}, ${error.message}`);
     reply.appendModuleHeader("500");
+    reply.mode = "500";
+    reply.path = "/500/";
 
     if (gatsby500ErrorFileExists) {
       reply.code(StatusCodes.INTERNAL_SERVER_ERROR).sendFile("500.html");

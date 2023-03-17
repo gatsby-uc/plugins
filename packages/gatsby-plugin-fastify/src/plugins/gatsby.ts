@@ -15,6 +15,7 @@ import fastifyAccepts from "@fastify/accepts";
 import middiePlugin from "@fastify/middie";
 
 import type { FastifyPluginAsync } from "fastify";
+import { FUNCTIONS_PREFIX } from "../utils/constants";
 
 export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { server: serverConfig } = getConfig();
@@ -34,7 +35,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
 
   // Gatsby Functions
   await fastify.register(handleFunctions, {
-    prefix: "/api/",
+    prefix: FUNCTIONS_PREFIX,
     functions,
   });
 
@@ -69,6 +70,6 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   // Custom headers
   await fastify.register(handleHeaders, {
     headers,
-    useDefaultCaching: features.headers.useDefaultCaching,
+    useDefaultSecurity: features.headers.useDefaultSecurity,
   });
 };

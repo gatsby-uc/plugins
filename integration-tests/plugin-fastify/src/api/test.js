@@ -271,8 +271,12 @@ const responseData = [
 
 export default function handler(req, res) {
   if (isGatsbyHosting(res)) {
+    res.setHeader("x-test-function-overwrite", "Overwritten by FUNCTION");
     res.status(200).send(responseData);
   } else {
+    res.headers({
+      "x-test-function-overwrite": "Overwritten by FUNCTION",
+    });
     res.code(200).send(responseData);
   }
 }

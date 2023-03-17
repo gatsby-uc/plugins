@@ -7,21 +7,11 @@ import { removeQueryParmsFromUrl } from "../utils/routes";
 import { countPaths } from "../utils/log";
 
 import type { ServerSideRoute } from "../gatsby/server-routes";
-import type { ISSRData } from "gatsby/dist/utils/page-ssr-module/entry";
 import type { FastifyPluginAsync } from "fastify";
-
-declare module "fastify" {
-  interface FastifyReply {
-    serverDataHeaders: ISSRData["serverDataHeaders"];
-  }
-}
 
 export const handleServerRoutes: FastifyPluginAsync<{
   paths: ServerSideRoute[];
 }> = async (fastify, { paths }) => {
-  // eslint-disable-next-line unicorn/no-null
-  fastify.decorateReply("serverDataHeaders", null);
-
   if (paths?.length > 0) {
     const { dsgCount, ssrCount } = countPaths(paths);
 
@@ -58,6 +48,8 @@ export const handleServerRoutes: FastifyPluginAsync<{
           throw new Error(`No page data found for path: ${workingURL}`);
         }
         reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
+        reply.mode = page.mode;
+        reply.path = pageDataPath;
 
         try {
           // Fetch Page Data and SSR Data
@@ -67,13 +59,11 @@ export const handleServerRoutes: FastifyPluginAsync<{
             req: request,
           });
 
-          // add serverDataHeaders to reply so they can overwrite defaults in headers plugin
-          reply.serverDataHeaders = pageQueryData.serverDataHeaders;
-
           const pageData = (await renderPageData({ data: pageQueryData })) as unknown;
 
-          if (page.mode === `SSR` && pageQueryData?.serverDataStatus) {
-            reply.code(pageQueryData.serverDataStatus);
+          if (page.mode === `SSR`) {
+            if (pageQueryData?.serverDataStatus) reply.code(pageQueryData.serverDataStatus);
+            if (pageQueryData?.serverDataHeaders) reply.headers(pageQueryData.serverDataHeaders);
           }
 
           return reply.send(pageData);
@@ -103,6 +93,8 @@ export const handleServerRoutes: FastifyPluginAsync<{
           }
 
           reply.appendModuleHeader(`${page?.mode as "DSG" | "SSR"}`);
+          reply.mode = page.mode;
+          reply.path = path;
 
           try {
             const pageQueryData = await getData({
@@ -111,13 +103,11 @@ export const handleServerRoutes: FastifyPluginAsync<{
               req: request,
             });
 
-            // add serverDataHeaders to reply so they can overwrite defaults in headers plugin
-            reply.serverDataHeaders = pageQueryData.serverDataHeaders;
-
             const results = await renderHTML({ data: pageQueryData });
 
-            if (page.mode === `SSR` && pageQueryData?.serverDataStatus) {
-              reply.code(pageQueryData.serverDataStatus);
+            if (page.mode === `SSR`) {
+              if (pageQueryData?.serverDataStatus) reply.code(pageQueryData.serverDataStatus);
+              if (pageQueryData?.serverDataHeaders) reply.headers(pageQueryData.serverDataHeaders);
             }
 
             return reply.type("text/html").send(results);

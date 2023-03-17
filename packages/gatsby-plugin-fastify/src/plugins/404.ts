@@ -16,6 +16,8 @@ export const handle404: FastifyPluginAsync = async (fastify) => {
   fastify.setNotFoundHandler((request, reply) => {
     fastify.log.warn(`404: '${request.url}' not found.`);
     reply.appendModuleHeader("404");
+    reply.mode = "404";
+    reply.path = "/404/";
 
     if (gatsby404ErrorFileExists) {
       reply.code(StatusCodes.NOT_FOUND).sendFile("404.html");

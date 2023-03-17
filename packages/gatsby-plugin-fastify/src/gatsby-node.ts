@@ -12,7 +12,7 @@ import { CONFIG_FILE_NAME, BUILD_HTML_STAGE, BUILD_CSS_STAGE } from "./utils/con
 import { getClientSideRoutes } from "./gatsby/client-side-route";
 import { getServerSideRoutes } from "./gatsby/server-routes";
 import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
-import { buildHeadersProgram } from "./gatsby/header-builder";
+import { buildHeadersProgram, Page } from "./gatsby/header-builder";
 
 const assetsManifest: WebpackAssetsManifest.Assets = {};
 // Inject a webpack plugin to get the file manifests so we can translate all link headers
@@ -43,7 +43,24 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async (
     const functions = await getFunctionManifest(pluginData);
     const clientSideRoutes = await getClientSideRoutes(pluginData);
     const serverSideRoutes = await getServerSideRoutes(pluginData);
-    const headers = await buildHeadersProgram(pluginData, pluginOptions);
+
+    // combine all pages
+    const pages: Array<Page> = [
+      ...clientSideRoutes.map(({ matchPath: path }): Page => ({ path: path, mode: "CSR" })),
+      ...serverSideRoutes.map(({ path, mode }): Page => ({ path, mode })),
+      ...redirects.map(({ fromPath: path }): Page => ({ path, mode: "REDIRECT" })),
+      ...proxies.map(({ fromPath: path }): Page => ({ path, mode: "PROXY" })),
+      ...functions.map(
+        ({ matchPath: path, functionRoute }): Page => ({
+          path: path ?? functionRoute,
+          mode: "FUNCTION",
+        })
+      ),
+      ...[...pluginData.pages].map(([, value]) => ({ path: value.path, mode: value.mode })),
+    ];
+
+    // build headers from all routes
+    const headers = await buildHeadersProgram(pluginData, pluginOptions, pages);
 
     // @ts-expect-error This can't exist and making TS happy another way got complicated
     delete pluginOptions.plugins;

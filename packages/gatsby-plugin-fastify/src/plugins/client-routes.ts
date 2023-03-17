@@ -21,7 +21,8 @@ export const handleClientOnlyRoutes: FastifyPluginAsync<{
 
       fastify.get(p.matchPath, (_request, reply) => {
         reply.appendModuleHeader("Client Route");
-
+        reply.mode = "CSR";
+        reply.path = p.path;
         reply.sendFile("index.html", resolve(PATH_TO_PUBLIC, p.path.replace("/", "")));
       });
     }

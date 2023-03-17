@@ -12,6 +12,7 @@ export const CONFIG_FILE_NAME = "gatsby-plugin-fastify.json";
 export const CONFIG_FILE_PATH = PATH_TO_CACHE;
 
 // implementation values
+export const FUNCTIONS_PREFIX = "/api/";
 
 export const IMMUTABLE_CACHING_HEADER = {
   "cache-control": `public, max-age=31536000, immutable`,
@@ -29,6 +30,12 @@ export const SECURITY_HEADERS = {
 
 export const CACHING_HEADERS = {
   "/static/**": IMMUTABLE_CACHING_HEADER,
+  "/_gatsby/image/**": {
+    "cache-control": "undefined", // unset this since, else it will get 'Static' defaults
+  },
+  "/*.*": {
+    "cache-control": "undefined", // unset this since fastify defaults to public, max-age=0 whereas gatsby hosting defaults unset
+  },
   "/page-data/**": NEVER_CACHE_HEADER,
   "**/*.html": NEVER_CACHE_HEADER,
   "/*.js": {

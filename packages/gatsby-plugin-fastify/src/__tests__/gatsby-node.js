@@ -2,6 +2,13 @@ import fs from "fs-extra";
 import mockPath from "node:path";
 import { onPostBuild } from "../gatsby-node";
 
+function mockPosixJoin(...paths) {
+  return mockPath
+    .join(...paths)
+    .split(mockPath.sep)
+    .join(mockPath.posix.sep);
+}
+
 jest.mock("../utils/constants", () => ({
   ...jest.requireActual("../utils/constants"),
   PATH_TO_FUNCTIONS: "../../integration-tests/plugin-fastify/.cache/functions/",
@@ -12,7 +19,7 @@ jest.mock("../utils/constants", () => ({
 
 jest.mock("fs-extra", () => ({
   existsSync: jest.fn((filePath) => {
-    if (filePath.includes(mockPath.join(".cache", "functions"))) {
+    if (filePath.includes(mockPosixJoin(".cache", "functions"))) {
       return true;
     }
     return false;
@@ -51,30 +58,31 @@ jest.mock("fs-extra", () => ({
   }),
 }));
 
+const mockPages = [
+  {
+    fakePage: "fakeValue",
+    path: "/",
+  },
+  {
+    matchPath: "/app/*",
+    path: "/app/[...]/",
+  },
+  {
+    path: "/ssr",
+    mode: "SSR",
+  },
+  {
+    path: "/my/dsg/path",
+    mode: "DSG",
+  },
+];
 const pathPrefix = "/test";
 const store = {
   getState: jest.fn(() => ({
     program: {
       directory: "",
     },
-    pages: [
-      {
-        fakePage: "fakeValue",
-        path: "/",
-      },
-      {
-        matchPath: "/app/*",
-        path: "/app/[...]/",
-      },
-      {
-        path: "/ssr",
-        mode: "SSR",
-      },
-      {
-        path: "/my/dsg/path",
-        mode: "DSG",
-      },
-    ],
+    pages: mockPages,
     redirects: [
       {
         fromPath: "/perm-redirect",
@@ -102,6 +110,24 @@ const store = {
   })),
 };
 
+jest.mock("../utils/plugin-data", () => ({
+  ...jest.requireActual("../utils/plugin-data"),
+  makePluginData: jest.fn(() => ({
+    pages: new Map(Object.entries(mockPages).map(([key, value]) => [key, value])),
+    components: [],
+    manifest: [],
+    program: {},
+    pathPrefix: "",
+    publicFolder: jest.fn(() => "/public"),
+    functionsFolder: jest.fn((file) =>
+      file ? mockPosixJoin(".cache", "functions", file) : mockPosixJoin(".cache", "functions")
+    ),
+    configFolder: jest.fn((file) =>
+      file ? mockPosixJoin(".cache", file) : mockPosixJoin(".cache")
+    ),
+  })),
+}));
+
 const reporter = {
   error: jest.fn((_message, error) => {
     throw new Error(error);
@@ -125,7 +151,7 @@ describe(`Gatsby Node API`, () => {
 
     const writeJSONCall = fs.writeJSON.mock.calls[0];
     expect(fs.writeJSON).toHaveBeenCalledTimes(1);
-    expect(writeJSONCall[0]).toContain(mockPath.join(".cache", "gatsby-plugin-fastify.json"));
+    expect(writeJSONCall[0]).toContain(mockPosixJoin(".cache", "gatsby-plugin-fastify.json"));
     expect(writeJSONCall[1]).toMatchSnapshot();
   });
 });

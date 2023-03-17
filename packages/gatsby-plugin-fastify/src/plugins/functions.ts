@@ -2,7 +2,7 @@ import { resolve } from "node:path";
 import { existsSync } from "fs-extra";
 import { StatusCodes } from "http-status-codes";
 
-import { PATH_TO_FUNCTIONS } from "../utils/constants";
+import { FUNCTIONS_PREFIX, PATH_TO_FUNCTIONS } from "../utils/constants";
 
 import type { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify";
 import type { IGatsbyFunction } from "gatsby/dist/redux/types";
@@ -49,6 +49,8 @@ export const handleFunctions: FastifyPluginAsync<{
             handler: async function (request, reply) {
               try {
                 reply.appendModuleHeader("Functions");
+                reply.mode = "FUNCTION";
+                reply.path = `${FUNCTIONS_PREFIX}${path}`;
                 await Promise.resolve(functionToExecute(request, reply));
               } catch (error) {
                 fastify.log.error(error);

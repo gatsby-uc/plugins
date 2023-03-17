@@ -1,1 +1,1 @@
-console.log("this is a fake lazy component");
+console.log("Hello from fake-lazycomponent.js");
