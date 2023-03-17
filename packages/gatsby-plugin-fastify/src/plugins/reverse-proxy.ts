@@ -1,4 +1,5 @@
 import pluginHttpProxy from "@fastify/http-proxy";
+import pluginReplyFrom from "@fastify/reply-from";
 
 import type { FastifyPluginAsync, FastifyReply } from "fastify";
 import type { GatsbyFastifyProxy } from "../gatsby/proxies-and-redirects";
@@ -12,23 +13,37 @@ export const handleReverseProxy: FastifyPluginAsync<{
   for (const proxy of proxies) {
     try {
       // Fastify doesn't not support/require the trailing "*" in the path, so we need to remove if they exist
+      const wildcard = proxy.fromPath.endsWith("*");
       const cleanTo = proxy.toPath.replace(/\*$/, "");
-      const cleanFrom = proxy.fromPath.replace(/\*$/, "");
+      const cleanFrom = proxy.fromPath.replace(/\/\*$/, ""); // Remove trailing slash if it exists
 
       const proxyTo = new URL(cleanTo);
 
       fastify.log.debug(`Registering "${cleanFrom}" as proxied route to "${cleanTo}".`);
-
-      fastify.register(pluginHttpProxy, {
-        upstream: proxyTo.href,
-        prefix: cleanFrom,
-        replyOptions: {
-          onResponse: (_request, reply, response) => {
-            (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
-            reply.send(response);
+      if (wildcard) {
+        fastify.register(pluginHttpProxy, {
+          upstream: proxyTo.href,
+          prefix: cleanFrom,
+          replyOptions: {
+            onResponse: (_request, reply, response) => {
+              (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
+              reply.mode = "PROXY";
+              reply.path = proxy.fromPath;
+              reply.send(response);
+            },
           },
-        },
-      });
+        });
+      } else {
+        fastify.register(pluginReplyFrom, {
+          base: proxyTo.href,
+        });
+        fastify.get(cleanFrom, (_request, reply) => {
+          (reply as FastifyReply).appendModuleHeader("Reverse Proxy");
+          reply.mode = "PROXY";
+          reply.path = proxy.fromPath;
+          reply.from(cleanTo);
+        });
+      }
     } catch (error) {
       fastify.log.error(error);
     }

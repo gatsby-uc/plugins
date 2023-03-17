@@ -11,8 +11,8 @@ export function getProxiesAndRedirects(store: Store) {
   for (const current of proxiesAndRedirects) {
     if (current.statusCode == 200) {
       results.proxies.push({
-        toPath: current.toPath.replace(/\*$/, ""),
-        fromPath: current.fromPath.replace(/\*$/, ""),
+        toPath: current.toPath,
+        fromPath: current.fromPath,
       });
     } else {
       results.redirects.push(current);
