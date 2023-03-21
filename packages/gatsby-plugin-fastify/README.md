@@ -297,7 +297,7 @@ For SSR pages, headers configured in `options.features.headers.customHeaders` wi
 
 You can unset a previously configured headers value, either custom or defaults, by setting its value to `"undefined"` (type `string`). For example:
 
-```
+```js
 {
 	resolve: `gatsby-plugin-fastify`,
 	options: {
