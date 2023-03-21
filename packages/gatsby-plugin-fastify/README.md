@@ -269,7 +269,7 @@ Headers for user-defined path patterns can be added/overwritten via `options.fea
 
 We use [picomatch](https://www.npmjs.com/package/picomatch) for pattern matching. [Globbing](https://www.npmjs.com/package/picomatch#basic-globbing) can be used to match paths. For example, to add headers to all posts with a URL structure such as `/posts/category-name/post-name` you would use a pattern like `/posts/**`. `/posts/*`, with a single asterisk, would only match the second level sub-directory after `/posts/` (in this case the `category-name`), not the third level where the posts reside.
 
-```
+```js
 {
 	resolve: `gatsby-plugin-fastify`,
 	options: {
