@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.1.2
+
+### Patch Changes
+
+- [#406](https://github.com/gatsby-uc/plugins/pull/406) [`9a51a78`](https://github.com/gatsby-uc/plugins/commit/9a51a7825caebeb6c9af0a34ffb46aa19d9aa003) Thanks [@laurenskling](https://github.com/laurenskling)! - add paramsSerializer to singleType reporter info
+
 ## 3.1.1
 
 ### Patch Changes
