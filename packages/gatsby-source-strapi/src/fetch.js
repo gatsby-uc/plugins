@@ -37,7 +37,9 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(options)}`
+      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(
+        options.paramsSerializer(options.params)
+      )}`
     );
 
     // Handle internationalization
