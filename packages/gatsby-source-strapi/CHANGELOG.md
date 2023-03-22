@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.1.1
+
+### Patch Changes
+
+- [#404](https://github.com/gatsby-uc/plugins/pull/404) [`f5471bc`](https://github.com/gatsby-uc/plugins/commit/f5471bcaaade77037561d8e6288e0ce038cf1700) Thanks [@laurenskling](https://github.com/laurenskling)! - Revert "fix(packages): update dependency axios to v1"
+
 ## 3.1.0
 
 ### Minor Changes
