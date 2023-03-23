@@ -37,8 +37,8 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(
-        options.paramsSerializer(options.params)
+      `Starting to fetch data from Strapi - ${options.url} with ${options.paramsSerializer(
+        options.params
       )}`
     );
 
@@ -120,8 +120,8 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${JSON.stringify(
-        options.paramsSerializer(options.params)
+      `Starting to fetch data from Strapi - ${options.url} with ${options.paramsSerializer(
+        options.params
       )}`
     );
 
@@ -151,9 +151,9 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
         };
 
         reporter.info(
-          `Starting to fetch page ${page} from Strapi - ${fetchOptions.url} with ${JSON.stringify(
-            options.paramsSerializer(fetchOptions.params)
-          )}`
+          `Starting to fetch page ${page} from Strapi - ${
+            fetchOptions.url
+          } with ${options.paramsSerializer(fetchOptions.params)}`
         );
 
         try {
