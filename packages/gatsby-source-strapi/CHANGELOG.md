@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.1.3
+
+### Patch Changes
+
+- [#408](https://github.com/gatsby-uc/plugins/pull/408) [`92f7486`](https://github.com/gatsby-uc/plugins/commit/92f748667ddbbeb4ec72dfab7808e81cc1b98f82) Thanks [@laurenskling](https://github.com/laurenskling)! - No need for JSON.stringify when results are already String
+
 ## 3.1.2
 
 ### Patch Changes
