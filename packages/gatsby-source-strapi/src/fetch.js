@@ -1,10 +1,8 @@
 import { castArray, flattenDeep } from "lodash";
-import createInstance from "./axios-instance";
 import qs from "qs";
 import { cleanData } from "./clean-data";
 
-export const fetchStrapiContentTypes = async (strapiConfig) => {
-  const axiosInstance = createInstance(strapiConfig);
+export const fetchStrapiContentTypes = async (axiosInstance) => {
   const [
     {
       data: { data: contentTypes },
@@ -25,8 +23,7 @@ export const fetchStrapiContentTypes = async (strapiConfig) => {
 };
 
 export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
-  const { strapiConfig, reporter } = context;
-  const axiosInstance = createInstance(strapiConfig);
+  const { reporter, axiosInstance } = context;
 
   const options = {
     method: "GET",
@@ -104,8 +101,7 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
 };
 
 export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
-  const { strapiConfig, reporter } = context;
-  const axiosInstance = createInstance(strapiConfig);
+  const { reporter, axiosInstance } = context;
 
   const options = {
     method: "GET",

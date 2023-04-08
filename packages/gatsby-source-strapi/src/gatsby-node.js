@@ -7,6 +7,7 @@ import {
   makeParentNodeName,
 } from "./helpers";
 import { createNodes } from "./normalize";
+import { createAxiosInstance } from "./axios-instance";
 
 const LAST_FETCHED_KEY = "timestamp";
 
@@ -34,12 +35,15 @@ export const sourceNodes = async (
     strapiConfig.collectionTypes = [];
   }
 
-  const { schemas } = await fetchStrapiContentTypes(strapiConfig);
+  const axiosInstance = createAxiosInstance(strapiConfig);
+
+  const { schemas } = await fetchStrapiContentTypes(axiosInstance);
 
   const { deleteNode, touchNode } = actions;
 
   const context = {
     strapiConfig,
+    axiosInstance,
     actions,
     schemas,
     createContentDigest,

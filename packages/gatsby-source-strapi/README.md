@@ -77,6 +77,7 @@ const strapiConfig = {
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: ["article", "company", "author"],
   singleTypes: [],
+  maxParallelRequests: 5, // (Optional) Default: Number.POSITIVE_INFINITY
   remoteFileHeaders: {
     /**
      * Customized request headers
