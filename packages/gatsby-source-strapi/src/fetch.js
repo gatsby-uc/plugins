@@ -92,11 +92,13 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
     return castArray([data.data, ...otherLocalizationsData]).map((entry) =>
       cleanData(entry, { ...context, contentTypeUid: uid })
     );
-  } catch {
-    // reporter.panic(
-    //   `Failed to fetch data from Strapi ${opts.url} with ${JSON.stringify(opts)}`,
-    //   error,
-    // );
+  } catch (error) {
+    if (error.response.status !== 404) {
+      reporter.panic(
+        `Failed to fetch data from Strapi ${options.url} with ${JSON.stringify(options)}`,
+        error
+      );
+    }
     return [];
   }
 };

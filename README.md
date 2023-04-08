@@ -11,7 +11,7 @@
 </p>
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-31-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-32-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mabhub"><img src="https://avatars.githubusercontent.com/u/1846633?v=4?s=100" width="100px;" alt="mab"/><br /><sub><b>mab</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=mabhub" title="Code">💻</a> <a href="https://github.com/gatsby-uc/plugins/commits?author=mabhub" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ryan-talus"><img src="https://avatars.githubusercontent.com/u/61983809?v=4?s=100" width="100px;" alt="Ryan Zimmerman"/><br /><sub><b>Ryan Zimmerman</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=ryan-talus" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/h93xV2"><img src="https://avatars.githubusercontent.com/u/17226133?v=4?s=100" width="100px;" alt="h93xV2"/><br /><sub><b>h93xV2</b></sub></a><br /><a href="#maintenance-h93xV2" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/xSyki"><img src="https://avatars.githubusercontent.com/u/86367246?v=4?s=100" width="100px;" alt="Syki"/><br /><sub><b>Syki</b></sub></a><br /><a href="https://github.com/gatsby-uc/plugins/commits?author=xSyki" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
