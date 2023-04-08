@@ -1,5 +1,13 @@
 # gatsby-source-strapi
 
+## 3.1.4
+
+### Patch Changes
+
+- [#413](https://github.com/gatsby-uc/plugins/pull/413) [`30880d5`](https://github.com/gatsby-uc/plugins/commit/30880d508a36b7b7958b3fa9a7770cff0b050ce9) Thanks [@xSyki](https://github.com/xSyki)! - singleTypes return a 404 when it isn't updated since the latest fetch. Therefor, errors would be silenced. Fix this to report errors that are not 404
+
+- [#397](https://github.com/gatsby-uc/plugins/pull/397) [`de090f0`](https://github.com/gatsby-uc/plugins/commit/de090f0dd500e811b1345555c16a5f68c8f71c94) Thanks [@konsalex](https://github.com/konsalex)! - add `maxParallelRequests` config option for users to provide, and refactor to use a single axios instance to all functions
+
 ## 3.1.3
 
 ### Patch Changes
