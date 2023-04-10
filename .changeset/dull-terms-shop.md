@@ -1,5 +1,5 @@
 ---
-"gatsby-source-strapi": patch
+"gatsby-source-strapi": minor
 ---
 
 upgrade axios to v1
