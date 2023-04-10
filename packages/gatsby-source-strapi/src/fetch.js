@@ -25,18 +25,22 @@ export const fetchStrapiContentTypes = async (axiosInstance) => {
 export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
   const { reporter, axiosInstance } = context;
 
+  /** @type AxiosRequestConfig */
   const options = {
     method: "GET",
     url: endpoint,
     params: queryParams,
-    paramsSerializer: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
+    // Source: https://github.com/axios/axios/issues/5058#issuecomment-1379970592
+    paramsSerializer: {
+      serialize: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
+    },
   };
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${options.paramsSerializer(
-        options.params
-      )}`
+      `Starting to fetch data from Strapi - ${
+        options.url
+      } with ${options.paramsSerializer.serialize(options.params)}`
     );
 
     // Handle internationalization
@@ -103,11 +107,14 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
 export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
   const { reporter, axiosInstance } = context;
 
+  /** @type AxiosRequestConfig */
   const options = {
     method: "GET",
     url: endpoint,
     params: queryParams,
-    paramsSerializer: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
+    paramsSerializer: {
+      serialize: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
+    },
   };
 
   // Use locale from pluginOptions if it's defined
@@ -118,9 +125,9 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
 
   try {
     reporter.info(
-      `Starting to fetch data from Strapi - ${options.url} with ${options.paramsSerializer(
-        options.params
-      )}`
+      `Starting to fetch data from Strapi - ${
+        options.url
+      } with ${options.paramsSerializer.serialize(options.params)}`
     );
 
     const { data: response } = await axiosInstance(options);
@@ -151,7 +158,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
         reporter.info(
           `Starting to fetch page ${page} from Strapi - ${
             fetchOptions.url
-          } with ${options.paramsSerializer(fetchOptions.params)}`
+          } with ${options.paramsSerializer.serialize(fetchOptions.params)}`
         );
 
         try {
