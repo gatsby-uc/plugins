@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 3.2.0
+
+### Minor Changes
+
+- [#411](https://github.com/gatsby-uc/plugins/pull/411) [`016caf1`](https://github.com/gatsby-uc/plugins/commit/016caf17372c5623f98b88846ebe9299bf7fe796) Thanks [@konsalex](https://github.com/konsalex)! - upgrade axios to v1
+
 ## 3.1.4
 
 ### Patch Changes
