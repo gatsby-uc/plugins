@@ -97,7 +97,7 @@ To make sure folks can find things please setup the fields correctly when the pl
   "bugs": {
     "url": "https://github.com/gatsby-uc/plugins/issues"
   },
-  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-plugin-name#readme"
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-plugin-name/README.md",
 }
 ```
 

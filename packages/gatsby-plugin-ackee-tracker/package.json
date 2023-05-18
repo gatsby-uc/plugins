@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/gatsby-uc/plugins/issues"
   },
-  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-plugin-ackee-tracker#readme",
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-plugin-ackee-tracker/README.md",
   "license": "MIT",
   "contributors": [
     "Christopher Burns <christopher@tapstudio.co.uk>",

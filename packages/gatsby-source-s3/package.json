@@ -12,6 +12,7 @@
     "url": "https://github.com/gatsby-uc/plugins.git",
     "directory": "packages/gatsby-source-s3"
   },
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-source-s3/README.md",
   "license": "MIT",
   "keywords": [
     "gatsby",

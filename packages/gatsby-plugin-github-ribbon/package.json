@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/gatsby-uc/plugins/issues"
   },
-  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-plugin-github-ribbon#readme",
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-plugin-github-ribbon/README.md",
   "scripts": {
     "build": "babel src --out-dir ./dist --ignore \"**/__tests__\"",
     "test": "jest",

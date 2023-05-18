@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/gatsby-uc/plugins/issues"
   },
-  "homepage": "https://github.com/gatsby-uc/plugins/packages/gatsby-source-packagist#readme",
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-source-packagist/README.md",
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
