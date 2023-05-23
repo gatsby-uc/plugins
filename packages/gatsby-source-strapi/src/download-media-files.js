@@ -77,7 +77,12 @@ export const downloadFile = async (file, context) => {
         url: source_url,
         store,
         cache,
-        createNode,
+        createNode: (node, options) => {
+          // overide https://github.com/gatsbyjs/gatsby/blob/ccbbda5c6ae4cc9dfcbbf07891e9c74461c6ed55/packages/gatsby-source-filesystem/src/create-remote-file-node.js#L70
+          // the plugin needs to be owner of the file node
+          options.name = `gatsby-source-strapi`;
+          return createNode(node, options);
+        },
         createNodeId,
         httpHeaders: remoteFileHeaders || {},
       });

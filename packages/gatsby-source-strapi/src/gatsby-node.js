@@ -58,9 +58,7 @@ export const sourceNodes = async (
 
   const { unstable_createNodeManifest, createNode } = actions;
 
-  const existingNodes = getNodes().filter(
-    (n) => n.internal.owner === `gatsby-source-strapi` || n.internal.type === "File"
-  );
+  const existingNodes = getNodes().filter((n) => n.internal.owner === `gatsby-source-strapi`);
 
   for (const n of existingNodes) {
     touchNode(n);
