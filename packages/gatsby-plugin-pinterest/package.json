@@ -19,6 +19,7 @@
     "url": "https://github.com/gatsby-uc/plugins.git",
     "directory": "packages/gatsby-plugin-pinterest"
   },
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-plugin-pinterest/README.md",
   "scripts": {
     "build": "babel src --out-dir ./dist --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
     "test": "jest --coverage"

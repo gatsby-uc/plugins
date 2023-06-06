@@ -7,6 +7,7 @@
     "url": "https://github.com/gatsby-uc/plugins.git",
     "directory": "packages/gatsby-plugin-airtable"
   },
+  "homepage": "https://github.com/gatsby-uc/plugins/blob/main/packages/gatsby-source-airtable/README.md",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "license": "MIT",
   "main": "index.js",
