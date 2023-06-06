@@ -50,7 +50,7 @@
     "@babel/core": "^7.21.0",
     "@types/connect": "^3.4.35",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^29.4.0",
+    "@types/jest": "^29.5.2",
     "@types/mime": "^3.0.1",
     "@types/node": "^18.16.16",
     "@types/picomatch": "^2.3.0",
@@ -58,7 +58,7 @@
     "babel-jest": "^29.4.3",
     "babel-preset-gatsby-package": "^3.7.0",
     "cross-env": "^7.0.3",
-    "jest": "^29.4.3"
+    "jest": "^29.5.0"
   },
   "peerDependencies": {
     "fastify": "^4.5.3",
