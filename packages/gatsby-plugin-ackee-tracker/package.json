@@ -33,7 +33,7 @@
   "dependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
-    "ackee-tracker": "^5",
+    "ackee-tracker": "^5.1.0",
     "babel-preset-gatsby-package": "^3.7.0",
     "cross-env": "^7.0.3"
   },
