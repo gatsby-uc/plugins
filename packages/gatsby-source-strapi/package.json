@@ -40,8 +40,8 @@
     "build": "babel src --out-dir dist"
   },
   "devDependencies": {
-    "@babel/cli": "7.21.0",
-    "@babel/core": "7.21.0"
+    "@babel/cli": "7.21.5",
+    "@babel/core": "7.22.1"
   },
   "peerDependencies": {
     "gatsby": "^4.0.0 || ^5.0.0",
