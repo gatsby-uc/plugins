@@ -30,9 +30,9 @@
     "watch": "yarn build --watch"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.0",
-    "babel-preset-gatsby-package": "^3.7.0",
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "babel-preset-gatsby-package": "^3.10.0",
     "cross-env": "^7.0.3",
     "gatsby-source-filesystem": "^5.10.0"
   },
