@@ -36,8 +36,8 @@
     "clean": "gatsby clean"
   },
   "devDependencies": {
-    "nock": "13.3.0",
-    "prettier": "2.8.4"
+    "nock": "13.3.1",
+    "prettier": "2.8.8"
   },
   "volta": {
     "extends": "../../package.json"
