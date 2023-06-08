@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-appwrite",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Appwrite source plugin for building websites using Appwrite as a data source",
   "keywords": [
     "gatsby",

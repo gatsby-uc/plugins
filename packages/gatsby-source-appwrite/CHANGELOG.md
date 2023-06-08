@@ -1,5 +1,11 @@
 # gatsby-source-appwrite
 
+## 1.2.0
+
+### Minor Changes
+
+- [#430](https://github.com/gatsby-uc/plugins/pull/430) [`23f9fba`](https://github.com/gatsby-uc/plugins/commit/23f9fba42e854a86874545c4fce2be2858133c5f) Thanks [@tboutron](https://github.com/tboutron)! - Fix homepage link for plugins
+
 ## 1.1.1
 
 ### Patch Changes
