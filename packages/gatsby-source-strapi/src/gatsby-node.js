@@ -148,7 +148,16 @@ export const sourceNodes = async (
     for (let entity of data[index]) {
       const nodes = createNodes(entity, context, uid);
 
-      await Promise.all(nodes.map((n) => createNode(n)));
+      await Promise.all(
+        nodes.map((n) => {
+          // Replace previously created stub nodes for relations
+          const relationStub = getNode(n.id);
+          if (relationStub) {
+            deleteNode(relationStub);
+          }
+          return createNode(n);
+        })
+      );
 
       const nodeType = makeParentNodeName(context.schemas, uid);
 
