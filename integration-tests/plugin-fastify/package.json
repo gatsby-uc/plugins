@@ -1,6 +1,6 @@
 {
   "name": "test-plugin-fastify",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "private": true,
   "description": "Gatsby starter and test site for gatsby-plugin-fastify",
   "author": "Alex Moon",

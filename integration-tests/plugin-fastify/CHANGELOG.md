@@ -1,5 +1,14 @@
 # test-fastify-gatsby
 
+## 1.0.16
+
+### Patch Changes
+
+- [#415](https://github.com/gatsby-uc/plugins/pull/415) [`f176155`](https://github.com/gatsby-uc/plugins/commit/f176155ca410ffe9bca73ce2472d62f90758de9d) Thanks [@renovate](https://github.com/apps/renovate)! - chore(integration-tests): update integration tests
+
+- Updated dependencies [[`04a77c7`](https://github.com/gatsby-uc/plugins/commit/04a77c7697eff0e4955096e9c2b58241d5eb8e75), [`c6b3c08`](https://github.com/gatsby-uc/plugins/commit/c6b3c084c542b24ed0e953005f394fdb62396465), [`23f9fba`](https://github.com/gatsby-uc/plugins/commit/23f9fba42e854a86874545c4fce2be2858133c5f), [`badae40`](https://github.com/gatsby-uc/plugins/commit/badae403b130fd3bdf8d706c540d14de884c8490)]:
+  - gatsby-plugin-fastify@0.13.0
+
 ## 1.0.15
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # gatsby-source-s3
 
+## 4.1.0
+
+### Minor Changes
+
+- [#430](https://github.com/gatsby-uc/plugins/pull/430) [`23f9fba`](https://github.com/gatsby-uc/plugins/commit/23f9fba42e854a86874545c4fce2be2858133c5f) Thanks [@tboutron](https://github.com/tboutron)! - Fix homepage link for plugins
+
+### Patch Changes
+
+- [#418](https://github.com/gatsby-uc/plugins/pull/418) [`c6b3c08`](https://github.com/gatsby-uc/plugins/commit/c6b3c084c542b24ed0e953005f394fdb62396465) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
+- [#414](https://github.com/gatsby-uc/plugins/pull/414) [`badae40`](https://github.com/gatsby-uc/plugins/commit/badae403b130fd3bdf8d706c540d14de884c8490) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
 ## 4.0.0
 
 ### Major Changes
