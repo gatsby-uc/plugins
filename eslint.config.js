@@ -18,6 +18,7 @@ module.exports = [
     rules: {
       ...prettier.rules,
       ...unicorn.configs.recommended.rules,
+      "unicorn/expiring-todo-comments": "off",
     },
   },
   // For some reason when plugins are inside a theme, the index.js is required. This allows us to add empty index.js files in all plugins.
