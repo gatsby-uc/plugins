@@ -243,7 +243,9 @@ underscores.
 
 ### API Keys
 
-Keys can be found in Airtable by clicking `Help > API Documentation`.
+Airtable has moved from using a single API key per user to using personal access tokens that carry specific privileges limited to specific bases and workspaces. The personal API keys will be deprecated by the end of January 2024. The personal access tokens can be used interchangeably with the older API keys.
+
+To create a new token, go to the [Personal Access Tokens](https://airtable.com/create/tokens) panel of the [Developer Hub](https://airtable.com/developers). `gatsby-source-airtable` requires the `data.records:read` scope on any base(s) from which you’ll be pulling data. You’ll need the full Token shown to you only one time on creation, not the truncated Token ID shown in the table of all Personal Access Tokens. Once you have this token value, use it as the API key in the configuration outlined below.
 
 The API key can be hard coded directly in `gatsby-config.js` as noted in the
 previous section-- **this exposes your key to anyone viewing your repository and
