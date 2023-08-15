@@ -1,5 +1,11 @@
 # gatsby-plugin-fastify
 
+## 0.13.1
+
+### Patch Changes
+
+- [#442](https://github.com/gatsby-uc/plugins/pull/442) [`dd33f3d`](https://github.com/gatsby-uc/plugins/commit/dd33f3d91ef83c0c463e317be836c300f8427d21) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
 ## 0.13.0
 
 ### Minor Changes

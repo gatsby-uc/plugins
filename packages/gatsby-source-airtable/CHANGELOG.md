@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.1
+
+### Patch Changes
+
+- [#445](https://github.com/gatsby-uc/plugins/pull/445) [`f786b3f`](https://github.com/gatsby-uc/plugins/commit/f786b3fcf4b731e04ecb6ac4f07e956a7e01a6d9) Thanks [@jonesbp](https://github.com/jonesbp)! - Update documentation on API key creation
+
 ## 2.4.0
 
 ### Minor Changes
