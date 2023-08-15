@@ -23,8 +23,8 @@
     "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.8",
-    "@babel/preset-react": "^7.22.3",
+    "@babel/eslint-parser": "^7.22.10",
+    "@babel/preset-react": "^7.22.5",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
     "@hkdobrev/run-if-changed": "^0.3.1",
