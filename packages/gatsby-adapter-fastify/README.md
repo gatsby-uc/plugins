@@ -98,6 +98,7 @@ module.exports = {
     fastify: {
       logger: { level: /* defaults to info by CLI params*/ },
       caseSensitive: true, // You may need to set this to false for CMS compatability, e.g. WordPress.
+      maxParamLength: 500,
     },
   }),
 };

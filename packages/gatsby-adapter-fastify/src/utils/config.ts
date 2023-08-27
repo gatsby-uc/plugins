@@ -19,6 +19,7 @@ export interface GatsbyFastifyAdapterOptions {
     excludeDatastoreFromEngineFunction?: IAdapterConfig["excludeDatastoreFromEngineFunction"];
   };
   fastify?: {
+    maxParamLength: FastifyServerOptions["maxParamLength"];
     caseSensitive: FastifyServerOptions["caseSensitive"];
     logger: FastifyServerOptions["logger"];
   };
