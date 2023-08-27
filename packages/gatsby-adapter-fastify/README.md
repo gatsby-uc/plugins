@@ -90,19 +90,7 @@ For info on logging see Fastify's [documentation on logging](https://www.fastify
 
 ## Fastify Server Options
 
-We probide a limitted subset of options to [configure the Fastify server](https://www.fastify.io/docs/latest/Reference/Server/#factory) from the adapter options in Gatsby config. If you need more than the provided options, [please open an Issue](https://github.com/gatsby-uc/plugins/issues/new/choose).
-
-```js
-module.exports = {
-  adapter: adapter({
-    fastify: {
-      logger: { level: /* defaults to info by CLI params*/ },
-      caseSensitive: true, // You may need to set this to false for CMS compatability, e.g. WordPress.
-      maxParamLength: 500,
-    },
-  }),
-};
-```
+// TODO: Solve this problem in the future
 
 ## Features
 

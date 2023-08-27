@@ -1,37 +1,40 @@
+import { join } from "node:path";
 import { readJSONSync, existsSync } from "fs-extra";
 
-import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
-import type { FastifyServerOptions } from "fastify";
-import type { IAdapter, IAdapterConfig } from "gatsby";
-
-import { PathConfig } from "../plugins/client-routes";
+// import type { FastifyServerOptions } from "fastify";
+import type { IAdapter, IAdapterConfig, RoutesManifest, FunctionsManifest } from "gatsby";
+import type { TrailingSlash } from "gatsby-page-utils";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
-import { buildPrefixer } from "./plugin-data";
 
 let config: Partial<GfConfig> = {};
 
-const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
-
 export interface GatsbyFastifyAdapterOptions {
-  adapter?: {
-    cache: IAdapter["cache"];
-    deployURL?: IAdapterConfig["deployURL"];
-    excludeDatastoreFromEngineFunction?: IAdapterConfig["excludeDatastoreFromEngineFunction"];
-  };
-  fastify?: {
+  cache: IAdapter["cache"];
+  deployURL?: IAdapterConfig["deployURL"];
+  excludeDatastoreFromEngineFunction?: IAdapterConfig["excludeDatastoreFromEngineFunction"];
+}
+
+export interface AdapterManifest {
+  routesManifest: RoutesManifest;
+  functionsManifest: FunctionsManifest;
+  /**
+   * @see https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#pathprefix
+   */
+  pathPrefix: string;
+  /**
+   * @see https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#trailingslash
+   */
+  trailingSlash: TrailingSlash;
+}
+
+/**
+ * Saved for later to create a fastify.config.js file to allow passing functions for the logger and such. 
+ *   fastify?: {
     maxParamLength: FastifyServerOptions["maxParamLength"];
     caseSensitive: FastifyServerOptions["caseSensitive"];
     logger: FastifyServerOptions["logger"];
   };
-}
-export interface GatsbyNodeServerManifest extends GatsbyFastifyPluginOptions {
-  clientSideRoutes: NoUndefinedField<PathConfig>[];
-  serverSideRoutes: ServerSideRoute[];
-  redirects: IRedirect[];
-  prefix: string | undefined;
-  functions: IGatsbyFunction[];
-  proxies: GatsbyFastifyProxy[];
-}
+ */
 
 export type GfCliOptions = {
   port: number;
@@ -51,7 +54,7 @@ export enum ConfigKeyEnum {
 
 export type GfConfig = {
   [ConfigKeyEnum.CLI]: GfCliOptions;
-  [ConfigKeyEnum.SERVER]: GatsbyNodeServerConfig;
+  [ConfigKeyEnum.SERVER]: AdapterManifest;
 };
 
 export function getConfig(): GfConfig {
@@ -66,8 +69,8 @@ export function setConfig<Key extends ConfigKeyEnum>(key: Key, incomingConfig: G
   config[key] = incomingConfig;
 }
 
-export function getServerConfig(): GatsbyNodeServerConfig {
-  const configPath = configPrefixer(CONFIG_FILE_NAME);
+export function getServerConfig(): AdapterManifest {
+  const configPath = join(CONFIG_FILE_PATH, CONFIG_FILE_NAME);
   if (!existsSync(configPath)) {
     throw new Error(
       `No Server config found @ ${configPath}, did you do a production Gatsby Build?`

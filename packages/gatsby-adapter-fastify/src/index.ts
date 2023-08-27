@@ -26,7 +26,6 @@ const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterO
         functionsManifest,
         pathPrefix,
         trailingSlash,
-        fastify: adapterOptions?.fastify,
       };
 
       await writeJSON(join(cwd(), PATH_TO_CACHE, CONFIG_FILE_NAME), fastifyServerConfig, {
@@ -42,29 +41,29 @@ const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterO
         pluginsToDisable: ["gatsby-plugin-fastify"],
       };
 
-      if (adapterOptions?.adapter?.excludeDatastoreFromEngineFunction) {
+      if (adapterOptions?.excludeDatastoreFromEngineFunction) {
         reporter.verbose(`Excluding Database Store from Engine Function as Requested`);
 
-        if (!adapterOptions.adapter.deployURL) {
+        if (!adapterOptions.deployURL) {
           reporter.panic(
             "Excluding Database requiers the `deployURL` to be passed to the adapter options"
           );
         }
         config.excludeDatastoreFromEngineFunction =
-          adapterOptions.adapter.excludeDatastoreFromEngineFunction;
+          adapterOptions.excludeDatastoreFromEngineFunction;
       }
 
-      if (adapterOptions?.adapter?.deployURL) {
-        reporter.verbose(`Using provided Deploy URL: ${adapterOptions.adapter.deployURL}`);
-        config.deployURL = adapterOptions.adapter.deployURL;
+      if (adapterOptions?.deployURL) {
+        reporter.verbose(`Using provided Deploy URL: ${adapterOptions.deployURL}`);
+        config.deployURL = adapterOptions.deployURL;
       }
 
       return config;
     },
   };
 
-  if (adapterOptions?.adapter?.cache) {
-    adapterConfig.cache = adapterOptions.adapter.cache;
+  if (adapterOptions?.cache) {
+    adapterConfig.cache = adapterOptions.cache;
   }
 
   return adapterConfig;
