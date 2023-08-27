@@ -20,6 +20,7 @@ export interface GatsbyFastifyAdapterOptions {
   };
   fastify?: {
     caseSensitive: FastifyServerOptions["caseSensitive"];
+    logger: FastifyServerOptions["logger"];
   };
 }
 export interface GatsbyNodeServerManifest extends GatsbyFastifyPluginOptions {

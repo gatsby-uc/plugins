@@ -90,65 +90,31 @@ For info on logging see Fastify's [documentation on logging](https://www.fastify
 
 ## Fastify Server Options
 
-You may directly [configure the Fastify server](https://www.fastify.io/docs/latest/Reference/Server/#factory) from the plugin options in Gatsby config. While many options fastify provides are safe to modify, it's very possible to break your server with these as well, test well. Outside the defaults any values passed are not type checked by Gatsby for compatibility, make sure you are passing valid values as defined in the [Fastify server factory docs](https://www.fastify.io/docs/latest/Reference/Server/#factory).
+We probide a limitted subset of options to [configure the Fastify server](https://www.fastify.io/docs/latest/Reference/Server/#factory) from the adapter options in Gatsby config. If you need more than the provided options, [please open an Issue](https://github.com/gatsby-uc/plugins/issues/new/choose).
 
 ```js
 module.exports = {
-  /* Site config */
-  plugins: [
-    /* Rest of the plugins */
-    {
-      resolve: `gatsby-adapter-fastify`,
-      /* Default option value shown */
-      options: {
-        fastify: {
-          logger: { level: /* defaults to info by CLI params*/ },
-          ignoreTralingSlash: true,
-          maxParamLength: 500,
-          // for complete options see https://www.fastify.io/docs/latest/Reference/Server/#factory
-        },
-      },
+  adapter: adapter({
+    fastify: {
+      logger: { level: /* defaults to info by CLI params*/ },
+      caseSensitive: true, // You may need to set this to false for CMS compatability, e.g. WordPress.
     },
-  ],
+  }),
 };
 ```
 
 ## Features
 
-Some features can be disabled through the plugin options. This will not provide increased performance but is probided as an option to control features in certain deploys or to handoff certain features to an edge server or CDN as desired.
+We provide any features made possible by the [Gatsby Adapters](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/adapters/) spec. You may assume the feature is supported unless explicitly noted below.
 
-```js
-module.exports = {
-  /* Site config */
-  plugins: [
-    /* Rest of the plugins */
-    {
-      resolve: `gatsby-adapter-fastify`,
-      /* Default option value shown */
-      options: {
-        features: {
-          redirects: true,
-          reverseProxy: true,
-          imageCdn: false, // Feature in Beta, use with caution
-        },
-      },
-    },
-  ],
-};
-```
+### Gatsby Image CDN - ⚠️
 
-### Gatsby Image CDN (BETA)
-
-> **BETA:** This feature is under going active development to fix bugs and extend functionality by the Gatsby team. I'm releasing this feature here with compatability for `gatsby@4.12.1`, `gatsby-source-wordpres@6.12.1`, and `gatsby-source-contentful@7.10.0` No guarantee it works on newer or older versions.
-
-While not strictly a CDN in our case this still implements the ability for Images to be transformed outside of build time.
-
-> Please note that this writes generated images to the `/public/\_gatsby folder. This must be writeable in production.
-
-This will be enabled by default if your version of Gatsby supports the image CDN. You may manually disable it in the config if you don't need it.
+TODO: Confirma all this
+Gatsby Image CDN should generally work. Image transformations will happen post-build on the server via a function provided by Gatsby to the Fastify server. Gatsby also provides apropriate caching headers. But there is no CDN provided with this server, please use a transparent CDN of your choice (e.g. Fastly, Cloudflare).
 
 ### Gatsby Reverse Proxy
 
+TODO: Does this still Apply?
 Building on top of the `createRedirects` API Gatsby Cloud now supports reverse proxies. We've implemented this feature here as well.
 
 ```js
@@ -164,6 +130,7 @@ createRedirect({
 
 ### Gatsby Redirects
 
+TODO: Does this still apply?
 We support the use of `statusCode` but do not currently support `conditions`, `ignoreCase`, or `force` as discussed in the [`createRedirect` docs](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect).
 
 For various reasons discussed in [this article](https://kinsta.com/knowledgebase/307-redirect/), the `isPermanent` boolean toggles HTTP `307 Temporray Redirect` and `308 Permanent Redirect` instead of `301 Moved Permanently` and `302 Found`. If you need to use `statusCode` onyour redirects to explicitly set the response code.
@@ -224,6 +191,8 @@ createRedirect({
 
 ### Gatsby Functions
 
+TODO: HOw do handle this going forward?
+
 Gatsby's [function docs](https://www.gatsbyjs.com/docs/reference/functions/getting-started/) suggest that the `Request` and `Response` objects for your Gatsby functions will be _Express like_ and provide the types from the Gatsby core for these.
 
 > **THIS IS NOT TRUE FOR THIS PLUGIN**
@@ -237,7 +206,3 @@ export default function handler(req: FastifyRequest, res: FastifyReply) {
   res.send(`I am TYPESCRIPT`);
 }
 ```
-
-### Gatsby Routing
-
-We have implemented a compatability layer to support the Gatsby flavor of routing for [Gatsby Functions](https://www.gatsbyjs.com/docs/reference/functions/routing/) and [File System Routing API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-client-only-routes). This should be transparent and if you follow the Gatsby docs for routing we should now support all those modes. This very well might not be perfect, if you have issues with routing please file a bug with a reproduction.
