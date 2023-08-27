@@ -17,7 +17,6 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   const { routes, functionsManifest } = serverConfig;
 
   // Utils
-  await fastify.register(fastifyStatic);
   await fastify.register(fastifyAccepts);
   await fastify.register(implementUtilDecorators);
 
@@ -26,16 +25,15 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
 
   // Gatsby Dynamic Routes = Functions, DSG, SSR, Image Transformst, Slices, etc
   await fastify.register(handleDynamic, {
-    prefix: "/api/",
     routes: routes.dynamic,
     functions: functionsManifest,
   });
 
   // Gatsby Static
-  await fastify.register(handleStatic);
+  await fastify.register(handleStatic, { routes: routes.static });
 
   // Gatsby Redirects & Reverse Proxy
-  await fastify.register(handleRedirects, { redirects: routes.redirect });
+  // await fastify.register(handleRedirects, { redirects: routes.redirect });
 
   // Gatsby 404
   await fastify.register(handle404);
