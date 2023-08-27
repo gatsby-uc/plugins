@@ -2,20 +2,18 @@ import { join } from "node:path";
 import { readJSONSync, existsSync } from "fs-extra";
 
 // import type { FastifyServerOptions } from "fastify";
-import type { IAdapter, IAdapterConfig, RoutesManifest, FunctionsManifest } from "gatsby";
+import type { FunctionsManifest, IStaticRoute, IFunctionRoute, IRedirectRoute } from "gatsby";
 import type { TrailingSlash } from "gatsby-page-utils";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
 
 let config: Partial<GfConfig> = {};
 
-export interface GatsbyFastifyAdapterOptions {
-  cache: IAdapter["cache"];
-  deployURL?: IAdapterConfig["deployURL"];
-  excludeDatastoreFromEngineFunction?: IAdapterConfig["excludeDatastoreFromEngineFunction"];
-}
-
 export interface AdapterManifest {
-  routesManifest: RoutesManifest;
+  routes: {
+    static: IStaticRoute[];
+    dynamic: IFunctionRoute[];
+    redirect: IRedirectRoute[];
+  };
   functionsManifest: FunctionsManifest;
   /**
    * @see https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#pathprefix

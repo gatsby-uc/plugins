@@ -7,7 +7,13 @@ import { hasFeature } from "gatsby-plugin-utils";
 import { CONFIG_FILE_NAME, PATH_TO_CACHE } from "./utils/constants";
 
 import type { AdapterInit, IAdapter, IAdapterConfig } from "gatsby";
-import type { GatsbyFastifyAdapterOptions } from "./utils/config";
+import type { AdapterManifest } from "./utils/config";
+
+interface GatsbyFastifyAdapterOptions {
+  cache: IAdapter["cache"];
+  deployURL?: IAdapterConfig["deployURL"];
+  excludeDatastoreFromEngineFunction?: IAdapterConfig["excludeDatastoreFromEngineFunction"];
+}
 
 const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterOptions) => {
   const adapterConfig: IAdapter = {
@@ -21,8 +27,35 @@ const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterO
 
       reporter.info("Adapting Gatsby to be server with Fastify!");
 
-      const fastifyServerConfig = {
-        routesManifest,
+      const routes: AdapterManifest["routes"] = {
+        static: [],
+        dynamic: [],
+        redirect: [],
+      };
+
+      for (const route of routesManifest) {
+        switch (route.type) {
+          case "function": {
+            routes.dynamic.push(route);
+            break;
+          }
+          case "redirect": {
+            routes.redirect.push(route);
+            break;
+          }
+          case "static": {
+            routes.static.push(route);
+            break;
+          }
+          default: {
+            //@ts-expect-error - Not possible based on types but including incase Gatsby changes something.
+            reporter.warn(`Unknown route type: ${route.type} - please report this issue`);
+          }
+        }
+      }
+
+      const fastifyServerConfig: AdapterManifest = {
+        routes,
         functionsManifest,
         pathPrefix,
         trailingSlash,

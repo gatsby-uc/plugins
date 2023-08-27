@@ -119,6 +119,10 @@ createRedirect({
 
 ### Gatsby Redirects
 
+// NOTE - There are routes that match both page and redirect. Pages take precedence over redirects so the redirect will not work:
+
+- page: "/routes/redirect/existing" and redirect: "/routes/redirect/existing" -> "/routes/redirect/hit"
+
 TODO: Does this still apply?
 We support the use of `statusCode` but do not currently support `conditions`, `ignoreCase`, or `force` as discussed in the [`createRedirect` docs](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect).
 
