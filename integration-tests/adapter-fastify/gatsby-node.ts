@@ -7,6 +7,8 @@ const TRAILING_SLASH = (process.env.TRAILING_SLASH || `never`) as GatsbyConfig["
 export const createPages: GatsbyNode["createPages"] = ({
   actions: { createRedirect, createSlice },
 }) => {
+  // TODO - Gatsby didn't write tests for proxies. Generally review tests for missing cases vs old fastify plugin tests.
+
   createRedirect({
     fromPath: applyTrailingSlashOption("/redirect", TRAILING_SLASH),
     toPath: applyTrailingSlashOption("/routes/redirect/hit", TRAILING_SLASH),

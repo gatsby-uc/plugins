@@ -5,6 +5,7 @@ import { writeJSON } from "fs-extra";
 import { hasFeature } from "gatsby-plugin-utils";
 
 import { CONFIG_FILE_NAME, PATH_TO_CACHE } from "./utils/constants";
+import { convertHeaderFormat } from "./utils/headers";
 
 import type { AdapterInit, IAdapter, IAdapterConfig } from "gatsby";
 import type { AdapterManifest } from "./utils/config";
@@ -25,8 +26,6 @@ const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterO
         );
       }
 
-      reporter.info("Adapting Gatsby to be server with Fastify!");
-
       const routes: AdapterManifest["routes"] = {
         static: [],
         dynamic: [],
@@ -40,11 +39,11 @@ const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterO
             break;
           }
           case "redirect": {
-            routes.redirect.push(route);
+            routes.redirect.push({ ...route, headers: convertHeaderFormat(route.headers) });
             break;
           }
           case "static": {
-            routes.static.push(route);
+            routes.static.push({ ...route, headers: convertHeaderFormat(route.headers) });
             break;
           }
           default: {

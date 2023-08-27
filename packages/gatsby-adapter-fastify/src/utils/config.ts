@@ -8,11 +8,23 @@ import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
 
 let config: Partial<GfConfig> = {};
 
+export interface IHeadersFastify {
+  [key: string]: string;
+}
+
+export interface StaticRoute extends Omit<IStaticRoute, "headers"> {
+  headers: IHeadersFastify;
+}
+
+export interface RedirectRoute extends Omit<IRedirectRoute, "headers"> {
+  headers: IHeadersFastify;
+}
+
 export interface AdapterManifest {
   routes: {
-    static: IStaticRoute[];
+    static: StaticRoute[];
     dynamic: IFunctionRoute[];
-    redirect: IRedirectRoute[];
+    redirect: RedirectRoute[];
   };
   functionsManifest: FunctionsManifest;
   /**
