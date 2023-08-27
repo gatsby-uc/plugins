@@ -301,7 +301,7 @@ const localFileCheck = async (key, row, { createNodeId, createNode, store, cache
         }
         let attachmentNode = createRemoteFileNode({
           url: attachment.url,
-          name: airtableFile.name.replace(/["%*/:<>?\\|]/g, ""),
+          name: airtableFile.name.replace(/[/\\?%*:|"<>]/g, "").replace(/\s/g, "-").toLowerCase(),
           store,
           cache,
           createNode,
