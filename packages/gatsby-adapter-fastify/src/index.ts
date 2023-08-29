@@ -8,7 +8,8 @@ import { CONFIG_FILE_NAME, PATH_TO_CACHE } from "./utils/constants";
 import { convertHeaderFormat } from "./utils/headers";
 
 import type { AdapterInit, IAdapter, IAdapterConfig } from "gatsby";
-import type { AdapterManifest } from "./utils/config";
+import type { AdapterManifest, FunctionRoute, RedirectRoute, StaticRoute } from "./utils/config";
+import { formatMatchPath } from "./utils/routes";
 
 interface GatsbyFastifyAdapterOptions {
   cache: IAdapter["cache"];
@@ -33,17 +34,33 @@ const createAdapterFastify: AdapterInit<GatsbyFastifyAdapterOptions> = (adapterO
       };
 
       for (const route of routesManifest) {
+        // Cleanup route matching
+        const newPath = formatMatchPath(route.path);
+
+        const newRoute = { ...route, path: newPath };
+
+        //TODO Fix the type catastrophy
+        //@ts-expect-error Cause it should think this isn't wanted
+        delete newRoute.type;
+
+        // Sort Routes
         switch (route.type) {
           case "function": {
-            routes.dynamic.push(route);
+            routes.dynamic.push({ ...newRoute, path: newPath } as FunctionRoute);
             break;
           }
           case "redirect": {
-            routes.redirect.push({ ...route, headers: convertHeaderFormat(route.headers) });
+            routes.redirect.push({
+              ...newRoute,
+              headers: convertHeaderFormat(route.headers),
+            } as RedirectRoute);
             break;
           }
           case "static": {
-            routes.static.push({ ...route, headers: convertHeaderFormat(route.headers) });
+            routes.static.push({
+              ...newRoute,
+              headers: convertHeaderFormat(route.headers),
+            } as StaticRoute);
             break;
           }
           default: {

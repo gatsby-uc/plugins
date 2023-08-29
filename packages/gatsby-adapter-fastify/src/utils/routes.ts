@@ -1,12 +1,20 @@
 // TODO: DO I need any of this?
+
+// TODO: Need this
 export function formatMatchPath(matchPath: string): string {
   return (
     matchPath
       // /test/*example (named splat route) => /test/* as find-my-way doesn't support named splats
       .replace(/\*([a-z]+)?/i, "*")
-      // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
-      // Work around for https://github.com/fastify/fastify/issues/3331
-      .replace(/\/\*$/, "*")
+      .replace(
+        /(?<path>.*)\*\/page-data\.json$/,
+        "$<path>((?:[a-zA-Z0-9-._~!&$'()*+,;=:@]+[/{1}])+(?:page-data.json)$)"
+      )
+    // .replace(/(?<path>.*)\/\*\/page-data\.json$/, ``)
+
+    // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
+    // Work around for https://github.com/fastify/fastify/issues/3331
+    // .replace(/\/\*$/, "*")
   );
 }
 

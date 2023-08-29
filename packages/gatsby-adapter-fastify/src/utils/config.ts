@@ -12,18 +12,20 @@ export interface IHeadersFastify {
   [key: string]: string;
 }
 
-export interface StaticRoute extends Omit<IStaticRoute, "headers"> {
+export interface StaticRoute extends Omit<IStaticRoute, "headers" | "type"> {
   headers: IHeadersFastify;
 }
 
-export interface RedirectRoute extends Omit<IRedirectRoute, "headers"> {
+export interface RedirectRoute extends Omit<IRedirectRoute, "headers" | "type"> {
   headers: IHeadersFastify;
 }
+
+export type FunctionRoute = Omit<IFunctionRoute, "type">
 
 export interface AdapterManifest {
   routes: {
     static: StaticRoute[];
-    dynamic: IFunctionRoute[];
+    dynamic: FunctionRoute[];
     redirect: RedirectRoute[];
   };
   functionsManifest: FunctionsManifest;

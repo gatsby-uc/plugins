@@ -1,8 +1,8 @@
 import fp from "fastify-plugin";
 
-import { moduleHeaderDecorator } from "../utils/headers";
+import { moduleHeaderDecorator, setHeaderDecorator } from "../utils/headers";
 
-import type { FastifyPluginAsync } from "fastify";
+import type { FastifyPluginAsync, FastifyReply } from "fastify";
 
 declare module "fastify" {
   interface FastifyReply {
@@ -12,7 +12,10 @@ declare module "fastify" {
 }
 
 export const implementUtilDecorators: FastifyPluginAsync = fp(async (fastify) => {
-  // fastify.decorateReply("setHeader", setHeaderDecorator);
-  // fastify.decorateReply("appendModuleHeader", moduleHeaderDecorator, ["setHeader"]);
-  fastify.decorateReply("appendModuleHeader", moduleHeaderDecorator);
+  fastify.decorateReply("setHeader", setHeaderDecorator);
+  fastify.decorateReply("json", function (this: FastifyReply, value) {
+    return this.send(value);
+  });
+  fastify.decorateReply("appendModuleHeader", moduleHeaderDecorator, ["setHeader"]);
+  // fastify.decorateReply("appendModuleHeader", moduleHeaderDecorator);
 });

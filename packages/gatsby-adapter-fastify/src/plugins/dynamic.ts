@@ -17,6 +17,20 @@ export type GatsbyFunctionHandler = (
   reply: GatsbyFunctionResponse
 ) => void | Promise<void>;
 
+function unnestFunction(input: unknown): GatsbyFunctionHandler {
+  if (typeof input === "function") {
+    return input as GatsbyFunctionHandler;
+  }
+
+  if (typeof input === "object" && !input?.default) {
+    throw new Error("Function Not Found");
+  }
+
+  if (input?.default) {
+    return unnestFunction(input?.default);
+  }
+}
+
 async function importFunction(
   pathToEntryPoint: string
 ): Promise<GatsbyFunctionHandler | undefined> {
@@ -28,7 +42,7 @@ async function importFunction(
 
   const functionExec = await import(functionImportAbsPath);
 
-  return functionExec?.default ?? functionExec; // Fixes export issues related to default export
+  return unnestFunction(functionExec); // Fixes export issues related to default export
 }
 
 export const handleDynamic: FastifyPluginAsync<{
@@ -62,6 +76,9 @@ export const handleDynamic: FastifyPluginAsync<{
       handler: async function (request, reply) {
         try {
           reply.appendModuleHeader("Dynamic");
+          if (path.endsWith("json")) {
+            reply.header("Content-Type-02", "application/jsoon");
+          }
           await Promise.resolve(functionToExecute(request, reply));
         } catch (error) {
           fastify.log.error(error);
