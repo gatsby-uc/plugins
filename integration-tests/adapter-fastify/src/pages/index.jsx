@@ -20,6 +20,10 @@ const routes = [
     url: "/routes/ssr/static",
   },
   {
+    text: "SSR 500",
+    url: "/routes/ssr/error-path"
+  },
+  {
     text: "DSG",
     url: "/routes/dsg/static",
   },
@@ -38,6 +42,10 @@ const routes = [
   {
     text: "Client-Only Named Wildcard",
     url: "/routes/client-only/named-wildcard/corinno/fenring",
+  },
+  {
+    text: "Intentiona 404 Page",
+    url: "/non/existent/page"
   }
 ]
 

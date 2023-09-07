@@ -17,18 +17,21 @@ export type GatsbyFunctionHandler = (
   reply: GatsbyFunctionResponse
 ) => void | Promise<void>;
 
-function unnestFunction(input: unknown): GatsbyFunctionHandler {
+type GatsbyFunctionsPossibilities =
+  | GatsbyFunctionHandler
+  | { config: any; default: GatsbyFunctionsPossibilities }
+  | unknown;
+
+function unnestFunction(input: GatsbyFunctionsPossibilities): GatsbyFunctionHandler {
   if (typeof input === "function") {
     return input as GatsbyFunctionHandler;
   }
 
-  if (typeof input === "object" && !input?.default) {
-    throw new Error("Function Not Found");
+  if (input && typeof input === "object" && "default" in input) {
+    return unnestFunction(input.default);
   }
 
-  if (input?.default) {
-    return unnestFunction(input?.default);
-  }
+  throw new Error("Function Not Found");
 }
 
 async function importFunction(

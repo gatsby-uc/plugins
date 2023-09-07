@@ -7,7 +7,6 @@ import { handle500 } from "./500";
 import { getConfig } from "../utils/config";
 
 import fastifyAccepts from "@fastify/accepts";
-import fastifyStatic from "@fastify/static";
 
 import type { FastifyPluginAsync } from "fastify";
 
@@ -21,7 +20,7 @@ export const serveGatsby: FastifyPluginAsync = async (fastify) => {
   await fastify.register(implementUtilDecorators);
 
   // Gatsby 500 - This must be registered before anything that wants to use it
-  await fastify.register(handle500);
+  // await fastify.register(handle500);
 
   // Gatsby Dynamic Routes = Functions, DSG, SSR, Image Transformst, Slices, etc
   await fastify.register(handleDynamic, {

@@ -8,7 +8,7 @@ export function formatMatchPath(matchPath: string): string {
       .replace(/\*([a-z]+)?/i, "*")
       .replace(
         /(?<path>.*)\*\/page-data\.json$/,
-        "$<path>((?:[a-zA-Z0-9-._~!&$'()*+,;=:@]+[/{1}])+(?:page-data.json)$)"
+        "$<path>((?:[a-zA-Z0-9-._~!&$'()*+,;=:@]+[/{1}])+)/page-data.json"
       )
     // .replace(/(?<path>.*)\/\*\/page-data\.json$/, ``)
 
