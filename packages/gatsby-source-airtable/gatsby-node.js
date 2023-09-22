@@ -297,7 +297,7 @@ const localFileCheck = async (key, row, { createNodeId, createNode, store, cache
         let extension = airtableFile.ext;
         if (!extension) {
           const deriveExtension = mime.getExtension(attachment.type); // unknown type returns null
-          extension = deriveExtension || undefined;
+          extension = deriveExtension;
         }
         let attachmentNode = createRemoteFileNode({
           url: attachment.url,
