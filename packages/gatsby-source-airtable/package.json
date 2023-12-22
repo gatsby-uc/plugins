@@ -30,7 +30,7 @@
     "mime": "^2.6.0"
   },
   "devDependencies": {
-    "covector": "0.10.0"
+    "covector": "0.10.2"
   },
   "peerDependencies": {
     "gatsby-source-filesystem": ">=2.0.0-rc.0"
