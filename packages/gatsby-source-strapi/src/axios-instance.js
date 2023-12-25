@@ -33,7 +33,7 @@ const throttlingInterceptors = (axiosInstance, maxParallelRequests) => {
     function (error) {
       PENDING_REQUESTS = Math.max(0, PENDING_REQUESTS - 1);
       return Promise.reject(error);
-    }
+    },
   );
 };
 

@@ -92,7 +92,7 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
     .filter(
       ({ schema, uid }) =>
         !uid.startsWith("admin::") &&
-        types.findIndex(({ singularName }) => singularName === schema.singularName) !== -1
+        types.findIndex(({ singularName }) => singularName === schema.singularName) !== -1,
     )
     .map(({ schema: { kind, singularName, pluralName }, uid, plugin }) => {
       const options = types.find((config) => config.singularName === singularName);

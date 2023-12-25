@@ -26,7 +26,7 @@ export const handleRedirects: FastifyPluginAsync<{
   for (let redirect of redirects) {
     let responseCode = getResponseCode(redirect);
     fastify.log.debug(
-      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`
+      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`,
     );
 
     /* Fastify can't register routes currently with the query stirngs in the path.

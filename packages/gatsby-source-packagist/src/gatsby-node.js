@@ -4,14 +4,14 @@ import { Octokit } from "@octokit/rest";
 
 export async function sourceNodes(
   { actions, createNodeId, createContentDigest, reporter },
-  { query }
+  { query },
 ) {
   if (!query || !(query.name || query.type || query.tags)) {
     reporter.error("No query paramaters passed to packagist api", query);
   } else {
     try {
       const { results: packages, total } = await getAllSearchResults(async () =>
-        searchPackagist(query)
+        searchPackagist(query),
       );
 
       reporter.info(`Got results for ${total} Packagist packages!`);
@@ -38,7 +38,7 @@ export async function sourceNodes(
 
 export async function createResolvers(
   { actions, createResolvers, createNodeId, reporter, store, cache },
-  { githubApi }
+  { githubApi },
 ) {
   global.reporter = reporter;
   const { createNode } = actions;
@@ -100,7 +100,7 @@ export async function createResolvers(
             }
           } else {
             reporter.warn(
-              `Package "${name}" isn't hosted on Github, unable to fetch Readme for non-github repos yet (PRs welcome).`
+              `Package "${name}" isn't hosted on Github, unable to fetch Readme for non-github repos yet (PRs welcome).`,
             );
           }
         },

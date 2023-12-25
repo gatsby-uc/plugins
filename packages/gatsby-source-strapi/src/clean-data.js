@@ -124,7 +124,7 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
         return {
           ...accumulator,
           [attributeName]: value.data.map(({ id, attributes }) =>
-            cleanAttributes({ id, ...attributes }, relationSchema, schemas)
+            cleanAttributes({ id, ...attributes }, relationSchema, schemas),
           ),
         };
       }
@@ -134,7 +134,7 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
         [attributeName]: cleanAttributes(
           value.data ? { id: value.data.id, ...value.data.attributes } : undefined,
           relationSchema,
-          schemas
+          schemas,
         ),
       };
     }

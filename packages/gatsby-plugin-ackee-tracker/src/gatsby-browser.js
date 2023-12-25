@@ -14,7 +14,7 @@ let trackerInstance;
  */
 export const onRouteUpdate = (
   _,
-  { domainId, server, ignoreLocalhost, ignoreOwnVisits, detailed }
+  { domainId, server, ignoreLocalhost, ignoreOwnVisits, detailed },
 ) => {
   /**
    * If there is no tracker instance, instantiate one with the plugin options.

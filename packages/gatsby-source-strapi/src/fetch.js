@@ -40,7 +40,7 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
     reporter.info(
       `Starting to fetch data from Strapi - ${
         options.url
-      } with ${options.paramsSerializer.serialize(options.params)}`
+      } with ${options.paramsSerializer.serialize(options.params)}`,
     );
 
     // Handle internationalization
@@ -91,13 +91,13 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
     const otherLocalizationsData = await Promise.all(otherLocalizationsPromises);
 
     return castArray([data.data, ...otherLocalizationsData]).map((entry) =>
-      cleanData(entry, { ...context, contentTypeUid: uid })
+      cleanData(entry, { ...context, contentTypeUid: uid }),
     );
   } catch (error) {
     if (error.response.status !== 404) {
       reporter.panic(
         `Failed to fetch data from Strapi ${options.url} with ${JSON.stringify(options)}`,
-        error
+        error,
       );
     }
     return [];
@@ -127,7 +127,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
     reporter.info(
       `Starting to fetch data from Strapi - ${
         options.url
-      } with ${options.paramsSerializer.serialize(options.params)}`
+      } with ${options.paramsSerializer.serialize(options.params)}`,
     );
 
     const { data: response } = await axiosInstance(options);
@@ -158,7 +158,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
         reporter.info(
           `Starting to fetch page ${page} from Strapi - ${
             fetchOptions.url
-          } with ${options.paramsSerializer.serialize(fetchOptions.params)}`
+          } with ${options.paramsSerializer.serialize(fetchOptions.params)}`,
         );
 
         try {
@@ -176,7 +176,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
     const results = await Promise.all(fetchPagesPromises);
 
     const cleanedData = [...data, ...flattenDeep(results)].map((entry) =>
-      cleanData(entry, { ...context, contentTypeUid: uid })
+      cleanData(entry, { ...context, contentTypeUid: uid }),
     );
 
     return cleanedData;

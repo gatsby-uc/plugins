@@ -25,7 +25,7 @@ type NodeType = ObjectType & { url: string; [key: string]: string };
 // source all objects from s3
 export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
   { actions: { createNode }, createNodeId, createContentDigest, reporter },
-  pluginOptions: PluginOptionsType
+  pluginOptions: PluginOptionsType,
 ) {
   const { aws: awsConfig, buckets, expiration = 900 } = pluginOptions;
 
@@ -54,7 +54,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
         reporter.error(
           `Error processing objects from bucket "${bucket}". Is it empty?`,
           new Error("No object in Bucket"),
-          "gatsby-source-s3"
+          "gatsby-source-s3",
         );
       }
 
@@ -82,7 +82,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
 
   try {
     const allBucketsObjects: ObjectType[][] = await Promise.all(
-      buckets.map((bucket) => listAllS3Objects(bucket))
+      buckets.map((bucket) => listAllS3Objects(bucket)),
     );
 
     // flatten objects

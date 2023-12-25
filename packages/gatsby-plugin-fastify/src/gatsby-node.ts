@@ -14,7 +14,7 @@ import { getProxiesAndRedirects } from "./gatsby/proxies-and-redirects";
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async (
   { store, pathPrefix, reporter },
-  pluginOptions: GatsbyFastifyPluginOptions
+  pluginOptions: GatsbyFastifyPluginOptions,
 ) => {
   try {
     const { proxies, redirects } = getProxiesAndRedirects(store);
@@ -55,7 +55,7 @@ export const pluginOptionsSchema: GatsbyNode["pluginOptionsSchema"] = ({ Joi }) 
         .custom((value, helpers) => {
           if (value && !hasFeature("image-cdn")) {
             return helpers.error(
-              "The Image CDN is not supported by your Gatsby version. Please upgrade to Gatsby v4.10.0 or higher to use it."
+              "The Image CDN is not supported by your Gatsby version. Please upgrade to Gatsby v4.10.0 or higher to use it.",
             );
           }
 

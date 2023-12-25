@@ -67,7 +67,7 @@ class SimpleRecipe extends React.Component {
                       <div>
                         <p className="heading">Prep Time</p>
                         <p className="">{`Prep: ${checkBlankTime(
-                          recipe.data.Preparation_Time
+                          recipe.data.Preparation_Time,
                         )}`}</p>
                       </div>
                     </div>

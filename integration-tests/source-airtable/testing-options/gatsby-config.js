@@ -20,7 +20,7 @@ nock("https://api.airtable.com:443", { encodedQueryParams: true })
     (uri, requestBody, cb) => {
       fs.readFile("__fixtures__/sections.json", cb); // Error-first callback
     },
-    []
+    [],
   );
 
 nock("https://api.airtable.com:443", { encodedQueryParams: true })
@@ -31,7 +31,7 @@ nock("https://api.airtable.com:443", { encodedQueryParams: true })
     (uri, requestBody, cb) => {
       fs.readFile("__fixtures__/pages.json", cb); // Error-first callback
     },
-    []
+    [],
   );
 
 module.exports = {

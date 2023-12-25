@@ -9,7 +9,7 @@ import type { IGatsbyFunction } from "gatsby/dist/redux/types";
 
 export type GatsbyFunctionHandler = (
   request: FastifyRequest,
-  reply: FastifyReply
+  reply: FastifyReply,
 ) => void | Promise<void>;
 
 async function getFunctionToExec({

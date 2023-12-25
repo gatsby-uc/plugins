@@ -15,7 +15,7 @@ test.each`
 
     expect(errors).toEqual(expectedErrors);
     expect(isValid).toBe(false);
-  }
+  },
 );
 
 test("should provide meaningful errors when fields are deprecated", async () => {

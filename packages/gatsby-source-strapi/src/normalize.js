@@ -11,7 +11,7 @@ const prepareJSONNode = (json, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
 
   const jsonNodeId = createNodeId(
-    `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-JSONNode`
+    `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-JSONNode`,
   );
 
   const JSONNode = {
@@ -72,7 +72,7 @@ const prepareRelationNode = (relation, context) => {
 const prepareTextNode = (text, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
   const textNodeId = createNodeId(
-    `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-TextNode`
+    `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-TextNode`,
   );
 
   const textNode = {
@@ -232,7 +232,7 @@ export const createNodes = (entity, context, uid) => {
           const compoNodes = createNodes(value, context, attribute.component).flat();
           // Just link the component node and not the component's children one
           entity[`${attributeName}___NODE`] = compoNodes.find(
-            ({ internal }) => internal.type === componentNodeName
+            ({ internal }) => internal.type === componentNodeName,
           ).id;
 
           for (const node of compoNodes) {

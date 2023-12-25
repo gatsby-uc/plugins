@@ -14,7 +14,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
         Joi.object({
           type: Joi.string().required(),
           query: Joi.function().arity(1).required(),
-        })
+        }),
       )
       .required()
       .min(1),
@@ -23,7 +23,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, reporter },
-  { appwriteEndpoint, appwriteProject, appwriteApiKey, types }
+  { appwriteEndpoint, appwriteProject, appwriteApiKey, types },
 ) => {
   const { createNode } = actions;
 
