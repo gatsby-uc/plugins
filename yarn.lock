@@ -9461,13 +9461,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node18@npm:^18.2.2":
-  version: 18.2.2
-  resolution: "@tsconfig/node18@npm:18.2.2"
-  checksum: 1c4b04b570e33de14bf518492e077079db2dcfba738c8d40c6ff916d94c9410246f4cb56f0802d9771423862140bf714c35d4a5f6cec2446d851cf61d3f8f9df
-  languageName: node
-  linkType: hard
-
 "@tsconfig/node20@npm:^20.1.2":
   version: 20.1.2
   resolution: "@tsconfig/node20@npm:20.1.2"
@@ -24284,7 +24277,6 @@ __metadata:
     "@changesets/changelog-github": "npm:^0.5.0"
     "@changesets/cli": "npm:^2.27.1"
     "@hkdobrev/run-if-changed": "npm:^0.3.1"
-    "@tsconfig/node18": "npm:^18.2.2"
     "@tsconfig/node20": "npm:^20.1.2"
     "@typescript-eslint/eslint-plugin": "npm:^6.15.0"
     "@typescript-eslint/parser": "npm:^6.15.0"
