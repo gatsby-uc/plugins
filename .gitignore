@@ -107,6 +107,7 @@ dist
 .tern-port
 
 # Yarn 3 cache
+.pnp.*
 .yarn/*
 !.yarn/cache
 !.yarn/patches

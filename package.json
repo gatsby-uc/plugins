@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "ac": "yarn all-contributors",
-    "build": "yarn workspaces foreach -vpi --no-private run build",
+    "build": "yarn workspaces foreach -Avpi --no-private run build",
     "cs": "yarn changeset",
     "format": "yarn test:format --write",
     "lint": "yarn test:lint --fix",
@@ -20,7 +20,7 @@
     "test:types": "yarn tsc",
     "publish-ci": "yarn build && yarn changeset publish",
     "postinstall": "yarn husky install",
-    "test": "yarn workspaces foreach -vp run pretest && yarn workspaces foreach -vp run test"
+    "test": "yarn workspaces foreach -Avp run pretest && yarn workspaces foreach -vp run test"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.10",
@@ -44,7 +44,7 @@
     "renovate": "^34.160.0",
     "typescript": "^4.9.5"
   },
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@4.0.2+sha256.825003a0f561ad09a3b1ac4a3b3ea6207af2796d54f62a9420520915721f5186",
   "lint-staged": {
     "**/*.{mjs,js,ts,md,json,yml,json5}": "prettier --write",
     "packages/**/*.{js,ts}": "eslint --fix"
