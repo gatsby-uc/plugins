@@ -17,6 +17,9 @@ jobs:
         uses: ./.github/actions/cache-restore
         id: cache-node-modules
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install --immutable
