@@ -43,6 +43,9 @@ jobs:
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Format source code
         run: yarn test:format
 
@@ -56,6 +59,9 @@ jobs:
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Check types
         run: yarn test:types
@@ -71,7 +77,10 @@ jobs:
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
 
-      - name: Check Types
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Check Linting
         run: yarn test:lint
 
   check_gatsby_exports:
@@ -84,6 +93,9 @@ jobs:
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Build packages
         run: yarn build
@@ -108,6 +120,9 @@ jobs:
         uses: ./.github/actions/cache-restore
         with:
           node-version: ${{ matrix.node }}
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Build packages
         run: yarn build
