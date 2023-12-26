@@ -360,7 +360,7 @@ const buildNode = (localFiles, row, cleanedKey, raw, mapping, createNodeId) => {
 };
 
 const cleanKey = (key, data) => {
-  return key.replaceAll(' ', "_");
+  return key.replaceAll(" ", "_");
 };
 
 const cleanType = (key) => {
