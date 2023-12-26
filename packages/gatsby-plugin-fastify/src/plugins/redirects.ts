@@ -6,6 +6,7 @@ import type { FastifyPluginAsync } from "fastify";
 import type { IRedirect } from "gatsby/dist/redux/types";
 
 function getResponseCode(redirect: IRedirect): StatusCodes {
+  //@ts-expect-error - StatusCodes just doesn't have 208 for some reason
   return (
     redirect.statusCode ||
     (redirect.isPermanent ? StatusCodes.PERMANENT_REDIRECT : StatusCodes.TEMPORARY_REDIRECT)
