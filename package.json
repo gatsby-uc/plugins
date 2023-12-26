@@ -20,7 +20,7 @@
     "test:types": "yarn tsc",
     "publish-ci": "yarn build && yarn changeset publish",
     "postinstall": "yarn husky install",
-    "test": "yarn workspaces foreach -Avp run pretest && yarn workspaces foreach -vp run test"
+    "test": "yarn workspaces foreach -Avp run pretest && yarn workspaces foreach -Avp run test"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
