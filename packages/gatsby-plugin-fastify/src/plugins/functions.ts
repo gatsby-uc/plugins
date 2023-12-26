@@ -22,7 +22,7 @@ async function getFunctionToExec({
   }
 
   const function_ = await import(functionImportAbsPath);
-  return function_?.default ?? function_;
+  return function_?.default?.default ?? function_?.default ?? function_;
 }
 
 async function getFunctionHandler(routeConfig: IGatsbyFunction) {
