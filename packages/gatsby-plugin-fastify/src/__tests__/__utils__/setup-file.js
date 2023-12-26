@@ -1,9 +1,9 @@
 import { setupFastify, shutdownFastify } from "./server";
 
 beforeAll(async () => {
-  globalThis.fastify = await setupFastify();
-}, 100_000);
+  return (globalThis.fastify = await setupFastify());
+}, 10_000);
 
 afterAll(async () => {
-  await shutdownFastify(globalThis.fastify);
+  return shutdownFastify(globalThis.fastify);
 });
