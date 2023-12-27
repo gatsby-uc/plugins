@@ -111,7 +111,7 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=6144
     strategy:
       matrix:
-        node: [20]
+        node: [18]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
