@@ -24,7 +24,7 @@ export async function setupFastify(options) {
 
   setConfig(ConfigKeyEnum.SERVER, { ...getServerConfig(), ...overrideServerConfig });
 
-  return createFastifyInstance(serveGatsby);
+  return await createFastifyInstance(serveGatsby);
 }
 
 export async function shutdownFastify(fastify) {

@@ -5,5 +5,5 @@ beforeAll(async () => {
 }, 100_000);
 
 afterAll(async () => {
-  return shutdownFastify(globalThis.fastify);
+  return await shutdownFastify(globalThis.fastify);
 });
