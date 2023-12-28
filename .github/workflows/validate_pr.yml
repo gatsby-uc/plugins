@@ -14,16 +14,19 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [20]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: ./.github/actions/cache-restore
         id: cache-node-modules
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
@@ -35,10 +38,13 @@ jobs:
     needs: [setup]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Format source code
         run: yarn test:format
@@ -49,10 +55,13 @@ jobs:
     needs: [setup]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Check types
         run: yarn test:types
@@ -63,12 +72,15 @@ jobs:
     needs: [setup]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
 
-      - name: Check Types
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Check Linting
         run: yarn test:lint
 
   check_gatsby_exports:
@@ -77,10 +89,13 @@ jobs:
     needs: [setup]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Build packages
         run: yarn build
@@ -96,15 +111,18 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=6144
     strategy:
       matrix:
-        node: [18]
+        node: [20]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js v${{ matrix.node }}
         uses: ./.github/actions/cache-restore
         with:
           node-version: ${{ matrix.node }}
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Build packages
         run: yarn build

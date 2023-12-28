@@ -36,5 +36,5 @@ export function moduleHeaderDecorator(this: FastifyReply, module: Modules): void
 }
 
 export function setHeaderDecorator(this: FastifyReply, key: string, value: string) {
-  this.header(key, value);
+  return this.header(key, value);
 }

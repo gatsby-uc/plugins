@@ -43,7 +43,7 @@ for (const name of packageFolders) {
   if (!(await pathExists(join(packagePath, "dist")))) {
     log.error(
       name,
-      `Missing dist folder! Did you run build and is it configured to output to the \`dist\` folder?`
+      `Missing dist folder! Did you run build and is it configured to output to the \`dist\` folder?`,
     );
   }
 
@@ -80,12 +80,12 @@ for (const name of packageFolders) {
         `${fileName} is in \`dist\` but is not in root.`,
         `Gatsby requires these files in root, please re-export file in \`dist\` from package root by placing the code`,
         `\`${chalk.green("module")}.${chalk.green("exports")} = ${chalk.hex("dcdcaa")(
-          "require"
+          "require",
         )}${chalk.hex("ffd700")("(")}${chalk.hex("ce9178")(
-          `"./dist/${fileName.split(".")[0]}"`
+          `"./dist/${fileName.split(".")[0]}"`,
         )}${chalk.hex("ffd700")(")")};\``,
         "in a file @",
-        chalk.underline(`${join("packages", name, fileName)}`)
+        chalk.underline(`${join("packages", name, fileName)}`),
       );
 
       continue;

@@ -21,25 +21,23 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Query for all markdown "nodes" and for the slug we previously created.
     resolve(
-      graphql(
-        `
-          {
-            allAirtable(filter: { table: { eq: "Recipes" } }) {
-              edges {
-                node {
-                  id
-                  data {
-                    Name
-                  }
-                  fields {
-                    slug
-                  }
+      graphql(`
+        {
+          allAirtable(filter: { table: { eq: "Recipes" } }) {
+            edges {
+              node {
+                id
+                data {
+                  Name
+                }
+                fields {
+                  slug
                 }
               }
             }
           }
-        `
-      ).then((result) => {
+        }
+      `).then((result) => {
         if (result.errors) {
           result.errors.forEach((error) => {
             console.log(error);
@@ -59,7 +57,7 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         return;
-      })
+      }),
     );
   });
 };

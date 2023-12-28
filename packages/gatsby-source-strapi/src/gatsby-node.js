@@ -25,7 +25,7 @@ export const sourceNodes = async (
     getNodes,
     getNode,
   },
-  strapiConfig
+  strapiConfig,
 ) => {
   // Cast singleTypes and collectionTypes to empty arrays if they're not defined
   if (!Array.isArray(strapiConfig.singleTypes)) {
@@ -59,7 +59,7 @@ export const sourceNodes = async (
   const { unstable_createNodeManifest, createNode } = actions;
 
   const existingNodes = getNodes().filter(
-    (n) => n.internal.owner === `gatsby-source-strapi` || n.internal.type === "File"
+    (n) => n.internal.owner === `gatsby-source-strapi` || n.internal.type === "File",
   );
 
   for (const n of existingNodes) {
@@ -77,7 +77,7 @@ export const sourceNodes = async (
       }
 
       return fetchEntities(config, context);
-    })
+    }),
   );
 
   let newOrExistingEntries;
@@ -105,7 +105,7 @@ export const sourceNodes = async (
         }
 
         return fetchEntities(config, context);
-      })
+      }),
     );
   }
 
@@ -171,7 +171,7 @@ export const sourceNodes = async (
         });
       } else if (isPreview && !createNodeManifestIsSupported && !warnOnceForNoSupport) {
         console.warn(
-          `gatsby-source-strapi: Your version of Gatsby core doesn't support Content Sync (via the unstable_createNodeManifest action). Please upgrade to the latest version to use Content Sync in your site.`
+          `gatsby-source-strapi: Your version of Gatsby core doesn't support Content Sync (via the unstable_createNodeManifest action). Please upgrade to the latest version to use Content Sync in your site.`,
         );
         warnOnceForNoSupport = true;
       }

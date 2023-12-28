@@ -127,7 +127,7 @@ const extractImages = async (item, context, uid) => {
               {
                 filters: { url: url.replace(`${apiURL}`, "") },
               },
-              { encode: false }
+              { encode: false },
             );
 
             const { data } = await axiosInstance.get(`/api/upload/files?${filters}`);
@@ -140,7 +140,7 @@ const extractImages = async (item, context, uid) => {
             const fileNodeID = await downloadFile(file, context);
 
             return { fileNodeID, file };
-          })
+          }),
         );
 
         const fileNodes = files.filter(Boolean);
@@ -186,7 +186,7 @@ const extractImages = async (item, context, uid) => {
             const fileNodeID = await downloadFile(file, context);
 
             return fileNodeID;
-          })
+          }),
         );
 
         const images = files.filter(Boolean);
@@ -212,5 +212,5 @@ export const downloadMediaFiles = async (entities, context, contentTypeUid) =>
       await extractImages(entity, context, contentTypeUid);
 
       return entity;
-    })
+    }),
   );

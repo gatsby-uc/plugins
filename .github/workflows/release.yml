@@ -11,11 +11,14 @@ jobs:
     name: Setup Dependencies
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: ./.github/actions/cache-restore
         id: cache-node-modules
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
@@ -27,7 +30,7 @@ jobs:
     needs: [setup]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
@@ -36,7 +39,7 @@ jobs:
       - name: Set up Node.js
         uses: ./.github/actions/cache-restore
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Create Release Pull Request
         uses: changesets/action@v1

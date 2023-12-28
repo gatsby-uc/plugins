@@ -6,6 +6,7 @@ import type { FastifyPluginAsync } from "fastify";
 import type { IRedirect } from "gatsby/dist/redux/types";
 
 function getResponseCode(redirect: IRedirect): StatusCodes {
+  //@ts-expect-error - StatusCodes just doesn't have 208 for some reason
   return (
     redirect.statusCode ||
     (redirect.isPermanent ? StatusCodes.PERMANENT_REDIRECT : StatusCodes.TEMPORARY_REDIRECT)
@@ -26,7 +27,7 @@ export const handleRedirects: FastifyPluginAsync<{
   for (let redirect of redirects) {
     let responseCode = getResponseCode(redirect);
     fastify.log.debug(
-      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`
+      `Registering "${redirect.fromPath}" as redirect to "${redirect.toPath}" with HTTP status code "${responseCode}".`,
     );
 
     /* Fastify can't register routes currently with the query stirngs in the path.

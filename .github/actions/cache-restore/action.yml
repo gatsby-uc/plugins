@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: "Node version to use, default to LTS"
     required: true
-    default: 18
+    default: 20
 outputs:
   cache-hit:
     description: "Forward actions/cache cache-hit output"
@@ -16,7 +16,7 @@ runs:
   steps:
     # Setup a Node environment given a node version
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
 

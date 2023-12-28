@@ -5,7 +5,7 @@ export function formatMatchPath(matchPath: string): string {
       .replace(/\*([a-z]+)?/i, "*")
       .replace(
         /(?<path>.*)\*\/page-data\.json$/,
-        `($<path>\/(?:[a-zA-Z0-9\-._~!$&\'()*+,;=:@]+[\/{1}])+(?:page\-data\.json)$)`
+        `($<path>\/(?:[a-zA-Z0-9\-._~!$&\'()*+,;=:@]+[\/{1}])+(?:page\-data\.json)$)`,
       )
       // Findmyway can't match a /example/* route to /example, this modifies the match path is /example* so that it correctly matchs /example, /example/, and /example/test
       // Work around for https://github.com/fastify/fastify/issues/3331
@@ -18,7 +18,7 @@ export function removeQueryParmsFromUrl(url: string) {
 }
 
 export function buildRedirectUrlFromParameters(path: string, data: { [s: string]: string } = {}) {
-  return path.replace(/:(\w+)|(\*)/gi, function (match, p1, p2) {
+  return path.replaceAll(/:(\w+)|(\*)/gi, function (match, p1, p2) {
     if (p1 && !data[p1]) return match; // :Something in toPath does not have a splat in fromPath pass it through colon intact
     let lookupString = p1 ?? p2;
     let replacement = data[lookupString];
