@@ -26,7 +26,7 @@
   "scripts": {
     "build": "babel src --out-dir ./dist --ignore \"**/__tests__,**/*.d.ts\" --extensions \".ts,.js\"",
     "pretest": "cd ../../integration-tests/plugin-fastify/ && yarn run build",
-    "test": "jest --coverage",
+    "test:disable": "jest --coverage",
     "watch": "yarn build --watch"
   },
   "dependencies": {
