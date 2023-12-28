@@ -7,7 +7,7 @@ const getDeprecatedOptions = ({ Joi }) =>
         .messages({
           "any.unknown": `'${option}' is no longer supported. Use 'saveButton.${option}' instead by setting it to the same value you had before on '${option}'.`,
         }),
-    ])
+    ]),
   );
 
 export const pluginOptionsSchema = ({ Joi }) =>
@@ -19,7 +19,7 @@ export const pluginOptionsSchema = ({ Joi }) =>
         Joi.object({
           round: Joi.boolean().default(false),
           tall: Joi.boolean().default(true),
-        })
+        }),
       )
       .default(false),
   });

@@ -161,7 +161,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
         title: "String",
       },
       interfaces: [`Node`, `RemoteFile`],
-    })
+    }),
   );
 };
 

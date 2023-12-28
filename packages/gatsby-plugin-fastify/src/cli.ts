@@ -61,5 +61,5 @@ yargs(hideBin(process.argv))
 
         open(url);
       }
-    }
+    },
   ).argv;

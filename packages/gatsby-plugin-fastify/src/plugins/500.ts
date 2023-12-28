@@ -12,7 +12,7 @@ export const handle500: FastifyPluginAsync = fp(async (fastify) => {
   fastify.log.info(
     `Gatsby 500 error page ${
       gatsby500ErrorFileExists ? "exists" : "missing, using generic 500 error for DSG/SSR"
-    }`
+    }`,
   );
 
   fastify.setErrorHandler(async (error, request, reply) => {

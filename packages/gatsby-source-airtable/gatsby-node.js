@@ -7,7 +7,7 @@ const path = require("node:path");
 
 exports.sourceNodes = async (
   { actions, createNodeId, store, cache },
-  { apiKey, tables, concurrency }
+  { apiKey, tables, concurrency },
 ) => {
   // tables contain baseId, tableName, tableView, queryName, mapping, tableLinks
   const { createNode, setPluginStatus } = actions;
@@ -16,7 +16,7 @@ exports.sourceNodes = async (
     // hoist api so we can use in scope outside of this block
     if (!apiKey && process.env.GATSBY_AIRTABLE_API_KEY) {
       console.warn(
-        "\nImplicit setting of GATSBY_AIRTABLE_API_KEY as apiKey will be deprecated in future release, apiKey should be set in gatsby-config.js, please see Readme!"
+        "\nImplicit setting of GATSBY_AIRTABLE_API_KEY as apiKey will be deprecated in future release, apiKey should be set in gatsby-config.js, please see Readme!",
       );
     }
     var api = await new Airtable({
@@ -113,7 +113,7 @@ exports.sourceNodes = async (
         tableOptions.separateMapType === undefined ? false : tableOptions.separateMapType,
         cleanMapping,
         cleanLinks,
-      ])
+      ]),
     );
   }
 
@@ -137,7 +137,7 @@ exports.sourceNodes = async (
             row.mapping = currentValue[5]; // mapping from tableOptions above
             row.tableLinks = currentValue[6]; // tableLinks from tableOptions above
             return row;
-          })
+          }),
         );
       }, []);
     })
@@ -178,7 +178,7 @@ exports.sourceNodes = async (
       if (row.separateNodeType && (!row.queryName || row.queryName === "")) {
         console.warn(
           `You have opted into separate node types, but not specified a queryName.
-          We use the queryName to suffix to node type. Without a queryName, it will act like separateNodeType is false.`
+          We use the queryName to suffix to node type. Without a queryName, it will act like separateNodeType is false.`,
         );
       }
 
@@ -205,7 +205,7 @@ exports.sourceNodes = async (
         for (const node of nodes) createNode(node);
       });
     },
-    { concurrency: concurrency }
+    { concurrency: concurrency },
   );
 };
 
@@ -263,7 +263,7 @@ const checkChildNode = async (
   key,
   row,
   processedData,
-  { createNodeId, createNode, store, cache }
+  { createNodeId, createNode, store, cache },
 ) => {
   let data = row.fields;
   let mapping = row.mapping;
@@ -301,7 +301,7 @@ const localFileCheck = async (key, row, { createNodeId, createNode, store, cache
         }
         let attachmentNode = createRemoteFileNode({
           url: attachment.url,
-          name: airtableFile.name.replace(/["%*/:<>?\\|]/g, ""),
+          name: airtableFile.name.replaceAll(/["%*/:<>?\\|]/g, ""),
           store,
           cache,
           createNode,
@@ -318,7 +318,7 @@ const localFileCheck = async (key, row, { createNodeId, createNode, store, cache
     } catch (error) {
       console.log(
         "You specified a fileNode, but we caught an error. First check that you have gatsby-source-filesystem installed?\n",
-        error
+        error,
       );
     }
   }
@@ -360,9 +360,9 @@ const buildNode = (localFiles, row, cleanedKey, raw, mapping, createNodeId) => {
 };
 
 const cleanKey = (key, data) => {
-  return key.replace(/ /g, "_");
+  return key.replaceAll(" ", "_");
 };
 
 const cleanType = (key) => {
-  return key ? key.replace(/[ +/]/g, "") : "";
+  return key ? key.replaceAll(/[ +/]/g, "") : "";
 };

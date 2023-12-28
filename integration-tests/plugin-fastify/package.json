@@ -18,26 +18,26 @@
     "postinstall": "[[ x\"${GATSBY_CLOUD}\" == \"x\" ]] || yarn build:deps"
   },
   "dependencies": {
-    "fastify": "^4.17.0",
-    "gatsby": "^5.10.0",
+    "fastify": "^4.25.2",
+    "gatsby": "^5.13.1",
     "gatsby-plugin-fastify": "*",
-    "gatsby-plugin-image": "^3.10.0",
-    "gatsby-plugin-manifest": "^5.10.0",
-    "gatsby-plugin-postcss": "^6.10.0",
-    "gatsby-plugin-sharp": "^5.10.0",
-    "gatsby-plugin-sitemap": "^6.10.0",
-    "gatsby-source-faker": "^5.10.0",
-    "gatsby-source-filesystem": "^5.10.0",
-    "gatsby-transformer-sharp": "^5.10.0",
-    "postcss": "^8.4.24",
+    "gatsby-plugin-image": "^3.13.0",
+    "gatsby-plugin-manifest": "^5.13.0",
+    "gatsby-plugin-postcss": "^6.13.0",
+    "gatsby-plugin-sharp": "^5.13.0",
+    "gatsby-plugin-sitemap": "^6.13.0",
+    "gatsby-source-faker": "^5.13.0",
+    "gatsby-source-filesystem": "^5.13.0",
+    "gatsby-transformer-sharp": "^5.13.0",
+    "postcss": "^8.4.32",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
-    "@babel/preset-typescript": "^7.21.5",
-    "babel-loader": "^9.1.2",
-    "babel-preset-gatsby": "^3.10.0",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-typescript": "^7.23.3",
+    "babel-loader": "^9.1.3",
+    "babel-preset-gatsby": "^3.13.0",
     "benchmark": "^2.1.4"
   }
 }
