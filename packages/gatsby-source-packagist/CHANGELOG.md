@@ -1,5 +1,22 @@
 # gatsby-source-packagist
 
+## 3.2.2
+
+### Patch Changes
+
+- [#461](https://github.com/gatsby-uc/plugins/pull/461) [`caf7d4f`](https://github.com/gatsby-uc/plugins/commit/caf7d4feb52b9ca062b0d78883659d62e86243f4) Thanks [@moonmeister](https://github.com/moonmeister)! - Updated can-i-use database
+
+- [#461](https://github.com/gatsby-uc/plugins/pull/461) [`caf7d4f`](https://github.com/gatsby-uc/plugins/commit/caf7d4feb52b9ca062b0d78883659d62e86243f4) Thanks [@moonmeister](https://github.com/moonmeister)! - - Updated testing and runners to latest Node 20 LTS.
+
+  - Updated to latests Yarn v4 and corepack for management of packageManager. Please run `corepack enable` to use the correct version of `yarn`.
+  - Updated dependencies.
+  - Updated prettier and associated formatting.
+  - Update TypeScript versions used to latest.
+
+- [#444](https://github.com/gatsby-uc/plugins/pull/444) [`b7b48b7`](https://github.com/gatsby-uc/plugins/commit/b7b48b781885a7b0378bb44f18ee18b0733a3981) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
+- [#453](https://github.com/gatsby-uc/plugins/pull/453) [`6a313dc`](https://github.com/gatsby-uc/plugins/commit/6a313dca5b1f7f71a2a7ef8c19aef7e72e5f7445) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
 ## 3.2.1
 
 ### Patch Changes
