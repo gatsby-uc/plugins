@@ -39,6 +39,15 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
 
     const attributeName = restrictedFields.has(name) ? _.snakeCase(`strapi_${name}`) : name;
 
+    if (attributeName === "localizations" && currentSchema.schema.pluginOptions?.i18n?.localized) {
+      return {
+        ...accumulator,
+        [attributeName]: value.data.map(({ id, attributes }) =>
+          cleanAttributes({ id, ...attributes }, currentSchema, schemas)
+        ),
+      };
+    }
+
     if (!attribute?.type) {
       accumulator[attributeName] = value;
 

@@ -177,7 +177,10 @@ export const createNodes = (entity, context, uid) => {
         delete entity[attributeName];
       }
 
-      if (type === "relation") {
+      if (
+        type === "relation" ||
+        (attributeName === "localizations" && schema.schema.pluginOptions?.i18n?.localized)
+      ) {
         // Create type for the first level of relations, otherwise the user should fetch the other content type
         // to link them
         const config = {
@@ -186,7 +189,7 @@ export const createNodes = (entity, context, uid) => {
           createNodeId,
           parentNode: entryNode,
           attributeName,
-          targetSchemaUid: attribute.target,
+          targetSchemaUid: type === "relation" ? attribute.target : uid,
         };
 
         if (Array.isArray(value)) {
