@@ -2,10 +2,10 @@ import { readJSONSync, existsSync } from "fs-extra";
 
 import type { NoUndefinedField } from "../gatsby/client-side-route";
 import type { IGatsbyFunction, IRedirect } from "gatsby/dist/redux/types";
-import type { PluginOptions } from "gatsby";
 import type { ServerSideRoute } from "../gatsby/server-routes";
 import type { GatsbyFastifyProxy } from "../gatsby/proxies-and-redirects";
 import type { FastifyServerOptions } from "fastify";
+import type { IAdapter, IAdapterConfig } from "gatsby";
 
 import { PathConfig } from "../plugins/client-routes";
 import { CONFIG_FILE_NAME, CONFIG_FILE_PATH } from "./constants";
@@ -15,13 +15,15 @@ let config: Partial<GfConfig> = {};
 
 const configPrefixer = buildPrefixer(CONFIG_FILE_PATH);
 
-export interface GatsbyFastifyPluginOptions extends PluginOptions {
-  features: {
-    reverseProxy: boolean | Record<string, unknown>;
-    redirects: boolean;
-    imageCdn: boolean;
+export interface GatsbyFastifyAdapterOptions {
+  adapter: {
+    cache: IAdapter["cache"];
+    deployURL?: IAdapterConfig["deployURL"];
+    excludeDatastoreFromEngineFunction?: IAdapterConfig["excludeDatastoreFromEngineFunction"];
   };
-  fastify: FastifyServerOptions;
+  fastify?: {
+    caseSensitive: FastifyServerOptions["caseSensitive"];
+  };
 }
 export interface GatsbyNodeServerConfig extends GatsbyFastifyPluginOptions {
   clientSideRoutes: NoUndefinedField<PathConfig>[];
