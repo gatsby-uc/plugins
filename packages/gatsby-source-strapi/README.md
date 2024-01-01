@@ -435,3 +435,5 @@ This plugin has several limitations, please be aware of these:
 - `fields`
 - `internal`
 - `parent`
+
+4. The `localizations` field is not properly supported. The entries are not references to the actual Gatsby nodes.
