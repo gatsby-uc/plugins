@@ -1,5 +1,11 @@
 # gatsby-plugin-pinterest
 
+## 5.1.3
+
+### Patch Changes
+
+- [#450](https://github.com/gatsby-uc/plugins/pull/450) [`f334dd4`](https://github.com/gatsby-uc/plugins/commit/f334dd4a79868cef3dc03534baa27e95e36760c8) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling to v7.23.7
+
 ## 5.1.2
 
 ### Patch Changes

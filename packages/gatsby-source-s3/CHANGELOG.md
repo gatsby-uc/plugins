@@ -1,5 +1,13 @@
 # gatsby-source-s3
 
+## 4.1.3
+
+### Patch Changes
+
+- [#464](https://github.com/gatsby-uc/plugins/pull/464) [`c43c4d8`](https://github.com/gatsby-uc/plugins/commit/c43c4d86a4d787415b7efd830b9b1620ae4df989) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
+- [#450](https://github.com/gatsby-uc/plugins/pull/450) [`f334dd4`](https://github.com/gatsby-uc/plugins/commit/f334dd4a79868cef3dc03534baa27e95e36760c8) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling to v7.23.7
+
 ## 4.1.2
 
 ### Patch Changes
