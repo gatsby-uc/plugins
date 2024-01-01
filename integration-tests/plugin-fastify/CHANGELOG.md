@@ -1,5 +1,14 @@
 # test-fastify-gatsby
 
+## 1.0.18
+
+### Patch Changes
+
+- [#462](https://github.com/gatsby-uc/plugins/pull/462) [`a4e6768`](https://github.com/gatsby-uc/plugins/commit/a4e6768b601581df831fc8e446b9ef7e464bfebf) Thanks [@renovate](https://github.com/apps/renovate)! - chore(integration-tests): update dependency @babel/core to ^7.23.7
+
+- Updated dependencies [[`c43c4d8`](https://github.com/gatsby-uc/plugins/commit/c43c4d86a4d787415b7efd830b9b1620ae4df989), [`f334dd4`](https://github.com/gatsby-uc/plugins/commit/f334dd4a79868cef3dc03534baa27e95e36760c8)]:
+  - gatsby-plugin-fastify@0.13.3
+
 ## 1.0.17
 
 ### Patch Changes
