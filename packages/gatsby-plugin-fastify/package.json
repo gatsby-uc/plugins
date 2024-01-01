@@ -30,7 +30,7 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "@babel/runtime": "^7.23.6",
+    "@babel/runtime": "^7.23.7",
     "@fastify/accepts": "^4.3.0",
     "@fastify/http-proxy": "^8.4.0",
     "@fastify/middie": "^8.3.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
-    "@babel/core": "^7.23.6",
+    "@babel/core": "^7.23.7",
     "@types/connect": "^3.4.38",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.11",
