@@ -41,6 +41,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Create Release Pull Request
         uses: changesets/action@v1
         with:
