@@ -34,7 +34,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.6",
+    "@babel/core": "^7.23.7",
     "@babel/preset-typescript": "^7.23.3",
     "babel-loader": "^9.1.3",
     "babel-preset-gatsby": "^3.13.0",
