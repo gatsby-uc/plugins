@@ -30,7 +30,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "axios": "1.6.2",
+    "axios": "1.6.3",
     "commonmark": "^0.30.0",
     "gatsby-source-filesystem": "^5.13.0",
     "lodash": "^4.17.21",
