@@ -89,7 +89,7 @@ export const handleServerRoutes: FastifyPluginAsync<{
 
         if (accept.type(["html"])) {
           fastify.log.debug(`DSG/SSR for "text/html" @  ${request.url}`);
-          const potentialPagePath = reverseFixedPagePath(workingURL);
+          const potentialPagePath = reverseFixedPagePath(path);
           const page = graphqlEngine.findPageByPath(potentialPagePath);
 
           if (!page) {
