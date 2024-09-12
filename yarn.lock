@@ -9737,13 +9737,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.11":
-  version: 29.5.11
-  resolution: "@types/jest@npm:29.5.11"
+"@types/jest@npm:^29.5.13":
+  version: 29.5.13
+  resolution: "@types/jest@npm:29.5.13"
   dependencies:
     expect: "npm:^29.0.0"
     pretty-format: "npm:^29.0.0"
-  checksum: 798f4c89407d9457bea1256de74c26f2b279f6c789c0e3311cd604cc75cdab333b9a29b00c51b0090d31abdf11cc788b4103282851a653bef6daf72edf97eef2
+  checksum: 7d6e3e4ef4b1cab0f61270d55764709512fdfbcb1bd47c0ef44117d48490529c1f264dacf3440b9188363e99e290b80b79c529eadc3af2184116a90f6856b192
   languageName: node
   linkType: hard
 
@@ -17236,7 +17236,7 @@ __metadata:
     "@fastify/static": "npm:^6.12.0"
     "@types/connect": "npm:^3.4.38"
     "@types/fs-extra": "npm:^11.0.4"
-    "@types/jest": "npm:^29.5.11"
+    "@types/jest": "npm:^29.5.13"
     "@types/mime": "npm:^3.0.4"
     "@types/node": "npm:^20.10.6"
     "@types/picomatch": "npm:^2.3.3"
