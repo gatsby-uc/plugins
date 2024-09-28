@@ -22,14 +22,34 @@ export const fetchStrapiContentTypes = async (axiosInstance) => {
   };
 };
 
-export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
+const convertQueryParameters = (queryParameters, version = 4) => {
+  if (version == 4) {
+    return queryParameters;
+  }
+  // assume v5.
+  // rewrite v4 publicationState=preview to status=draft
+  // https://docs.strapi.io/dev-docs/migration/v4-to-v5/breaking-changes/publication-state-removed
+  const { publicationState, ...rest } = queryParameters;
+  if (publicationState !== "preview") {
+    return queryParameters;
+  }
+  return {
+    ...rest,
+    status: "draft",
+  };
+};
+
+export const fetchEntity = async (
+  { endpoint, queryParams, uid, pluginOptions, version = 4 },
+  context,
+) => {
   const { reporter, axiosInstance } = context;
 
   /** @type AxiosRequestConfig */
   const options = {
     method: "GET",
     url: endpoint,
-    params: queryParams,
+    params: convertQueryParameters(queryParams, version),
     // Source: https://github.com/axios/axios/issues/5058#issuecomment-1379970592
     paramsSerializer: {
       serialize: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
@@ -91,7 +111,7 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
     const otherLocalizationsData = await Promise.all(otherLocalizationsPromises);
 
     return castArray([data.data, ...otherLocalizationsData]).map((entry) =>
-      cleanData(entry, { ...context, contentTypeUid: uid }),
+      cleanData(entry, { ...context, contentTypeUid: uid }, version),
     );
   } catch (error) {
     if (error.response.status !== 404) {
@@ -104,14 +124,17 @@ export const fetchEntity = async ({ endpoint, queryParams, uid, pluginOptions },
   }
 };
 
-export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions }, context) => {
+export const fetchEntities = async (
+  { endpoint, queryParams, uid, pluginOptions, version = 4 },
+  context,
+) => {
   const { reporter, axiosInstance } = context;
 
   /** @type AxiosRequestConfig */
   const options = {
     method: "GET",
     url: endpoint,
-    params: queryParams,
+    params: convertQueryParameters(queryParams, version),
     paramsSerializer: {
       serialize: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
     },
@@ -176,7 +199,7 @@ export const fetchEntities = async ({ endpoint, queryParams, uid, pluginOptions 
     const results = await Promise.all(fetchPagesPromises);
 
     const cleanedData = [...data, ...flattenDeep(results)].map((entry) =>
-      cleanData(entry, { ...context, contentTypeUid: uid }),
+      cleanData(entry, { ...context, contentTypeUid: uid }, version),
     );
 
     return cleanedData;

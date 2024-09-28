@@ -1,3 +1,4 @@
+const globals = require("globals");
 const ts_parser = require("@typescript-eslint/parser");
 const babel_parser = require("@babel/eslint-parser");
 const unicorn = require("eslint-plugin-unicorn");
@@ -75,6 +76,18 @@ module.exports = [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+    },
+  },
+  {
+    files: ["packages/gatsby-source-strapi/**/*.js"],
+    rules: {
+      "no-undef": "error",
+      "no-unused-vars": "error",
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
 ];

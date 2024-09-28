@@ -2,7 +2,7 @@
 
 Source plugin for pulling documents into Gatsby from a Strapi API.
 
-> ⚠️ This version of `gatsby-source-strapi` is only compatible with Strapi v4. For v3 use this [release](https://www.npmjs.com/package/gatsby-source-strapi/v/1.0.3)
+> ⚠️ This version of `gatsby-source-strapi` is only compatible with Strapi v5 and v4. For v3 use this [release](https://www.npmjs.com/package/gatsby-source-strapi/v/1.0.3)
 
 _This plugin is now maintained publicly by the Gatsby User Collective. Join us in maintaining this piece of software._
 
@@ -73,6 +73,7 @@ require("dotenv").config({
 });
 
 const strapiConfig = {
+  version: 4, // Strapi version 4 or 5
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: ["article", "company", "author"],
@@ -151,6 +152,9 @@ const strapiConfig = {
       singularName: "article",
       queryParams: {
         publicationState: process.env.GATSBY_IS_PREVIEW === "true" ? "preview" : "live",
+        // or the v5 format,
+        // we will automatically rewrite publicationState to status:
+        // status: process.env.GATSBY_IS_PREVIEW === "true" ? "draft" : "published",
         populate: {
           category: { populate: "*" },
           cover: "*",
@@ -369,57 +373,6 @@ Then use the one of the following queries to fetch a localized content type:
   }
 }
 ```
-
-## Gatsby cloud and preview environment setup
-
-### Setup
-
-To enable content sync in [Gatsby cloud](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/deploying-to-gatsby-cloud/) you need to create two webhooks in your Strapi project:
-
-- [Build webhook](https://support.gatsbyjs.com/hc/en-us/articles/360052324394-Build-and-Preview-Webhooks)
-
-![webhook setup](./assets/webhook.png)
-
-- [Preview webhook](https://support.gatsbyjs.com/hc/en-us/articles/360052324394-Build-and-Preview-Webhooks)
-
-At this point each time you create an entry the webhooks will trigger a new build a deploy your new Gatsby site.
-
-In the Site settings, Environment variables fill the:
-
-- Build variables with the following:
-  - STRAPI_API_URL with the url of your deployed Strapi application
-  - STRAPI_TOKEN with your build API token
-- Preview variables:
-  - STRAPI_API_URL with the url of your deployed Strapi application
-  - STRAPI_TOKEN with your preview API token
-
-### Enabling Content Sync
-
-#### Installing the @strapi/plugin-gatsby-preview
-
-In order to enable Gatsby Content Sync and integrate it in your Strapi CMS you need to install the `@strapi/plugin-gatsby-preview` in your Strapi project:
-
-##### Using yarn
-
-```sh
-cd my-strapi-app
-
-yarn add @strapi/plugin-gatsby-preview
-```
-
-##### Using npm
-
-```sh
-cd my-strapi-app
-npm install --save @strapi/plugin-gatsby-preview
-```
-
-#### Configurations
-
-Once the plugin is installed, you will need to configure it in the plugin's settings section.
-
-- In the Collection types or the Single Types tab, when enabling the **preview**, it will inject a button in the content manager edit view of the corresponding content type. So, after creating an entry (draft or published), clicking on the **Open Gatsby preview** button will redirect you to the Gatsby preview page
-- In the Settings tab, enter the Gatsby Content Sync URL. You can find it in Gatsby cloud under "Site settings" and "Content Sync".
 
 ## Restrictions and limitations
 

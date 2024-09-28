@@ -13,7 +13,7 @@ const throttlingInterceptors = (axiosInstance, maxParallelRequests) => {
 
   /** Axios Request Interceptor */
   axiosInstance.interceptors.request.use(function (config) {
-    return new Promise((resolve, _) => {
+    return new Promise((resolve) => {
       let interval = setInterval(() => {
         if (PENDING_REQUESTS < maxParallelRequests) {
           PENDING_REQUESTS++;

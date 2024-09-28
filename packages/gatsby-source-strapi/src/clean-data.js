@@ -3,6 +3,7 @@ import _ from "lodash";
 import { getContentTypeSchema } from "./helpers";
 
 const MEDIA_FIELDS = [
+  "id",
   "name",
   "alternativeText",
   "caption",
@@ -17,9 +18,36 @@ const MEDIA_FIELDS = [
   "previewUrl",
   "createdAt",
   "updatedAt",
+  "documentId",
+  "publishedAt",
 ];
 
 const restrictedFields = new Set(["__component", `children`, `fields`, `internal`, `parent`]);
+
+const getValue = (value, version) => {
+  if (!value) {
+    return;
+  }
+  if (version === 4) {
+    return value?.data;
+  }
+  // assume v5
+  return value;
+};
+
+const getAttributes = (data, version) => {
+  if (!data) {
+    return;
+  }
+  if (version === 4) {
+    return {
+      id: data.id,
+      ...data.attributes,
+    };
+  }
+  // assume v5
+  return data;
+};
 
 /**
  * Removes the attribute key in the entire data.
@@ -28,7 +56,7 @@ const restrictedFields = new Set(["__component", `children`, `fields`, `internal
  * @param {*} schemas
  * @returns
  */
-export const cleanAttributes = (attributes, currentSchema, schemas) => {
+export const cleanAttributes = (attributes, currentSchema, schemas, version = 4) => {
   if (!attributes) {
     return;
   }
@@ -69,7 +97,7 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
         [attributeName]: value.map((v) => {
           const compoSchema = getContentTypeSchema(schemas, v.__component);
 
-          return cleanAttributes(v, compoSchema, schemas);
+          return cleanAttributes(v, compoSchema, schemas, version);
         }),
       };
     }
@@ -82,25 +110,27 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
         return {
           ...accumulator,
           [attributeName]: value.map((v) => {
-            return cleanAttributes(v, compoSchema, schemas);
+            return cleanAttributes(v, compoSchema, schemas, version);
           }),
         };
       }
 
       return {
         ...accumulator,
-        [attributeName]: cleanAttributes(value, compoSchema, schemas),
+        [attributeName]: cleanAttributes(value, compoSchema, schemas, version),
       };
     }
 
+    // make sure we can use both v4 and v5 outputs
+    const valueData = getValue(value, version);
+
     if (attribute.type === "media") {
-      if (Array.isArray(value?.data)) {
+      if (Array.isArray(valueData)) {
         return {
           ...accumulator,
-          [attributeName]: value.data
-            ? value.data.map(({ id, attributes }) => ({
-                id,
-                ..._.pick(attributes, MEDIA_FIELDS),
+          [attributeName]: valueData
+            ? valueData.map((data) => ({
+                ..._.pick(getAttributes(data, version), MEDIA_FIELDS),
               }))
             : undefined,
         };
@@ -108,10 +138,9 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
 
       return {
         ...accumulator,
-        [attributeName]: value.data
+        [attributeName]: valueData
           ? {
-              id: value.data.id,
-              ..._.pick(value.data.attributes, MEDIA_FIELDS),
+              ..._.pick(getAttributes(valueData, version), MEDIA_FIELDS),
             }
           : undefined,
       };
@@ -119,12 +148,11 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
 
     if (attribute.type === "relation") {
       const relationSchema = getContentTypeSchema(schemas, attribute.target);
-
-      if (Array.isArray(value?.data)) {
+      if (Array.isArray(valueData)) {
         return {
           ...accumulator,
-          [attributeName]: value.data.map(({ id, attributes }) =>
-            cleanAttributes({ id, ...attributes }, relationSchema, schemas),
+          [attributeName]: valueData.map((data) =>
+            cleanAttributes(getAttributes(data, version), relationSchema, schemas, version),
           ),
         };
       }
@@ -132,9 +160,10 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
       return {
         ...accumulator,
         [attributeName]: cleanAttributes(
-          value.data ? { id: value.data.id, ...value.data.attributes } : undefined,
+          getAttributes(valueData, version) || undefined,
           relationSchema,
           schemas,
+          version,
         ),
       };
     }
@@ -152,13 +181,10 @@ export const cleanAttributes = (attributes, currentSchema, schemas) => {
  * @param {Object} ctx
  * @returns {Object}
  */
-export const cleanData = ({ id, attributes, ...rest }, context) => {
+export const cleanData = (data, context, version = 4) => {
   const { schemas, contentTypeUid } = context;
   const currentContentTypeSchema = getContentTypeSchema(schemas, contentTypeUid);
-
   return {
-    id,
-    ...rest,
-    ...cleanAttributes(attributes, currentContentTypeSchema, schemas),
+    ...cleanAttributes(getAttributes(data, version), currentContentTypeSchema, schemas, version),
   };
 };

@@ -1,11 +1,6 @@
 import { fetchStrapiContentTypes, fetchEntities, fetchEntity } from "./fetch";
 import { downloadMediaFiles } from "./download-media-files";
-import {
-  buildMapFromNodes,
-  buildNodesToRemoveMap,
-  getEndpoints,
-  makeParentNodeName,
-} from "./helpers";
+import { buildMapFromNodes, buildNodesToRemoveMap, getEndpoints } from "./helpers";
 import { createNodes } from "./normalize";
 import { createAxiosInstance } from "./axios-instance";
 
@@ -27,6 +22,8 @@ export const sourceNodes = async (
   },
   strapiConfig,
 ) => {
+  reporter.info(`gatsby-source-strapi is using Strapi version ${strapiConfig.version || 4}`);
+
   // Cast singleTypes and collectionTypes to empty arrays if they're not defined
   if (!Array.isArray(strapiConfig.singleTypes)) {
     strapiConfig.singleTypes = [];
@@ -56,7 +53,7 @@ export const sourceNodes = async (
     cache,
   };
 
-  const { unstable_createNodeManifest, createNode } = actions;
+  const { createNode } = actions;
 
   const existingNodes = getNodes().filter(
     (n) => n.internal.owner === `gatsby-source-strapi` || n.internal.type === "File",
@@ -136,8 +133,6 @@ export const sourceNodes = async (
     }
   }
 
-  let warnOnceForNoSupport = false;
-
   await cache.set(LAST_FETCHED_KEY, Date.now());
 
   for (const [index, { uid }] of endpoints.entries()) {
@@ -147,34 +142,7 @@ export const sourceNodes = async (
 
     for (let entity of data[index]) {
       const nodes = createNodes(entity, context, uid);
-
       await Promise.all(nodes.map((n) => createNode(n)));
-
-      const nodeType = makeParentNodeName(context.schemas, uid);
-
-      const mainEntryNode = nodes.find((n) => {
-        return n && n.strapi_id === entity.id && n.internal.type === nodeType;
-      });
-
-      const isPreview = process.env.GATSBY_IS_PREVIEW === `true`;
-      const createNodeManifestIsSupported = typeof unstable_createNodeManifest === `function`;
-      const shouldCreateNodeManifest = isPreview && createNodeManifestIsSupported && mainEntryNode;
-
-      if (shouldCreateNodeManifest) {
-        const updatedAt = entity.updatedAt;
-        const manifestId = `${uid}-${entity.id}-${updatedAt}`;
-
-        unstable_createNodeManifest({
-          manifestId,
-          node: mainEntryNode,
-          updatedAtUTC: updatedAt,
-        });
-      } else if (isPreview && !createNodeManifestIsSupported && !warnOnceForNoSupport) {
-        console.warn(
-          `gatsby-source-strapi: Your version of Gatsby core doesn't support Content Sync (via the unstable_createNodeManifest action). Please upgrade to the latest version to use Content Sync in your site.`,
-        );
-        warnOnceForNoSupport = true;
-      }
     }
   }
 
