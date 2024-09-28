@@ -47,9 +47,10 @@ const buildMapFromData = (endpoints, data) => {
     const nodeType = _.toUpper(`Strapi_${_.snakeCase(singularName)}`);
 
     for (let entity of data[index]) {
-      map[nodeType] = map[nodeType]
-        ? [...map[nodeType], { strapi_id: entity.id }]
-        : [{ strapi_id: entity.id }];
+      // f.e. components do not have a documentId, allow regular id
+      // also, support both v5 documentId and v4 id
+      const strapi_id = entity.documentId || entity.id;
+      map[nodeType] = map[nodeType] ? [...map[nodeType], { strapi_id }] : [{ strapi_id }];
     }
   }
 
@@ -85,7 +86,7 @@ const getContentTypeSchema = (schemas, ctUID) => {
   return currentContentTypeSchema;
 };
 
-const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
+const getEndpoints = ({ collectionTypes, singleTypes, version = 4 }, schemas) => {
   const types = normalizeConfig({ collectionTypes, singleTypes });
 
   const endpoints = schemas
@@ -111,6 +112,7 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
             populate: "*",
           },
           pluginOptions,
+          version,
         };
       }
 
@@ -129,6 +131,7 @@ const getEndpoints = ({ collectionTypes, singleTypes }, schemas) => {
           populate: queryParams?.populate || "*",
         },
         pluginOptions,
+        version,
       };
     });
 

@@ -1,3 +1,5 @@
+/*eslint no-undef: "error"*/
+
 import _ from "lodash";
 import { getContentTypeSchema, makeParentNodeName } from "./helpers";
 
@@ -45,12 +47,13 @@ const prepareRelationNode = (relation, context) => {
   // } = targetSchema;
 
   const nodeType = makeParentNodeName(schemas, targetSchemaUid);
-  const relationNodeId = createNodeId(`${nodeType}-${relation.id}`);
+  const strapi_id = relation.documentId || relation.id; // support both v5 and v4
+  const relationNodeId = createNodeId(`${nodeType}-${strapi_id}`);
 
   const node = {
     ...relation,
     id: relationNodeId,
-    strapi_id: relation.id,
+    strapi_id,
     parent: parentNode.id,
     children: [],
     internal: {
@@ -133,9 +136,13 @@ export const createNodes = (entity, context, uid) => {
   const { schemas, createNodeId, createContentDigest, getNode } = context;
   const nodeType = makeParentNodeName(schemas, uid);
 
+  // f.e. components do not have a documentId, allow regular id
+  // also, support both v5 documentId and v4 id
+  const strapi_id = entity.documentId || entity.id;
+
   let entryNode = {
-    id: createNodeId(`${nodeType}-${entity.id}`),
-    strapi_id: entity.id,
+    id: createNodeId(`${nodeType}-${strapi_id}`),
+    strapi_id,
     parent: undefined,
     children: [],
     internal: {
