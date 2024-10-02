@@ -31,10 +31,10 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "@babel/cli": "^7.23.4",
-    "@babel/core": "^7.23.7",
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.7",
     "ackee-tracker": "^5.1.0",
-    "babel-preset-gatsby-package": "^3.13.0",
+    "babel-preset-gatsby-package": "^3.13.1",
     "cross-env": "^7.0.3"
   },
   "peerDependencies": {
