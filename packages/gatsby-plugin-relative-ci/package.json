@@ -11,7 +11,7 @@
   "author": "Alex Moon <alex.jared.moon@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@relative-ci/agent": "^4.2.3"
+    "@relative-ci/agent": "^4.2.12"
   },
   "scripts": {
     "build": "babel src --out-dir ./dist --ignore \"**/__tests__\"",
