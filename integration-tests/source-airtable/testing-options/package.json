@@ -23,7 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "nock": "13.4.0",
+    "nock": "13.5.5",
     "prettier": "2.8.8"
   },
   "volta": {
