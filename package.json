@@ -9,6 +9,7 @@
     "integration-tests/*"
   ],
   "scripts": {
+    "prepare": "husky",
     "ac": "yarn all-contributors",
     "build": "yarn workspaces foreach -Avpi --no-private run build",
     "cs": "yarn changeset",

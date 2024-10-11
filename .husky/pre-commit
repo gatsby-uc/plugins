@@ -1,5 +1,2 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-npx lint-staged
-npx run-if-changed
+yarn lint-staged
+yarn run-if-changed
