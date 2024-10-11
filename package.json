@@ -38,7 +38,7 @@
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-unicorn": "^56.0.0",
     "fs-extra": "^11.2.0",
-    "husky": "^8.0.3",
+    "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "renovate": "^37.440.7",
