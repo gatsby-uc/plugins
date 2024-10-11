@@ -38,8 +38,12 @@ export const onRouteUpdate = (arguments_, pluginOptions = {}) => {
       injectedPinterestScript = true;
     }
 
-    if (!hover && typeof PinUtils !== `undefined` && typeof window.PinUtils.build === `function`) {
-      window.PinUtils.build();
+    if (
+      !hover &&
+      typeof PinUtils !== `undefined` &&
+      typeof globalThis.PinUtils.build === `function`
+    ) {
+      globalThis.PinUtils.build();
     }
   }
 };

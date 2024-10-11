@@ -71,7 +71,7 @@ const buildNodesToRemoveMap = (existingNodesMap, endpoints, data) => {
     }
 
     accumulator[name] = value.filter((index) => {
-      return currentNodes.findIndex((k) => k.strapi_id === index.strapi_id) === -1;
+      return !currentNodes.some((k) => k.strapi_id === index.strapi_id);
     });
 
     return accumulator;
@@ -93,7 +93,7 @@ const getEndpoints = ({ collectionTypes, singleTypes, version = 4 }, schemas) =>
     .filter(
       ({ schema, uid }) =>
         !uid.startsWith("admin::") &&
-        types.findIndex(({ singularName }) => singularName === schema.singularName) !== -1,
+        types.some(({ singularName }) => singularName === schema.singularName),
     )
     .map(({ schema: { kind, singularName, pluralName }, uid, plugin }) => {
       const options = types.find((config) => config.singularName === singularName);

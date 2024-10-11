@@ -40,7 +40,7 @@ export async function createResolvers(
   { actions, createResolvers, createNodeId, reporter, store, cache },
   { githubApi },
 ) {
-  global.reporter = reporter;
+  globalThis.reporter = reporter;
   const { createNode } = actions;
 
   const README_DOMAINS = {};
