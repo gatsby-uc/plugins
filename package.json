@@ -41,7 +41,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "renovate": "^37.440.7",
+    "renovate": "^38.116.0",
     "typescript": "^5.6.3"
   },
   "packageManager": "yarn@4.5.0+sha512.837566d24eec14ec0f5f1411adb544e892b3454255e61fdef8fd05f3429480102806bac7446bc9daff3896b01ae4b62d00096c7e989f1596f2af10b927532f39",
