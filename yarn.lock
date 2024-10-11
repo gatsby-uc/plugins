@@ -1749,30 +1749,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.25.7":
-  version: 7.25.7
-  resolution: "@babel/core@npm:7.25.7"
-  dependencies:
-    "@ampproject/remapping": "npm:^2.2.0"
-    "@babel/code-frame": "npm:^7.25.7"
-    "@babel/generator": "npm:^7.25.7"
-    "@babel/helper-compilation-targets": "npm:^7.25.7"
-    "@babel/helper-module-transforms": "npm:^7.25.7"
-    "@babel/helpers": "npm:^7.25.7"
-    "@babel/parser": "npm:^7.25.7"
-    "@babel/template": "npm:^7.25.7"
-    "@babel/traverse": "npm:^7.25.7"
-    "@babel/types": "npm:^7.25.7"
-    convert-source-map: "npm:^2.0.0"
-    debug: "npm:^4.1.0"
-    gensync: "npm:^1.0.0-beta.2"
-    json5: "npm:^2.2.3"
-    semver: "npm:^6.3.1"
-  checksum: 10/f5fb7fb1e3ce357485cb33fe7984051a2d416472370b33144ae809df86a4663192b58cf0d828d40674d30f485790f3dd5aaf72eb659487673a4dc4be47cb3575
-  languageName: node
-  linkType: hard
-
-"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.14.0, @babel/core@npm:^7.20.12, @babel/core@npm:^7.25.7, @babel/core@npm:^7.25.8":
+"@babel/core@npm:7.25.8, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.14.0, @babel/core@npm:^7.20.12, @babel/core@npm:^7.25.8":
   version: 7.25.8
   resolution: "@babel/core@npm:7.25.8"
   dependencies:
@@ -1795,7 +1772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.19.1, @babel/eslint-parser@npm:^7.25.7":
+"@babel/eslint-parser@npm:^7.19.1":
   version: 7.25.7
   resolution: "@babel/eslint-parser@npm:7.25.7"
   dependencies:
@@ -1806,6 +1783,20 @@ __metadata:
     "@babel/core": ^7.11.0
     eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
   checksum: 10/ad6cd326443250d2930c1f18c4061798918647895c7fa7f948b39cbb26621210cf896b958858c5305c49645dbb235b3b89506fd66ddfdc3158992e9d16422b1b
+  languageName: node
+  linkType: hard
+
+"@babel/eslint-parser@npm:^7.25.8":
+  version: 7.25.8
+  resolution: "@babel/eslint-parser@npm:7.25.8"
+  dependencies:
+    "@nicolo-ribaudo/eslint-scope-5-internals": "npm:5.1.1-v1"
+    eslint-visitor-keys: "npm:^2.1.0"
+    semver: "npm:^6.3.1"
+  peerDependencies:
+    "@babel/core": ^7.11.0
+    eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
+  checksum: 10/4e9e5881f57a4680ccdec1ee28586dda35480a4b16ca8953b94ea31152aa8a2a2c9311849001424b54d243467dab13b961ec8a0af0ac2c4cc3bba5887946f3ea
   languageName: node
   linkType: hard
 
@@ -13784,7 +13775,7 @@ __metadata:
   resolution: "gatsby-plugin-ackee-tracker@workspace:packages/gatsby-plugin-ackee-tracker"
   dependencies:
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     ackee-tracker: "npm:^5.1.0"
     babel-preset-gatsby-package: "npm:^3.13.1"
     cross-env: "npm:^7.0.3"
@@ -13798,7 +13789,7 @@ __metadata:
   resolution: "gatsby-plugin-fastify@workspace:packages/gatsby-plugin-fastify"
   dependencies:
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     "@babel/runtime": "npm:^7.25.7"
     "@fastify/accepts": "npm:^4.3.0"
     "@fastify/http-proxy": "npm:^8.4.0"
@@ -13837,7 +13828,7 @@ __metadata:
   resolution: "gatsby-plugin-github-ribbon@workspace:packages/gatsby-plugin-github-ribbon"
   dependencies:
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     babel-jest: "npm:^29.7.0"
     babel-preset-gatsby-package: "npm:^3.13.1"
     cross-env: "npm:^7.0.3"
@@ -13927,7 +13918,7 @@ __metadata:
   resolution: "gatsby-plugin-pinterest@workspace:packages/gatsby-plugin-pinterest"
   dependencies:
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     "@babel/runtime": "npm:^7.25.7"
     babel-jest: "npm:^29.7.0"
     babel-preset-gatsby-package: "npm:^3.13.1"
@@ -13966,7 +13957,7 @@ __metadata:
   resolution: "gatsby-plugin-relative-ci@workspace:packages/gatsby-plugin-relative-ci"
   dependencies:
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     "@relative-ci/agent": "npm:^4.2.12"
     babel-preset-gatsby-package: "npm:^3.13.1"
     cross-env: "npm:^7.0.3"
@@ -14152,7 +14143,7 @@ __metadata:
   resolution: "gatsby-source-packagist@workspace:packages/gatsby-source-packagist"
   dependencies:
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     "@octokit/rest": "npm:^19.0.13"
     babel-preset-gatsby-package: "npm:^3.13.1"
     cross-env: "npm:^7.0.3"
@@ -14172,7 +14163,7 @@ __metadata:
     "@aws-sdk/client-s3": "npm:^3.668.0"
     "@aws-sdk/s3-request-presigner": "npm:^3.668.0"
     "@babel/cli": "npm:^7.25.7"
-    "@babel/core": "npm:^7.25.7"
+    "@babel/core": "npm:^7.25.8"
     "@babel/runtime": "npm:^7.25.7"
     "@types/node": "npm:^20.16.11"
     babel-preset-gatsby-package: "npm:^3.13.1"
@@ -14189,7 +14180,7 @@ __metadata:
   resolution: "gatsby-source-strapi@workspace:packages/gatsby-source-strapi"
   dependencies:
     "@babel/cli": "npm:7.25.7"
-    "@babel/core": "npm:7.25.7"
+    "@babel/core": "npm:7.25.8"
     axios: "npm:1.7.7"
     commonmark: "npm:^0.31.2"
     gatsby-source-filesystem: "npm:^5.13.1"
@@ -19950,7 +19941,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "plugins@workspace:."
   dependencies:
-    "@babel/eslint-parser": "npm:^7.25.7"
+    "@babel/eslint-parser": "npm:^7.25.8"
     "@babel/preset-react": "npm:^7.25.7"
     "@changesets/changelog-github": "npm:^0.5.0"
     "@changesets/cli": "npm:^2.27.9"
