@@ -43,7 +43,9 @@ export const handleRedirects: FastifyPluginAsync<{
     }
 
     if (!alreadyRegisterd.has(cleanFromPath)) {
-      isCleanedPath && alreadyRegisterd.add(cleanFromPath);
+      if (isCleanedPath) {
+        alreadyRegisterd.add(cleanFromPath);
+      }
 
       fastify.all<{
         Params: {

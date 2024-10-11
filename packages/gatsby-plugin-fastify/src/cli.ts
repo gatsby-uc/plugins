@@ -6,6 +6,7 @@ import { hideBin } from "yargs/helpers";
 import { gatsbyServer } from "./serve";
 import open from "open";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 yargs(hideBin(process.argv))
   .env("GATSBY_SERVER_")
   .command(

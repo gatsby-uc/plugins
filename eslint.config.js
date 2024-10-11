@@ -76,6 +76,16 @@ module.exports = [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+      "unicorn/import-style": [
+        "error",
+        {
+          styles: {
+            "node:path": {
+              named: true,
+            },
+          },
+        },
+      ],
     },
   },
   {
