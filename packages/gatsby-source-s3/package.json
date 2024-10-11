@@ -35,8 +35,8 @@
     "test": "start-server-and-test 'yarn start' http://localhost:9000 'yarn test:e2e'"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.668.0",
-    "@aws-sdk/s3-request-presigner": "^3.668.0",
+    "@aws-sdk/client-s3": "^3.669.0",
+    "@aws-sdk/s3-request-presigner": "^3.669.0",
     "@babel/runtime": "^7.25.7",
     "gatsby-source-filesystem": "^5.13.1"
   },
