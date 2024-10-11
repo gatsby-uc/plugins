@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.25.7",
-    "@babel/core": "7.25.7"
+    "@babel/core": "7.25.8"
   },
   "peerDependencies": {
     "gatsby": "^4.0.0 || ^5.0.0",
