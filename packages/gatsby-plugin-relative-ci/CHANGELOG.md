@@ -1,5 +1,15 @@
 # gatsby-plugin-relative-ci
 
+## 2.1.4
+
+### Patch Changes
+
+- [#469](https://github.com/gatsby-uc/plugins/pull/469) [`4759545`](https://github.com/gatsby-uc/plugins/commit/475954526a982c149696255f7ddfb3dba60e17b5) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
+- [#484](https://github.com/gatsby-uc/plugins/pull/484) [`2579b64`](https://github.com/gatsby-uc/plugins/commit/2579b64b1bbf62df71fd3717486c600161f8b307) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling to v7.25.8
+
+- [#466](https://github.com/gatsby-uc/plugins/pull/466) [`3731300`](https://github.com/gatsby-uc/plugins/commit/3731300946af4aeed7caf052cea62886941f8c82) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
 ## 2.1.3
 
 ### Patch Changes

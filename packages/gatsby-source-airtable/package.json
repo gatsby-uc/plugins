@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-airtable",
   "description": "Gatsby Airtable Source with Linked Nodes, Multiple Tables and File Nodes.",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsby-uc/plugins.git",

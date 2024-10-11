@@ -1,5 +1,13 @@
 # gatsby-plugin-ackee-tracker
 
+## 4.1.4
+
+### Patch Changes
+
+- [#484](https://github.com/gatsby-uc/plugins/pull/484) [`2579b64`](https://github.com/gatsby-uc/plugins/commit/2579b64b1bbf62df71fd3717486c600161f8b307) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling to v7.25.8
+
+- [#466](https://github.com/gatsby-uc/plugins/pull/466) [`3731300`](https://github.com/gatsby-uc/plugins/commit/3731300946af4aeed7caf052cea62886941f8c82) Thanks [@renovate](https://github.com/apps/renovate)! - chore(babel): update build tooling
+
 ## 4.1.3
 
 ### Patch Changes
