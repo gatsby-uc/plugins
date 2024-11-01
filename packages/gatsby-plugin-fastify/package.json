@@ -50,7 +50,7 @@
     "@babel/core": "^7.25.8",
     "@types/connect": "^3.4.38",
     "@types/fs-extra": "^11.0.4",
-    "@types/jest": "^29.5.13",
+    "@types/jest": "^29.5.14",
     "@types/mime": "^3.0.4",
     "@types/node": "^20.16.11",
     "@types/picomatch": "^2.3.4",
