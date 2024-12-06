@@ -3,7 +3,7 @@ import _ from "lodash";
 const buildMapFromNodes = (nodes) => {
   // eslint-disable-next-line unicorn/no-array-reduce
   return nodes.reduce((accumulator, current) => {
-    const { internal, strapi_id, id } = current;
+    const { internal, strapi_document_id_or_regular_id, id } = current;
     const type = internal?.type;
 
     // We only delete the parent nodes
@@ -19,18 +19,18 @@ const buildMapFromNodes = (nodes) => {
       return accumulator;
     }
 
-    if (type && id && strapi_id) {
+    if (type && id && strapi_document_id_or_regular_id) {
       accumulator[type] = accumulator[type]
         ? [
             ...accumulator[type],
             {
-              strapi_id,
+              strapi_document_id_or_regular_id,
               id,
             },
           ]
         : [
             {
-              strapi_id,
+              strapi_document_id_or_regular_id,
               id,
             },
           ];
@@ -49,8 +49,10 @@ const buildMapFromData = (endpoints, data) => {
     for (let entity of data[index]) {
       // f.e. components do not have a documentId, allow regular id
       // also, support both v5 documentId and v4 id
-      const strapi_id = entity.documentId || entity.id;
-      map[nodeType] = map[nodeType] ? [...map[nodeType], { strapi_id }] : [{ strapi_id }];
+      const strapi_document_id_or_regular_id = entity.documentId || entity.id;
+      map[nodeType] = map[nodeType]
+        ? [...map[nodeType], { strapi_document_id_or_regular_id }]
+        : [{ strapi_document_id_or_regular_id }];
     }
   }
 
@@ -71,7 +73,9 @@ const buildNodesToRemoveMap = (existingNodesMap, endpoints, data) => {
     }
 
     accumulator[name] = value.filter((index) => {
-      return !currentNodes.some((k) => k.strapi_id === index.strapi_id);
+      return !currentNodes.some(
+        (k) => k.strapi_document_id_or_regular_id === index.strapi_document_id_or_regular_id,
+      );
     });
 
     return accumulator;
