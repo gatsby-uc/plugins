@@ -73,7 +73,7 @@ require("dotenv").config({
 });
 
 const strapiConfig = {
-  version: 4, // Strapi version 4 or 5
+  version: 4, // Strapi version 4 or 5, defaults to 5
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
   collectionTypes: ["article", "company", "author"],
