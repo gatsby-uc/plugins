@@ -90,7 +90,7 @@ const getContentTypeSchema = (schemas, ctUID) => {
   return currentContentTypeSchema;
 };
 
-const getEndpoints = ({ collectionTypes, singleTypes, version = 4 }, schemas) => {
+const getEndpoints = ({ collectionTypes, singleTypes, version = 5 }, schemas) => {
   const types = normalizeConfig({ collectionTypes, singleTypes });
 
   const endpoints = schemas
