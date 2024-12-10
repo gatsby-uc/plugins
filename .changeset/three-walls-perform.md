@@ -4,7 +4,7 @@
 
 BREAKING CHANGES:
 
-- This plugin now assumes Strapi 5 by default.
+- This plugin now assumes Strapi 5 by default. If you are on Strapi 4, set `version: 4` in your plugin options, see the [readme](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-source-strapi)
 - Previously `strapi_id` was filled with the `documentId`, now `strapi_id` will be the regular `id`.
 
 `documentId` is now added as a field.
