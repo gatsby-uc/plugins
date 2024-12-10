@@ -22,8 +22,8 @@ export const fetchStrapiContentTypes = async (axiosInstance) => {
   };
 };
 
-const convertQueryParameters = (queryParameters, version = 4) => {
-  if (version == 4) {
+const convertQueryParameters = (queryParameters, version = 5) => {
+  if (version === 4) {
     return queryParameters;
   }
   // assume v5.
@@ -40,7 +40,7 @@ const convertQueryParameters = (queryParameters, version = 4) => {
 };
 
 export const fetchEntity = async (
-  { endpoint, queryParams, uid, pluginOptions, version = 4 },
+  { endpoint, queryParams, uid, pluginOptions, version = 5 },
   context,
 ) => {
   const { reporter, axiosInstance } = context;
@@ -125,7 +125,7 @@ export const fetchEntity = async (
 };
 
 export const fetchEntities = async (
-  { endpoint, queryParams, uid, pluginOptions, version = 4 },
+  { endpoint, queryParams, uid, pluginOptions, version = 5 },
   context,
 ) => {
   const { reporter, axiosInstance } = context;
