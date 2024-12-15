@@ -56,7 +56,7 @@ const getAttributes = (data, version) => {
  * @param {*} schemas
  * @returns
  */
-export const cleanAttributes = (attributes, currentSchema, schemas, version = 4) => {
+export const cleanAttributes = (attributes, currentSchema, schemas, version = 5) => {
   if (!attributes) {
     return;
   }
@@ -181,7 +181,7 @@ export const cleanAttributes = (attributes, currentSchema, schemas, version = 4)
  * @param {Object} ctx
  * @returns {Object}
  */
-export const cleanData = (data, context, version = 4) => {
+export const cleanData = (data, context, version = 5) => {
   const { schemas, contentTypeUid } = context;
   const currentContentTypeSchema = getContentTypeSchema(schemas, contentTypeUid);
   return {

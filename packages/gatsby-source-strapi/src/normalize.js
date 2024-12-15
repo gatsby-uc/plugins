@@ -13,7 +13,7 @@ const prepareJSONNode = (json, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
 
   const jsonNodeId = createNodeId(
-    `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-JSONNode`,
+    `${parentNode.strapi_document_id_or_regular_id}-${parentNode.internal.type}-${attributeName}-JSONNode`,
   );
 
   const JSONNode = {
@@ -47,13 +47,15 @@ const prepareRelationNode = (relation, context) => {
   // } = targetSchema;
 
   const nodeType = makeParentNodeName(schemas, targetSchemaUid);
-  const strapi_id = relation.documentId || relation.id; // support both v5 and v4
-  const relationNodeId = createNodeId(`${nodeType}-${strapi_id}`);
+  const strapi_document_id_or_regular_id = relation.documentId || relation.id; // support both v5 and v4
+  const relationNodeId = createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}`);
 
   const node = {
     ...relation,
     id: relationNodeId,
-    strapi_id,
+    documentId: relation.documentId,
+    strapi_id: relation.id,
+    strapi_document_id_or_regular_id,
     parent: parentNode.id,
     children: [],
     internal: {
@@ -75,7 +77,7 @@ const prepareRelationNode = (relation, context) => {
 const prepareTextNode = (text, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
   const textNodeId = createNodeId(
-    `${parentNode.strapi_id}-${parentNode.internal.type}-${attributeName}-TextNode`,
+    `${parentNode.strapi_document_id_or_regular_id}-${parentNode.internal.type}-${attributeName}-TextNode`,
   );
 
   const textNode = {
@@ -110,6 +112,7 @@ const prepareMediaNode = (media, context) => {
     ...media,
     id: relationNodeId,
     strapi_id: media.id,
+    strapi_document_id_or_regular_id: media.id,
     parent: parentNode.id,
     children: [],
     internal: {
@@ -138,11 +141,13 @@ export const createNodes = (entity, context, uid) => {
 
   // f.e. components do not have a documentId, allow regular id
   // also, support both v5 documentId and v4 id
-  const strapi_id = entity.documentId || entity.id;
+  const strapi_document_id_or_regular_id = entity.documentId || entity.id;
 
   let entryNode = {
-    id: createNodeId(`${nodeType}-${strapi_id}`),
-    strapi_id,
+    id: createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}`),
+    documentId: entity.documentId,
+    strapi_id: entity.id,
+    strapi_document_id_or_regular_id,
     parent: undefined,
     children: [],
     internal: {

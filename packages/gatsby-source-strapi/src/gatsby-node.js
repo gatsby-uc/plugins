@@ -22,7 +22,7 @@ export const sourceNodes = async (
   },
   strapiConfig,
 ) => {
-  reporter.info(`gatsby-source-strapi is using Strapi version ${strapiConfig.version || 4}`);
+  reporter.info(`gatsby-source-strapi is using Strapi version ${strapiConfig.version || 5}`);
 
   // Cast singleTypes and collectionTypes to empty arrays if they're not defined
   if (!Array.isArray(strapiConfig.singleTypes)) {
