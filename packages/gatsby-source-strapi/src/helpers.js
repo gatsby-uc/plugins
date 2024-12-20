@@ -129,7 +129,7 @@ const getEndpoints = ({ collectionTypes, singleTypes, version = 5 }, schemas) =>
         queryParams: {
           ...queryParams,
           pagination: {
-            pageSize: queryLimit || 250,
+            pageSize: queryLimit || 100,
             page: 1,
           },
           populate: queryParams?.populate || "*",
