@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 5.0.1
+
+### Patch Changes
+
+- [#500](https://github.com/gatsby-uc/plugins/pull/500) [`11168f4`](https://github.com/gatsby-uc/plugins/commit/11168f4af88ad030f1f329fc5d8cf4fe30785015) Thanks [@laurenskling](https://github.com/laurenskling)! - reduce the queryLimit to Strapi default 100
+
 ## 5.0.0
 
 ### Major Changes
