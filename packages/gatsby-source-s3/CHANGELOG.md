@@ -1,5 +1,11 @@
 # gatsby-source-s3
 
+## 4.1.5
+
+### Patch Changes
+
+- [#503](https://github.com/gatsby-uc/plugins/pull/503) [`c0cd977`](https://github.com/gatsby-uc/plugins/commit/c0cd9774e0c8c46c5dffeeb718e46ca7274c3b80) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
 ## 4.1.4
 
 ### Patch Changes
