@@ -1,14 +1,14 @@
 {
   extends: [
-    "config:base",
+    "config:recommended",
     "schedule:monthly",
     ":disablePeerDependencies",
     ":label(topic: automation)",
   ],
   major: {
-    masterIssueApproval: true,
+    dependencyDashboardApproval: true,
   },
-  masterIssue: true,
+  dependencyDashboard: true,
   configMigration: true,
   packageRules: [
     {
