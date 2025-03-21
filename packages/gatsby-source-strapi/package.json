@@ -30,7 +30,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "axios": "1.7.9",
+    "axios": "1.8.4",
     "commonmark": "^0.31.2",
     "gatsby-source-filesystem": "^5.14.0",
     "lodash": "^4.17.21",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.26.4",
-    "@babel/core": "7.26.0"
+    "@babel/core": "7.26.10"
   },
   "peerDependencies": {
     "gatsby": "^4.0.0 || ^5.0.0",
