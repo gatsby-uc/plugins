@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 5.0.3
+
+### Patch Changes
+
+- [#511](https://github.com/gatsby-uc/plugins/pull/511) [`e51e8d9`](https://github.com/gatsby-uc/plugins/commit/e51e8d9e6f65c5bd67d32fd759d530cc8b521f66) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
 ## 5.0.2
 
 ### Patch Changes
