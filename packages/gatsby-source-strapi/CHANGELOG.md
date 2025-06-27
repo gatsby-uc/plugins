@@ -1,5 +1,11 @@
 # gatsby-source-strapi
 
+## 5.0.4
+
+### Patch Changes
+
+- [#515](https://github.com/gatsby-uc/plugins/pull/515) [`f15ad07`](https://github.com/gatsby-uc/plugins/commit/f15ad079f3bcb719396c98f7e71e12603f3d027c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(packages): update non-major dependency versions
+
 ## 5.0.3
 
 ### Patch Changes
@@ -23,7 +29,6 @@
 ### Major Changes
 
 - [#498](https://github.com/gatsby-uc/plugins/pull/498) [`10ed235`](https://github.com/gatsby-uc/plugins/commit/10ed235b1b1dd6501122f78f1ef40a192e8e6793) Thanks [@laurenskling](https://github.com/laurenskling)! - BREAKING CHANGES:
-
   - This plugin now assumes Strapi 5 by default. If you are on Strapi 4, set `version: 4` in your plugin options, see the [readme](https://github.com/gatsby-uc/plugins/tree/main/packages/gatsby-source-strapi)
   - Previously `strapi_id` was filled with the `documentId`, now `strapi_id` will be the regular `id`.
 
@@ -73,7 +78,6 @@
 - [#461](https://github.com/gatsby-uc/plugins/pull/461) [`caf7d4f`](https://github.com/gatsby-uc/plugins/commit/caf7d4feb52b9ca062b0d78883659d62e86243f4) Thanks [@moonmeister](https://github.com/moonmeister)! - Updated can-i-use database
 
 - [#461](https://github.com/gatsby-uc/plugins/pull/461) [`caf7d4f`](https://github.com/gatsby-uc/plugins/commit/caf7d4feb52b9ca062b0d78883659d62e86243f4) Thanks [@moonmeister](https://github.com/moonmeister)! - - Updated testing and runners to latest Node 20 LTS.
-
   - Updated to latests Yarn v4 and corepack for management of packageManager. Please run `corepack enable` to use the correct version of `yarn`.
   - Updated dependencies.
   - Updated prettier and associated formatting.
@@ -191,7 +195,6 @@
 - [#331](https://github.com/gatsby-uc/plugins/pull/331) [`5eed071`](https://github.com/gatsby-uc/plugins/commit/5eed0719437c457c3ab54ee1f261d3d62cd6beae) Thanks [@laurenskling](https://github.com/laurenskling)! - The Strapi company has [decided](https://github.com/gatsby-uc/gatsby-source-strapi/issues/352#issuecomment-1349139258) to transfer maintenance for `gatsby-source-strapi` to the community. The [Gatsby User Collective](https://github.com/gatsby-uc/plugins) has taken upon itself the task to maintain and release this plugin from now on.
 
   Changes made:
-
   - We've merged in https://github.com/gatsby-uc/gatsby-source-strapi/pull/289 allowing contentTypes from plugins to be fetched
   - We've added peerDependencies for Gatsby 5
   - The code has been altered to match GUC's prettier and linting rules
