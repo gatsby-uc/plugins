@@ -2,7 +2,7 @@ import { createRemoteFileNode } from "gatsby-source-filesystem";
 
 import AWS_S3, {
   GetObjectCommand,
-  ListObjectsCommand,
+  paginateListObjectsV2,
   S3Client,
   S3ClientConfig,
 } from "@aws-sdk/client-s3";
@@ -34,49 +34,36 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async function (
 
   reporter.verbose(`AWS S3 Config: ${JSON.stringify(s3.config, undefined, 2)}`);
 
-  // get objects
-  const getS3ListObjects = async (parameters: { Bucket: string; Marker?: string }) => {
-    const command = new ListObjectsCommand(parameters);
-    return await s3.send(command);
-  };
-
   const listAllS3Objects = async (bucket: string) => {
     const allS3Objects: ObjectType[] = [];
 
     try {
-      const data = await getS3ListObjects({ Bucket: bucket });
-
-      if (data && data.Contents) {
-        for (const object of data.Contents) {
-          allS3Objects.push({ ...object, Bucket: bucket });
-        }
-      } else {
-        reporter.error(
-          `Error processing objects from bucket "${bucket}". Is it empty?`,
-          new Error("No object in Bucket"),
-          "gatsby-source-s3",
-        );
-      }
-
-      let nextToken = data && data.IsTruncated && data.NextMarker;
-
-      while (nextToken) {
-        const data = await getS3ListObjects({
+      const paginator = paginateListObjectsV2(
+        {
+          client: s3,
+        },
+        {
           Bucket: bucket,
-          Marker: nextToken,
-        });
+        },
+      );
 
-        if (data && data.Contents) {
-          for (const object of data.Contents) {
+      for await (const page of paginator) {
+        if (page && page.Contents) {
+          for (const object of page.Contents || []) {
             allS3Objects.push({ ...object, Bucket: bucket });
           }
         }
-        nextToken = data && data.IsTruncated && data.NextMarker;
       }
     } catch (error: unknown) {
       reporter.panicOnBuild(`Error listing S3 objects on bucket "${bucket}"`, error as Error);
     }
-
+    if (allS3Objects.length === 0) {
+      reporter.error(
+        `Error processing objects from bucket "${bucket}". Is it empty?`,
+        new Error("No object in Bucket"),
+        "gatsby-source-s3",
+      );
+    }
     return allS3Objects;
   };
 
