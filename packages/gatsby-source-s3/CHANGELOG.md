@@ -1,5 +1,11 @@
 # gatsby-source-s3
 
+## 4.1.6
+
+### Patch Changes
+
+- [#516](https://github.com/gatsby-uc/plugins/pull/516) [`4ae1f95`](https://github.com/gatsby-uc/plugins/commit/4ae1f959e4cc0727148efe753552a9d4a6a91a07) Thanks [@gorbinphilip](https://github.com/gorbinphilip)! - Fixes broken pagination logic used with @aws-sdk/client-s3
+
 ## 4.1.5
 
 ### Patch Changes
@@ -33,7 +39,6 @@
 - [#461](https://github.com/gatsby-uc/plugins/pull/461) [`caf7d4f`](https://github.com/gatsby-uc/plugins/commit/caf7d4feb52b9ca062b0d78883659d62e86243f4) Thanks [@moonmeister](https://github.com/moonmeister)! - Updated can-i-use database
 
 - [#461](https://github.com/gatsby-uc/plugins/pull/461) [`caf7d4f`](https://github.com/gatsby-uc/plugins/commit/caf7d4feb52b9ca062b0d78883659d62e86243f4) Thanks [@moonmeister](https://github.com/moonmeister)! - - Updated testing and runners to latest Node 20 LTS.
-
   - Updated to latests Yarn v4 and corepack for management of packageManager. Please run `corepack enable` to use the correct version of `yarn`.
   - Updated dependencies.
   - Updated prettier and associated formatting.
@@ -74,7 +79,6 @@
   For plugin configuration, the AWS property follows the [S3ClientConfig interface](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html), but adds the additional `Buckets` property unique to the plugin.
 
   The two main differences with the plugin configuration are:
-
   1. `region` is now required for custom endpoints.
   2. The `accessKeyId` and `secretAccessKey` properties have been moved into the `credentials` property.
 
