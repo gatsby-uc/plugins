@@ -45,6 +45,13 @@ export const fetchEntity = async (
 ) => {
   const { reporter, axiosInstance } = context;
 
+  const locale = pluginOptions?.i18n?.locale;
+  const otherLocales = [];
+
+  if (locale && locale === "all") {
+    delete queryParams.locale;
+  }
+
   /** @type AxiosRequestConfig */
   const options = {
     method: "GET",
@@ -63,32 +70,23 @@ export const fetchEntity = async (
       } with ${options.paramsSerializer.serialize(options.params)}`,
     );
 
-    // Handle internationalization
-    const locale = pluginOptions?.i18n?.locale;
-    const otherLocales = [];
-
-    if (locale) {
-      // Ignore queryParams locale in favor of pluginOptions
-      delete queryParams.locale;
-
-      if (locale === "all") {
-        // Get all available locales
-        const { data: response } = await axiosInstance({
-          ...options,
-          params: {
-            populate: {
-              localizations: {
-                fields: ["locale"],
-              },
+    if (locale && locale === 'all') {
+      // Get all available locales
+      const { data: response } = await axiosInstance({
+        ...options,
+        params: {
+          populate: {
+            localizations: {
+              fields: ["locale"],
             },
           },
-        });
-        for (const localization of response.data.attributes.localizations.data) {
-          otherLocales.push(localization.attributes.locale);
-        }
-      } else {
-        // Only one locale
-        queryParams.locale = locale;
+        },
+      });
+      options.params.locale = response.data.attributes?.locale || response.data.locale;
+      // Strapi v5 support
+      const localizations = response.data.attributes?.localizations.data || response.data.localizations;
+      for (const localization of localizations) {
+        otherLocales.push(localization.attributes?.locale || localization.locale);
       }
     }
 
@@ -130,6 +128,15 @@ export const fetchEntities = async (
 ) => {
   const { reporter, axiosInstance } = context;
 
+  // Use locale from pluginOptions if it's defined
+  if (pluginOptions?.i18n?.locale) {
+    delete queryParams.locale;
+    let locale = pluginOptions.i18n.locale
+    if (version === 5 && pluginOptions.i18n.locale === 'all')
+      locale = '*';
+    queryParams.locale = locale;
+  }
+
   /** @type AxiosRequestConfig */
   const options = {
     method: "GET",
@@ -139,12 +146,6 @@ export const fetchEntities = async (
       serialize: (parameters) => qs.stringify(parameters, { encodeValuesOnly: true }),
     },
   };
-
-  // Use locale from pluginOptions if it's defined
-  if (pluginOptions?.i18n?.locale) {
-    delete queryParams.locale;
-    queryParams.locale = pluginOptions.i18n.locale;
-  }
 
   try {
     reporter.info(

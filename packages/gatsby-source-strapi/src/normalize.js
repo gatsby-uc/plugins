@@ -143,8 +143,12 @@ export const createNodes = (entity, context, uid) => {
   // also, support both v5 documentId and v4 id
   const strapi_document_id_or_regular_id = entity.documentId || entity.id;
 
+  // localizations of the same entity will have the same documentId
+  // so the locale is included to prevent localized entries from overwriting each other
+  const locale = entity.locale ? `-${entity.locale}` : '';
+
   let entryNode = {
-    id: createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}`),
+    id: createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}${locale}`),
     documentId: entity.documentId,
     strapi_id: entity.id,
     strapi_document_id_or_regular_id,
