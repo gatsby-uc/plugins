@@ -83,8 +83,8 @@ export const fetchEntity = async (
             },
           },
         });
-        for (const localization of response.data.attributes.localizations.data) {
-          otherLocales.push(localization.attributes.locale);
+        for (const localization of response.data.localizations) {
+          otherLocales.push(localization.locale);
         }
       } else {
         // Only one locale
@@ -140,65 +140,119 @@ export const fetchEntities = async (
     },
   };
 
-  // Use locale from pluginOptions if it's defined
-  if (pluginOptions?.i18n?.locale) {
+  // Handle internationalization
+  const locale = pluginOptions?.i18n?.locale;
+  const localesToFetch = [];
+
+  if (locale) {
     delete queryParams.locale;
-    queryParams.locale = pluginOptions.i18n.locale;
+
+    if (locale === "all") {
+      // Get all available locales from first entity
+      const { data: previewResponse } = await axiosInstance({
+        ...options,
+        params: {
+          ...options.params,
+          pagination: { pageSize: 1 },
+          populate: {
+            localizations: {
+              fields: ["locale"],
+            },
+          },
+        },
+      });
+
+      // Add default locale from first entry
+      if (previewResponse.data?.[0]) {
+        const firstEntry = previewResponse.data[0];
+        const localesSet = new Set();
+
+        // Add current entry's locale
+        if (firstEntry.locale) {
+          localesSet.add(firstEntry.locale);
+        }
+
+        // Add other locales from localizations array or data property
+        const localizations = firstEntry.localizations?.data || firstEntry.localizations || [];
+        for (const localization of localizations) {
+          const localeValue = localization.locale || localization.attributes?.locale;
+          if (localeValue) {
+            localesSet.add(localeValue);
+          }
+        }
+
+        localesToFetch.push(...localesSet);
+      }
+    } else {
+      // Only one locale
+      localesToFetch.push(locale);
+    }
+  } else {
+    // No locale specified, fetch default
+    localesToFetch.push(undefined);
   }
 
   try {
-    reporter.info(
-      `Starting to fetch data from Strapi - ${
-        options.url
-      } with ${options.paramsSerializer.serialize(options.params)}`,
-    );
+    // Fetch data for each locale
+    const allLocalesData = [];
 
-    const { data: response } = await axiosInstance(options);
+    for (const currentLocale of localesToFetch) {
+      const localeOptions = {
+        ...options,
+        params: {
+          ...options.params,
+          ...(currentLocale && { locale: currentLocale }),
+        },
+      };
 
-    const data = response?.data || response;
-    const meta = response?.meta;
+      const { data: response } = await axiosInstance(localeOptions);
 
-    const page = Number.parseInt(meta?.pagination.page || 1, 10);
-    const pageCount = Number.parseInt(meta?.pagination.pageCount || 1, 10);
+      const data = response?.data || response;
+      const meta = response?.meta;
 
-    const pagesToGet = Array.from({
-      length: pageCount - page,
-    }).map((_, index) => index + page + 1);
+      const page = Number.parseInt(meta?.pagination.page || 1, 10);
+      const pageCount = Number.parseInt(meta?.pagination.pageCount || 1, 10);
 
-    const fetchPagesPromises = pagesToGet.map((page) => {
-      return (async () => {
-        const fetchOptions = {
-          ...options,
-          params: {
-            ...options.params,
-            pagination: {
-              ...options.params.pagination,
-              page,
+      const pagesToGet = Array.from({
+        length: pageCount - page,
+      }).map((_, index) => index + page + 1);
+
+      const fetchPagesPromises = pagesToGet.map((page) => {
+        return (async () => {
+          const fetchOptions = {
+            ...localeOptions,
+            params: {
+              ...localeOptions.params,
+              pagination: {
+                ...localeOptions.params.pagination,
+                page,
+              },
             },
-          },
-        };
+          };
 
-        reporter.info(
-          `Starting to fetch page ${page} from Strapi - ${
-            fetchOptions.url
-          } with ${options.paramsSerializer.serialize(fetchOptions.params)}`,
-        );
+          reporter.info(
+            `Starting to fetch page ${page} from Strapi - ${
+              fetchOptions.url
+            } with ${options.paramsSerializer.serialize(fetchOptions.params)}`,
+          );
 
-        try {
-          const {
-            data: { data },
-          } = await axiosInstance(fetchOptions);
+          try {
+            const {
+              data: { data },
+            } = await axiosInstance(fetchOptions);
 
-          return data;
-        } catch (error) {
-          reporter.panic(`Failed to fetch data from Strapi ${fetchOptions.url}`, error);
-        }
-      })();
-    });
+            return data;
+          } catch (error) {
+            reporter.panic(`Failed to fetch data from Strapi ${fetchOptions.url}`, error);
+          }
+        })();
+      });
 
-    const results = await Promise.all(fetchPagesPromises);
+      const results = await Promise.all(fetchPagesPromises);
+      allLocalesData.push(...data, ...flattenDeep(results));
+    }
 
-    const cleanedData = [...data, ...flattenDeep(results)].map((entry) =>
+    const cleanedData = allLocalesData.map((entry) =>
       cleanData(entry, { ...context, contentTypeUid: uid }, version),
     );
 

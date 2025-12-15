@@ -12,9 +12,8 @@ import { getContentTypeSchema, makeParentNodeName } from "./helpers";
 const prepareJSONNode = (json, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
 
-  const jsonNodeId = createNodeId(
-    `${parentNode.strapi_document_id_or_regular_id}-${parentNode.internal.type}-${attributeName}-JSONNode`,
-  );
+  // Use parentNode.id instead of strapi_document_id_or_regular_id to ensure uniqueness across locales
+  const jsonNodeId = createNodeId(`${parentNode.id}-${attributeName}-JSONNode`);
 
   const JSONNode = {
     ...(_.isPlainObject(json) ? { ...json } : { strapi_json_value: json }),
@@ -48,7 +47,12 @@ const prepareRelationNode = (relation, context) => {
 
   const nodeType = makeParentNodeName(schemas, targetSchemaUid);
   const strapi_document_id_or_regular_id = relation.documentId || relation.id; // support both v5 and v4
-  const relationNodeId = createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}`);
+
+  // Include locale in node ID to support multiple locales for the same entity
+  const localeIdentifier = relation.locale ? `-${relation.locale}` : "";
+  const relationNodeId = createNodeId(
+    `${nodeType}-${strapi_document_id_or_regular_id}${localeIdentifier}`,
+  );
 
   const node = {
     ...relation,
@@ -76,9 +80,8 @@ const prepareRelationNode = (relation, context) => {
  */
 const prepareTextNode = (text, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
-  const textNodeId = createNodeId(
-    `${parentNode.strapi_document_id_or_regular_id}-${parentNode.internal.type}-${attributeName}-TextNode`,
-  );
+  // Use parentNode.id instead of strapi_document_id_or_regular_id to ensure uniqueness across locales
+  const textNodeId = createNodeId(`${parentNode.id}-${attributeName}-TextNode`);
 
   const textNode = {
     id: textNodeId,
@@ -143,8 +146,11 @@ export const createNodes = (entity, context, uid) => {
   // also, support both v5 documentId and v4 id
   const strapi_document_id_or_regular_id = entity.documentId || entity.id;
 
+  // Include locale in node ID to support multiple locales for the same entity
+  const localeIdentifier = entity.locale ? `-${entity.locale}` : "";
+
   let entryNode = {
-    id: createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}`),
+    id: createNodeId(`${nodeType}-${strapi_document_id_or_regular_id}${localeIdentifier}`),
     documentId: entity.documentId,
     strapi_id: entity.id,
     strapi_document_id_or_regular_id,
