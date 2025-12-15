@@ -52,5 +52,6 @@
   },
   "run-if-changed": {
     "renovate.json5": "yarn renovate-config-validator"
-  }
+  },
+  "version": "0.0.0"
 }
