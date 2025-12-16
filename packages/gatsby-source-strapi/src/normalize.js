@@ -12,8 +12,9 @@ import { getContentTypeSchema, makeParentNodeName } from "./helpers";
 const prepareJSONNode = (json, context) => {
   const { createContentDigest, createNodeId, parentNode, attributeName } = context;
 
-  // Use parentNode.id instead of strapi_document_id_or_regular_id to ensure uniqueness across locales
-  const jsonNodeId = createNodeId(`${parentNode.id}-${attributeName}-JSONNode`);
+  const jsonNodeId = createNodeId(
+    `${parentNode.strapi_document_id_or_regular_id}-${parentNode.internal.type}-${attributeName}-JSONNode`,
+  );
 
   const JSONNode = {
     ...(_.isPlainObject(json) ? { ...json } : { strapi_json_value: json }),
