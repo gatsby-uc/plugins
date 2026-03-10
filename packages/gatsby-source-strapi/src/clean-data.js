@@ -49,6 +49,43 @@ const getAttributes = (data, version) => {
   return data;
 };
 
+// Recursively finds the latest updatedAt and publishedAt dates in the data object.
+// This ensures that caching mechanisms that rely on these timestamps will work correctly
+// when nested relations have more recent updates than their parent entities.
+const findLatestDates = (data) => {
+  let maxUpdatedAt;
+  let maxPublishedAt;
+
+  // helper function to check and update the max dates
+  function checkDate(value, key) {
+    if (typeof value === "string" && (key === "updatedAt" || key === "publishedAt")) {
+      if (key === "updatedAt" && (!maxUpdatedAt || value > maxUpdatedAt)) {
+        maxUpdatedAt = value;
+      }
+      if (key === "publishedAt" && (!maxPublishedAt || value > maxPublishedAt)) {
+        maxPublishedAt = value;
+      }
+    }
+  }
+
+  // recursive function to traverse the entire data object
+  function traverse(node) {
+    if (Array.isArray(node)) {
+      for (const value of node) {
+        traverse(value);
+      }
+    } else if (node && typeof node === "object") {
+      for (const [key, value] of Object.entries(node)) {
+        checkDate(value, key);
+        traverse(value);
+      }
+    }
+  }
+
+  traverse(data);
+  return { updatedAt: maxUpdatedAt, publishedAt: maxPublishedAt };
+};
+
 /**
  * Removes the attribute key in the entire data.
  * @param {Object} attributes response from the API
@@ -184,7 +221,20 @@ export const cleanAttributes = (attributes, currentSchema, schemas, version = 5)
 export const cleanData = (data, context, version = 5) => {
   const { schemas, contentTypeUid } = context;
   const currentContentTypeSchema = getContentTypeSchema(schemas, contentTypeUid);
+  const cleaned = cleanAttributes(
+    getAttributes(data, version),
+    currentContentTypeSchema,
+    schemas,
+    version,
+  );
+  const latest = findLatestDates(cleaned);
+
+  // log clean.updatedAt and latest.updatedAt to check if the latest dates are correctly calculated
+  console.log(`clean.updatedAt: ${cleaned.updatedAt}, latest.updatedAt: ${latest.updatedAt}`);
+
   return {
-    ...cleanAttributes(getAttributes(data, version), currentContentTypeSchema, schemas, version),
+    ...cleaned,
+    updatedAt: latest.updatedAt || cleaned.updatedAt || undefined,
+    publishedAt: latest.publishedAt || cleaned.publishedAt || undefined,
   };
 };
