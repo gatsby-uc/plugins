@@ -228,10 +228,6 @@ export const cleanData = (data, context, version = 5) => {
     version,
   );
   const latest = findLatestDates(cleaned);
-
-  // log clean.updatedAt and latest.updatedAt to check if the latest dates are correctly calculated
-  console.log(`clean.updatedAt: ${cleaned.updatedAt}, latest.updatedAt: ${latest.updatedAt}`);
-
   return {
     ...cleaned,
     updatedAt: latest.updatedAt || cleaned.updatedAt || undefined,
