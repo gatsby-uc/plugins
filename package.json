@@ -26,9 +26,9 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.9",
     "@babel/preset-react": "^7.26.3",
-    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.27.11",
-    "@hkdobrev/run-if-changed": "^0.6.3",
+    "@hkdobrev/run-if-changed": "^0.9.0",
     "@tsconfig/node20": "^20.1.4",
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
@@ -45,7 +45,7 @@
     "renovate": "^39.0.0",
     "typescript": "^5.7.2"
   },
-  "packageManager": "yarn@4.9.2+sha512.1fc009bc09d13cfd0e19efa44cbfc2b9cf6ca61482725eb35bbc5e257e093ebf4130db6dfe15d604ff4b79efd8e1e8e99b25fa7d0a6197c9f9826358d4d65c3c",
+  "packageManager": "yarn@4.18.0",
   "lint-staged": {
     "**/*.{mjs,js,ts,md,json,yml,json5}": "prettier --write",
     "packages/**/*.{js,ts}": "eslint --fix"
