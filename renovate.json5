@@ -8,7 +8,9 @@
   major: {
     dependencyDashboardApproval: true,
   },
-  dependencyDashboard: true,
+  dependencyDashboard: {
+    enabled: true,
+  },
   configMigration: true,
   packageRules: [
     {
